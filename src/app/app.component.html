@@ -1,0 +1,43 @@
+<!-- <app-header></app-header>
+<div class="row side-height">
+    <div class="col-lg-2 negative-padding">
+      <app-sidebar></app-sidebar>
+  </div>
+    <div class="col-lg-10 outlet" style=" background-color: #F3F8FF;">
+        <br>
+        <router-outlet ></router-outlet>
+    </div>
+    
+    <div class="col-lg-12">
+        <app-footer></app-footer>  
+    </div>
+</div> -->
+
+
+<div class="container-fluid" *ngIf="temp=='1'">
+  <div class="row" style="height: 10vh;">
+    <div class="col-lg-12">
+      <app-header></app-header>
+    </div>
+  </div>
+
+  <div class="row" >
+    <div class="col-lg-2" style="height: 90vh;overflow: auto;">
+      <app-sidebar></app-sidebar>
+    </div>
+    <div class="col-lg-10" style="height: 90vh;overflow: auto;">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>
+
+
+<div class="container-fluid" *ngIf="temp!='1'">
+  <div class="row">
+    <div class="col-lg-12">
+      <router-outlet></router-outlet>
+    </div>
+
+  </div>
+
+</div>
