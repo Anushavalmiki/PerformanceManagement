@@ -1,13 +1,13 @@
-
+    
 <div class="container-fluid">
     <div class="row">
         <div class="col-lg-10">
             <br>
-            <p class="Dashboard">Performance Indicator Dashboard</p>
+            <p class="Dashboard">Employee Dashboard </p>
         </div>
         <div class="col-lg-2">
             <br>
-            <p class="count">Count : {{count}} </p>
+            <p class="count">Count:</p>
         </div>
     </div>
    <div class="card">
@@ -25,7 +25,7 @@
     <div class="row">
         <div class="col-lg-10"></div>
         <div class="col-lg-2">
-            <button class="Add" routerLink="/KeyPerformanceIndicatorform">Add</button>
+            <button class="Add" routerLink="/EmployeeForm">Add</button>
         </div>
     </div> <br>
   <div class="container-fluid">
@@ -34,21 +34,21 @@
                     <table>
                     <thead>
                         <tr>
-                            <th>KRA Name</th>
-                            <th>Performance Indicator</th>
-                            <th>Description</th>
-                            <th>Actions</th>
+                            <th>Employee Name</th>
+                            <th>Department</th>
+                            <th>Manager Name</th>
+                            <th>KRA</th>
+                            <th>KPI</th>
+                            <th>Period</th>
                         </tr>
                     </thead>
                     <tbody>    
-                        <tr *ngFor="let details of indicatorlist">
-                            <td>{{details.kRAName}}</td>
-                            <td>{{details.performanceIndicator}}</td>
-                            <td>{{details.description}}</td>
-                            <td>
-                                <button class="form-control edit" [routerLink]="['/KeyPerformanceIndicatorform', details.id]" >Edit</button>
-                                <button class="form-control edit" (click)="delete(details.id)">Delete</button>
-                            </td>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
                         </tr>
                     </tbody>
                 </table>
@@ -57,3 +57,10 @@
     </div>
 
 </div>
+
+
+
+
+
+
+

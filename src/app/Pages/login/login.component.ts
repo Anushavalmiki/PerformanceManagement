@@ -39,7 +39,7 @@ export class LoginComponent implements OnInit {
         sessionStorage.setItem("temp",'1');
         sessionStorage.setItem("roleid",this.roleId);
         sessionStorage.setItem("loginName",this.userName);
-        location.href="#/Dashboard";
+        location.href="#/MyAppraisal";
         location.reload();
       }
       else{
@@ -52,7 +52,7 @@ export class LoginComponent implements OnInit {
       sessionStorage.setItem("temp",'1');
       sessionStorage.setItem("roleid",this.roleId);
       sessionStorage.setItem("loginName",this.userName);
-      location.href="#/Dashboard";
+      location.href="#/MyAppraisal";
       location.reload();
     }
     else{
@@ -66,7 +66,7 @@ export class LoginComponent implements OnInit {
           sessionStorage.setItem("temp",'1');
           sessionStorage.setItem("roleid",this.roleId);
           sessionStorage.setItem("loginName",this.userName);
-          location.href="#/Dashboard";
+          location.href="#/MyAppraisal";
           location.reload();
         }
         else{

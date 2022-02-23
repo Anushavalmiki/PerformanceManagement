@@ -1,0 +1,55 @@
+<div class="container-fluid">
+    <br>
+    <div class="row">
+        <div class="col-lg-4">
+            <p class="headings">Appraisal Cycle Details </p>
+        </div>
+    </div>
+    <div class="card">
+        <br>
+        <div class="row column">
+            <div class="col-lg-3">
+                <p>Appraisal Cycle Name </p>
+            </div>
+            <div class="col-lg-3">
+                <p>Frequency Type </p>
+            </div>
+            <div class="col-lg-3">
+                <p>Cycle Start Date</p>
+            </div>
+            <div class="col-lg-3">
+                <p>Cycle End date</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-3">
+                <input class="form-control" placeholder="Appraisal Cycle Name" [(ngModel)]="appraisal" name="appraisal">
+            </div>
+
+            <div class="col-lg-3">
+                <select class="form-control columnname"(change)="getfrequency($event)" [(ngModel)]="frequencyid" name="frequencyid">
+                    <option value="0">Select Frequency Type</option>
+                    <option *ngFor="let details of frequency" value="{{details.id}}">{{details.frequencyName}}</option>
+                   
+                </select>
+            </div>
+
+            <div class="col-lg-3">
+                <input class="form-control" type="Date" [(ngModel)]="startdate" name="startdate">
+            </div>
+            <div class="col-lg-3">
+                <input class="form-control" type="Date" [(ngModel)]="enddate" name="enddate">
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-lg-9"></div>
+            <div class="col-lg-1">
+                <button class="form-control cancel" *ngIf="id==undefined" (click)="Save()">Save</button>
+                <button class="form-control cancel" *ngIf="id!= undefined" (click)="Update()">Update</button>
+            </div>
+            <div class="col-lg-1">
+                <button class="form-control cancel" (click)="Cancel()">Cancel</button>
+            </div>
+        </div>
+    </div>

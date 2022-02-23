@@ -1,0 +1,76 @@
+<div class="container-fluid">
+    <br>
+       <div class="row">
+           <br>
+           <div class="col-lg-4">
+               <p class="headings">My Appraisal Details</p>
+           </div>
+           <div class="col-lg-8"></div>
+       </div>
+       <div class="card">
+           <br>
+           <div class="row ">
+               <div class="col-lg-2 ">
+                   <p class="columnname">KRA Name </p>
+               </div>
+               <div class="col-lg-2">
+                   <p class="columnname">KPI  Name</p>
+               </div>
+               <div class="col-lg-2">
+                   <p class="columnname">Rating </p>
+               </div>
+               <div class="col-lg-2">
+                   <p class="columnname">Description</p>
+               </div>
+               <div class="col-lg-2">
+                <p class="columnname">Attachment</p>
+               </div>
+           </div>
+           <div class="row header">
+               <div class="col-lg-2 columnname">
+                   <select class="form-control ">
+                       <option value="0">Select KRA</option>
+                       <option  value="1">1</option>
+                       <option  value="1">1</option>
+                   </select>
+               </div>
+               <div class="col-lg-2 ">
+                <select class="form-control ">
+                    <option value="0">Select KPI</option>
+                    <option  value="1">1</option>
+                    <option  value="1">1</option>
+                </select>
+               </div>
+                
+               <div class="col-lg-2">
+                <select class="form-control ">
+                    <option value="0">Rating</option>
+                    <option  value="1">1</option>
+                    <option  value="1">1</option>
+                </select>
+            </div>
+               <div class="col-lg-2 ">
+                  <textarea class="form-control">Description</textarea>
+                </div>
+                <div class="col-lg-2">
+                    <ngx-dropzone (change)="onSelect($event)" style="width:100% ;height: auto;">
+                        <ngx-dropzone-label>Please Attach Photo!</ngx-dropzone-label>
+                        <ngx-dropzone-preview *ngFor="let f of files" [removable]="true" (removed)="onRemove(f)">
+                            <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label>
+                        </ngx-dropzone-preview>
+                    </ngx-dropzone>
+                </div>
+           </div> <br>
+           <div class="row">
+               <div class="col-lg-9"></div>
+               <div class="col-lg-1">
+                   <button class="button">Save</button>
+               </div>
+               <div class="col-lg-1">
+                   <button class="button1">Cancel</button>
+               </div>
+           </div> 
+           <br>
+       </div>
+
+

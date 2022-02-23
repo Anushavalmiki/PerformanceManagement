@@ -1,1 +1,60 @@
-<p>key-result-area works!</p>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-10">
+            <br>
+            <p class="Dashboard">Key Result Area Dashboard</p>
+        </div>
+        <div class="col-lg-2">
+            <br>
+            <p class="count">Count: {{count}}</p>
+        </div>
+    </div>
+   <div class="card">
+       <br>
+    <div class="row FilterClass ">
+        <div class="col-lg-1">
+            <p class="filter">Filter By</p>
+        </div>
+        <div class="col-lg-3">
+                <input type="search" class="form-control search"  placeholder="Search for Name..">
+        </div>
+        <div class="col-lg-1"></div>
+    </div><br>
+</div> <br>
+    <div class="row">
+        <div class="col-lg-10"></div>
+        <div class="col-lg-2">
+            <button class="Add" routerLink="/KeyResultAresForm">Add</button>
+        </div>
+    </div> <br>
+  <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                    <table>
+                    <thead>
+                        <tr>
+                            <th>KRA Name</th>
+                            <th>KRA Type</th>
+                            <th>Role</th>
+                            <th>Description</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>    
+                        <tr *ngFor="let details of keyresultlist">
+                            <td>{{details.kraName}}</td>
+                            <td>{{details.kraResultName}}</td>
+                            <td>{{details.role}}</td>
+                            <td>{{details.description}}</td>
+                            <td>
+                                <button class="form-control edit" [routerLink]="['/KeyResultAresForm', details.id]">Edit</button>
+                                <button class="form-control edit" (click)="delete(details.id)">Delete</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>

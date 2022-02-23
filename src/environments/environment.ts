@@ -3,7 +3,8 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  hostUrl:"http://103.133.214.197/PerformanceManagement/"
 };
 
 /*

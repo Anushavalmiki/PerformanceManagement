@@ -1,43 +1,64 @@
-<!-- <app-header></app-header>
-<div class="row side-height">
-    <div class="col-lg-2 negative-padding">
-      <app-sidebar></app-sidebar>
-  </div>
-    <div class="col-lg-10 outlet" style=" background-color: #F3F8FF;">
-        <br>
-        <router-outlet ></router-outlet>
-    </div>
-    
-    <div class="col-lg-12">
-        <app-footer></app-footer>  
-    </div>
-</div> -->
-
-
-<div class="container-fluid" *ngIf="temp=='1'">
-  <div class="row" style="height: 10vh;">
-    <div class="col-lg-12">
-      <app-header></app-header>
-    </div>
-  </div>
-
-  <div class="row" >
-    <div class="col-lg-2" style="height: 90vh;overflow: auto;">
-      <app-sidebar></app-sidebar>
-    </div>
-    <div class="col-lg-10" style="height: 90vh;overflow: auto;">
-      <router-outlet></router-outlet>
-    </div>
+<div class="container-fluid"  style="background: #3247D5;height: 10vh;" *ngIf="temp=='1'">
+  <div class="row">
+      <div class="col-lg-1">       
+          <img class="image" src="../assets/Images/digiOffice.png">
+      </div>
+      <div class="col-lg-9"></div>
+              <div class="col-lg-1">
+          <img (click)="logout()" class="logout" src="assets/Images/Logo_out.1.png" >
+      </div>
+      <div class="col-lg-1">
+          <p style="color:white;font-size:16px;margin-top:25px;">HIi {{userName}}</p>
+      </div>
   </div>
 </div>
-
-
+<div class="container-fluid" *ngIf="temp=='1'" >
+  <div class="row">
+      <div class="col-lg-2 sidenav" style="overflow-y: scroll;height: 90vh;" >
+        <br>
+        <a data-toggle="collapse" class="togglebtn sidebarcss" data-target="#userapplications" *ngIf="roleid==1"
+        class="tablinks" >
+         Performance Management
+    </a>
+    <div id="userapplications" class="collapse">
+        <a routerLink="/AppraisalCycle" class="tablinks sidebarcss"  (click)="highlight($event)" >
+           Appraisal Cycle
+        </a> <br>
+        <a routerLink="/KeyResultArea" class="tablinks sidebarcss" (click)="highlight($event)" (click)="kRA()">
+           KRA'S
+        </a><br>
+        <a routerLink="/KeyPerformanceIndicator" class="tablinks sidebarcss" (click)="highlight($event)" (click)="kPI()">
+            KPI
+        </a><br>
+    </div>
+  
+      <a data-toggle="collapse" class="togglebtn button" data-target="#userapplications1" *ngIf="roleid==2"
+        class="tablinks" (click)="highlight($event)">
+         Performance Management
+    </a>
+    <div id="userapplications1" class="collapse">
+        <a routerLink="/KeyResultArea" class="tablinks" (click)="highlight($event)" (click)="keyResultArea()">
+            MY  KRA
+        </a> <br>
+        <a routerLink="/KeyPerformanceIndicator" class="tablinks" (click)="highlight($event)" (click)="keyPerformanceIndicator()">
+            MY KPI
+        </a><br>
+        <a routerLink="/MyAppraisal" class="tablinks" (click)="highlight($event)" (click)="myAppraisal()">
+         My Appraisal
+        </a><br>
+    </div>
+      
+      </div>
+      <br>
+      <div class="col-lg-10 " >
+          <router-outlet></router-outlet>
+      </div>
+  </div> 
+</div>
 <div class="container-fluid" *ngIf="temp!='1'">
   <div class="row">
-    <div class="col-lg-12">
-      <router-outlet></router-outlet>
-    </div>
-
+      <div class="col-lg-12" style=" background-color: #F3F8FF;" >
+          <router-outlet></router-outlet>
+      </div>
   </div>
-
 </div>

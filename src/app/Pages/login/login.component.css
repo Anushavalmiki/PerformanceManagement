@@ -287,3 +287,12 @@ input:focus~.defalutplace {
   -moz-transition: 0.2s ease all;
 
 }
+
+.placeholder {
+  display: inline-block;
+  min-height: 1em;
+  vertical-align: middle;
+  cursor: wait;
+  /* background-color: currentColor; */
+  opacity: .5;
+}

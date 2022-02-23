@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { HttpClientModule } from '@angular/common/http';
+import { NgxDropzoneModule } from 'ngx-dropzone';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './Pages/login/login.component';
@@ -13,6 +14,12 @@ import { KeyResultAreaComponent } from './Pages/key-result-area/key-result-area.
 import { KeyPerformanceIndicatorComponent } from './Pages/key-performance-indicator/key-performance-indicator.component';
 import { MyAppraisalComponent } from './Pages/my-appraisal/my-appraisal.component';
 import { DashboardComponent } from './Pages/dashboard/dashboard.component';
+import { AppraisalCycleformComponent } from './Pages/appraisal-cycleform/appraisal-cycleform.component';
+import { KeyPerformanceIndicatorformComponent } from './Pages/key-performance-indicatorform/key-performance-indicatorform.component';
+import { KeyResultAresFormComponent } from './Pages/key-result-ares-form/key-result-ares-form.component';
+import { EmployeeDashboardComponent } from './Pages/employee-dashboard/employee-dashboard.component';
+import { EmployeeFormComponent } from './Pages/employee-form/employee-form.component';
+import { MyAppraisalFormComponent } from './Pages/my-appraisal-form/my-appraisal-form.component';
 
 @NgModule({
   declarations: [
@@ -25,12 +32,20 @@ import { DashboardComponent } from './Pages/dashboard/dashboard.component';
     KeyResultAreaComponent,
     KeyPerformanceIndicatorComponent,
     MyAppraisalComponent,
-    DashboardComponent
+    DashboardComponent,
+    AppraisalCycleformComponent,
+    KeyPerformanceIndicatorformComponent,
+    KeyResultAresFormComponent,
+    EmployeeDashboardComponent,
+    EmployeeFormComponent,
+    MyAppraisalFormComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    NgxDropzoneModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
