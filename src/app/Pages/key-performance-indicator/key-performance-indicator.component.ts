@@ -14,12 +14,15 @@ export class KeyPerformanceIndicatorComponent implements OnInit {
 
   indicatorlist:any;
   count:any;
+  search:any;
+  
   ngOnInit(): void {
     this.GetKPI();
 
   }
 
   public GetKPI(){
+    debugger
     this.PerformanceManagementService.GetKPI().subscribe(
       data=>{
         this.indicatorlist=data;

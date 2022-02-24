@@ -38,6 +38,7 @@ export class AppraisalCycleformComponent implements OnInit {
   GetAppraisalCycle() {
     this.PerformanceManagementService.GetAppraisalCycle().subscribe(
     data => {
+      debugger
     this.appraisallist = data;
 		this.appraisallist=this.appraisallist.filter((x: { id: any; })=>x.id==Number(this.id));
 		this.appraisal=this.appraisallist[0].appraisalCycleName;

@@ -19,16 +19,21 @@ export class KeyResultAresFormComponent implements OnInit {
   id:any;
   keyresultlist:any;
   role:any;
+  roleTypeid:any;
+  roleTypeList:any;
+  
 
   ngOnInit(): void {
 
     this.GetKraMaster();
-    this.kratypeid=0;
+    this.GetRoleType();
+  
 
     this.ActivatedRoute.params.subscribe(params => {
       this.id = params['id'];
       if (this.id != undefined && this.id != null) {
         this.GetKeyResultArea();
+        this.kratypeid=0;
       }
     })
 
@@ -42,25 +47,47 @@ export class KeyResultAresFormComponent implements OnInit {
     debugger
     this.keyresultlist = data;
 		this.keyresultlist=this.keyresultlist.filter((x: { id: any; })=>x.id==Number(this.id));
-		this.kraName=this.keyresultlist[0].kRAName;
-		this.kratypeid=this.keyresultlist[0].kRAType;
-    this.role=this.keyresultlist[0].role;
+		this.kraName=this.keyresultlist[0].kraName;
+		this.kratypeid=this.keyresultlist[0].kratypeid;
+    // this.role=this.keyresultlist[0].role;
     this.description=this.keyresultlist[0].description
       }
     ) 
   }
 
+  
   public GetKraMaster(){
     this.PerformanceManagementService.GetKraMaster().subscribe(
       data=>{
         this.kratypelist=data;
         console.log("kratype",this.kratypelist);
+        this.kratypeid=0;
       }
     )
+   
   }
   getkratypeid(even:any){
     this.kratypeid=even.target.value;
   }
+
+ 
+  getRoleID(even:any){
+    this.roleTypeid=even.target.value;
+  }
+
+public GetRoleType(){
+  this.PerformanceManagementService.GetRoleType().subscribe(
+    data=>{
+      this.roleTypeList=data;
+      console.log("type",this.roleTypeList);
+      this.roleTypeid=0;
+    }
+  )
+}
+
+
+
+
 
   Save(){
     debugger

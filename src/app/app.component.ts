@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { interval } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -12,17 +13,48 @@ export class AppComponent {
   temp:any;
   roleid:any;
   userName:any;
+  time:any;
+  hh:any;
+  ampm:any;
+  mm:any;
+  page:any;
 
   ngOnInit(): void {
     this.temp=sessionStorage.getItem('temp');
     this.roleid=sessionStorage.getItem('roleid');
     this.userName=sessionStorage.getItem('loginName');
+    
+    setInterval(() => {
+      var time = new Date();
+      this.time = time.toLocaleString('en-US', { hour: '2-digit', minute: 'numeric', hour12: true });
+      let temp: any = this.time.split(':');
+      this.hh = temp[0];
+      let temp1: any = this.time.split(':')[1].split(" ");
+      this.mm = temp1[0];
+      this.ampm = temp1[1];
+    }, 1000);
+
+    interval(1000).subscribe((x => {
+
+      this.page = sessionStorage.getItem('clickname')
+    }));
   }
+
+  
+
+
+
+
+
+
+
+
 
   logout(){
     location.href="#/Login";
     location.reload();
     localStorage.clear();
+    sessionStorage.clear()
   }
 
 

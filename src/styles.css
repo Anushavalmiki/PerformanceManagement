@@ -41,9 +41,8 @@ th{
      font-weight: normal;        
      font-size: 13px;
      color: #0C275A;
-     height:100%;
-    
-   
+     height:92%;
+    text-align: left;   
    }      
    tr:nth-child(odd) {
    

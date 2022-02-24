@@ -25,7 +25,7 @@
     <div class="row">
         <div class="col-lg-10"></div>
         <div class="col-lg-2">
-            <button class="Add" routerLink="/EmployeeForm">Add</button>
+            <button class="edit" routerLink="/EmployeeForm">Add</button>
         </div>
     </div> <br>
   <div class="container-fluid">
@@ -43,15 +43,21 @@
                         </tr>
                     </thead>
                     <tbody>    
-                        <tr>
-                            <td></td>
-                            <td></td>
+                        <tr *ngFor="let details of stafflist |paginate: { itemsPerPage: count1, currentPage: p}">
+                            <td>{{details.name}}</td>                            
+                            <td>{{details.department_name}}</td>
+                            <td>{{details.manager}}</td>
                             <td></td>
                             <td></td>
                             <td></td>
                         </tr>
                     </tbody>
                 </table>
+
+                <div class="text-right">
+                    <br>
+                    <pagination-controls (pageChange)="p = $event" class="poppinns"></pagination-controls>
+                </div>
             </div>
         </div>
     </div>

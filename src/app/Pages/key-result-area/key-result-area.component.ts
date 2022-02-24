@@ -12,6 +12,7 @@ export class KeyResultAreaComponent implements OnInit {
 
   keyresultlist:any;
   count:any;
+  search:any;
   ngOnInit(): void {
     this.GetKeyResultArea();
 

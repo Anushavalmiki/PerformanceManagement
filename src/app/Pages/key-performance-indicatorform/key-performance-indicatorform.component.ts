@@ -15,17 +15,26 @@ export class KeyPerformanceIndicatorformComponent implements OnInit {
   constructor(private PerformanceManagementService:PerformanceManagementService,
     private ActivatedRoute:ActivatedRoute  ) { }
 
-    kraName:any;
+
   performanceIndicator:any;
   description:any;
   kpilist:any;
   id:any;
   indicatorlist:any;
-  kRAName:any
+  kraid:any;
+  kratypelist:any;
+  kpiName:any;
+  indicatorid:any;
+  performancelist:any;
+  rating:any;
+  performanceIndicatorId:any;
 
 
   ngOnInit(): void {
     this.GetKPI();
+    this.GetKraMaster();
+    this.GetPerformanceIndicatorMaster();
+    
 
     this.ActivatedRoute.params.subscribe(params => {
       this.id = params['id'];
@@ -33,17 +42,57 @@ export class KeyPerformanceIndicatorformComponent implements OnInit {
         this.GetKPI();
       }
     })
+    this.kraid=0;
+    this.performanceIndicatorId=0;
   }
 
 
+
+  
   GetKPI(){
     this.PerformanceManagementService.GetKPI().subscribe(
       data=>{
+        debugger
         this.kpilist=data;
-      	this.indicatorlist=this.indicatorlist.filter((x: { id: any; })=>x.id==Number(this.id));
-        this.kraName=this.indicatorlist[0].kRAName;
-        this.performanceIndicator=this.indicatorlist[0].performanceIndicator;
-        this.description=this.indicatorlist[0].description;
+      	this.kpilist=this.kpilist.filter((x: { id: any; })=>x.id==Number(this.id));
+        this.kraid=this.kpilist[0].kraID;
+        // this.performanceIndicator=this.kpilist[0].performanceIndicator;
+        this.description=this.kpilist[0].description;
+        this.kpiName=this.kpilist[0].kpiName;
+        this.indicatorid=this.kpilist[0].performanceIndicatorId;
+      }
+    )
+  }
+
+
+
+  public GetKraMaster(){
+    this.PerformanceManagementService.GetKraMaster().subscribe(
+      data=>{
+        this.kratypelist=data;
+        console.log("kratype",this.kratypelist);
+      }
+    )
+  }
+
+  getkraid(even:any){
+    debugger
+    this.kraid=even.target.value;
+
+  }
+
+
+  
+  getindicatorid(even:any){
+    this.indicatorid=even.target.value;
+  }
+
+  
+  public GetPerformanceIndicatorMaster(){
+    this.PerformanceManagementService.GetPerformanceIndicatorMaster().subscribe(
+      data=>{
+        this.performancelist=data;
+        console.log("performancetype",this.performancelist);
       }
     )
   }
@@ -52,12 +101,13 @@ export class KeyPerformanceIndicatorformComponent implements OnInit {
 
 
 
-
   save(){
     var json = {  
-      "KRAName":this.kraName,
-      "PerformanceIndicator":this.performanceIndicator,
+      "KraID":this.kraid,
+      // "PerformanceIndicator":this.performanceIndicator,
       "Description":this.description,
+      "KpiName":this.kpiName,
+     "PerformanceIndicatorId":this.indicatorid
       
       };
       this.PerformanceManagementService.InsertKPI(json).subscribe(
@@ -71,9 +121,12 @@ export class KeyPerformanceIndicatorformComponent implements OnInit {
     debugger
      var json = {
       "ID": this.id,
-      "KRAName":this.kraName,
-      "PerformanceIndicator":this.performanceIndicator,
-      "Description":this.description,       
+      "KraID":this.kraid,
+      // "PerformanceIndicator":this.performanceIndicator,
+      "Description":this.description,     
+      "KpiName":this.kpiName,
+      "PerformanceIndicatorId":this.indicatorid
+
       };
     
       this.PerformanceManagementService.UpdateKPI(json).subscribe(

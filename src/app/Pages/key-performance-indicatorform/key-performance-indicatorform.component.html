@@ -13,8 +13,14 @@
                <div class="col-lg-2 ">
                    <p class="columnname">Key Area Result </p>
                </div>
-               <div class="col-lg-3">
+               <!-- <div class="col-lg-3">
                    <p class="columnname">Performance Indicator</p>
+               </div> -->
+               <div class="col-lg-2">
+                <p class="columnname">KPI Name</p>
+               </div>
+               <div class="col-lg-2">
+                <p class="columnname">Performance Indicator </p>
                </div>
                <div class="col-lg-3">
                    <p class="columnname">Description </p>
@@ -22,18 +28,28 @@
            </div>
            <div class="row header">
                <div class="col-lg-2">
-                   <select class="form-control columnname" [(ngModel)]="kraName">
+                   <select class="form-control columnname" [(ngModel)]="kraid" name="kraid" (change)="getkraid($event)">
                        <option value="0">Select KraResult</option>
-                       <option  value="1">1</option>
-                       <option  value="1">2</option>
+                       <option *ngFor="let details of kratypelist"  value="{{details.id}}">{{details.kraType}}</option>
+                  
                    </select>
                </div>
-               <div class="col-lg-3 columnname">
-               <textarea class="form-control" placeholder="performanceindicator" type="text" [(ngModel)]="performanceIndicator" ></textarea>
-               </div>
-               <div class="col-lg-3 columnname">
+               <div class="col-lg-2 columnname">
+                <textarea class="form-control" placeholder="KPI Name" type="text" [(ngModel)]="kpiName"  ></textarea>
+                </div>
+
+               <div class="col-lg-2">
+                <select class="form-control columnname" [(ngModel)]="indicatorid" name="indicatorid" (change)="getindicatorid($event)">
+                    <option value="0">Select KraResult</option>
+                    <option *ngFor="let details of performancelist"  value="{{details.id}}">{{details.rating}}</option>
+               
+                </select>
+            </div>
+               <div class="col-lg-2 columnname">
                 <textarea class="form-control" placeholder="Description" type="text" [(ngModel)]="description"  ></textarea>
                 </div>
+
+              
    
            </div> <br>
            <div class="row">

@@ -17,7 +17,7 @@
             <p class="filter">Filter By</p>
         </div>
         <div class="col-lg-3">
-                <input type="search" class="form-control search"  placeholder="Search for Name..">
+                <input type="search" class="form-control search" [(ngModel)]="search"  placeholder="Search for Name..">
         </div>
         <div class="col-lg-1"></div>
     </div><br>
@@ -25,7 +25,7 @@
     <div class="row">
         <div class="col-lg-10"></div>
         <div class="col-lg-2">
-            <button class="Add" routerLink="/AppraisalCycleform">Add</button>
+            <button class="edit" routerLink="/AppraisalCycleform">Add</button>
         </div>
     </div> <br>
   <div class="container-fluid">
@@ -42,7 +42,7 @@
                         </tr>
                     </thead>
                     <tbody>    
-                        <tr *ngFor="let details of appraisallist">
+                        <tr *ngFor="let details of appraisallist | filter:search">
                             <td>{{details.appraisalCycleName}}</td>
                             <td>{{details.frequencyName}}</td>
                             <td>{{details.cycleStartDate}}</td>

@@ -16,7 +16,7 @@
             <p class="filter">Filter By</p>
         </div>
         <div class="col-lg-3">
-                <input type="search" class="form-control search"  placeholder="Search for Name..">
+                <input type="search" class="form-control search" [(ngModel)]="search"  placeholder="Search for Name..">
         </div>
         <div class="col-lg-1"></div>
     </div><br>
@@ -24,7 +24,7 @@
     <div class="row">
         <div class="col-lg-10"></div>
         <div class="col-lg-2">
-            <button class="Add" routerLink="/KeyResultAresForm">Add</button>
+            <button class="edit" routerLink="/KeyResultAresForm">Add</button>
         </div>
     </div> <br>
   <div class="container-fluid">
@@ -41,7 +41,7 @@
                         </tr>
                     </thead>
                     <tbody>    
-                        <tr *ngFor="let details of keyresultlist">
+                        <tr *ngFor="let details of keyresultlist | filter:search">
                             <td>{{details.kraName}}</td>
                             <td>{{details.kraResultName}}</td>
                             <td>{{details.role}}</td>

@@ -20,6 +20,8 @@ import { KeyResultAresFormComponent } from './Pages/key-result-ares-form/key-res
 import { EmployeeDashboardComponent } from './Pages/employee-dashboard/employee-dashboard.component';
 import { EmployeeFormComponent } from './Pages/employee-form/employee-form.component';
 import { MyAppraisalFormComponent } from './Pages/my-appraisal-form/my-appraisal-form.component';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -45,7 +47,9 @@ import { MyAppraisalFormComponent } from './Pages/my-appraisal-form/my-appraisal
     AppRoutingModule,
     FormsModule,
     NgxDropzoneModule,
-    HttpClientModule
+    HttpClientModule,
+    Ng2SearchPipeModule,
+    NgxPaginationModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

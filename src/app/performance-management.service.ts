@@ -7,6 +7,7 @@ import { environment } from "../environments/environment";
 export class PerformanceManagementService {
 
   public baseURL = "http://103.133.214.197/PerformanceManagement/";
+  public host = "https://digioffice.amazeone.co/digiofficeapi";
 
   url:any;
   constructor(private http: HttpClient) {
@@ -88,6 +89,12 @@ export class PerformanceManagementService {
     );
   }
 
+  public GetMyDetails() {
+    return this.http.get<any[]>(
+      this.host +"/Announcement/GetMyDetails"
+    );
+  }
+
   
   public InsertKPI(data: any) {
     debugger;
@@ -109,6 +116,25 @@ export class PerformanceManagementService {
       this.baseURL + "/Master/DeleteKPI?ID=" + ID);
   }
 
+  public GetPerformanceIndicatorMaster() {
+    return this.http.get<any[]>(
+      this.baseURL +"/Master/GetPerformanceIndicatorMaster"
+    );
+  }
+
+
+  
+  public GetRoleType() {
+    return this.http.get<any[]>(
+      this.host + "/MasterDemo/GetRoleType?UserTypeID=" + 1
+    );
+  }
+
+  public GetDepartment() {
+    debugger
+    let APIURL = this.host + "/Announcement/GetDepartmentMaster";
+    return this.http.get<any[]>(APIURL);
+  }
 
 
 

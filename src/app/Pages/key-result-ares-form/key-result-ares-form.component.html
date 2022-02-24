@@ -38,12 +38,12 @@
              
                 
                <div class="col-lg-2">
-                <select class="form-control columnname" [(ngModel)]="role">
-                    <option value="0">Select Role</option>
-                    <option  value="1">Manager</option>
-                    <option  value="2">HR</option>
-                    <option value="3">Employee</option>
-                </select>
+                <select class="form-control" id="roleTypeid" name="roleTypeid" [(ngModel)]="roleTypeid"
+                (change)="getRoleID($event)">
+                <option value="">Select Role</option>
+                <option *ngFor="let details of roleTypeList" value="{{details.id}}">{{details.short}}
+                </option>
+            </select>
             </div>
                <div class="col-lg-3 columnname">
                   <textarea class="form-control" [(ngModel)]="description">Description</textarea>
