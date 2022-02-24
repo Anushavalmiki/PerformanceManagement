@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { PerformanceManagementService } from 'src/app/performance-management.service';
 
 @Component({
-  selector: 'app-my-appraisal',
-  templateUrl: './my-appraisal.component.html',
-  styleUrls: ['./my-appraisal.component.css']
+  selector: 'app-employee-kra-mappingdashboard',
+  templateUrl: './employee-kra-mappingdashboard.component.html',
+  styleUrls: ['./employee-kra-mappingdashboard.component.css']
 })
-export class MyAppraisalComponent implements OnInit {
+export class EmployeeKraMappingdashboardComponent implements OnInit {
 
   constructor(private PerformanceManagementService: PerformanceManagementService) { }
 
@@ -43,7 +43,7 @@ export class MyAppraisalComponent implements OnInit {
 
     this.PerformanceManagementService.GetConductappraisalStaffList().subscribe(data => {
       debugger
-      this.EmployeeKradash = data.filter(x => x.staffid == sessionStorage.getItem('EmaployedID'));
+      this.EmployeeKradash = data;
     });
   }
 

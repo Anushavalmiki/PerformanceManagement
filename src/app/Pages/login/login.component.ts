@@ -40,6 +40,7 @@ export class LoginComponent implements OnInit {
       if (this.userName == 'Admin' && this.passWord == 'welcome') {
         sessionStorage.setItem("temp", '1');
         sessionStorage.setItem("roleid", this.roleId);
+        
         sessionStorage.setItem("loginName", this.userName);
         location.href = "#/MyAppraisal";
         location.reload();
@@ -59,6 +60,7 @@ export class LoginComponent implements OnInit {
           sessionStorage.setItem("roleid", this.roleId);
           sessionStorage.setItem("loginName", this.result.fullname);
           sessionStorage.setItem("EmaployedID", this.result.id);
+          sessionStorage.setItem("Type", this.result.type);
           location.href = "#/MyAppraisal";
           location.reload();
         }
@@ -82,6 +84,7 @@ export class LoginComponent implements OnInit {
           sessionStorage.setItem("roleid", this.roleId);
           sessionStorage.setItem("loginName", this.result.fullname);
           sessionStorage.setItem("EmaployedID", this.result.id);
+          sessionStorage.setItem("Type", this.result.type);
           location.href = "#/MyAppraisal";
           location.reload();
         }
@@ -109,6 +112,7 @@ export class LoginComponent implements OnInit {
           sessionStorage.setItem("roleid", this.roleId);
           sessionStorage.setItem("loginName", this.result.fullname);
           sessionStorage.setItem("EmaployedID", this.result.id);
+          sessionStorage.setItem("Type", this.result.type);
           location.href = "#/MyAppraisal";
           location.reload();
         }

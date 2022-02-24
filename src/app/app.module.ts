@@ -22,6 +22,13 @@ import { EmployeeFormComponent } from './Pages/employee-form/employee-form.compo
 import { MyAppraisalFormComponent } from './Pages/my-appraisal-form/my-appraisal-form.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { EmployeeKraMappingComponent } from './Pages/employee-kra-mapping/employee-kra-mapping.component';
+import { EmployeeKraMappingdashboardComponent } from './Pages/employee-kra-mappingdashboard/employee-kra-mappingdashboard.component';
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+import { SelfRatingPageComponent } from './Pages/self-rating-page/self-rating-page.component';
+import { DatePipe } from '@angular/common';
+import { ManagerratingdashComponent } from './Pages/managerratingdash/managerratingdash.component';
+import { ManagerratingComponent } from './Pages/managerrating/managerrating.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +47,12 @@ import { NgxPaginationModule } from 'ngx-pagination';
     KeyResultAresFormComponent,
     EmployeeDashboardComponent,
     EmployeeFormComponent,
-    MyAppraisalFormComponent
+    MyAppraisalFormComponent,
+    EmployeeKraMappingComponent,
+    EmployeeKraMappingdashboardComponent,
+    SelfRatingPageComponent,
+    ManagerratingdashComponent,
+    ManagerratingComponent
   ],
   imports: [
     BrowserModule,
@@ -50,8 +62,9 @@ import { NgxPaginationModule } from 'ngx-pagination';
     HttpClientModule,
     Ng2SearchPipeModule,
     NgxPaginationModule,
+    NgMultiSelectDropDownModule,
   ],
-  providers: [],
+  providers: [DatePipe ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

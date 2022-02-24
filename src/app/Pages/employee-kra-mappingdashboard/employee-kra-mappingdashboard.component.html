@@ -49,16 +49,8 @@
                             <td>{{details.cycleEndDate|date}}</td>
                             <td>{{details.appraisalSubmitionDate|date}}</td>
                             <td>
-                                <button [routerLink]="['/SelfRatingPage', details.id,details.id ]"
-                                    *ngIf="details.selfScores==null"
-                                    class=" btn btn-primary editable-table-button btn-xs">Self Appraisal</button>
-                                <button *ngIf="details.selfScores!=null"
-                                    class=" btn btn-primary editable-table-button btn-xs">Completed</button>
-                                <!-- <button class="button btn-xs"
-                                    routerLink]="['/SelfRatingPage', details.id,details.id ]">Self
-                                    Apprisal</button>&nbsp; -->
-                                <!-- <button class="button btn-xs" data-toggle="modal" (click)="GetStaffKraDetails(details)"
-                                    data-target="#myModal">View</button>&nbsp; -->
+                                <button class="button btn-xs" data-toggle="modal" (click)="GetStaffKraDetails(details)"
+                                    data-target="#myModal">View</button>&nbsp;
                             </td>
                         </tr>
                     </tbody>
