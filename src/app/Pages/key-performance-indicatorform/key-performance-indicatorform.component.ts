@@ -32,7 +32,7 @@ export class KeyPerformanceIndicatorformComponent implements OnInit {
 
   ngOnInit(): void {
     this.GetKPI();
-    this.GetKraMaster();
+    this.GetKeyResultArea();
     this.GetPerformanceIndicatorMaster();
     
 
@@ -66,8 +66,8 @@ export class KeyPerformanceIndicatorformComponent implements OnInit {
 
 
 
-  public GetKraMaster(){
-    this.PerformanceManagementService.GetKraMaster().subscribe(
+  public GetKeyResultArea(){
+    this.PerformanceManagementService.GetKeyResultArea().subscribe(
       data=>{
         this.kratypelist=data;
         console.log("kratype",this.kratypelist);

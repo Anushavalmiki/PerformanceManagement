@@ -15,9 +15,16 @@ export class KeyPerformanceIndicatorComponent implements OnInit {
   indicatorlist:any;
   count:any;
   search:any;
-  
+  kratypelist:any;
+  kraid:any;
+  dummindicatorlist:any;
+  kraName:any;
+
+
   ngOnInit(): void {
     this.GetKPI();
+    this.GetKeyResultArea();
+    this.kraid=0;
 
   }
 
@@ -26,6 +33,7 @@ export class KeyPerformanceIndicatorComponent implements OnInit {
     this.PerformanceManagementService.GetKPI().subscribe(
       data=>{
         this.indicatorlist=data;
+        this.dummindicatorlist=data;
         this.count=this.indicatorlist.length;
         console.log("kpilist",this.indicatorlist);
       }
@@ -43,6 +51,29 @@ export class KeyPerformanceIndicatorComponent implements OnInit {
   }
 
 
+  
+ 
+  public GetKeyResultArea(){
+    this.PerformanceManagementService.GetKeyResultArea().subscribe(
+      data=>{
+        this.kratypelist=data;
+        console.log("kratype",this.kratypelist);
+      }
+    )
+  }
+
+  getkraid(even:any){
+    debugger
+    this.kraid=even.target.value;
+    debugger
+    if(even.target.value !=0){
+      this.indicatorlist=this.dummindicatorlist.filter((x:{ kraName:any ;}) => x.kraName ==this.kraid);
+      this.count=this.indicatorlist.length;
+    }
+    else{
+      this.GetKPI();
+    }
+  }
 
 
 

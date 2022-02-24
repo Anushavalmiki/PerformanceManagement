@@ -21,7 +21,10 @@ export class KeyResultAresFormComponent implements OnInit {
   role:any;
   roleTypeid:any;
   roleTypeList:any;
-  
+  kraType:any;
+  short:any;
+  tablecount:any;
+  entity:any;
 
   ngOnInit(): void {
 
@@ -48,12 +51,15 @@ export class KeyResultAresFormComponent implements OnInit {
     this.keyresultlist = data;
 		this.keyresultlist=this.keyresultlist.filter((x: { id: any; })=>x.id==Number(this.id));
 		this.kraName=this.keyresultlist[0].kraName;
-		this.kratypeid=this.keyresultlist[0].kratypeid;
-    // this.role=this.keyresultlist[0].role;
+		this.kraType=this.keyresultlist[0].kratypeid;
+    this.roleTypeid=this.keyresultlist[0].short;
     this.description=this.keyresultlist[0].description
       }
     ) 
   }
+
+
+
 
   
   public GetKraMaster(){
@@ -66,9 +72,7 @@ export class KeyResultAresFormComponent implements OnInit {
     )
    
   }
-  getkratypeid(even:any){
-    this.kratypeid=even.target.value;
-  }
+
 
  
   getRoleID(even:any){
@@ -86,40 +90,76 @@ public GetRoleType(){
 }
 
 
+keyresultArray: any = [];
+Add(){
+  debugger
+  this.tablecount = 1;
+  var json = {
+    "KRAName":this.kraName,
+    "KraTypeID":this.kratypeid,
+    "Role":this.roleTypeid,
+    "Description":this.description
+  };
+  debugger
+  this.keyresultArray.push(json)
+  this.kraName="";
+  this.kratypeid="";
+  this.roleTypeid="";
+  this.description="";
+ }
+ 
 
-
-
-  Save(){
-    debugger
-     var json = {  
-      "KRAName":this.kraName,
-      "KRAType":this.kratypeid,
-      // "Role"
-      "Description":this.description
-      };
-      this.PerformanceManagementService.InsertKeyResultArea(json).subscribe(
-        data => {
-          let kratypelist=data;
-          alert("Successfully Submitted...!");
-          location.href="#/KeyResultArea";
-        })
+  save(){
+    for (let i=0; i<=this.keyresultArray.length;i++){
+      var entity = {  
+        "KRAName":this.keyresultArray[i].KRAName,
+        "KraTypeID":this.keyresultArray[i].KraTypeID,
+        "Role":this.keyresultArray[i].Role,
+        "Description":this.keyresultArray[i].Description
+        };
+        this.PerformanceManagementService.InsertKeyResultArea(entity).subscribe(
+          data => {
+            let kratypelist=data;
+            alert("Successfully Submitted...!");
+            this.tablecount=0;
+            location.href="#/KeyResultArea";
+            console.log("kralist",this.kratypelist);
+          })
+      }
     }
+  
 
-    Cancel(){
+    cancel(){
       location.href ="#/KeyResultArea";
     }
+
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   
 
     Update(){
       debugger
        var json = {
         "ID": this.id,
         "KRAName":this.kraName,
-        "KRAType":this.kratypeid,
-        // "Role":this.Role,
-        "Description ":this.description
-          
-        };
-      
+        "KraTypeID":this.kraType,
+         "Role":this.short,
+        "Description ":this.description          
+        };     
         this.PerformanceManagementService.UpdateKeyResultArea(json).subscribe(
           data => {
           debugger

@@ -38,6 +38,11 @@
                             <th>Frequency Type</th>
                             <th>Cycle Start Date</th>
                             <th>Cycle End Date</th>
+                            <th>Goal Setting Date</th>
+                            <th>Employee Submission Date</th>
+                            <th>Manager Review LastDate</th>
+                            <th>Hr Review LastDate</th>
+                            <th>Appraisal Closing LastDate</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -47,9 +52,15 @@
                             <td>{{details.frequencyName}}</td>
                             <td>{{details.cycleStartDate}}</td>
                             <td>{{details.cycleEndDate}}</td>
+                            <td>{{details.goalSettingDate}}</td>
+                            <td>{{details.employeeSubmissionDate}}</td>
+                            <td>{{details.managerReviewLastDate}}</td>
+                            <td>{{details.hrReviewLastDate}}</td>
+                            <td>{{details.appraisalClosingLastDate}}</td>
                             <td>
-                                <button class="edit" [routerLink]="['/AppraisalCycleform', details.id]">Edit</button><br>
-                                <button class="edit" (click)="delete(details.id)" >Delete</button>
+                                <br>
+                                <button class="form-control Add"  [routerLink]="['/AppraisalCycleform', details.id]">Edit</button><br>
+                                <button class=" form-control  Add"  (click)="delete(details.id)" >Delete</button>
                             </td>
                         </tr>
                     </tbody>
