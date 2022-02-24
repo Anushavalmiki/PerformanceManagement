@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col-lg-10">
             <br>
-            <p class="Dashboard">Employee KRA Mapping Dashboard </p>
+            <p class="Dashboard">My Team Apprisal </p>
         </div>
         <div class="col-lg-2">
             <br>
@@ -49,10 +49,10 @@
                             <td>{{details.cycleEndDate|date}}</td>
                             <td>{{details.appraisalSubmitionDate|date}}</td>
                             <td>
-                                <button [routerLink]="['/SelfRatingPage', details.id,details.id ]"
-                                    *ngIf="details.selfScores==null"
-                                    class=" btn btn-primary editable-table-button btn-xs">Self Appraisal</button>
-                                <button *ngIf="details.selfScores!=null"
+                                <button [routerLink]="['/Managerrating', details.id,details.id ]"
+                                    *ngIf="details.groupHeadScores==null"
+                                    class=" btn btn-primary editable-table-button btn-xs">Conduct Appraisal</button>
+                                <button *ngIf="details.groupHeadScores!=null"
                                     class=" btn btn-primary editable-table-button btn-xs">Completed</button>
                                 <!-- <button class="button btn-xs"
                                     routerLink]="['/SelfRatingPage', details.id,details.id ]">Self
