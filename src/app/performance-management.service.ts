@@ -11,7 +11,7 @@ export class PerformanceManagementService {
 
   url: any;
   constructor(private http: HttpClient) {
-    console.log("environment", environment.hostUrl);
+   // console.log("environment", environment.hostUrl);
   }
 
 
