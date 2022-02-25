@@ -19,3 +19,15 @@
     border-radius: 5px;
     float:left;
 }
+
+
+.table, tr, td {
+    border: none !important;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 13px;
+    color: #0C275A;
+    /* height: 92%; */
+    text-align: left;
+}

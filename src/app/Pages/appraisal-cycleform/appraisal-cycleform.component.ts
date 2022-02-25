@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PerformanceManagementService } from 'src/app/performance-management.service';
 import { ActivatedRoute } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-appraisal-cycleform',
@@ -74,7 +75,7 @@ export class AppraisalCycleformComponent implements OnInit {
     };
     this.PerformanceManagementService.InsertAppraisalCycle(json).subscribe(
       data => {
-        alert("Successfully Submitted...!");
+        Swal.fire("Successfully Submitted...!");
         location.href="#/AppraisalCycle"
       })
   }
@@ -100,7 +101,7 @@ export class AppraisalCycleformComponent implements OnInit {
         data => {
         debugger
         let appraisallist = data;
-        alert("Updated Sucessfully");
+        Swal.fire("Updated Sucessfully");
         location.href="#/AppraisalCycle";
       })
   }
