@@ -32,7 +32,7 @@ th {
 
 th:first-of-type {
   border-top-left-radius: 10px;
-  padding:13px;
+  padding:20px;
 }
 
 th:last-of-type {
