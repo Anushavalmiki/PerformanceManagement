@@ -29,6 +29,8 @@ import { SelfRatingPageComponent } from './Pages/self-rating-page/self-rating-pa
 import { DatePipe } from '@angular/common';
 import { ManagerratingdashComponent } from './Pages/managerratingdash/managerratingdash.component';
 import { ManagerratingComponent } from './Pages/managerrating/managerrating.component';
+import { HrRatingComponent } from './Pages/hr-rating/hr-rating.component';
+import { HrDashComponent } from './Pages/hr-dash/hr-dash.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +54,9 @@ import { ManagerratingComponent } from './Pages/managerrating/managerrating.comp
     EmployeeKraMappingdashboardComponent,
     SelfRatingPageComponent,
     ManagerratingdashComponent,
-    ManagerratingComponent
+    ManagerratingComponent,
+    HrRatingComponent,
+    HrDashComponent
   ],
   imports: [
     BrowserModule,

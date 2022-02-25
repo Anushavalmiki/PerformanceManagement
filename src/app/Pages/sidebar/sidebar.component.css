@@ -5,10 +5,8 @@
   z-index: 1;
   top: -0.6%;
   left: 0;
-
   background: #FFFFFF;
   /* ContainerWhite_DropShadow */
-  
   box-shadow: 1px 1px 15px 3px rgba(0, 0, 0, 0.12);
   overflow-x: hidden;
   overflow-y: scroll;
@@ -97,3 +95,6 @@ color: #949393;
   width: 13%; 
    margin-right: 17px;
 }
+
+
+

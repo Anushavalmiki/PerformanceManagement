@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PerformanceManagementService } from 'src/app/performance-management.service';
 import { ActivatedRoute } from '@angular/router';
-
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-key-result-ares-form',
   templateUrl: './key-result-ares-form.component.html',
@@ -120,7 +120,7 @@ Add(){
         this.PerformanceManagementService.InsertKeyResultArea(entity).subscribe(
           data => {
             let kratypelist=data;
-            alert("Successfully Submitted...!");
+            Swal.fire("Successfully Submitted...!");
             this.tablecount=0;
             location.href="#/KeyResultArea";
             console.log("kralist",this.kratypelist);

@@ -1,5 +1,5 @@
 <div class="row  tab" *ngIf="temp==1">
-    <div class="col-md-2 sidebar sidenav" style="height: 100vh;margin-top: 80px;position: fixed;">
+    <div class="col-md-2 sidebar sidenav" style="margin-top: 80px;position: fixed;">
         <a data-toggle="collapse" class="togglebtn button" data-target="#userapplications"
             *ngIf="roleid=='1'||roleid=='2'||roleid=='3'||roleid=='4'" class="tablinks" (click)="highlight($event)"
             (click)="Performance()">
@@ -82,10 +82,13 @@
             <span [ngClass]="active == 'category' ? 'Active1' : 'Active3'"> Team Appraisal</span>
         </a>
 
-
-
-
-
-
-
+        <a class="togglebtn button" *ngIf="roleid=='3'" routerLink="/HrDash" class="tablinks"
+        (click)="highlight($event)" (click)="TeamAppraisal()">
+        <img src="assets/Images/64 Blue/Staff.png" style="width:13% ;margin-right: 15px;"
+            [ngClass]="active != 'category' ? 'Active1' : 'Active2'" />
+        <img [ngClass]="active == 'category' ? 'Active1' : 'Active2'" src="assets/Images/64/Staff.png"
+            style="width:13%; margin-right: 17px;">
+        &nbsp;
+        <span [ngClass]="active == 'category' ? 'Active1' : 'Active3'"> Team Appraisal</span>
+    </a>
     </div>

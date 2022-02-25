@@ -190,5 +190,11 @@ export class PerformanceManagementService {
     );
   }
 
+  public UpdateCIOStaffScores(data: any) {
+    debugger;
+    this.url = this.baseURL + 'Master/UpdateCIOStaffScores';
+    return this.http.post(this.url, data);
+  }
+
 
 }

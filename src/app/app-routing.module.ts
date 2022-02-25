@@ -20,6 +20,8 @@ import { EmployeeKraMappingdashboardComponent } from './Pages/employee-kra-mappi
 import { SelfRatingPageComponent } from './Pages/self-rating-page/self-rating-page.component';
 import { ManagerratingComponent } from './Pages/managerrating/managerrating.component';
 import { ManagerratingdashComponent } from './Pages/managerratingdash/managerratingdash.component';
+import { HrRatingComponent } from './Pages/hr-rating/hr-rating.component';
+import { HrDashComponent } from './Pages/hr-dash/hr-dash.component';
 
 
 const routes: Routes = [
@@ -50,6 +52,9 @@ const routes: Routes = [
   { path: 'SelfRatingPage/:id/:StaffID', component: SelfRatingPageComponent },
   { path: 'Managerrating/:id/:StaffID', component: ManagerratingComponent },
   { path: 'Managerratingdash', component: ManagerratingdashComponent },
+  {path:'HrRating',component:HrRatingComponent},
+  {path:'HrRating/:id/:StaffID',component:HrRatingComponent},
+{path:'HrDash',component:HrDashComponent}
 
 ];
 

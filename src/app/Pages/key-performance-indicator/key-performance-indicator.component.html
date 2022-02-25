@@ -22,7 +22,7 @@
         </div>
        <div class="col-lg-3">
         <select class="form-control columnname" [(ngModel)]="kraid" name="kraid" (change)="getkraid($event)">
-            <option value="0">Select KraResult</option>
+            <option value="0">Select By  KRA</option>
             <option *ngFor="let details of kratypelist"  value="{{details.kraName}}">{{details.kraName}}</option>
        
         </select>
