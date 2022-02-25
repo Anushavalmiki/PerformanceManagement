@@ -31,6 +31,7 @@ export class KeyPerformanceIndicatorformComponent implements OnInit {
 
 
   ngOnInit(): void {
+    this.kraid=0;
     this.GetKPI();
     this.GetKeyResultArea();
     this.GetPerformanceIndicatorMaster();
@@ -42,7 +43,7 @@ export class KeyPerformanceIndicatorformComponent implements OnInit {
         this.GetKPI();
       }
     })
-    this.kraid=0;
+   
     this.performanceIndicatorId=0;
   }
 
@@ -60,6 +61,8 @@ export class KeyPerformanceIndicatorformComponent implements OnInit {
         this.description=this.kpilist[0].description;
         this.kpiName=this.kpilist[0].kpiName;
         this.indicatorid=this.kpilist[0].performanceIndicatorId;
+        console.log("Kpilist",this.kpilist);
+        this.GetKeyResultArea();
       }
     )
   }

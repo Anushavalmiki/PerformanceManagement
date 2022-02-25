@@ -33,7 +33,7 @@ export class EmployeeKraMappingdashboardComponent implements OnInit {
       debugger
       this.stafflist = data;
       this.stafflistCopy = this.stafflist
-      this.count = this.stafflist.length;
+      
     });
 
     this.PerformanceManagementService.GetDepartment().subscribe(data => {
@@ -44,6 +44,7 @@ export class EmployeeKraMappingdashboardComponent implements OnInit {
     this.PerformanceManagementService.GetConductappraisalStaffList().subscribe(data => {
       debugger
       this.EmployeeKradash = data;
+      this.count = this.EmployeeKradash.length;
     });
   }
 
