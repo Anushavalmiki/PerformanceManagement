@@ -77,8 +77,10 @@
                         Comments <span style="color: red;">*</span> </p>
                 </div>
                 <div class="col-lg-5">
-                    <textarea class="form-control" id="SelfComments" [(ngModel)]="SelfComments" name="SelfComments"
-                        placeholder="Comments" rows="4" required></textarea>
+                    <!-- <textarea class="form-control" id="SelfComments" [(ngModel)]="SelfComments" name="SelfComments"
+                        placeholder="Comments" rows="4" required></textarea> -->
+                        <ckeditor id="SelfComments" name="SelfComments" [(ngModel)]="SelfComments"
+                        data="<p>Enter Answer Here !</p>"></ckeditor>
                         
                 </div>
                 <div class="col-lg-3">
