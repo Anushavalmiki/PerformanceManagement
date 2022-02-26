@@ -51,9 +51,9 @@
                             <td>{{details.appraisalSubmitionDate|date}}</td>
                             <td>
                                 <button [routerLink]="['/HrRating', details.id,details.id ]"
-                                    *ngIf="details.cIOScores==null"
+                                    *ngIf="details.cioScores==null"
                                     class=" btn btn-primary editable-table-button btn-xs">Conduct Appraisal</button>
-                                <button *ngIf="details.cIOScores!=null"
+                                <button *ngIf="details.cioComments!=null"
                                     class=" btn btn-primary editable-table-button btn-xs">Completed</button>
                                 <!-- <button class="button btn-xs"
                                     routerLink]="['/SelfRatingPage', details.id,details.id ]">Self

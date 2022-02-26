@@ -11,7 +11,7 @@ export class PerformanceManagementService {
 
   url: any;
   constructor(private http: HttpClient) {
-   // console.log("environment", environment.hostUrl);
+    // console.log("environment", environment.hostUrl);
   }
 
 
@@ -196,5 +196,8 @@ export class PerformanceManagementService {
     return this.http.post(this.url, data);
   }
 
+  public GetStaffScoresByStaffandYear(Year: any, StaffID: any) {
+    return this.http.get<any[]>(this.baseURL + '/Master/GetStaffScoresByStaffandYear?Year=' + Year + '&StaffID=' + StaffID);
+  }
 
 }

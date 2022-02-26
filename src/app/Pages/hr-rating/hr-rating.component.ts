@@ -324,18 +324,19 @@ export class HrRatingComponent implements OnInit {
         // 'Supervisor': this.appraisalList[this.q].Supervisor,
         'ResultAreaID': this.appraisalList[this.q].ResultAreaID,
         'PerformaceIndicatorID': this.appraisalList[this.q].PerformaceIndicatorID,
-        'GroupHeadScores': this.appraisalList[this.q].SelfScores,
-        'GroupHeadComments': this.appraisalList[this.q].SelfComments
+        'CIOScores': this.appraisalList[this.q].SelfScores,
+        'CIOComments': this.appraisalList[this.q].SelfComments
       }
       this.PerformanceManagementService.UpdateCIOStaffScores(entity).subscribe(data => {
         debugger
         if (data != undefined && this.q == this.appraisalList.length) {
           Swal.fire("Appraisal Saved Successfully");
-          this.router.navigate(['Managerratingdash']);
+         
 
         }
       })
     }
+    this.router.navigate(['HrDash']);
 
   }
 }

@@ -8,12 +8,13 @@
             <img [ngClass]="active == 'category' ? 'Active1' : 'Active2'" src="assets/Images/64/Staff.png"
                 style="width:13%; margin-right: 17px;">
             &nbsp;
-            <span [ngClass]="active == 'category' ? 'Active1' : 'Active3'"> Performance Management </span>
+            <span [ngClass]="active == 'category' ? 'Active1' : 'Active3'"> Set Appraisal </span>
         </a>
 
 
         <div id="userapplications" class="collapse" style="padding-left: 7%;">
-            <a routerLink="/AppraisalCycle" class="tablinks" (click)="highlight($event)" (click)="Appraisal()">
+            <a routerLink="/AppraisalCycle" class="tablinks" (click)="highlight($event)" (click)="Appraisal()"
+                *ngIf="roleid=='1'">
                 <img src="assets/Images/64 Blue/Staff.png" style="width:13% ;margin-right: 17px;"
                     [ngClass]="active != 'category' ? 'Active1' : 'Active2'" />
                 <img [ngClass]="active == 'category' ? 'Active1' : 'Active2'" src="assets/Images/64 Blue/Staff.png"
@@ -21,7 +22,8 @@
                 &nbsp;
                 <span [ngClass]="active == 'category' ? 'Active1' : 'Active3'"> Appraisal Cycle </span>
             </a>
-            <a routerLink="/KeyResultArea" class="tablinks" (click)="highlight($event)" (click)="kra()">
+            <a routerLink="/KeyResultArea" class="tablinks" (click)="highlight($event)" (click)="kra()"
+                *ngIf="roleid=='4'">
                 <img src="assets/Images/64 Blue/Staff.png" style="width:13% ;margin-right: 17px;"
                     [ngClass]="active == 'course' ? 'Active1' : 'Active2'" />
                 <img [ngClass]="active != 'course' ? 'Active1' : 'Active2'" src="assets/Images/64 Blue/Staff.png"
@@ -29,7 +31,8 @@
                 &nbsp;
                 <span [ngClass]="active == 'course' ? 'Active1' : 'Active3'"> KRA </span>
             </a>
-            <a routerLink="/KeyPerformanceIndicator" class="tablinks" (click)="highlight($event)" (click)="Kpi()">
+            <a routerLink="/KeyPerformanceIndicator" class="tablinks" (click)="highlight($event)" (click)="Kpi()"
+                *ngIf="roleid=='4'">
                 <!-- <img  class="dashboard" src="assets/Images/Vector.png" /> -->
                 <img src="assets/Images/64 Blue/Staff.png" style="width:13% ;margin-right: 17px;"
                     [ngClass]="active != 'category' ? 'Active1' : 'Active2'" />
@@ -83,12 +86,22 @@
         </a>
 
         <a class="togglebtn button" *ngIf="roleid=='3'" routerLink="/HrDash" class="tablinks"
-        (click)="highlight($event)" (click)="TeamAppraisal()">
-        <img src="assets/Images/64 Blue/Staff.png" style="width:13% ;margin-right: 15px;"
-            [ngClass]="active != 'category' ? 'Active1' : 'Active2'" />
-        <img [ngClass]="active == 'category' ? 'Active1' : 'Active2'" src="assets/Images/64/Staff.png"
-            style="width:13%; margin-right: 17px;">
-        &nbsp;
-        <span [ngClass]="active == 'category' ? 'Active1' : 'Active3'"> Team Appraisal</span>
-    </a>
+            (click)="highlight($event)" (click)="TeamAppraisal()">
+            <img src="assets/Images/64 Blue/Staff.png" style="width:13% ;margin-right: 15px;"
+                [ngClass]="active != 'category' ? 'Active1' : 'Active2'" />
+            <img [ngClass]="active == 'category' ? 'Active1' : 'Active2'" src="assets/Images/64/Staff.png"
+                style="width:13%; margin-right: 17px;">
+            &nbsp;
+            <span [ngClass]="active == 'category' ? 'Active1' : 'Active3'"> Team Appraisal</span>
+        </a>
+        <a class="togglebtn button" *ngIf="roleid=='3'" routerLink="/StaffScoreReport" class="tablinks"
+            (click)="highlight($event)" (click)="TeamAppraisal()">
+            <img src="assets/Images/64 Blue/Staff.png" style="width:13% ;margin-right: 15px;"
+                [ngClass]="active != 'category' ? 'Active1' : 'Active2'" />
+            <img [ngClass]="active == 'category' ? 'Active1' : 'Active2'" src="assets/Images/64/Staff.png"
+                style="width:13%; margin-right: 17px;">
+            &nbsp;
+            <span [ngClass]="active == 'category' ? 'Active1' : 'Active3'"> Staff Score Details</span>
+        </a>
+
     </div>

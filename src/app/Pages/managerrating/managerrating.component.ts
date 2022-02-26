@@ -96,7 +96,7 @@ export class ManagerratingComponent implements OnInit {
         this.PerformanceManagementService.GetKRAByStaffID(this.StaffID).subscribe(data => {
           debugger
           this.ResultAreaList = data;
-          this.ResultAreaID = this.ResultAreaList[0].kraid
+          this.ResultAreaID = this.ResultAreaList[0].kraid;
           this.k = 0;
           this.PerformanceManagementService.GetKPI().subscribe(data => {
             debugger
@@ -317,10 +317,11 @@ export class ManagerratingComponent implements OnInit {
         debugger
         if (data != undefined && this.q == this.appraisalList.length) {
           Swal.fire("Appraisal Saved Successfully");
-          this.router.navigate(['Managerratingdash']);
+
 
         }
       })
     }
+    this.router.navigate(['Managerratingdash']);
   }
 }
