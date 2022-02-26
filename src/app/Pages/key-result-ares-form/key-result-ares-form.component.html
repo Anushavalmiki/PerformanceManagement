@@ -1,65 +1,92 @@
 <div class="container-fluid">
     <br>
-       <div class="row">
-           <br>
-           <div class="col-lg-4">
-               <p class="headings">Key Result Type Details </p>
-           </div>
-           <div class="col-lg-8"></div>
-       </div>
-       <div class="card">
-           <br>
-           <div class="row ">
-               <div class="col-lg-2 ">
-                   <p class="columnname">KRA Name </p>
-               </div>
-               <div class="col-lg-2">
-                   <p class="columnname">KRA Type</p>
-               </div>
-               <div class="col-lg-2">
-                   <p class="columnname">Select Role </p>
-               </div>
-               <div class="col-lg-2">
-                   <p class="columnname">Description</p>
-               </div>
-           </div>
-           <div class="row header">
+    <div class="row">
+        <br>
+        <div class="col-lg-4">
+            <p class="headings">Key Result Type Details </p>
+        </div>
+        <div class="col-lg-8"></div>
+    </div>
+    <div class="card">
+        <br>
+        <div class="row ">
+            <div class="col-lg-2 ">
+                <p class="columnname">KRA Name </p>
+            </div>
+            <div class="col-lg-2">
+                <p class="columnname">KRA Type</p>
+            </div>
+            <div class="col-lg-2">
+                <p class="columnname">Select Role </p>
+            </div>
+            <div class="col-lg-2">
+                <p class="columnname">Description</p>
+            </div>
+        </div>
+        <div class="row header">
 
             <div class="col-lg-2 columnname">
                 <input class="form-control" placeholder="KRA Name " [(ngModel)]="kraName" name="kraName">
-             </div>
+            </div>
 
-               <div class="col-lg-2">
-                   <select class="form-control columnname" (change)="getkratypeid($event)" [(ngModel)]="kratypeid" name="kratypeid">
-                       <option  value="0">Select KraType</option>
-                       <option *ngFor="let details of kratypelist"  value="{{details.id}}">{{details.kraType}}</option>
-                   </select>
-               </div>
-             
-                
-               <div class="col-lg-2">
-                <select class="form-control columnname" [(ngModel)]="role">
-                    <option value="0">Select Role</option>
-                    <option  value="1">Manager</option>
-                    <option  value="2">HR</option>
-                    <option value="3">Employee</option>
+            <div class="col-lg-2">
+                <select class="form-control columnname" [(ngModel)]="kratypeid" name="kratypeid">
+                    <option value="0">Select KraType</option>
+                    <option *ngFor="let details of kratypelist" value="{{details.kraType}}">{{details.kraType}}</option>
                 </select>
             </div>
-               <div class="col-lg-3 columnname">
-                  <textarea class="form-control" [(ngModel)]="description">Description</textarea>
-                </div>
-   
-           </div> <br>
-           <div class="row">
-            <div class="col-lg-9"></div>
+
+
+            <div class="col-lg-2">
+                <select class="form-control" id="roleTypeid" name="roleTypeid" [(ngModel)]="roleTypeid"
+                    (change)="getRoleID($event)">
+                    <option value="0">Select Role</option>
+                    <option *ngFor="let details of roleTypeList" value="{{details.id}}">{{details.short}}
+                    </option>
+                </select>
+            </div>
+            <div class="col-lg-3 columnname">
+                <textarea class="form-control" [(ngModel)]="description">Description</textarea>
+            </div>
+
+        </div> <br>
+        <div class="row">
+            <div class="col-lg-10"></div>
             <div class="col-lg-1">
-                <button class="form-control cancel" *ngIf="id==undefined" (click)="Save()">Save</button>
-                <button class="form-control cancel" *ngIf="id!= undefined" (click)="Update()">Update</button>
+                <button class="form-control cancel" (click)="Add()">Add</button>
             </div>
             <div class="col-lg-1">
-                <button class="form-control cancel" (click)="Cancel()">Cancel</button>
+                <button class="form-control cancel" (click)="cancel()">Cancel</button>
             </div>
         </div>
-           <br>
-       </div>
+        <br>
 
+        <div class="row" *ngIf="tablecount==1">
+            <div class="col-lg-12">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>KRA Name</th>
+                            <th>KRA Type</th>
+                            <th>Role</th>
+                            <th>Description</th>
+                        </tr>
+                        <tr *ngFor="let details of keyresultArray">
+                            <td>{{details.KRAName}}</td>
+                            <td>{{details.KraTypeID}}</td>
+                            <td>{{details.Role}}</td>
+                            <td>{{details.Description}}</td>
+                        </tr>
+                    </thead>
+                </table>
+                <br>
+                <div class="row">
+                    <div class="col-lg-10"></div>
+                    <div class="col-lg-2">
+                        <button class="form-control edit" (click)="save()"> Save</button><br>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+   

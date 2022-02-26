@@ -7,14 +7,15 @@ import { environment } from "../environments/environment";
 export class PerformanceManagementService {
 
   public baseURL = "http://103.133.214.197/PerformanceManagement/";
+  public host = "https://digioffice.amazeone.co/digiofficeapi";
 
-  url:any;
+  url: any;
   constructor(private http: HttpClient) {
-    console.log("environment", environment.hostUrl);
-   }
+   // console.log("environment", environment.hostUrl);
+  }
 
 
-   public InsertAppraisalCycle(data: any) {
+  public InsertAppraisalCycle(data: any) {
     debugger;
     this.url = this.baseURL + 'Master/InsertAppraisalCycle';
     return this.http.post(this.url, data);
@@ -23,16 +24,22 @@ export class PerformanceManagementService {
 
   public GetFrequency() {
     return this.http.get<any[]>(
-      this.baseURL +"/Master/GetFrequency"
+      this.baseURL + "/Master/GetFrequency"
     );
   }
 
 
   public GetAppraisalCycle() {
     return this.http.get<any[]>(
-      this.baseURL +"/Master/GetAppraisalCycle"
+      this.baseURL + "/Master/GetAppraisalCycle"
     );
   }
+  public GetDepartmentMaster() {
+    return this.http.get<any[]>(
+      this.baseURL + "/Master/GetDepartmentMaster"
+    );
+  }
+
 
 
   public DeleteAppraisalCycle(ID: any) {
@@ -49,7 +56,7 @@ export class PerformanceManagementService {
 
   public GetKeyResultArea() {
     return this.http.get<any[]>(
-      this.baseURL +"/Master/GetKeyResultArea"
+      this.baseURL + "/Master/GetKeyResultArea"
     );
   }
 
@@ -64,7 +71,7 @@ export class PerformanceManagementService {
 
   public GetKraMaster() {
     return this.http.get<any[]>(
-      this.baseURL +"/Master/GetKraMaster"
+      this.baseURL + "/Master/GetKraMaster"
     );
   }
 
@@ -84,19 +91,25 @@ export class PerformanceManagementService {
 
   public GetKPI() {
     return this.http.get<any[]>(
-      this.baseURL +"/Master/GetKPI"
+      this.baseURL + "/Master/GetKPI"
     );
   }
 
-  
+  public GetMyDetails() {
+    return this.http.get<any[]>(
+      this.host + "/Announcement/GetMyDetails"
+    );
+  }
+
+
   public InsertKPI(data: any) {
     debugger;
     this.url = this.baseURL + 'Master/InsertKPI';
     return this.http.post(this.url, data);
   }
 
- 
-  
+
+
   public UpdateKPI(json: any) {
     debugger
     let APIURL = this.baseURL + "Master/UpdateKPI";
@@ -109,7 +122,79 @@ export class PerformanceManagementService {
       this.baseURL + "/Master/DeleteKPI?ID=" + ID);
   }
 
+  public GetPerformanceIndicatorMaster() {
+    return this.http.get<any[]>(
+      this.baseURL + "/Master/GetPerformanceIndicatorMaster"
+    );
+  }
 
+
+
+  public GetRoleType() {
+    return this.http.get<any[]>(
+      this.host + "/MasterDemo/GetRoleType?UserTypeID=" + 1
+    );
+  }
+
+
+
+  public GetDepartment() {
+    debugger
+    let APIURL = this.host + "/Announcement/GetDepartmentMaster";
+    return this.http.get<any[]>(APIURL);
+  }
+
+  ///prashnat serices for kramapping
+
+
+  public GetEmployeeKraMap() {
+    return this.http.get<any[]>(
+      this.baseURL + "/Master/GetEmployeeKraMap"
+    );
+  }
+
+  public GetConductappraisalStaffList() {
+    return this.http.get<any[]>(
+      this.baseURL + "/Master/GetConductappraisalStaffList"
+    );
+  }
+
+  public InsertEmployeeKraMap(data: any) {
+    debugger;
+    this.url = this.baseURL + 'Master/InsertEmployeeKraMap';
+    return this.http.post(this.url, data);
+  }
+
+  public GetKRAByStaffID(id: any) {
+    debugger;
+    return this.http.get(this.baseURL + "/Master/GetKRAByStaffID?StaffID=" + id);
+  }
+  public GetHighScores() {
+    return this.http.get<any[]>(
+      this.baseURL + "/Master/GetHighScores"
+    );
+  }
+  public InsertStaffScores(data: any) {
+    debugger;
+    this.url = this.baseURL + 'Master/InsertStaffScores';
+    return this.http.post(this.url, data);
+  }
+  public UpdateGroupHeadStaffScores(data: any) {
+    debugger;
+    this.url = this.baseURL + 'Master/UpdateGroupHeadStaffScores';
+    return this.http.post(this.url, data);
+  }
+  public GetStaffScores() {
+    return this.http.get<any[]>(
+      this.baseURL + "/Master/GetStaffScores"
+    );
+  }
+
+  public UpdateCIOStaffScores(data: any) {
+    debugger;
+    this.url = this.baseURL + 'Master/UpdateCIOStaffScores';
+    return this.http.post(this.url, data);
+  }
 
 
 }

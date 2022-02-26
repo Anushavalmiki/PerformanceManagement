@@ -3,29 +3,36 @@
     <div class="row">
         <div class="col-lg-10">
             <br>
-            <p class="Dashboard">Performance Indicator Dashboard</p>
+            <p class="headings">Performance Indicator Dashboard</p>
         </div>
         <div class="col-lg-2">
             <br>
             <p class="count">Count : {{count}} </p>
         </div>
     </div>
+    <br>
    <div class="card">
        <br>
     <div class="row FilterClass ">
-        <div class="col-lg-1">
+        <div class="col-lg-2">
             <p class="filter">Filter By</p>
         </div>
         <div class="col-lg-3">
-                <input type="search" class="form-control search"  placeholder="Search for Name..">
+                <input type="search" class="form-control search" [(ngModel)]="search"  placeholder="Search for Name..">
         </div>
-        <div class="col-lg-1"></div>
+       <div class="col-lg-3">
+        <select class="form-control columnname" [(ngModel)]="kraid" name="kraid" (change)="getkraid($event)">
+            <option value="0">Select By  KRA</option>
+            <option *ngFor="let details of kratypelist"  value="{{details.kraName}}">{{details.kraName}}</option>
+       
+        </select>
+        </div>
     </div><br>
 </div> <br>
     <div class="row">
         <div class="col-lg-10"></div>
         <div class="col-lg-2">
-            <button class="Add" routerLink="/KeyPerformanceIndicatorform">Add</button>
+            <button class="form-control Add" routerLink="/KeyPerformanceIndicatorform">Add</button>
         </div>
     </div> <br>
   <div class="container-fluid">
@@ -35,15 +42,15 @@
                     <thead>
                         <tr>
                             <th>KRA Name</th>
-                            <th>Performance Indicator</th>
+                            <th>KPI Name</th>
                             <th>Description</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>    
-                        <tr *ngFor="let details of indicatorlist">
-                            <td>{{details.kRAName}}</td>
-                            <td>{{details.performanceIndicator}}</td>
+                        <tr *ngFor="let details of indicatorlist |filter:search">
+                            <td>{{details.kraName}}</td>                        
+                            <td>{{details.kpiName}}</td>
                             <td>{{details.description}}</td>
                             <td>
                                 <button class="form-control edit" [routerLink]="['/KeyPerformanceIndicatorform', details.id]" >Edit</button>

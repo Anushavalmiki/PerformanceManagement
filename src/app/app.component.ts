@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { interval } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -12,17 +13,30 @@ export class AppComponent {
   temp:any;
   roleid:any;
   userName:any;
+  time:any;
+  hh:any;
+  ampm:any;
+  mm:any;
+  page:any;
 
   ngOnInit(): void {
     this.temp=sessionStorage.getItem('temp');
     this.roleid=sessionStorage.getItem('roleid');
     this.userName=sessionStorage.getItem('loginName');
+  
+
+
   }
+
+
+
+
 
   logout(){
     location.href="#/Login";
     location.reload();
     localStorage.clear();
+    sessionStorage.clear()
   }
 
 

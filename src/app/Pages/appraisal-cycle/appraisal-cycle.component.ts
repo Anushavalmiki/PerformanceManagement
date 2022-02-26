@@ -12,6 +12,7 @@ export class AppraisalCycleComponent implements OnInit {
 
   appraisallist:any;
   count:any;
+  search:any;
  
   ngOnInit(): void {
     this.GetAppraisalCycle();
@@ -27,7 +28,6 @@ export class AppraisalCycleComponent implements OnInit {
   }
 
   delete(id:any){
-    debugger
     this.PerformanceManagementService.DeleteAppraisalCycle(id).subscribe(
       data=>{
         alert("Deleted Sucessfully");

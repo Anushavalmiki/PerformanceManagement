@@ -20,6 +20,17 @@ import { KeyResultAresFormComponent } from './Pages/key-result-ares-form/key-res
 import { EmployeeDashboardComponent } from './Pages/employee-dashboard/employee-dashboard.component';
 import { EmployeeFormComponent } from './Pages/employee-form/employee-form.component';
 import { MyAppraisalFormComponent } from './Pages/my-appraisal-form/my-appraisal-form.component';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { EmployeeKraMappingComponent } from './Pages/employee-kra-mapping/employee-kra-mapping.component';
+import { EmployeeKraMappingdashboardComponent } from './Pages/employee-kra-mappingdashboard/employee-kra-mappingdashboard.component';
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+import { SelfRatingPageComponent } from './Pages/self-rating-page/self-rating-page.component';
+import { DatePipe } from '@angular/common';
+import { ManagerratingdashComponent } from './Pages/managerratingdash/managerratingdash.component';
+import { ManagerratingComponent } from './Pages/managerrating/managerrating.component';
+import { HrRatingComponent } from './Pages/hr-rating/hr-rating.component';
+import { HrDashComponent } from './Pages/hr-dash/hr-dash.component';
 
 @NgModule({
   declarations: [
@@ -38,16 +49,26 @@ import { MyAppraisalFormComponent } from './Pages/my-appraisal-form/my-appraisal
     KeyResultAresFormComponent,
     EmployeeDashboardComponent,
     EmployeeFormComponent,
-    MyAppraisalFormComponent
+    MyAppraisalFormComponent,
+    EmployeeKraMappingComponent,
+    EmployeeKraMappingdashboardComponent,
+    SelfRatingPageComponent,
+    ManagerratingdashComponent,
+    ManagerratingComponent,
+    HrRatingComponent,
+    HrDashComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     NgxDropzoneModule,
-    HttpClientModule
+    HttpClientModule,
+    Ng2SearchPipeModule,
+    NgxPaginationModule,
+    NgMultiSelectDropDownModule,
   ],
-  providers: [],
+  providers: [DatePipe ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

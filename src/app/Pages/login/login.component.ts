@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { PerformanceManagementService } from 'src/app/performance-management.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -7,12 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  roleId:any;
-  userName:any;
-  passWord:any;
-  loginName:any;
-  showpassword:any;
-  constructor() { }
+  roleId: any;
+  userName: any;
+  passWord: any;
+  loginName: any;
+  showpassword: any;
+  result: any;
+  constructor(private PerformanceManagementService: PerformanceManagementService) { }
 
   ngOnInit(): void {
   }
@@ -33,50 +34,123 @@ export class LoginComponent implements OnInit {
   }
 
 
-  login(){
-    if(this.roleId==1){
-      if(this.userName=='Admin'&& this.passWord=='welcome'){
-        sessionStorage.setItem("temp",'1');
-        sessionStorage.setItem("roleid",this.roleId);
-        sessionStorage.setItem("loginName",this.userName);
-        location.href="#/MyAppraisal";
+  login() {
+    debugger
+    if (this.roleId == 1) {
+      if (this.userName == 'Admin' && this.passWord == 'welcome') {
+        sessionStorage.setItem("temp", '1');
+        sessionStorage.setItem("roleid", this.roleId);
+        
+        sessionStorage.setItem("loginName", this.userName);
+        location.href = "#/MyAppraisal";
         location.reload();
       }
-      else{
+      else {
         alert("Please Enter Valid Details");
       }
     }
-
-    else if(this.roleId==2){
-    if(this.userName=='Kaushiki'&& this.passWord=='welcome'){
-      sessionStorage.setItem("temp",'1');
-      sessionStorage.setItem("roleid",this.roleId);
-      sessionStorage.setItem("loginName",this.userName);
-      location.href="#/MyAppraisal";
-      location.reload();
-    }
-    else{
-      alert("Please Enter Valid Details")
-    }
-    }
-
-    else if(this.roleId=='3'){
-      if(this.roleId==3){
-        if(this.userName=='Anup'&& this.passWord=='welcome'){
-          sessionStorage.setItem("temp",'1');
-          sessionStorage.setItem("roleid",this.roleId);
-          sessionStorage.setItem("loginName",this.userName);
-          location.href="#/MyAppraisal";
+    else if (this.roleId == 2) {
+      this.PerformanceManagementService.GetMyDetails().subscribe(async data => {
+        console.log("data", data);
+        let temp: any = data.filter(x => (x.emailID == this.userName || x.phoneNo == this.userName) && x.password == this.passWord);
+        this.result = temp[0];
+        // this.loader = true;
+        if (this.result != undefined || this.result != null) {
+          sessionStorage.setItem("temp", '1');
+          sessionStorage.setItem("roleid", this.roleId);
+          sessionStorage.setItem("loginName", this.result.fullname);
+          sessionStorage.setItem("EmaployedID", this.result.id);
+          sessionStorage.setItem("Type", this.result.type);
+          location.href = "#/MyAppraisal";
           location.reload();
         }
-        else{
-          alert("Please Enter Valid Details");
+        else {
+          alert('Username or Password is invalid');
+          this.userName = "";
+          this.passWord = "";
         }
-      }
+      })
     }
+
+    else if (this.roleId == '4') {
+      this.PerformanceManagementService.GetMyDetails().subscribe(data => {
+        console.log("data", data);
+        let temp: any = data.filter(x => (x.emailID == this.userName || x.phoneNo == this.userName) && x.password == this.passWord);
+        this.result = temp[0];
+        debugger;
+        // this.loader = true;
+        if (this.result != undefined || this.result != null) {
+          sessionStorage.setItem("temp", '1');
+          sessionStorage.setItem("roleid", this.roleId);
+          sessionStorage.setItem("loginName", this.result.fullname);
+          sessionStorage.setItem("EmaployedID", this.result.id);
+          sessionStorage.setItem("Type", this.result.type);
+          location.href = "#/MyAppraisal";
+          location.reload();
+        }
+        else {
+          alert('Username or Password is invalid');
+          this.userName = "";
+          this.passWord = "";
+        }
+
+      })
+
+    }
+
+
+
+    else if (this.roleId == '3') {
+      this.PerformanceManagementService.GetMyDetails().subscribe(data => {
+        console.log("data", data);
+        let temp: any = data.filter(x => (x.emailID == this.userName || x.phoneNo == this.userName) && x.password == this.passWord);
+        this.result = temp[0];
+        debugger;
+        // this.loader = true;
+        if (this.result != undefined || this.result != null) {
+          sessionStorage.setItem("temp", '1');
+          sessionStorage.setItem("roleid", this.roleId);
+          sessionStorage.setItem("loginName", this.result.fullname);
+          sessionStorage.setItem("EmaployedID", this.result.id);
+          sessionStorage.setItem("Type", this.result.type);
+          location.href = "#/MyAppraisal";
+          location.reload();
+        }
+        else {
+          alert('Username or Password is invalid');
+          this.userName = "";
+          this.passWord = "";
+        }
+
+      })
+
+    }
+
+ 
+
+
+
+
+
+
   }
 
 
+  }
  
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

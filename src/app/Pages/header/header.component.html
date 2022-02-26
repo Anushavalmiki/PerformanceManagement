@@ -1,0 +1,27 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-2">       
+            <img class="image"  class="logo" src="../assets/Images/Logo_digiOffice_White.png">
+        </div>
+     
+        <div class="col-lg-2" style="display: flex;align-items: center;
+        flex-wrap: nowrap;justify-content: start;">
+      <div class="time">
+      <p class="time1">{{hh}} </p> 
+      </div>     
+      <div class="time">
+      <p class="time1">{{mm}}</p>
+       </div>
+   <div class="time">
+      <p class="time1">{{ampm}}</p> 
+     </div>
+     </div>
+        <div class="col-lg-5"></div>
+                <div class="col-lg-1">
+            <img (click)="logout()" class="logout" src="assets/Images/Logo_out.1.png" >
+        </div>
+        <div class="col-lg-2">
+            <p style="color:white;font-size:16px;margin-top:25px;">Hii {{userName}}</p>
+        </div>
+    </div>
+</div>

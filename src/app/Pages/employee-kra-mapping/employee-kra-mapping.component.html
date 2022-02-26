@@ -1,0 +1,80 @@
+<div class="container-fluid">
+    <br>
+    <div class="row">
+        <div class="col-lg-4">
+            <p class="headings">Employee Kra Mapping </p>
+        </div>
+    </div>
+    <br>
+    <div class="card">
+        <br>
+        <div class="row column">
+            <div class="col-lg-3">
+                <p>Department </p>
+            </div>
+            <div class="col-lg-3">
+                <p>Role </p>
+            </div>
+            <div class="col-lg-3">
+                <p>Staff</p>
+            </div>
+            <div class="col-lg-3">
+                <p>Appraisal Cycle </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-3">
+                <select class="form-control columnname" name="Department">
+                    <option value="0">Select Department</option>
+                    <option *ngFor="let details of Departmentlist" value="{{details.id}}">{{details.departmentName}}
+                    </option>
+
+                </select>
+            </div>
+
+            <div class="col-lg-3">
+                <select class="form-control" id="RoleID" name="RoleID" [(ngModel)]="RoleID">
+                    <option value="0">Select Role</option>
+                    <option *ngFor="let item of RoleTypeList" value="{{item.id}}">{{item.short}}
+                    </option>
+                </select>
+            </div>
+
+            <div class="col-lg-3">
+                <ng-multiselect-dropdown [placeholder]="'Select Staff'" [settings]="dropdownSettings"
+                    [data]="dropdownList" [(ngModel)]="selectedItems" (onSelect)="onItemSelect($event)">
+                </ng-multiselect-dropdown>
+            </div>
+            <div class="col-lg-3">
+                <select class="form-control" id="Apprisalcycle" (change)="GetApprisalcycle($event)" name="Apprisalcycle"
+                    [(ngModel)]="Apprisalcycle">
+                    <option value="0">Select Cycle</option>
+                    <option *ngFor="let item of Apprisalcyclelist" value="{{item.id}}">
+                        {{item.appraisalCycleName}}
+                    </option>
+                </select>
+            </div>
+        </div>
+        <br>
+        <div class="row column">
+            <div class="col-lg-3">
+                <p>Kra</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-3">
+                <ng-multiselect-dropdown [placeholder]="'Select Kra'" [settings]="dropdownSettings1"
+                    [data]="dropdownList1" [(ngModel)]="selectedItems1" (onSelect)="onItemSelect1($event)">
+                </ng-multiselect-dropdown>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-9"></div>
+            <div class="col-lg-1">
+                <button class="form-control cancel" (click)="InsertDetails()">Save</button>
+            </div>
+            <div class="col-lg-1">
+                <button class="form-control cancel" (click)="Cancel()">Cancel</button>
+            </div>
+        </div>
+    </div>
