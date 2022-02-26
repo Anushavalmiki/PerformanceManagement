@@ -3,6 +3,7 @@ import { DatePipe } from '@angular/common';
 import { PerformanceManagementService } from 'src/app/performance-management.service';
 import { ActivatedRoute , Router } from '@angular/router';
 import Swal from 'sweetalert2';
+// import * as ClassicEditor from '@ckeditor/ckeditor5-angular';
 
 @Component({
   selector: 'app-hr-rating',
@@ -13,6 +14,7 @@ export class HrRatingComponent implements OnInit {
 
   constructor(private PerformanceManagementService:PerformanceManagementService,private router: Router,
     private route: ActivatedRoute, private datepipe: DatePipe ) { }
+      // public Editor = ClassicEditor;
 
   StaffTypelist: any;
   StaffID: any;

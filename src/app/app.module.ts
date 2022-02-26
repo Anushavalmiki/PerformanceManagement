@@ -33,6 +33,7 @@ import { HrRatingComponent } from './Pages/hr-rating/hr-rating.component';
 import { HrDashComponent } from './Pages/hr-dash/hr-dash.component';
 import { StaffScoreReportComponent } from './Pages/staff-score-report/staff-score-report.component';
 import { StaffScoreFullDetailsComponent } from './Pages/staff-score-full-details/staff-score-full-details.component';
+import { CKEditorModule } from 'ckeditor4-angular';
 
 @NgModule({
   declarations: [
@@ -71,6 +72,8 @@ import { StaffScoreFullDetailsComponent } from './Pages/staff-score-full-details
     Ng2SearchPipeModule,
     NgxPaginationModule,
     NgMultiSelectDropDownModule,
+    CKEditorModule,
+    
   ],
   providers: [DatePipe ],
   bootstrap: [AppComponent]
