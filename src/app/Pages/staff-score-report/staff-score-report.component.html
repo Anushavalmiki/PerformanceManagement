@@ -1,0 +1,82 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-10">
+            <br>
+            <p class="headings">Staff Score </p>
+        </div>
+        <div class="col-lg-2">
+            <br>
+            <p class="count">Count:</p>
+        </div>
+    </div>
+    <br>
+    <div class="card">
+        <br>
+        <div class="row FilterClass ">
+            <div class="col-lg-1">
+                <p class="filter">Filter By</p>
+            </div>
+            <div class="col-lg-3">
+                <input type="search" class="form-control search" placeholder="Search for Name..">
+            </div>
+            <div class="col-lg-1"></div>
+        </div><br>
+    </div> <br>
+    <!-- <div class="row">
+        <div class="col-lg-10"></div>
+        <div class="col-lg-2">
+            <button class="form-control Add" routerLink="/EmployeeKraMapping">Add</button>
+        </div>
+    </div> <br> -->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Appraisal Cycle</th>
+                            <th>Department</th>
+                            <th>Staff Name</th>
+                            <th>Manager Name</th>
+                            <!-- <th>Appraisal Date</th>
+                            <th>Cycle Start Date</th>
+                            <th>Cycle End Date</th> -->
+                            <th>Employee Rating </th>
+                            <th>Manager Rating</th>
+                            <th>HR Rating</th>
+                            <th>Total Average</th>
+                            <th>Action </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr
+                            *ngFor="let details of FilteredStaffAppraisalList |paginate: { itemsPerPage: count1, currentPage: p}">
+                            <td>{{details.appraisalCycleName}}</td>
+                            <td>{{details.departmentName}}</td>
+                            <td>{{details.name}}</td>
+                            <td>{{details.approvers1}}</td>
+                            <td>{{details.avgSelfScore}}</td>
+                            <td>{{details.avgGroupHeadScores}}</td>
+                            <td>{{details.avgCIOScores}}</td>
+                            <td>{{(details.avgGroupHeadScores+details.avgCIOScores)/2}}</td>
+                            <!-- <td>{{details.appraisalSubmitionDate|date}}</td>
+                            <td>{{details.cycleStartDate|date}}</td>
+                            <td>{{details.cycleEndDate|date}}</td> -->
+                            <td>
+                                <!-- <button class="btn btn-primary editable-table-button btn-xs"
+                                    (click)="ViewScores(details)">View Details
+                                </button> -->
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="text-right">
+                    <br>
+                    <pagination-controls (pageChange)="p = $event" class="poppinns"></pagination-controls>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

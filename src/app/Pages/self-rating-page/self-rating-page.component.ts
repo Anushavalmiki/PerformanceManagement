@@ -288,11 +288,12 @@ export class SelfRatingPageComponent implements OnInit {
         debugger
         if (data != undefined && this.q == this.appraisalList.length) {
           Swal.fire("Appraisal Saved Successfully");
-          this.router.navigate(['SelfRatingDash']);
+          
 
         }
       })
     }
+    this.router.navigate(['MyAppraisal']);
   }
   public delete(id: any) {
 

@@ -1,0 +1,117 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-10">
+            <br>
+            <p class="headings">Staff Score </p>
+        </div>
+        <div class="col-lg-2">
+            <br>
+            <p class="count">Count:</p>
+        </div>
+    </div>
+    <br>
+    <div class="card">
+        <br>
+        <div class="row FilterClass ">
+            <div class="col-lg-1">
+                <p class="filter">Filter By</p>
+            </div>
+            <div class="col-lg-3">
+                <input type="search" class="form-control search" placeholder="Search for Name..">
+            </div>
+            <div class="col-lg-1"></div>
+        </div><br>
+    </div> <br>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-6">
+                <p style="margin-left: 14px;">Staff ID:{{StaffID}} </p>
+            </div>
+            <!-- <div class="col-lg-3">
+            <p>Staff Type:{{StaffType}} </p>
+          </div> -->
+            <div class="col-lg-3">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6">
+                <p style="margin-left: 14px;">Staff Name:{{EmployeeName}} </p>
+            </div>
+            <div class="col-lg-3">
+                <p>Appraisal Date:{{Appraisaldate|date}} </p>
+            </div>
+            <div class="col-lg-3">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6">
+                <p style="margin-left: 14px;">Cycle Start Date:{{StartDate|date}} </p>
+            </div>
+            <div class="col-lg-3">
+                <p>Cycle End Date:{{EndDate|date}} </p>
+            </div>
+            <div class="col-lg-3">
+            </div>
+        </div>
+
+        <!-- <div class="row">
+            <div class="col-lg-9">
+            </div>
+            <p class="col-lg-3">Overall Staff Score : {{overallScore}}</p>
+          </div> -->
+
+        <div class="row">
+            <div class="col-lg-12">
+                <table>
+                    <tbody>
+                        <tr>
+                            <th>KRA Name </th>
+                            <th>Performance Indicator</th>
+                            <th>Staff Score</th>
+                            <th>Staff Comments</th>
+                            <th>Manager Score</th>
+                            <th>Manager Comments</th>
+                            <th>HR Score</th>
+                            <th>HR Comments</th>
+                        </tr>
+                        <tr *ngFor="let Scores of StaffScoresLists">
+                            <td>{{Scores.resultAreaName}}</td>
+                            <td>{{Scores.performanceindicator}}</td>
+                            <td>{{Scores.selfScores}}</td>
+                            <td>{{Scores.selfComments}}</td>
+                            <td *ngIf="Scores.groupHeadScores!=null">{{Scores.groupHeadScores}}</td>
+                            <td *ngIf="Scores.groupHeadScores!=null">{{Scores.groupHeadComments}}</td>
+                            <td *ngIf="Scores.cscores!=null">{{Scores.cscores}}</td>
+                            <td *ngIf="Scores.cscores!=null">{{Scores.cioComments}}</td>
+                            <td *ngIf="Scores.divisionScores!=null">{{Scores.divisionScores}}</td>
+                            <td *ngIf="Scores.divisionScores!=null">{{Scores.divisionComments}}</td>
+                        </tr>
+                </table>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-9">
+            </div>
+            <p class="col-lg-3">Self Assessment Avg : {{overallScore}}</p>
+
+        </div>
+        <div class="row">
+            <div class="col-lg-9">
+            </div>
+            <p class="col-lg-3" *ngIf="groupHeadAvgScores!=null">Manager Avg : {{groupHeadAvgScores}}</p>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-9">
+            </div>
+            <p class="col-lg-3" *ngIf="cioAvgScores!=null">HR Avg : {{cioAvgScores}}</p>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-9">
+            </div>
+            <p class="col-lg-3" *ngIf="cioAvgScores!=null">Total Avg : {{(groupHeadAvgScores+cioAvgScores)/2}}</p>
+        </div>
+
+    </div>
+</div>

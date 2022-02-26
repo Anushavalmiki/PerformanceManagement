@@ -3,6 +3,7 @@ import { DatePipe } from '@angular/common';
 import { PerformanceManagementService } from 'src/app/performance-management.service';
 import { ActivatedRoute , Router } from '@angular/router';
 import Swal from 'sweetalert2';
+// import * as ClassicEditor from '@ckeditor/ckeditor5-angular';
 
 @Component({
   selector: 'app-hr-rating',
@@ -13,6 +14,7 @@ export class HrRatingComponent implements OnInit {
 
   constructor(private PerformanceManagementService:PerformanceManagementService,private router: Router,
     private route: ActivatedRoute, private datepipe: DatePipe ) { }
+      // public Editor = ClassicEditor;
 
   StaffTypelist: any;
   StaffID: any;
@@ -324,18 +326,19 @@ export class HrRatingComponent implements OnInit {
         // 'Supervisor': this.appraisalList[this.q].Supervisor,
         'ResultAreaID': this.appraisalList[this.q].ResultAreaID,
         'PerformaceIndicatorID': this.appraisalList[this.q].PerformaceIndicatorID,
-        'GroupHeadScores': this.appraisalList[this.q].SelfScores,
-        'GroupHeadComments': this.appraisalList[this.q].SelfComments
+        'CIOScores': this.appraisalList[this.q].SelfScores,
+        'CIOComments': this.appraisalList[this.q].SelfComments
       }
       this.PerformanceManagementService.UpdateCIOStaffScores(entity).subscribe(data => {
         debugger
         if (data != undefined && this.q == this.appraisalList.length) {
           Swal.fire("Appraisal Saved Successfully");
-          this.router.navigate(['Managerratingdash']);
+         
 
         }
       })
     }
+    this.router.navigate(['HrDash']);
 
   }
 }
