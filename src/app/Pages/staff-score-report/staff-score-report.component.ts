@@ -22,6 +22,7 @@ export class StaffScoreReportComponent implements OnInit {
   count1: any = 10;
   ngOnInit() {
     this.YearID = 2020;
+    this.ratingvalue=0;
     this.StaffTypeID = 0;
     this.StaffID = 0;
     // this.StaffID = 0;
@@ -34,6 +35,31 @@ export class StaffScoreReportComponent implements OnInit {
     this.ConductappraisalStaffList();
 
 
+  }
+  ratingvalue: any;
+  public Getratingvalue(event: any) {
+    debugger
+    this.ratingvalue = event.target.value;
+
+    if (this.ratingvalue == 0) {
+      this.PerformanceManagementService.GetConductappraisalStaffList().subscribe(
+        res => {
+          debugger;
+          let temp: any = res
+          this.StaffAppraisalList = temp;
+          this.FilteredStaffAppraisalList = this.StaffAppraisalList
+        }
+      )
+    } else {
+      this.PerformanceManagementService.GetConductappraisalStaffList().subscribe(
+        res => {
+          debugger;
+          let temp: any = res
+          this.StaffAppraisalList = temp;
+          this.FilteredStaffAppraisalList = this.StaffAppraisalList.filter((x: { avgGroupHeadScores: any; avgCIOScores: any; }) => ((x.avgGroupHeadScores + x.avgCIOScores) / 2) == this.ratingvalue)
+        }
+      )
+    }
   }
 
   StaffAppraisalList: any;

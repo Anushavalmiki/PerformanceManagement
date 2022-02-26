@@ -19,6 +19,21 @@
             <div class="col-lg-3">
                 <input type="search" class="form-control search" placeholder="Search for Name..">
             </div>
+            <div class="col-lg-3">
+                <select class="dropdown form-control" id="ratingvalue" name="ratingvalue" [(ngModel)]="ratingvalue"
+                    (change)="Getratingvalue($event)" required>
+                    <option value="0">Select Rating</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+            </div>
+            <div class="col-lg-3">
+
+            </div>
+
             <div class="col-lg-1"></div>
         </div><br>
     </div> <br>
