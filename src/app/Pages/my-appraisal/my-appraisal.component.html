@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col-lg-11">
             <br>
-            <p class="headings">Employee KRA Mapping Dashboard </p>
+            <p class="headings">My Apprisal </p>
         </div>
         <div class="col-lg-1">
             <br>
@@ -34,7 +34,7 @@
                     <thead>
                         <tr>
                             <th>Employee Name</th>
-                            <th>Department</th>
+                            <th>Role</th>
                             <th>Apprisal Start Date </th>
                             <th>Apprisal End Date </th>
                             <th>Employee Submitted Date </th>
@@ -51,7 +51,7 @@
                             <td>
                                 <button [routerLink]="['/SelfRatingPagenew', details.id,details.id ]"
                                    
-                                    class=" btn btn-primary editable-table-button btn-xs">Self Appraisal</button>
+                                    class=" btn btn-primary editable-table-button btn-xs Add">Self Appraisal</button>
                                 <!-- <button *ngIf="details.selfScores!=null"
                                     class=" btn btn-primary editable-table-button btn-xs">Completed</button> -->
                                 <!-- <button class="button btn-xs"
@@ -78,7 +78,7 @@
         <!-- Modal content-->
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Assigned Kra</h5>
+                <h5 class="modal-title">Assigned Goals</h5>
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
 
             </div>
@@ -88,7 +88,7 @@
                         <table>
                             <thead>
                                 <tr>
-                                    <th>Kra</th>
+                                    <th>Goals</th>
                                 </tr>
                             </thead>
                             <tbody>
