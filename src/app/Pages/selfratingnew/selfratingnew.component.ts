@@ -24,7 +24,8 @@ export class SelfratingnewComponent implements OnInit {
   RoleType: any;
   Department: any;
   count: any;
-
+  attachment:any;
+  Attachmentlist:any;
 
   ParamID: any;
   EmployeeKradash: any
@@ -47,6 +48,8 @@ export class SelfratingnewComponent implements OnInit {
         this.PerformanceManagementService.GetKRAByStaffID(this.StaffID).subscribe(data => {
           debugger
           this.ResultAreaList = data;
+
+          console.log("Result area", this.ResultAreaList);
 
         })
         // this.GetStaffAppraisalByID(this.ParamID);
@@ -163,9 +166,8 @@ export class SelfratingnewComponent implements OnInit {
       if (res != undefined) {
         this.attachmentsurl.push(res);
         this.files.length = 0;
-
       }
-      debugger
+      debugger;
     })
 
   }
@@ -177,6 +179,24 @@ export class SelfratingnewComponent implements OnInit {
 
 
 
-}
+ 
+ 
+  // showAttachments(photo: any) {
+  //   debugger
+  //   this.PerformanceManagementService.GetKRAByStaffID(this.StaffID).subscribe(data => {
+  //     debugger
+  //     this.Attachmentlist = photo;
+  //   })
+  // }
+
+
+  getattachment(details:any){
+    debugger
+      this.attachment=details.photo;
+    }
+
+  }
+
+
 
 
