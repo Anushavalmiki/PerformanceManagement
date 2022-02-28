@@ -73,6 +73,14 @@ export class EmployeeDashboardComponent implements OnInit {
   }
 
 
+  public  GetMyDetails(){
+    this.PerformanceManagementService.GetMyDetails().subscribe(data => {
+      debugger
+     this.stafflist();
+    });
+  }
+
+
   }
 
 

@@ -33,7 +33,7 @@ export class ManagerratingdashComponent implements OnInit {
       debugger
       this.stafflist = data;
       this.stafflistCopy = this.stafflist
-      this.count = this.stafflist.length;
+
     });
 
     this.PerformanceManagementService.GetDepartment().subscribe(data => {
@@ -44,6 +44,7 @@ export class ManagerratingdashComponent implements OnInit {
     this.PerformanceManagementService.GetConductappraisalStaffList().subscribe(data => {
       debugger
       this.EmployeeKradash = data.filter(x => x.approver1 == sessionStorage.getItem('EmaployedID') && x.selfScores != null);
+      this.count = this.EmployeeKradash.length;
     });
   }
 
@@ -57,7 +58,7 @@ export class ManagerratingdashComponent implements OnInit {
     this.PerformanceManagementService.GetMyDetails().subscribe(data => {
       debugger
       this.stafflist = data.filter(x => x.roleType == this.RoleType);
-      this.count = this.stafflist.length;
+      this.count1 = this.stafflist.length;
     });
 
   }
