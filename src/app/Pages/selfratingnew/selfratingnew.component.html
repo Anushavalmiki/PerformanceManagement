@@ -44,8 +44,8 @@
                                     data-target="#exampleModal1">View
                                     Details</button>&nbsp;
 
-                                <button class=" btn btn-primary action" data-toggle="modal"
-                                    data-target="#exampleModal2" (click)="getattachment(details)">View Attachments</button>
+                                <button class=" btn btn-primary action" data-toggle="modal" data-target="#exampleModal2"
+                                    (click)="getattachment(details)">View Attachments</button>
                             </td>
                         </tr>
                     </tbody>
@@ -193,18 +193,18 @@
                     <div class="col-lg-1">
                     </div>
                     <div class="col-lg-3">
-                        <p>Find Attachments</p>
+                        <p *ngIf="attachment==null">No Attachments</p>
                     </div>
                     <div class="col-lg-3">
-                     <img src="{{attachment}}">
-                     <!-- <img src="http://103.133.214.197/digiofficeapi\Images\ProjectAttachments\AmazeLogo-20220214160917-20220228163117.jpg"> -->
+                        <img src="{{attachment}}" style="width: 400px;">
+                        <!-- <img src="http://103.133.214.197/digiofficeapi\Images\ProjectAttachments\AmazeLogo-20220214160917-20220228163117.jpg"> -->
                     </div>
                 </div>
                 <br>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" (click)="SaveDetails()">Save changes</button>
+
             </div>
         </div>
     </div>

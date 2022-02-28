@@ -24,7 +24,7 @@
     <div class="row">
         <div class="col-lg-11"></div>
         <div class="col-lg-1">
-            <button class="form-control Add" routerLink="/EmployeeKraMapping">Add</button>
+            <!-- <button class="form-control Add" routerLink="/EmployeeKraMapping">Add</button> -->
         </div>
     </div> <br>
   
@@ -50,10 +50,10 @@
                             <td>{{details.appraisalSubmitionDate|date}}</td>
                             <td>
                                 <button [routerLink]="['/ManagerAppraisal', details.id,details.id ]"
-                                    *ngIf="details.groupHeadScores==null"
+                                    
                                     class=" btn btn-primary editable-table-button btn-xs btncolor">Conduct Appraisal</button>
-                                <button *ngIf="details.groupHeadScores!=null"
-                                    class=" btn btn-primary editable-table-button btn-xs btncolor">Completed</button>
+                                <!-- <button *ngIf="details.groupHeadScores!=null"
+                                    class=" btn btn-primary editable-table-button btn-xs btncolor">Completed</button> -->
                                 <!-- <button class="button btn-xs"
                                     routerLink]="['/SelfRatingPage', details.id,details.id ]">Self
                                     Apprisal</button>&nbsp; -->
