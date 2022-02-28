@@ -30,6 +30,7 @@ export class KeyResultAresFormComponent implements OnInit {
 
     this.GetKraMaster();
     this.GetRoleType();
+
   
 
     this.ActivatedRoute.params.subscribe(params => {
@@ -103,8 +104,8 @@ Add(){
   debugger
   this.keyresultArray.push(json)
   this.kraName="";
-  this.kratypeid="";
-  this.roleTypeid="";
+  this.kratypeid=0;
+  this.roleTypeid=0;
   this.description="";
  }
  

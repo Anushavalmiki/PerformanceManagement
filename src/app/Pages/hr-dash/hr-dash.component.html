@@ -50,7 +50,7 @@
                             <td>{{details.cycleEndDate|date}}</td>
                             <td>{{details.appraisalSubmitionDate|date}}</td>
                             <td>
-                                <button [routerLink]="['/HrRating', details.id,details.id ]"
+                                <button [routerLink]="['/hrratingnew', details.id,details.id ]"
                                     *ngIf="details.cioScores==null"
                                     class=" btn btn-primary editable-table-button btn-xs">Conduct Appraisal</button>
                                 <button *ngIf="details.cioComments!=null"

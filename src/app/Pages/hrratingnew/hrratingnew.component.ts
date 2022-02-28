@@ -5,13 +5,12 @@ import { PerformanceManagementService } from 'src/app/performance-management.ser
 import Swal from 'sweetalert2';
 
 @Component({
-  selector: 'app-manager-appraisal',
-  templateUrl: './manager-appraisal.component.html',
-  styleUrls: ['./manager-appraisal.component.css']
+  selector: 'app-hrratingnew',
+  templateUrl: './hrratingnew.component.html',
+  styleUrls: ['./hrratingnew.component.css']
 })
-export class ManagerAppraisalComponent implements OnInit {
+export class HrratingnewComponent implements OnInit {
 
- 
   constructor(private PerformanceManagementService: PerformanceManagementService, private router: Router, private route: ActivatedRoute, private datepipe: DatePipe) { }
 
   stafflist: any;
@@ -124,7 +123,7 @@ export class ManagerAppraisalComponent implements OnInit {
       'SelfComments': this.SelfComments,
       'Attachment': this.attachmentsurl[0]
     }
-    this.PerformanceManagementService.InsertStaffScoresByManager(entity).subscribe(data => {
+    this.PerformanceManagementService.InsertStaffScores(entity).subscribe(data => {
       debugger
       Swal.fire("Saved Successfully");
       this.Score = 0;
@@ -169,16 +168,19 @@ export class ManagerAppraisalComponent implements OnInit {
     })
 
   }
-
+  empcommnts: any;
   onRemove(event: any) {
     console.log(event);
     this.files.splice(this.files.indexOf(event), 1);
   }
-
-  empcomments: any;
-  public GEtemployeecomments(detials: any) {
-    this.empcomments = detials.empcomments
+  public GetEmpComments(detials: any) {
+    this.empcommnts = detials.empcomments
   }
+  managercomments: any;
+  public GEtmanagercomments(detials: any) {
+    this.managercomments = detials.managercomments
+  }
+
 
 
 }

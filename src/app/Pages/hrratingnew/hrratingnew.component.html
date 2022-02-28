@@ -2,11 +2,11 @@
     <div class="row">
         <div class="col-lg-10">
             <br>
-            <p class="headings">My Team Appraisal</p>
+            <p class="headings">Team Appraisal</p>
         </div>
         <div class="col-lg-2">
             <br>
-    
+
         </div>
     </div>
     <br>
@@ -19,29 +19,38 @@
                             <th>Sr.No.</th>
                             <th>Goal</th>
                             <th>KPI</th>
-                            <th>Employee Rating</th>
-                            <th>Employee Comments</th>
+                            <th>Emp Rating</th>
+                            <th>Emp Comments</th>
+                            <th>Manager Rating</th>
+                            <th>Manager Comments</th>
+
                             <th>Action </th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr
                             *ngFor="let details of ResultAreaList |paginate: { itemsPerPage: count1, currentPage: p} index as i">
-                            <td [ngClass]="{'bggreen':details.empupdate==1 }">
+                            <td [ngClass]="{'bggreen':details.hrupdate==1 }">
                                 {{i+1}}</td>
-                            <td [ngClass]="{'bggreen':details.empupdate==1 }">{{details.kraName}}</td>
-                            <td [ngClass]="{'bggreen':details.empupdate==1 }">{{details.kpiName}}</td>
-                            <td>{{details.emprating}}</td>
-                            <td [ngClass]="{'bggreen':details.empupdate==1 }">
+                            <td [ngClass]="{'bggreen':details.hrupdate==1 }">{{details.kraName}}</td>
+                            <td [ngClass]="{'bggreen':details.hrupdate==1 }">{{details.kpiName}}</td>
+                            <td [ngClass]="{'bggreen':details.hrupdate==1 }">{{details.emprating}}</td>
+                            <td [ngClass]="{'bggreen':details.hrupdate==1 }">
                                 <button type="button" class="btn btn-success" data-toggle="modal"
-                                    (click)="GEtemployeecomments(details)" data-target="#viewempcomments">View
+                                    (click)="GetEmpComments(details)" data-target="#viewwmpcomments">View
                                 </button>
                             </td>
-                            <td [ngClass]="{'bggreen':details.empupdate==1 }">
-                                <button *ngIf="details.empupdate!=1" type="button" class="btn btn-primary"
+                            <td [ngClass]="{'bggreen':details.hrupdate==1 }">{{details.managerrating}}</td>
+                            <td [ngClass]="{'bggreen':details.hrupdate==1 }">
+                                <button type="button" class="btn btn-success" data-toggle="modal"
+                                    (click)="GEtmanagercomments(details)" data-target="#viewhrcomments">View
+                                </button>
+                            </td>
+                            <td [ngClass]="{'bggreen':details.hrupdate==1 }">
+                                <button *ngIf="details.hrupdate!=1" type="button" class="btn btn-primary"
                                     data-toggle="modal" (click)="GetKPIID(details)"
                                     data-target="#exampleModal">Save</button>
-                                <button *ngIf="details.empupdate==1" type="button" class="btn btn-success"
+                                <button *ngIf="details.hrupdate==1" type="button" class="btn btn-success"
                                     data-toggle="modal" (click)="GetKPIIDetails(details)"
                                     data-target="#exampleModal1">View
                                     Details</button>
@@ -180,9 +189,7 @@
         </div>
     </div>
 </div>
-
-
-<div class="modal fade" id="viewempcomments" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+<div class="modal fade" id="viewwmpcomments" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content" style="width: 800px;">
@@ -197,7 +204,36 @@
                     <div class="col-lg-3">
                     </div>
                     <div class="col-lg-7">
-                        <p style="padding:5px" [innerHTML]="empcomments">
+                        <p style="padding:5px" [innerHTML]="empcommnts">
+                        </p>
+                    </div>
+                    <div class="col-lg-3">
+
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="viewhrcomments" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content" style="width: 800px;">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Manager Comments</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-lg-3">
+                    </div>
+                    <div class="col-lg-7">
+                        <p style="padding:5px" [innerHTML]="managercomments">
                         </p>
                     </div>
                     <div class="col-lg-3">
