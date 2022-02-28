@@ -17,7 +17,7 @@ export class SelfratingnewComponent implements OnInit {
   stafflist: any;
   term: any;
   p: any = 1;
-  count1: any = 10;
+  count1: any = 5;
   stafflistCopy: any;
   Departmentlist: any;
   RoleTypeList: any;
@@ -107,6 +107,8 @@ export class SelfratingnewComponent implements OnInit {
     this.id = details.id;
     this.kpiid = details.kpiid;
     this.ResultAreaID = details.resultAreaID;
+    this.Score = 0;
+    this.SelfComments = '';
 
   }
 
@@ -119,13 +121,21 @@ export class SelfratingnewComponent implements OnInit {
       'ResultAreaID': this.ResultAreaID,
       'PerformaceIndicatorID': this.kpiid,
       'SelfScores': this.Score,
-      'SelfComments': this.SelfComments
+      'SelfComments': this.SelfComments,
+      'Attachment': this.attachmentsurl[0]
     }
     this.PerformanceManagementService.InsertStaffScores(entity).subscribe(data => {
       debugger
       Swal.fire("Saved Successfully");
       this.Score = 0;
       this.SelfComments = '';
+      const element1 = document.getElementById('close');
+
+      if (element1 !== null) {
+
+        element1.click();
+
+      }
       this.ngOnInit();
 
     })
@@ -141,6 +151,30 @@ export class SelfratingnewComponent implements OnInit {
 
     })
   }
+
+  files: File[] = [];
+  attachmentsurl: any = []
+  onSelect(event: any) {
+    console.log(event);
+    debugger
+    this.files.push(...event.addedFiles);
+    this.PerformanceManagementService.ProjectAttachments(this.files).subscribe(res => {
+      debugger
+      if (res != undefined) {
+        this.attachmentsurl.push(res);
+        this.files.length = 0;
+
+      }
+      debugger
+    })
+
+  }
+
+  onRemove(event: any) {
+    console.log(event);
+    this.files.splice(this.files.indexOf(event), 1);
+  }
+
 
 
 }
