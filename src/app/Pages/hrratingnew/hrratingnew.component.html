@@ -47,8 +47,8 @@
                                 </button>
                             </td>
                             <td [ngClass]="{'bggreen':details.hrupdate==1 }">
-                                <button *ngIf="details.hrupdate!=1" type="button" class="btn btn-primary"
-                                    data-toggle="modal" (click)="GetKPIID(details)"
+                                <button *ngIf="details.hrupdate!=1 &&details.managerupdate==1" type="button"
+                                    class="btn btn-primary" data-toggle="modal" (click)="GetKPIID(details)"
                                     data-target="#exampleModal">Save</button>
                                 <button *ngIf="details.hrupdate==1" type="button" class="btn btn-success"
                                     data-toggle="modal" (click)="GetKPIIDetails(details)"

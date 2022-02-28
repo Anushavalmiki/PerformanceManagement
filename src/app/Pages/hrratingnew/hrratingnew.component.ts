@@ -123,7 +123,7 @@ export class HrratingnewComponent implements OnInit {
       'SelfComments': this.SelfComments,
       'Attachment': this.attachmentsurl[0]
     }
-    this.PerformanceManagementService.InsertStaffScores(entity).subscribe(data => {
+    this.PerformanceManagementService.InsertStaffScoresByHR(entity).subscribe(data => {
       debugger
       Swal.fire("Saved Successfully");
       this.Score = 0;

@@ -129,6 +129,7 @@ export class SelfratingnewComponent implements OnInit {
       Swal.fire("Saved Successfully");
       this.Score = 0;
       this.SelfComments = '';
+      this.files.length = 0;
       const element1 = document.getElementById('close');
 
       if (element1 !== null) {
@@ -162,7 +163,7 @@ export class SelfratingnewComponent implements OnInit {
       debugger
       if (res != undefined) {
         this.attachmentsurl.push(res);
-        this.files.length = 0;
+        //  this.files.length = 0;
 
       }
       debugger
@@ -173,6 +174,10 @@ export class SelfratingnewComponent implements OnInit {
   onRemove(event: any) {
     console.log(event);
     this.files.splice(this.files.indexOf(event), 1);
+  }
+  public SubmitEmpApprisal() {
+    debugger
+
   }
 
 
