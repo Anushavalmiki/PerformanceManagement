@@ -167,7 +167,7 @@ export class PerformanceManagementService {
 
   public GetKRAByStaffID(id: any) {
     debugger;
-    return this.http.get(this.baseURL + "/Master/GetKRAByStaffID?StaffID=" + id);
+    return this.http.get<any>(this.baseURL + "/Master/GetKRAByStaffID?StaffID=" + id);
   }
   public GetHighScores() {
     return this.http.get<any[]>(
@@ -208,6 +208,15 @@ export class PerformanceManagementService {
     debugger;
     this.url = this.baseURL + 'Master/InsertStaffScoresByManager';
     return this.http.post(this.url, data);
+  }
+
+  public ProjectAttachments(files: any) {
+    let formdata: FormData = new FormData();
+    for (let i = 0; i < files.length; i++) {
+      formdata.append('file_upload', files[i], files[i].name);
+    }
+    this.url = this.host + '/Announcement/ProjectAttachments';
+    return this.http.post<any[]>(this.url, formdata);
   }
 
 }

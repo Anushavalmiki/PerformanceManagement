@@ -21,6 +21,11 @@ export class EmployeeKraMappingComponent implements OnInit {
   selectedItems1: any = [];
   selectedItems2: any = [];
   dropdownSettings1: any = {};
+
+  dropdownList2: any = [];
+  selectedItems3: any = [];
+
+  dropdownSettings2: any = {};
   Apprisalcyclelist: any;
   ngOnInit(): void {
 
@@ -46,6 +51,14 @@ export class EmployeeKraMappingComponent implements OnInit {
       this.dropdownList1 = data;
     });
 
+    this.dropdownSettings2 = {
+      singleSelection: false,
+      idField: 'id',
+      textField: 'kpiName',
+      selectAllText: 'Select All',
+      unSelectAllText: 'UnSelect All',
+      allowSearchFilter: true
+    };
     this.dropdownSettings = {
       singleSelection: false,
       idField: 'id',
@@ -57,13 +70,14 @@ export class EmployeeKraMappingComponent implements OnInit {
 
     };
     this.dropdownSettings1 = {
-      singleSelection: false,
+      singleSelection: true,
       idField: 'id',
       textField: 'kraName',
       selectAllText: 'Select All',
       unSelectAllText: 'UnSelect All',
       allowSearchFilter: true
     };
+
   }
   EmployeeId: any;
   onItemSelect(item: any) {
@@ -79,9 +93,22 @@ export class EmployeeKraMappingComponent implements OnInit {
     });
 
   }
+  onItemSelect2(item: any) {
+    debugger
+    console.log(item);
+    this.selectedItems3.push(item);
+
+
+  }
   onItemSelect1(item: any) {
     debugger;
-    this.selectedItems2.push(item)
+    this.selectedItems2.push(item);
+    this.PerformanceManagementService.GetKPI().subscribe(data => {
+      debugger
+      this.dropdownList2 = data.filter(x => x.kraID == item.id);
+
+
+    });
   }
   onItemDeSelect1(item: any) {
     debugger;
@@ -110,11 +137,12 @@ export class EmployeeKraMappingComponent implements OnInit {
   AppraisalSubmitionDate: any;
   sDate: any;
   eDate: any;
+  tablecount: any;
   public InsertDetails() {
     debugger
-    for (let i = 0; i < this.selectedItems2.length; i++) {
+    for (let i = 0; i < this.keyresultArray.length; i++) {
 
-      if (this.selectedItems1.length == 0) {
+      if (this.keyresultArray.length == 0) {
         Swal.fire('Please Select Kra For Staff')
       }
       else {
@@ -127,21 +155,41 @@ export class EmployeeKraMappingComponent implements OnInit {
           'AppraisalSubmitionDate': this.AppraisalSubmitionDate,
           'CycleStartDate': this.sDate,
           'CycleEndDate': this.eDate,
-          'kraid': this.selectedItems2[i].id
+          'kraid': this.keyresultArray[i].kraid,
+          'kpiid': this.keyresultArray[i].kpiid
         }
         this.PerformanceManagementService.InsertEmployeeKraMap(Entity).subscribe(
           data => {
 
             if (data != undefined) {
-              Swal.fire('Kra Added Successfully.');
+
             }
-            location.href = "#/EmployeeKraMappingdashboard";
+
           }, error => {
           }
         )
       }
     }
+    Swal.fire('Kra Added Successfully.');
+    location.href = "#/EmployeeKraMappingdashboard";
 
+  }
+  public keyresultArray: any = [];
+  public SaveDetails() {
+    debugger
+    this.tablecount = 1;
+    var json = {
+      "kraid": this.selectedItems2[0].id,
+      "kpiid": this.selectedItems3[0].id,
+      "kraname": this.selectedItems2[0].kraName,
+      "kpiname": this.selectedItems3[0].kpiName,
+
+    };
+    debugger
+    this.keyresultArray.push(json)
+    this.selectedItems1 = [];
+    this.selectedItems2 = [];
+    this.selectedItems3 = [];
   }
 
 }

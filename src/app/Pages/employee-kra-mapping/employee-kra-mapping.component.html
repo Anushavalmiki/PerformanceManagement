@@ -58,7 +58,10 @@
         <br>
         <div class="row column">
             <div class="col-lg-3">
-                <p>Kra</p>
+                <p>Goals</p>
+            </div>
+            <div class="col-lg-3">
+                <p>KPI</p>
             </div>
         </div>
         <div class="row">
@@ -67,14 +70,47 @@
                     [data]="dropdownList1" [(ngModel)]="selectedItems1" (onSelect)="onItemSelect1($event)">
                 </ng-multiselect-dropdown>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-9"></div>
-            <div class="col-lg-1">
-                <button class="form-control cancel" (click)="InsertDetails()">Save</button>
+            <div class="col-lg-3">
+                <ng-multiselect-dropdown [placeholder]="'Select KPI'" [settings]="dropdownSettings2"
+                    [data]="dropdownList2" [(ngModel)]="selectedItems3" (onSelect)="onItemSelect2($event)">
+                </ng-multiselect-dropdown>
             </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-lg-8"></div>
+            <div class="col-lg-1">
+                <button class="form-control cancel" (click)="SaveDetails()">Add</button>
+            </div>
+
             <div class="col-lg-1">
                 <button class="form-control cancel" (click)="Cancel()">Cancel</button>
             </div>
         </div>
-    </div>
+
+        <div class="row" *ngIf="tablecount==1">
+            <div class="col-lg-12">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Goal Name</th>
+                            <th>KPI </th>
+                        </tr>
+                        <tr *ngFor="let details of keyresultArray">
+                            <td>{{details.kraname}}</td>
+                            <td>{{details.kpiname}}</td>
+
+                        </tr>
+                    </thead>
+                </table>
+                <br>
+                <div class="row">
+                    <div class="col-lg-10"></div>
+                    <div class="col-lg-2">
+                        <button class="form-control cancel" (click)="InsertDetails()">Save</button>
+                    </div>
+                </div>
+            </div>
+            <br>
+
+        </div>
