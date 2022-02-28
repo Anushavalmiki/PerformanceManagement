@@ -43,7 +43,7 @@ export class LoginComponent implements OnInit {
         sessionStorage.setItem("roleid", this.roleId);
 
         sessionStorage.setItem("loginName", this.userName);
-        location.href = "#/MyAppraisal";
+        location.href = "#/AppraisalCycle";
         location.reload();
       }
       else {
