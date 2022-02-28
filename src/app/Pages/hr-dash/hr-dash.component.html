@@ -35,7 +35,7 @@
                     <thead>
                         <tr>
                             <th>Employee Name</th>
-                            <th>Department</th>
+                            <th>Role</th>
                             <th>Apprisal Start Date </th>
                             <th>Apprisal End Date </th>
                             <th>Submission Date </th>
@@ -51,10 +51,10 @@
                             <td>{{details.appraisalSubmitionDate|date}}</td>
                             <td>
                                 <button [routerLink]="['/hrratingnew', details.id,details.id ]"
-                                    *ngIf="details.cioScores==null"
+                                    
                                     class=" btn btn-primary editable-table-button btn-xs">Conduct Appraisal</button>
-                                <button *ngIf="details.cioComments!=null"
-                                    class=" btn btn-primary editable-table-button btn-xs">Completed</button>
+                                <!-- <button *ngIf="details.cioComments!=null"
+                                    class=" btn btn-primary editable-table-button btn-xs">Completed</button> -->
                                 <!-- <button class="button btn-xs"
                                     routerLink]="['/SelfRatingPage', details.id,details.id ]">Self
                                     Apprisal</button>&nbsp; -->

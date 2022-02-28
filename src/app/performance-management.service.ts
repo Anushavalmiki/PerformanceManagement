@@ -218,5 +218,15 @@ export class PerformanceManagementService {
     this.url = this.baseURL + '/Master/ProjectAttachments';
     return this.http.post<any[]>(this.url, formdata);
   }
+  public InsertNotification(data: any) {
+    debugger;
+    this.url = this.host + '/User/InsertNotification';
+    return this.http.post(this.url, data);
+  }
+  public GetNotification(UserID: any) {
+    return this.http.get<any[]>(
+      this.host + "/User/GetNotification?UserID=" + UserID
+    );
+  }
 
 }

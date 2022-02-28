@@ -170,9 +170,37 @@ export class EmployeeKraMappingComponent implements OnInit {
         )
       }
     }
+
     Swal.fire('Kra Added Successfully.');
     location.href = "#/EmployeeKraMappingdashboard";
 
+  }
+
+
+  public InsertNotification() {
+    debugger
+
+    var entity = {
+      'Date': new Date(),
+      'Event': 'Apprisal Request',
+      'FromUser': 'Admin',
+      'ToUser': this.EmployeeId,
+      'Message': 'Your Manager has benn assigned a NEw Goal Setting to you',
+      'Photo': 'Null',
+      'Building': 'Dynamics 1',
+      'UserID': sessionStorage.getItem('EmaployedID'),
+      'NotificationTypeID': 17,
+      'VendorID': 0
+
+
+    }
+    this.PerformanceManagementService.InsertNotification(entity).subscribe(data => {
+      if (data != 0) {
+
+
+      }
+
+    })
   }
   public keyresultArray: any = [];
   public SaveDetails() {
