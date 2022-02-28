@@ -21,6 +21,13 @@ export class PerformanceManagementService {
     return this.http.post(this.url, data);
   }
 
+  
+  public SubmitEmpApprisal() {
+    debugger;
+    // this.url = this.baseURL + 'Master/SubmitEmpApprisal';
+    // return this.http.post(this.url, data);
+  }
+
 
   public GetFrequency() {
     return this.http.get<any[]>(
