@@ -49,11 +49,11 @@
                             <td>{{details.cycleEndDate|date}}</td>
                             <td>{{details.appraisalSubmitionDate|date}}</td>
                             <td>
-                                <button [routerLink]="['/SelfRatingPage', details.id,details.id ]"
-                                    *ngIf="details.selfScores==null"
+                                <button [routerLink]="['/SelfRatingPagenew', details.id,details.id ]"
+                                   
                                     class=" btn btn-primary editable-table-button btn-xs">Self Appraisal</button>
-                                <button *ngIf="details.selfScores!=null"
-                                    class=" btn btn-primary editable-table-button btn-xs">Completed</button>
+                                <!-- <button *ngIf="details.selfScores!=null"
+                                    class=" btn btn-primary editable-table-button btn-xs">Completed</button> -->
                                 <!-- <button class="button btn-xs"
                                     routerLink]="['/SelfRatingPage', details.id,details.id ]">Self
                                     Apprisal</button>&nbsp; -->

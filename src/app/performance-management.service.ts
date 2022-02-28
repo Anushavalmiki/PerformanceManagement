@@ -199,5 +199,15 @@ export class PerformanceManagementService {
   public GetStaffScoresByStaffandYear(Year: any, StaffID: any) {
     return this.http.get<any[]>(this.baseURL + '/Master/GetStaffScoresByStaffandYear?Year=' + Year + '&StaffID=' + StaffID);
   }
+  public InsertStaffScoresByHR(data: any) {
+    debugger;
+    this.url = this.baseURL + 'Master/InsertStaffScoresByHR';
+    return this.http.post(this.url, data);
+  }
+  public InsertStaffScoresByManager(data: any) {
+    debugger;
+    this.url = this.baseURL + 'Master/InsertStaffScoresByManager';
+    return this.http.post(this.url, data);
+  }
 
 }
