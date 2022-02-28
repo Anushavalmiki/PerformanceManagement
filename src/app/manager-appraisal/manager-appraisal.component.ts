@@ -4,13 +4,13 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { PerformanceManagementService } from 'src/app/performance-management.service';
 import Swal from 'sweetalert2';
 
-
 @Component({
-  selector: 'app-selfratingnew',
-  templateUrl: './selfratingnew.component.html',
-  styleUrls: ['./selfratingnew.component.css']
+  selector: 'app-manager-appraisal',
+  templateUrl: './manager-appraisal.component.html',
+  styleUrls: ['./manager-appraisal.component.css']
 })
-export class SelfratingnewComponent implements OnInit {
+export class ManagerAppraisalComponent implements OnInit {
+
 
   constructor(private PerformanceManagementService: PerformanceManagementService, private router: Router, private route: ActivatedRoute, private datepipe: DatePipe) { }
 
@@ -24,8 +24,7 @@ export class SelfratingnewComponent implements OnInit {
   RoleType: any;
   Department: any;
   count: any;
-  attachment:any;
-  Attachmentlist:any;
+
 
   ParamID: any;
   EmployeeKradash: any
@@ -48,8 +47,6 @@ export class SelfratingnewComponent implements OnInit {
         this.PerformanceManagementService.GetKRAByStaffID(this.StaffID).subscribe(data => {
           debugger
           this.ResultAreaList = data;
-
-          console.log("Result area", this.ResultAreaList);
 
         })
         // this.GetStaffAppraisalByID(this.ParamID);
@@ -127,7 +124,7 @@ export class SelfratingnewComponent implements OnInit {
       'SelfComments': this.SelfComments,
       'Attachment': this.attachmentsurl[0]
     }
-    this.PerformanceManagementService.InsertStaffScores(entity).subscribe(data => {
+    this.PerformanceManagementService.InsertStaffScoresByManager(entity).subscribe(data => {
       debugger
       Swal.fire("Saved Successfully");
       this.Score = 0;
@@ -150,8 +147,8 @@ export class SelfratingnewComponent implements OnInit {
     this.PerformanceManagementService.GetEmployeeKraMap().subscribe(data => {
       debugger
       let temp: any = data.filter(x => x.id == details.id)
-      this.Score = temp[0].emprating;
-      this.SelfComments = temp[0].empcomments;
+      this.Score = temp[0].managerrating;
+      this.SelfComments = temp[0].managercomments;
 
     })
   }
@@ -166,10 +163,10 @@ export class SelfratingnewComponent implements OnInit {
       debugger
       if (res != undefined) {
         this.attachmentsurl.push(res);
-        //  this.files.length = 0;
+
 
       }
-      debugger;
+      debugger
     })
 
   }
@@ -178,31 +175,13 @@ export class SelfratingnewComponent implements OnInit {
     console.log(event);
     this.files.splice(this.files.indexOf(event), 1);
   }
-  public SubmitEmpApprisal() {
-    debugger
 
+  empcomments: any;
+  public GEtemployeecomments(detials: any) {
+    this.empcomments = detials.empcomments
   }
 
 
-
- 
- 
-  // showAttachments(photo: any) {
-  //   debugger
-  //   this.PerformanceManagementService.GetKRAByStaffID(this.StaffID).subscribe(data => {
-  //     debugger
-  //     this.Attachmentlist = photo;
-  //   })
-  // }
-
-
-  getattachment(details:any){
-    debugger
-      this.attachment=details.photo;
-    }
-
-  }
-
-
+}
 
 

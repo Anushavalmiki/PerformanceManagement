@@ -2,17 +2,11 @@
     <div class="row">
         <div class="col-lg-10">
             <br>
-            <p class="headings">Self Appraisal</p>
+            <p class="headings">Team Appraisal</p>
         </div>
         <div class="col-lg-2">
+            <br>
 
-        </div>
-    </div>
-    <br>
-    <div class="row">
-        <div class="col-lg-10"></div>
-        <div class="col-lg-2">
-            <button type="button" class="btn btn-primary" (click)="SubmitEmpApprisal()">Submit Appraisal</button>
         </div>
     </div>
     <br>
@@ -25,28 +19,43 @@
                             <th>Sr.No.</th>
                             <th>Goal</th>
                             <th>KPI</th>
+                            <th>Emp Rating</th>
+                            <th>Emp Comments</th>
+                            <th>Manager Rating</th>
+                            <th>Manager Comments</th>
+
                             <th>Action </th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr
                             *ngFor="let details of ResultAreaList |paginate: { itemsPerPage: count1, currentPage: p} index as i">
-                            <td [ngClass]="{'bggreen':details.empupdate==1 }">
+                            <td [ngClass]="{'bggreen':details.hrupdate==1 }">
                                 {{i+1}}</td>
-                            <td [ngClass]="{'bggreen':details.empupdate==1 }">{{details.kraName}}</td>
-                            <td [ngClass]="{'bggreen':details.empupdate==1 }">{{details.kpiName}}</td>
-                            <td [ngClass]="{'bggreen':details.empupdate==1 }">
-                                <button *ngIf="details.empupdate!=1" type="button" class="btn btn-primary"
-                                    data-toggle="modal" (click)="GetKPIID(details)"
+                            <td [ngClass]="{'bggreen':details.hrupdate==1 }">{{details.kraName}}</td>
+                            <td [ngClass]="{'bggreen':details.hrupdate==1 }">{{details.kpiName}}</td>
+                            <td [ngClass]="{'bggreen':details.hrupdate==1 }">{{details.emprating}}</td>
+                            <td [ngClass]="{'bggreen':details.hrupdate==1 }">
+                                <button type="button" class="btn btn-success" data-toggle="modal"
+                                    (click)="GetEmpComments(details)" data-target="#viewwmpcomments">View
+                                </button>
+                            </td>
+                            <td [ngClass]="{'bggreen':details.hrupdate==1 }">{{details.managerrating}}</td>
+                            <td [ngClass]="{'bggreen':details.hrupdate==1 }">
+                                <button type="button" class="btn btn-success" data-toggle="modal"
+                                    (click)="GEtmanagercomments(details)" data-target="#viewhrcomments">View
+                                </button>
+                            </td>
+                            <td [ngClass]="{'bggreen':details.hrupdate==1 }">
+                                <button *ngIf="details.hrupdate!=1 &&details.managerupdate==1" type="button"
+                                    class="btn btn-primary" data-toggle="modal" (click)="GetKPIID(details)"
                                     data-target="#exampleModal">Save</button>
-                                <button *ngIf="details.empupdate==1" type="button" class="btn btn-success"
+                                <button *ngIf="details.hrupdate==1" type="button" class="btn btn-success"
                                     data-toggle="modal" (click)="GetKPIIDetails(details)"
                                     data-target="#exampleModal1">View
-                                    Details</button>&nbsp;
-
-                                <button class=" btn btn-primary action" data-toggle="modal"
-                                    data-target="#exampleModal2" (click)="getattachment(details)">View Attachments</button>
+                                    Details</button>
                             </td>
+
                         </tr>
                     </tbody>
                 </table>
@@ -120,6 +129,9 @@
                     </div>
                 </div>
                 <br>
+
+
+
             </div>
             <div class="modal-footer">
                 <button type="button" id="close" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -177,34 +189,60 @@
         </div>
     </div>
 </div>
-
-<div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+<div class="modal fade" id="viewwmpcomments" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content" style="width: 800px;">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel"></h5>
+                <h5 class="modal-title" id="exampleModalLabel">Employee Comments</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
                 <div class="row">
-                    <div class="col-lg-1">
+                    <div class="col-lg-3">
+                    </div>
+                    <div class="col-lg-7">
+                        <p style="padding:5px" [innerHTML]="empcommnts">
+                        </p>
                     </div>
                     <div class="col-lg-3">
-                        <p>Find Attachments</p>
-                    </div>
-                    <div class="col-lg-3">
-                     <img src="{{attachment}}">
-                     <!-- <img src="http://103.133.214.197/digiofficeapi\Images\ProjectAttachments\AmazeLogo-20220214160917-20220228163117.jpg"> -->
+
                     </div>
                 </div>
-                <br>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" (click)="SaveDetails()">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="viewhrcomments" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content" style="width: 800px;">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Manager Comments</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-lg-3">
+                    </div>
+                    <div class="col-lg-7">
+                        <p style="padding:5px" [innerHTML]="managercomments">
+                        </p>
+                    </div>
+                    <div class="col-lg-3">
+
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             </div>
         </div>
     </div>
