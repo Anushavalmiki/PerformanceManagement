@@ -22,12 +22,12 @@
             <div class="col-lg-1"></div>
         </div><br>
     </div> <br>
-    <div class="row">
+    <!-- <div class="row">
         <div class="col-lg-10"></div>
         <div class="col-lg-2">
             <button class="form-control Add" routerLink="/EmployeeForm">Add</button>
         </div>
-    </div> <br>
+    </div> <br> -->
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-12">
@@ -36,20 +36,16 @@
                         <tr>
                             <th>Employee Name</th>
                             <th>Department</th>
+                            <th>Role</th>
                             <th>Manager Name</th>
-                            <th>KRA</th>
-                            <th>KPI</th>
-                            <th>Period</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr *ngFor="let details of stafflist |paginate: { itemsPerPage: count1, currentPage: p}">
                             <td>{{details.name}}</td>
                             <td>{{details.department_name}}</td>
+                            <td>{{details.short}}</td>
                             <td>{{details.manager}}</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
                         </tr>
                     </tbody>
                 </table>

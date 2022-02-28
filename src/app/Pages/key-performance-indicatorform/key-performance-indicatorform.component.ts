@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PerformanceManagementService } from 'src/app/performance-management.service';
 import { ActivatedRoute } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-key-performance-indicatorform',
@@ -115,7 +116,7 @@ export class KeyPerformanceIndicatorformComponent implements OnInit {
       };
       this.PerformanceManagementService.InsertKPI(json).subscribe(
         data => {
-          alert("Successfully Submitted...!");
+          Swal.fire("Successfully Submitted...!");
           location.href="#/KeyPerformanceIndicator"
         })
   }
@@ -136,7 +137,7 @@ export class KeyPerformanceIndicatorformComponent implements OnInit {
         data => {
         debugger
         let indicatorlist = data;
-        alert("Updated Sucessfully");
+        Swal.fire("Updated Sucessfully");
         location.href="#/KeyPerformanceIndicator";
       })
   }
