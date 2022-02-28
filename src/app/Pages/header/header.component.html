@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<!-- <div class="container-fluid">
     <div class="row">
         <div class="col-lg-2">       
             <img class="image"  class="logo" src="assets/Images/Logo_digiOffice_White.png">
@@ -15,16 +15,53 @@
       <p class="time1">{{ampm}}</p> 
      </div>
      </div>
-        <div class="col-lg-5"></div>
+        <div class="col-lg-4"></div>
          <div class="col-lg-1">
              <img class="image"  src="assets/Images/noti.png">
          </div>
+
+        <div class="col-lg-2">
+            <p class="user" style="color:white;font-size:16px;margin-top:25px;">Hii 
+                {{userName}} 
+            </p>
+        </div> 
          <div class="col-lg-1">
             <img (click)="logout()" class="logout" src="assets/Images/Logo_out.1.png">
         </div>
-        <div class="col-lg-1">
-            <p style="color:white;font-size:16px;margin-top:25px;">Hii {{userName}}</p>
-        </div>
+    
      
+    </div>
+</div> -->
+
+
+<div class="container-fluid" *ngIf="temp=='1'" style="background: #3247D5; height:70px;">
+    <div class="row">
+        <div class="col-lg-2">
+            <img src="assets/Images/Logo_digiOffice_White.png" class="logo" alt="logo" routerLink="/CompanyDashboard">
+        </div>
+        <div class="col-lg-1"></div>
+        <div class="col-lg-2" style="display: flex;align-items: center;
+        flex-wrap: nowrap;justify-content: start;">
+      <div class="time">
+      <p class="time1">{{hh}} </p> 
+      </div>     
+      <div class="time">
+      <p class="time1">{{mm}}</p>
+       </div>
+   <div class="time">
+      <p class="time1">{{ampm}}</p> 
+     </div>
+     </div>
+        <div class="col-lg-3"></div>      
+        <div class="col-lg-1">
+            <img  class="notification" src="assets/Images/notification.png">        
+        </div>
+        <div class="col-lg-2">
+            <img class="imageicon" src="assets/Images/usr.png">
+            <p class="user">Hi {{userName}}</p>        
+        </div>
+        <div class="col-lg-1">
+            <img src="assets/Images/Logo_out.1.png" class="logout" (click)="logout()" class="logout">
+        </div>
     </div>
 </div>
