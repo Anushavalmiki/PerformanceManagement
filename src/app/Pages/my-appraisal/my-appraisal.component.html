@@ -49,9 +49,11 @@
                             <td>{{details.cycleEndDate|date}}</td>
                             <td>{{details.appraisalSubmitionDate|date}}</td>
                             <td>
-                                <button [routerLink]="['/SelfRatingPagenew', details.id,details.id ]"
-                                   
+                                <button [routerLink]="['/SelfRatingPagenew', details.id,details.id ]"                                  
                                     class=" btn btn-primary editable-table-button btn-xs Add">Self Appraisal</button>
+                           
+
+
                                 <!-- <button *ngIf="details.selfScores!=null"
                                     class=" btn btn-primary editable-table-button btn-xs">Completed</button> -->
                                 <!-- <button class="button btn-xs"
@@ -70,8 +72,6 @@
                 </div>
             </div>
         </div>
-
-
 </div>
 <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">

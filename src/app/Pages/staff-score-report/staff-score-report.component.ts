@@ -20,19 +20,19 @@ export class StaffScoreReportComponent implements OnInit {
   term: any;
   p: any = 1;
   count1: any = 10;
-  roleTypeid:any;
-  roleTypeList:any;
-  manager:any;
-  managerList:any;
-  count:any;
+  roleTypeid: any;
+  roleTypeList: any;
+  manager: any;
+  managerList: any;
+  count: any;
   ngOnInit() {
     this.GetRoleType();
     this.YearID = 2020;
-    this.ratingvalue=0;
+    this.ratingvalue = 0;
     this.StaffTypeID = 0;
     this.StaffID = 0;
     this.GetMyDetails();
-    this.manager=0;
+    this.manager = 0;
     // this.StaffID = 0;
     this.UserID = localStorage.getItem('staffid');
     // this.PerformanceManagementService.GetStaffType(1).subscribe(data => {
@@ -41,7 +41,7 @@ export class StaffScoreReportComponent implements OnInit {
     // })
 
     this.ConductappraisalStaffList();
-  
+
 
 
   }
@@ -82,7 +82,7 @@ export class StaffScoreReportComponent implements OnInit {
         debugger;
         let temp: any = res
         this.StaffAppraisalList = temp;
-        this.FilteredStaffAppraisalList = this.StaffAppraisalList
+        this.FilteredStaffAppraisalList = this.StaffAppraisalList.filter((x: { cioScores: null; }) => x.cioScores != null)
         this.count = this.FilteredStaffAppraisalList.length;
       }
     )
@@ -139,31 +139,31 @@ export class StaffScoreReportComponent implements OnInit {
 
 
 
-  getRoleID(even:any){
-    this.roleTypeid=even.target.value;
+  getRoleID(even: any) {
+    this.roleTypeid = even.target.value;
   }
 
-public GetRoleType(){
-  this.PerformanceManagementService.GetRoleType().subscribe(
-    data=>{
-      this.roleTypeList=data;
-      console.log("type",this.roleTypeList);
-      this.roleTypeid=0;
-    }
-  )
-}
+  public GetRoleType() {
+    this.PerformanceManagementService.GetRoleType().subscribe(
+      data => {
+        this.roleTypeList = data;
+        console.log("type", this.roleTypeList);
+        this.roleTypeid = 0;
+      }
+    )
+  }
 
-getManager(even:any){
-  this.manager=even.target.value;
-}
+  getManager(even: any) {
+    this.manager = even.target.value;
+  }
 
-public GetMyDetails(){
-  this.PerformanceManagementService.GetMyDetails().subscribe(
-    data=>{
-      this.managerList=data;
-    }
-  )
-}
+  public GetMyDetails() {
+    this.PerformanceManagementService.GetMyDetails().subscribe(
+      data => {
+        this.managerList = data;
+      }
+    )
+  }
 
 
 

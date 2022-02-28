@@ -24,7 +24,8 @@ export class SelfratingnewComponent implements OnInit {
   RoleType: any;
   Department: any;
   count: any;
-
+  attachment:any;
+  Attachmentlist:any;
 
   ParamID: any;
   EmployeeKradash: any
@@ -47,6 +48,8 @@ export class SelfratingnewComponent implements OnInit {
         this.PerformanceManagementService.GetKRAByStaffID(this.StaffID).subscribe(data => {
           debugger
           this.ResultAreaList = data;
+
+          console.log("Result area", this.ResultAreaList);
 
         })
         // this.GetStaffAppraisalByID(this.ParamID);
@@ -144,11 +147,11 @@ export class SelfratingnewComponent implements OnInit {
 
   public GetKPIIDetails(details: any) {
     debugger
-    this.PerformanceManagementService.GetStaffScores().subscribe(data => {
+    this.PerformanceManagementService.GetEmployeeKraMap().subscribe(data => {
       debugger
-      let temp: any = data.filter((x: { SatffID: any; resultAreaID: any; performaceIndicatorID: any }) => x.SatffID = this.StaffID && x.resultAreaID == details.resultAreaID && x.performaceIndicatorID == details.kpiid);
-      this.Score = temp[0].selfScores;
-      this.SelfComments = temp[0].selfComments;
+      let temp: any = data.filter(x => x.id == details.id)
+      this.Score = temp[0].emprating;
+      this.SelfComments = temp[0].empcomments;
 
     })
   }
@@ -166,7 +169,7 @@ export class SelfratingnewComponent implements OnInit {
         //  this.files.length = 0;
 
       }
-      debugger
+      debugger;
     })
 
   }
@@ -182,6 +185,24 @@ export class SelfratingnewComponent implements OnInit {
 
 
 
-}
+ 
+ 
+  // showAttachments(photo: any) {
+  //   debugger
+  //   this.PerformanceManagementService.GetKRAByStaffID(this.StaffID).subscribe(data => {
+  //     debugger
+  //     this.Attachmentlist = photo;
+  //   })
+  // }
+
+
+  getattachment(details:any){
+    debugger
+      this.attachment=details.photo;
+    }
+
+  }
+
+
 
 

@@ -126,10 +126,23 @@ export class HrratingnewComponent implements OnInit {
     this.PerformanceManagementService.InsertStaffScoresByHR(entity).subscribe(data => {
       debugger
       Swal.fire("Saved Successfully");
+      // var entity1 = {
+      //   'SatffID': this.StaffID,
+      //   'StaffType': this.StaffID,
+      //   // 'Supervisor': this.appraisalList[this.q].Supervisor,
+      //   'ResultAreaID': this.ResultAreaID,
+      //   'PerformaceIndicatorID': this.kpiid,
+      //   'GroupHeadScores': this.Score,
+      //   'GroupHeadComments': this.SelfComments,
+      // }
+      // this.PerformanceManagementService.UpdateCIOStaffScores(entity1).subscribe(data => {
+      //   debugger
+
+      // })
       this.Score = 0;
       this.SelfComments = '';
       const element1 = document.getElementById('close');
-
+      this.files.length = 0;
       if (element1 !== null) {
 
         element1.click();
@@ -142,11 +155,11 @@ export class HrratingnewComponent implements OnInit {
 
   public GetKPIIDetails(details: any) {
     debugger
-    this.PerformanceManagementService.GetStaffScores().subscribe(data => {
+    this.PerformanceManagementService.GetEmployeeKraMap().subscribe(data => {
       debugger
-      let temp: any = data.filter((x: { SatffID: any; resultAreaID: any; performaceIndicatorID: any }) => x.SatffID = this.StaffID && x.resultAreaID == details.resultAreaID && x.performaceIndicatorID == details.kpiid);
-      this.Score = temp[0].selfScores;
-      this.SelfComments = temp[0].selfComments;
+      let temp: any = data.filter(x => x.id == details.id)
+      this.Score = temp[0].hrrrating;
+      this.SelfComments = temp[0].hrcomments;
 
     })
   }
@@ -161,7 +174,7 @@ export class HrratingnewComponent implements OnInit {
       debugger
       if (res != undefined) {
         this.attachmentsurl.push(res);
-        this.files.length = 0;
+
 
       }
       debugger

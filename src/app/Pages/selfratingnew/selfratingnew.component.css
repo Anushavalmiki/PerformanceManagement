@@ -4,3 +4,12 @@
 .bggreen{
     background: rgb(93, 228, 93);
 }
+.action{
+    background-color: #3247D5;
+    color:white;
+    border:none;
+    border-radius: 5px;
+    width:40%;
+    height:auto;
+
+}

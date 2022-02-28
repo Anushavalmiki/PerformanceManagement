@@ -11,7 +11,7 @@ import Swal from 'sweetalert2';
 })
 export class ManagerAppraisalComponent implements OnInit {
 
- 
+
   constructor(private PerformanceManagementService: PerformanceManagementService, private router: Router, private route: ActivatedRoute, private datepipe: DatePipe) { }
 
   stafflist: any;
@@ -127,8 +127,22 @@ export class ManagerAppraisalComponent implements OnInit {
     this.PerformanceManagementService.InsertStaffScoresByManager(entity).subscribe(data => {
       debugger
       Swal.fire("Saved Successfully");
+      // var entity1 = {
+      //   'SatffID': this.StaffID,
+      //   'StaffType': this.StaffID,
+      //   // 'Supervisor': this.appraisalList[this.q].Supervisor,
+      //   'ResultAreaID': this.ResultAreaID,
+      //   'PerformaceIndicatorID': this.kpiid,
+      //   'GroupHeadScores': this.Score,
+      //   'GroupHeadComments': this.SelfComments,
+      // }
+      // this.PerformanceManagementService.UpdateGroupHeadStaffScores(entity1).subscribe(data => {
+      //   debugger
+
+      // })
       this.Score = 0;
       this.SelfComments = '';
+      this.files.length = 0;
       const element1 = document.getElementById('close');
 
       if (element1 !== null) {
@@ -139,15 +153,16 @@ export class ManagerAppraisalComponent implements OnInit {
       this.ngOnInit();
 
     })
+
   }
 
   public GetKPIIDetails(details: any) {
     debugger
-    this.PerformanceManagementService.GetStaffScores().subscribe(data => {
+    this.PerformanceManagementService.GetEmployeeKraMap().subscribe(data => {
       debugger
-      let temp: any = data.filter((x: { SatffID: any; resultAreaID: any; performaceIndicatorID: any }) => x.SatffID = this.StaffID && x.resultAreaID == details.resultAreaID && x.performaceIndicatorID == details.kpiid);
-      this.Score = temp[0].selfScores;
-      this.SelfComments = temp[0].selfComments;
+      let temp: any = data.filter(x => x.id == details.id)
+      this.Score = temp[0].managerrating;
+      this.SelfComments = temp[0].managercomments;
 
     })
   }
@@ -162,7 +177,7 @@ export class ManagerAppraisalComponent implements OnInit {
       debugger
       if (res != undefined) {
         this.attachmentsurl.push(res);
-        this.files.length = 0;
+
 
       }
       debugger
