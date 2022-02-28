@@ -20,13 +20,19 @@ export class StaffScoreReportComponent implements OnInit {
   term: any;
   p: any = 1;
   count1: any = 10;
-
-
+  roleTypeid:any;
+  roleTypeList:any;
+  manager:any;
+  managerList:any;
+  count:any;
   ngOnInit() {
+    this.GetRoleType();
     this.YearID = 2020;
     this.ratingvalue=0;
     this.StaffTypeID = 0;
     this.StaffID = 0;
+    this.GetMyDetails();
+    this.manager=0;
     // this.StaffID = 0;
     this.UserID = localStorage.getItem('staffid');
     // this.PerformanceManagementService.GetStaffType(1).subscribe(data => {
@@ -35,6 +41,7 @@ export class StaffScoreReportComponent implements OnInit {
     // })
 
     this.ConductappraisalStaffList();
+  
 
 
   }
@@ -124,6 +131,40 @@ export class StaffScoreReportComponent implements OnInit {
     this.router.navigate(['/StaffScoreFullDetails', StaffID, StaffID]);
 
   }
+
+
+
+
+  getRoleID(even:any){
+    this.roleTypeid=even.target.value;
+  }
+
+public GetRoleType(){
+  this.PerformanceManagementService.GetRoleType().subscribe(
+    data=>{
+      this.roleTypeList=data;
+      console.log("type",this.roleTypeList);
+      this.roleTypeid=0;
+    }
+  )
+}
+
+getManager(even:any){
+  this.manager=even.target.value;
+}
+
+public GetMyDetails(){
+  this.PerformanceManagementService.GetMyDetails().subscribe(
+    data=>{
+      this.managerList=data;
+    }
+  )
+}
+
+
+
+
+
 
   // exporttoexcel() {
   //   debugger;
