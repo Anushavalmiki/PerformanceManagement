@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PerformanceManagementService } from 'src/app/performance-management.service';
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -46,7 +47,7 @@ export class LoginComponent implements OnInit {
         location.reload();
       }
       else {
-        alert("Please Enter Valid Details");
+        Swal.fire("Incorrect Username or Password")
       }
     }
     else if (this.roleId == 2) {
@@ -65,7 +66,7 @@ export class LoginComponent implements OnInit {
           location.reload();
         }
         else {
-          alert('Username or Password is invalid');
+          Swal.fire("Incorrect Username or Password")
           this.userName = "";
           this.passWord = "";
         }
@@ -89,7 +90,7 @@ export class LoginComponent implements OnInit {
           location.reload();
         }
         else {
-          alert('Username or Password is invalid');
+          Swal.fire("Incorrect Username or Password")
           this.userName = "";
           this.passWord = "";
         }
@@ -117,7 +118,7 @@ export class LoginComponent implements OnInit {
           location.reload();
         }
         else {
-          alert('Username or Password is invalid');
+          Swal.fire("Incorrect Username or Password")
           this.userName = "";
           this.passWord = "";
         }

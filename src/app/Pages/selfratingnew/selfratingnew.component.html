@@ -2,11 +2,11 @@
     <div class="row">
         <div class="col-lg-10">
             <br>
-            <p class="headings">Self Apprisal</p>
+            <p class="headings">Self Appraisal</p>
         </div>
         <div class="col-lg-2">
             <br>
-
+    
         </div>
     </div>
     <br>
@@ -50,8 +50,11 @@
             </div>
         </div>
     </div>
-
 </div>
+
+
+
+
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -66,11 +69,11 @@
                 <div class="row">
                     <div class="col-lg-1">
                     </div>
-                    <div class="col-lg-2">
+                    <div class="col-lg-3">
                         <p style="padding:5px">
-                            Rating <span style="color: red;">*</span> </p>
+                            Rating<span style="color: red;">*</span> </p>
                     </div>
-                    <div class="col-lg-5">
+                    <div class="col-lg-7">
                         <select class="dropdown form-control" id="Score" name="Score" [(ngModel)]="Score" required>
                             <option value="0">Select Rating</option>
                             <option *ngFor="let value of list" value="{{value.id}}">{{value.score}} - {{value.answers}}
@@ -82,11 +85,11 @@
                 <div class="row">
                     <div class="col-lg-1">
                     </div>
-                    <div class="col-lg-2">
+                    <div class="col-lg-3">
                         <p style="padding:5px">
-                            Comments <span style="color: red;">*</span> </p>
+                            Comments<span style="color: red;">*</span> </p>
                     </div>
-                    <div class="col-lg-5">
+                    <div class="col-lg-7">
                         <ckeditor id="SelfComments" name="SelfComments" [(ngModel)]="SelfComments"
                             data="<p>Enter Answer Here !</p>"></ckeditor>
                     </div>
@@ -134,11 +137,11 @@
                 <div class="row">
                     <div class="col-lg-1">
                     </div>
-                    <div class="col-lg-2">
+                    <div class="col-lg-3">
                         <p style="padding:5px">
                             Rating <span style="color: red;">*</span> </p>
                     </div>
-                    <div class="col-lg-5">
+                    <div class="col-lg-7">
                         <select class="dropdown form-control" id="Score" name="Score" [(ngModel)]="Score" required>
                             <option value="0">Select Rating</option>
                             <option *ngFor="let value of list" value="{{value.id}}">{{value.score}} - {{value.answers}}
@@ -150,11 +153,11 @@
                 <div class="row">
                     <div class="col-lg-1">
                     </div>
-                    <div class="col-lg-2">
+                    <div class="col-lg-3">
                         <p style="padding:5px">
                             Comments <span style="color: red;">*</span> </p>
                     </div>
-                    <div class="col-lg-5">
+                    <div class="col-lg-7">
                         <ckeditor id="SelfComments" name="SelfComments" [(ngModel)]="SelfComments"
                             data="<p>Enter Answer Here !</p>"></ckeditor>
                     </div>

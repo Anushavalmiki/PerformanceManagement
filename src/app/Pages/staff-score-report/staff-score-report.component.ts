@@ -20,6 +20,7 @@ export class StaffScoreReportComponent implements OnInit {
   term: any;
   p: any = 1;
   count1: any = 10;
+  count:any;
 
 
   ngOnInit() {
@@ -50,6 +51,8 @@ export class StaffScoreReportComponent implements OnInit {
           let temp: any = res
           this.StaffAppraisalList = temp;
           this.FilteredStaffAppraisalList = this.StaffAppraisalList
+          this.count = this.FilteredStaffAppraisalList.length;
+
         }
       )
     } else {
@@ -59,6 +62,7 @@ export class StaffScoreReportComponent implements OnInit {
           let temp: any = res
           this.StaffAppraisalList = temp;
           this.FilteredStaffAppraisalList = this.StaffAppraisalList.filter((x: { avgGroupHeadScores: any; avgCIOScores: any; }) => ((x.avgGroupHeadScores + x.avgCIOScores) / 2) == this.ratingvalue)
+          this.count = this.FilteredStaffAppraisalList.length;
         }
       )
     }
@@ -73,6 +77,7 @@ export class StaffScoreReportComponent implements OnInit {
         let temp: any = res
         this.StaffAppraisalList = temp;
         this.FilteredStaffAppraisalList = this.StaffAppraisalList
+        this.count = this.FilteredStaffAppraisalList.length;
       }
     )
   }
