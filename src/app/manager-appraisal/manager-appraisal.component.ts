@@ -11,7 +11,7 @@ import Swal from 'sweetalert2';
 })
 export class ManagerAppraisalComponent implements OnInit {
 
- 
+
   constructor(private PerformanceManagementService: PerformanceManagementService, private router: Router, private route: ActivatedRoute, private datepipe: DatePipe) { }
 
   stafflist: any;
@@ -129,6 +129,7 @@ export class ManagerAppraisalComponent implements OnInit {
       Swal.fire("Saved Successfully");
       this.Score = 0;
       this.SelfComments = '';
+      this.files.length = 0;
       const element1 = document.getElementById('close');
 
       if (element1 !== null) {
@@ -143,11 +144,11 @@ export class ManagerAppraisalComponent implements OnInit {
 
   public GetKPIIDetails(details: any) {
     debugger
-    this.PerformanceManagementService.GetStaffScores().subscribe(data => {
+    this.PerformanceManagementService.GetEmployeeKraMap().subscribe(data => {
       debugger
-      let temp: any = data.filter((x: { SatffID: any; resultAreaID: any; performaceIndicatorID: any }) => x.SatffID = this.StaffID && x.resultAreaID == details.resultAreaID && x.performaceIndicatorID == details.kpiid);
-      this.Score = temp[0].selfScores;
-      this.SelfComments = temp[0].selfComments;
+      let temp: any = data.filter(x => x.id == details.id)
+      this.Score = temp[0].managerrating;
+      this.SelfComments = temp[0].managercomments;
 
     })
   }
@@ -162,7 +163,7 @@ export class ManagerAppraisalComponent implements OnInit {
       debugger
       if (res != undefined) {
         this.attachmentsurl.push(res);
-        this.files.length = 0;
+
 
       }
       debugger

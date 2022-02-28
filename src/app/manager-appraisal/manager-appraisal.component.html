@@ -6,7 +6,7 @@
         </div>
         <div class="col-lg-2">
             <br>
-    
+
         </div>
     </div>
     <br>
@@ -27,21 +27,21 @@
                     <tbody>
                         <tr
                             *ngFor="let details of ResultAreaList |paginate: { itemsPerPage: count1, currentPage: p} index as i">
-                            <td [ngClass]="{'bggreen':details.empupdate==1 }">
+                            <td [ngClass]="{'bggreen':details.managerupdate==1 }">
                                 {{i+1}}</td>
-                            <td [ngClass]="{'bggreen':details.empupdate==1 }">{{details.kraName}}</td>
-                            <td [ngClass]="{'bggreen':details.empupdate==1 }">{{details.kpiName}}</td>
-                            <td>{{details.emprating}}</td>
-                            <td [ngClass]="{'bggreen':details.empupdate==1 }">
+                            <td [ngClass]="{'bggreen':details.managerupdate==1 }">{{details.kraName}}</td>
+                            <td [ngClass]="{'bggreen':details.managerupdate==1 }">{{details.kpiName}}</td>
+                            <td [ngClass]="{'bggreen':details.managerupdate==1 }">{{details.emprating}}</td>
+                            <td [ngClass]="{'bggreen':details.managerupdate==1 }">
                                 <button type="button" class="btn btn-success" data-toggle="modal"
                                     (click)="GEtemployeecomments(details)" data-target="#viewempcomments">View
                                 </button>
                             </td>
-                            <td [ngClass]="{'bggreen':details.empupdate==1 }">
-                                <button *ngIf="details.empupdate!=1" type="button" class="btn btn-primary"
-                                    data-toggle="modal" (click)="GetKPIID(details)"
+                            <td [ngClass]="{'bggreen':details.managerupdate==1 }">
+                                <button *ngIf="details.managerupdate!=1 &&details.empupdate==1" type="button"
+                                    class="btn btn-primary" data-toggle="modal" (click)="GetKPIID(details)"
                                     data-target="#exampleModal">Save</button>
-                                <button *ngIf="details.empupdate==1" type="button" class="btn btn-success"
+                                <button *ngIf="details.managerupdate==1" type="button" class="btn btn-success"
                                     data-toggle="modal" (click)="GetKPIIDetails(details)"
                                     data-target="#exampleModal1">View
                                     Details</button>
@@ -106,11 +106,11 @@
                 <div class="row">
                     <div class="col-lg-1">
                     </div>
-                    <div class="col-lg-2">
+                    <div class="col-lg-3">
                         <p style="padding:5px">
-                            Attachment<span style="color: red;">*</span> </p>
+                            Attachment<span style="color: red;"></span> </p>
                     </div>
-                    <div class="col-lg-5">
+                    <div class="col-lg-7">
                         <ngx-dropzone (change)="onSelect($event)" style="width:100% ;height: auto;">
                             <ngx-dropzone-label>Drag or Click to Upload</ngx-dropzone-label>
                             <ngx-dropzone-preview *ngFor="let f of files" [removable]="true" (removed)="onRemove(f)">

@@ -144,11 +144,11 @@ export class SelfratingnewComponent implements OnInit {
 
   public GetKPIIDetails(details: any) {
     debugger
-    this.PerformanceManagementService.GetStaffScores().subscribe(data => {
+    this.PerformanceManagementService.GetEmployeeKraMap().subscribe(data => {
       debugger
-      let temp: any = data.filter((x: { SatffID: any; resultAreaID: any; performaceIndicatorID: any }) => x.SatffID = this.StaffID && x.resultAreaID == details.resultAreaID && x.performaceIndicatorID == details.kpiid);
-      this.Score = temp[0].selfScores;
-      this.SelfComments = temp[0].selfComments;
+      let temp: any = data.filter(x => x.id == details.id)
+      this.Score = temp[0].emprating;
+      this.SelfComments = temp[0].empcomments;
 
     })
   }

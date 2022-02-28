@@ -215,7 +215,7 @@ export class PerformanceManagementService {
     for (let i = 0; i < files.length; i++) {
       formdata.append('file_upload', files[i], files[i].name);
     }
-    this.url = this.host + '/Announcement/ProjectAttachments';
+    this.url = this.baseURL + '/Master/ProjectAttachments';
     return this.http.post<any[]>(this.url, formdata);
   }
 

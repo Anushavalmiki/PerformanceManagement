@@ -129,7 +129,7 @@ export class HrratingnewComponent implements OnInit {
       this.Score = 0;
       this.SelfComments = '';
       const element1 = document.getElementById('close');
-
+      this.files.length = 0;
       if (element1 !== null) {
 
         element1.click();
@@ -161,7 +161,7 @@ export class HrratingnewComponent implements OnInit {
       debugger
       if (res != undefined) {
         this.attachmentsurl.push(res);
-        this.files.length = 0;
+      
 
       }
       debugger
