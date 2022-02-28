@@ -49,10 +49,10 @@
                         Performance Indicator <span style="color: red;">*</span></p>
                 </div>
                 <div class="col-lg-5">
-                    <ckeditor id="Description" name="Description" [(ngModel)]="Description"
-                        data="<p>Enter Answer Here !</p>"></ckeditor>
-                     <!-- <textarea class="form-control" id="Description" [(ngModel)]="Description" name="Description"
-                        placeholder="Performance Indicator" rows="4" required></textarea> -->
+                    <!-- <ckeditor id="Description" name="Description" [(ngModel)]="Description"
+                        data="<p>Enter Answer Here !</p>"></ckeditor> -->
+                     <textarea class="form-control" id="Description" [(ngModel)]="Description" name="Description"
+                        placeholder="Performance Indicator" rows="4" required></textarea>
                 </div>
                 <div class="col-lg-2">
                     <!-- <textarea class="form-control" id="empcomments" [(ngModel)]="empcomments" name="empcomments"
@@ -116,13 +116,13 @@
                 </div>
                 <!-- <div class="col-lg-2" *ngIf="tablecount==1">
                 <button class="btn btn-block btn-md"
-                  style="background-color:#fec500;margin-left: -109px;color:white;border-color: rgba(20, 21, 31, 0.20);"
+                  style="background-color:#3247d5;margin-left: -109px;color:white;border-color: rgba(20, 21, 31, 0.20);"
                   (click)="insertdetails1()">Save</button>
               </div> -->
 
                 <div class="col-lg-2" *ngIf="tablecount==2 ">
                     <button class="btn btn-block btn-md"
-                        style="background-color:#fec500;margin-left: -109px;color:white;border-color: rgba(20, 21, 31, 0.20);"
+                        style="background-color:#3247d5;margin-left: -109px;color:white;border-color: rgba(20, 21, 31, 0.20);"
                         (click)="Preview()">Preview</button>
                 </div>
                 <div class="col-lg-1" *ngIf="tablecount!=2 && TableNextPrevHide!=1">
@@ -171,7 +171,7 @@
                     </div>
                     <div class="col-lg-2">
                         <button class="btn btn-block btn-md"
-                            style="background-color:#fec500;color:white;border-color: rgba(20, 21, 31, 0.20);"
+                            style="background-color:#3247d5;color:white;border-color: rgba(20, 21, 31, 0.20);"
                             (click)="insertdetails1()">Submit Appraisal</button>
                     </div>
                     <div class="col-lg-5">

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DatePipe } from '@angular/common';
 import { PerformanceManagementService } from 'src/app/performance-management.service';
-import { ActivatedRoute , Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import Swal from 'sweetalert2';
 // import * as ClassicEditor from '@ckeditor/ckeditor5-angular';
 
@@ -12,9 +12,9 @@ import Swal from 'sweetalert2';
 })
 export class HrRatingComponent implements OnInit {
 
-  constructor(private PerformanceManagementService:PerformanceManagementService,private router: Router,
-    private route: ActivatedRoute, private datepipe: DatePipe ) { }
-      // public Editor = ClassicEditor;
+  constructor(private PerformanceManagementService: PerformanceManagementService, private router: Router,
+    private route: ActivatedRoute, private datepipe: DatePipe) { }
+  // public Editor = ClassicEditor;
 
   StaffTypelist: any;
   StaffID: any;
@@ -41,8 +41,8 @@ export class HrRatingComponent implements OnInit {
   AppraisalManager: any;
   empcomments: any;
   empscore: any;
-  managercomments:any;
-  managerscore:any;
+  managercomments: any;
+  managerscore: any;
   ngOnInit() {
     this.idcount = 0;
     this.Score = 0;
@@ -112,11 +112,11 @@ export class HrRatingComponent implements OnInit {
               debugger
               let temp: any = data.filter(x => x.satffID == this.StaffID && x.resultAreaID == this.ResultAreaID && x.performaceIndicatorID == this.PerformanceLists1[0].id)
               this.empcomments = temp[0].selfComments;
-              this.empscore = temp[0].selfScores;
+              this.empscore = temp[0].selfScores.replace(/<(.|\n)*?>/g, '');
               this.managercomments = temp[0].groupHeadComments;
-              this.managerscore = temp[0].groupHeadScores
+              this.managerscore = temp[0].groupHeadScores.replace(/<(.|\n)*?>/g, '');
 
-        
+
             })
 
             this.performanceindicatorName = this.PerformanceLists1[0].performanceIndicator;
@@ -164,9 +164,9 @@ export class HrRatingComponent implements OnInit {
           this.PerformanceManagementService.GetStaffScores().subscribe(data => {
             debugger
             let temp: any = data.filter(x => x.satffID == this.StaffID && x.resultAreaID == this.ResultAreaID && x.performaceIndicatorID == this.PerformanceLists1[this.i].id)
-            this.empcomments = temp[0].selfComments;
+            this.empcomments = temp[0].selfComments.replace(/<(.|\n)*?>/g, '');;
             this.empscore = temp[0].selfScores;
-            this.managercomments = temp[0].groupHeadComments;
+            this.managercomments = temp[0].groupHeadComments.replace(/<(.|\n)*?>/g, '');;
             this.managerscore = temp[0].groupHeadScores
           })
           this.PerformaceIndicatorID = this.PerformanceLists1[this.i].id;
@@ -201,9 +201,9 @@ export class HrRatingComponent implements OnInit {
           this.PerformanceManagementService.GetStaffScores().subscribe(data => {
             debugger
             let temp: any = data.filter(x => x.satffID == this.StaffID && x.resultAreaID == this.ResultAreaID && x.performaceIndicatorID == this.PerformanceLists1[this.i].id)
-            this.empcomments = temp[0].selfComments;
+            this.empcomments = temp[0].selfComments.replace(/<(.|\n)*?>/g, '');;
             this.empscore = temp[0].selfScores;
-            this.managercomments = temp[0].groupHeadComments;
+            this.managercomments = temp[0].groupHeadComments.replace(/<(.|\n)*?>/g, '');;
             this.managerscore = temp[0].groupHeadScores
           })
           this.PerformaceIndicatorID = this.PerformanceLists1[this.i].id;
@@ -235,9 +235,9 @@ export class HrRatingComponent implements OnInit {
           this.PerformanceManagementService.GetStaffScores().subscribe(data => {
             debugger
             let temp: any = data.filter(x => x.satffID == this.StaffID && x.resultAreaID == this.ResultAreaID && x.performaceIndicatorID == this.PerformanceLists1[this.i].id)
-            this.empcomments = temp[0].selfComments;
+            this.empcomments = temp[0].selfComments.replace(/<(.|\n)*?>/g, '');;
             this.empscore = temp[0].selfScores;
-            this.managercomments = temp[0].groupHeadComments;
+            this.managercomments = temp[0].groupHeadComments.replace(/<(.|\n)*?>/g, '');
             this.managerscore = temp[0].groupHeadScores
           })
           this.PerformaceIndicatorID = this.PerformanceLists1[this.i].id;
@@ -269,9 +269,9 @@ export class HrRatingComponent implements OnInit {
             this.PerformanceManagementService.GetStaffScores().subscribe(data => {
               debugger
               let temp: any = data.filter(x => x.satffID == this.StaffID && x.resultAreaID == this.ResultAreaID && x.performaceIndicatorID == this.PerformanceLists1[this.i].id)
-              this.empcomments = temp[0].selfComments;
+              this.empcomments = temp[0].selfComments.replace(/<(.|\n)*?>/g, '');
               this.empscore = temp[0].selfScores;
-              this.managercomments = temp[0].groupHeadComments;
+              this.managercomments = temp[0].groupHeadComments.replace(/<(.|\n)*?>/g, '');
               this.managerscore = temp[0].groupHeadScores
             })
             this.performanceindicatorName = this.PerformanceLists1[this.i].performanceIndicator;
@@ -326,18 +326,19 @@ export class HrRatingComponent implements OnInit {
         // 'Supervisor': this.appraisalList[this.q].Supervisor,
         'ResultAreaID': this.appraisalList[this.q].ResultAreaID,
         'PerformaceIndicatorID': this.appraisalList[this.q].PerformaceIndicatorID,
-        'GroupHeadScores': this.appraisalList[this.q].SelfScores,
-        'GroupHeadComments': this.appraisalList[this.q].SelfComments
+        'CIOScores': this.appraisalList[this.q].SelfScores,
+        'CIOComments': this.appraisalList[this.q].SelfComments
       }
       this.PerformanceManagementService.UpdateCIOStaffScores(entity).subscribe(data => {
         debugger
         if (data != undefined && this.q == this.appraisalList.length) {
           Swal.fire("Appraisal Saved Successfully");
-          this.router.navigate(['Managerratingdash']);
+
 
         }
       })
     }
+    this.router.navigate(['HrDash']);
 
   }
 }

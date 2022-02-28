@@ -22,6 +22,8 @@ import { ManagerratingComponent } from './Pages/managerrating/managerrating.comp
 import { ManagerratingdashComponent } from './Pages/managerratingdash/managerratingdash.component';
 import { HrRatingComponent } from './Pages/hr-rating/hr-rating.component';
 import { HrDashComponent } from './Pages/hr-dash/hr-dash.component';
+import { StaffScoreReportComponent } from './Pages/staff-score-report/staff-score-report.component';
+import { StaffScoreFullDetailsComponent } from './Pages/staff-score-full-details/staff-score-full-details.component';
 
 
 const routes: Routes = [
@@ -54,7 +56,9 @@ const routes: Routes = [
   { path: 'Managerratingdash', component: ManagerratingdashComponent },
   {path:'HrRating',component:HrRatingComponent},
   {path:'HrRating/:id/:StaffID',component:HrRatingComponent},
-{path:'HrDash',component:HrDashComponent}
+  {path:'HrDash',component:HrDashComponent},
+  { path: 'StaffScoreReport', component: StaffScoreReportComponent },
+  { path: 'StaffScoreFullDetails/:StaffTypeID/:StaffID', component: StaffScoreFullDetailsComponent },
 
 ];
 
