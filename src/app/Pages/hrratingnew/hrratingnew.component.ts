@@ -16,7 +16,7 @@ export class HrratingnewComponent implements OnInit {
   stafflist: any;
   term: any;
   p: any = 1;
-  count1: any = 5;
+  count1: any = 25;
   stafflistCopy: any;
   Departmentlist: any;
   RoleTypeList: any;

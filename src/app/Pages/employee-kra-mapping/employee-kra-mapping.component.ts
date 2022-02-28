@@ -143,7 +143,7 @@ export class EmployeeKraMappingComponent implements OnInit {
     for (let i = 0; i < this.keyresultArray.length; i++) {
 
       if (this.keyresultArray.length == 0) {
-        Swal.fire('Please Select Kra For Staff')
+        Swal.fire('Please Select Goals For Staff')
       }
       else {
         var Entity = {
@@ -171,7 +171,7 @@ export class EmployeeKraMappingComponent implements OnInit {
       }
     }
 
-    Swal.fire('Kra Added Successfully.');
+    Swal.fire('Goal Added Successfully.');
     location.href = "#/EmployeeKraMappingdashboard";
 
   }

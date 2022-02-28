@@ -2,7 +2,7 @@
     <br>
     <div class="row">
         <div class="col-lg-4">
-            <p class="headings">Employee Goal Setting </p>
+            <p class="headings">Employee Goal Settings </p>
         </div>
     </div>
     <br>
@@ -24,7 +24,7 @@
         </div>
         <div class="row">
             <div class="col-lg-3">
-                <select class="form-control columnname" name="Department">
+                <select class="form-control " name="Department">
                     <option value="0">Select Department</option>
                     <option *ngFor="let details of Departmentlist" value="{{details.id}}">{{details.departmentName}}
                     </option>
@@ -66,7 +66,7 @@
         </div>
         <div class="row">
             <div class="col-lg-3">
-                <ng-multiselect-dropdown [placeholder]="'Select Kra'" [settings]="dropdownSettings1"
+                <ng-multiselect-dropdown [placeholder]="'Select Goal'" [settings]="dropdownSettings1"
                     [data]="dropdownList1" [(ngModel)]="selectedItems1" (onSelect)="onItemSelect1($event)">
                 </ng-multiselect-dropdown>
             </div>

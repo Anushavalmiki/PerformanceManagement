@@ -46,7 +46,7 @@
 
         </div>
 
-        <a class="togglebtn button" *ngIf="roleid!='1'||roleid=='2'" routerLink="/EmployeeDashboard" class="tablinks"
+        <a class="togglebtn button" *ngIf="roleid=='3'||roleid=='4'" routerLink="/EmployeeDashboard" class="tablinks"
             (click)="highlight($event)" (click)="Employee()">
             <img src="assets/Images/64 Blue/Staff.png" style="width:13% ;margin-right: 15px;"
                 [ngClass]="active != 'category' ? 'Active1' : 'Active2'" />
