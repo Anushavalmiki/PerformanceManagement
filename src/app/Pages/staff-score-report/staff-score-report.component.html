@@ -17,7 +17,7 @@
                 <p class="filter">Filter By</p>
             </div>
             <div class="col-lg-3">
-                <input type="search" class="form-control search" placeholder="Search for Name..">
+                <input type="search" class="form-control search" placeholder="Search for Name.." [(ngModel)]="search">
             </div>
             <div class="col-lg-3">
                 <select class="dropdown form-control" id="ratingvalue" name="ratingvalue" [(ngModel)]="ratingvalue"
@@ -46,7 +46,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-12">
-                <table>
+                <table class="table">
                     <thead>
                         <tr>
                             <th>Appraisal Cycle</th>
@@ -65,7 +65,7 @@
                     </thead>
                     <tbody>
                         <tr
-                            *ngFor="let details of FilteredStaffAppraisalList |paginate: { itemsPerPage: count1, currentPage: p}">
+                            *ngFor="let details of FilteredStaffAppraisalList |paginate: { itemsPerPage: count1, currentPage: p}|filter:search">
                             <td>{{details.appraisalCycleName}}</td>
                             <td>{{details.departmentName}}</td>
                             <td>{{details.name}}</td>

@@ -20,6 +20,8 @@ export class StaffScoreReportComponent implements OnInit {
   term: any;
   p: any = 1;
   count1: any = 10;
+
+
   ngOnInit() {
     this.YearID = 2020;
     this.ratingvalue=0;
