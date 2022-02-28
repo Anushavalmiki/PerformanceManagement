@@ -20,6 +20,7 @@ export class EmployeeDashboardComponent implements OnInit {
   RoleType: any;
   Department: any;
   count:any;
+  search:any;
 
 
 
@@ -73,12 +74,7 @@ export class EmployeeDashboardComponent implements OnInit {
   }
 
 
-  public  GetMyDetails(){
-    this.PerformanceManagementService.GetMyDetails().subscribe(data => {
-      debugger
-     this.stafflist();
-    });
-  }
+
 
 
   }

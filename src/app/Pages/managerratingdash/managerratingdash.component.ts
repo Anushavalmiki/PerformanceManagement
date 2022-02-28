@@ -20,6 +20,7 @@ export class ManagerratingdashComponent implements OnInit {
   RoleType: any;
   Department: any;
   count: any;
+  search:any;
 
 
 
