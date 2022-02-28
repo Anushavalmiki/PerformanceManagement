@@ -131,6 +131,7 @@ table {
   line-height: 15px;
   letter-spacing: 0.5px;
   color: #3247D5;
+  font-family: "Poppins" !important;
 }
 
 .count {
@@ -143,7 +144,7 @@ table {
   line-height: 15px;
   /* letter-spacing: 0.5px; */
   color: #0C275A;
-  /* font-family: "Poppins" !important; */
+  font-family: "Poppins" !important;
 }
 
 .filter {
@@ -302,5 +303,16 @@ tr:last-of-type td:first-of-type {
 
 tr:last-of-type td:last-of-type {
   border-bottom-right-radius: 10px;
+}
+body,p {
+  font-family: 'Poppins';
+}
+
+i {
+  color: #3247d5;
+
+}
+input,textarea{
+  font-size: 12px;
 }
 

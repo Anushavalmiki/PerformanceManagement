@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { interval } from 'rxjs';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-header',
@@ -15,6 +16,7 @@ export class HeaderComponent implements OnInit {
   mm:any;
   ampm:any;
   page:any;
+  notificationslist:any;
   constructor() { }
 
   ngOnInit(): void {
@@ -36,7 +38,7 @@ export class HeaderComponent implements OnInit {
       this.page = sessionStorage.getItem('clickname')
     }));
 
-
+    this.GetNotification();
 
 
   }
@@ -48,8 +50,27 @@ export class HeaderComponent implements OnInit {
 
   }
 
-     
+  public GetNotification() {
+    debugger
 
+    // this.DigipayrollServiceService.GetNotification(this.staffID).subscribe(data => {
+    //   debugger
+    //   this.notificationslist = data.filter(x=>x.notificationTypeID==16);
+    // })
+  }
+
+
+  public ClearNotification() {
+    debugger
+    // this.DigipayrollServiceService.ClearNotificationByID(Number(this.staffID)).subscribe(data => {
+    //   debugger
+
+    // })
+
+    Swal.fire('Cleared Successfully');
+    this.GetNotification();
+
+  }
 
 
 
