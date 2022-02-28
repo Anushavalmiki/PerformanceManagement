@@ -4,3 +4,7 @@
 .bggreen{
     background: rgb(93, 228, 93);
 }
+.scroll{
+    overflow-y: auto;
+    height:230px;
+}

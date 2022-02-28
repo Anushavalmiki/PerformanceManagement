@@ -194,7 +194,24 @@ export class HrratingnewComponent implements OnInit {
     this.managercomments = detials.managercomments
   }
 
+ 
 
+  public SubmitEmpApprisal() {
+    debugger
+    Swal.fire({
+      title: 'Are you sure?',
+      text: 'You Want to Submit it.',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, Submit it!',
+      cancelButtonText: 'No, keep it'
+    }).then((result) => {
+      if (result.value == true) {
+       
+
+      }
+    })
+  }
 
 }
 
