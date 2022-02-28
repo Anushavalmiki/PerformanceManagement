@@ -27,6 +27,7 @@ import { StaffScoreFullDetailsComponent } from './Pages/staff-score-full-details
 import { SelfratingnewComponent } from './Pages/selfratingnew/selfratingnew.component';
 import { ManagerAppraisalComponent } from './manager-appraisal/manager-appraisal.component';
 import { HrratingnewComponent } from './Pages/hrratingnew/hrratingnew.component';
+import { BellCurveFittingComponent } from './bell-curve-fitting/bell-curve-fitting.component';
 
 
 const routes: Routes = [
@@ -65,6 +66,7 @@ const routes: Routes = [
   { path: 'SelfRatingPagenew/:id/:StaffID', component: SelfratingnewComponent },
   { path: 'ManagerAppraisal/:id/:StaffID', component: ManagerAppraisalComponent },
   { path: 'hrratingnew/:id/:StaffID', component: HrratingnewComponent },
+  { path: 'BellCurveFitting', component: BellCurveFittingComponent },
 
 
 ];

@@ -63,4 +63,7 @@ export class SidebarComponent implements OnInit {
     localStorage.setItem("clickname", "Team Appraisal")
   }
 
+  BellCurve(){
+    localStorage.setItem("clickname", "Bell Curve Fitting")
+  }
 }
