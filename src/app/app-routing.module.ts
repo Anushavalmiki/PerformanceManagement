@@ -25,6 +25,7 @@ import { HrDashComponent } from './Pages/hr-dash/hr-dash.component';
 import { StaffScoreReportComponent } from './Pages/staff-score-report/staff-score-report.component';
 import { StaffScoreFullDetailsComponent } from './Pages/staff-score-full-details/staff-score-full-details.component';
 import { SelfratingnewComponent } from './Pages/selfratingnew/selfratingnew.component';
+import { ManagerAppraisalComponent } from './manager-appraisal/manager-appraisal.component';
 import { HrratingnewComponent } from './Pages/hrratingnew/hrratingnew.component';
 
 
@@ -62,6 +63,7 @@ const routes: Routes = [
   { path: 'StaffScoreReport', component: StaffScoreReportComponent },
   { path: 'StaffScoreFullDetails/:StaffTypeID/:StaffID', component: StaffScoreFullDetailsComponent },
   { path: 'SelfRatingPagenew/:id/:StaffID', component: SelfratingnewComponent },
+  { path: 'ManagerAppraisal/:id/:StaffID', component: ManagerAppraisalComponent },
   { path: 'hrratingnew/:id/:StaffID', component: HrratingnewComponent },
 
 
