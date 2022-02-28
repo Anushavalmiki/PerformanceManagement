@@ -35,6 +35,7 @@ import { StaffScoreReportComponent } from './Pages/staff-score-report/staff-scor
 import { StaffScoreFullDetailsComponent } from './Pages/staff-score-full-details/staff-score-full-details.component';
 import { CKEditorModule } from 'ckeditor4-angular';
 import { SelfratingnewComponent } from './Pages/selfratingnew/selfratingnew.component';
+import { HrratingnewComponent } from './Pages/hrratingnew/hrratingnew.component';
 
 @NgModule({
   declarations: [
@@ -63,7 +64,8 @@ import { SelfratingnewComponent } from './Pages/selfratingnew/selfratingnew.comp
     HrDashComponent,
     StaffScoreReportComponent,
     StaffScoreFullDetailsComponent,
-    SelfratingnewComponent
+    SelfratingnewComponent,
+    HrratingnewComponent
   ],
   imports: [
     BrowserModule,
