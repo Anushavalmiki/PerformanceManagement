@@ -266,7 +266,25 @@ export class SelfratingnewComponent implements OnInit {
     })
   }
 
+<<<<<<< HEAD
+   UpdateMain(){
+     debugger
+     var entity={
+       "StaffID":this.photoid,
+       "emprating":this.Score,
+       "empcomments":this.SelfComments
+     }
+     this.PerformanceManagementService.UpdateEmployeeSelfRating(entity).subscribe(
+       data=>{
 
+         Swal.fire("Updated Sucessfully");
+         this.ngOnInit();
+       }
+     )
+   }
+=======
+
+>>>>>>> a259eb21d0f6d1a1f83f50b3f64380e701472919
 
 
   ondelete() {

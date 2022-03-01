@@ -25,6 +25,8 @@ export class StaffScoreReportComponent implements OnInit {
   manager: any;
   managerList: any;
   count: any;
+
+  
   ngOnInit() {
     this.GetRoleType();
     this.YearID = 2020;
