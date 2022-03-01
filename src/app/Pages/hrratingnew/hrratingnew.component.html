@@ -28,8 +28,10 @@
                             <th>KPI</th>
                             <th>Emp Rating</th>
                             <th>Emp Comments</th>
+                            <th>Emp Attachment</th>
                             <th>Manager Rating</th>
                             <th>Manager Comments</th>
+                            <th>Manager Attachment</th>
                             <th>HR Rating</th>
                             <th>Action </th>
                         </tr>
@@ -47,11 +49,19 @@
                                     (click)="GetEmpComments(details)" data-target="#viewwmpcomments">View
                                 </button>
                             </td>
+                            <td [ngClass]="{'bggreen':details.hrupdate==1 }">
+                                <button class=" btn btn-primary action" data-toggle="modal" data-target="#exampleModal2"
+                                (click)="getattachment(details)">View Attachments</button>
+                            </td>
                             <td [ngClass]="{'bggreen':details.hrupdate==1 }">{{details.managerrating}}</td>
                             <td [ngClass]="{'bggreen':details.hrupdate==1 }">
                                 <button type="button" class="btn btn-success" data-toggle="modal"
                                     (click)="GEtmanagercomments(details)" data-target="#viewhrcomments">View
                                 </button>
+                            </td>
+                            <td [ngClass]="{'bggreen':details.hrupdate==1 }">
+                                <button class=" btn btn-primary action" data-toggle="modal" data-target="#exampleModal2"
+                                (click)="getattachment(details)">View Attachments</button>
                             </td>
                             <td [ngClass]="{'bggreen':details.hrupdate==1 }">{{details.hrrrating}}
                                 <p *ngIf="details.hrupdate!=1" >NA</p>
@@ -63,10 +73,7 @@
                                 <button *ngIf="details.hrupdate==1" type="button" class="btn btn-success"
                                     data-toggle="modal" (click)="GetKPIIDetails(details)"
                                     data-target="#exampleModal1">View
-                                    Details</button>&nbsp;
-
-                                    <button class=" btn btn-primary action" data-toggle="modal" data-target="#exampleModal2"
-                                    (click)="getattachment(details)">View Attachments</button>
+                                    Details</button>
                             </td>
 
                         </tr>
@@ -193,9 +200,20 @@
                             data="<p>Enter Answer Here !</p>"></ckeditor>
                     </div>
                 </div>
-                <button class=" btn btn-primary action" data-toggle="modal" data-target="#exampleModal2"
-                [(ngModel)]="attachment">Edit Attachments</button>
                 <br>
+                <div class="row">
+                    <div class="col-lg-1">
+                    </div>
+                    <div class="col-lg-3">
+                        <p style="padding:5px">
+                            Attachments <span style="color: red;">*</span> </p>
+                    </div>
+                    <div class="col-lg-7">
+                        <button class=" btn btn-primary action" data-toggle="modal" data-target="#exampleModal4"
+               >Edit Attachments</button>
+                    </div>
+                </div>
+               
 
             </div>
             <div class="modal-footer">
@@ -264,13 +282,12 @@
         </div>
     </div>
 </div>
-
 <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content" style="width: 800px;">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel"></h5>
+                <h5 class="modal-title related" id="exampleModalLabel">Related Attachments</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -283,15 +300,89 @@
                         <p *ngIf="attachment==null">No Attachments</p>
                     </div>
                     <div class="col-lg-3">
-                        <img src="{{attachment}}" style="width: 400px;">
+                        <img src="{{attachment}}" style="width:400px;">
                         <!-- <img src="http://103.133.214.197/digiofficeapi\Images\ProjectAttachments\AmazeLogo-20220214160917-20220228163117.jpg"> -->
                     </div>
                 </div>
                 <br>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
 
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="exampleModal4" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content" style="width: 800px;">
+            <div class="modal-header">
+                <h5 class="modal-title related" id="exampleModalLabel">Related Attachments</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-lg-1">
+                    </div>
+                    <div class="col-lg-3">
+                        <p *ngIf="attachment==null">No Attachments</p>
+                    </div>
+                    <div class="col-lg-3">
+                        <img src="{{attachment}}" style="width:400px;">
+                        <!-- <img src="http://103.133.214.197/digiofficeapi\Images\ProjectAttachments\AmazeLogo-20220214160917-20220228163117.jpg"> -->
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-lg-8"></div>
+                    <div class="col-lg-2">
+                        <button class="form-control cancel" data-toggle="modal" data-target="#exampleModal5" data-dismiss="modal" >Update</button>
+                    </div>
+                    <div class="col-lg-2">
+                        <button class="form-control cancel" data-dismiss="modal">Cancel</button>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="exampleModal5" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel"></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" style="width:800px;">
+                <br>
+                <div class="row">
+                    <br>
+                    <br>
+                    <div class="col-lg-3"></div>
+                   <div class="col-lg-4">
+                    <ngx-dropzone (change)="onSelect($event)" style="width:100% ;height: auto;">
+                        <ngx-dropzone-label>Please Attach Photo!</ngx-dropzone-label>
+                        <ngx-dropzone-preview *ngFor="let f of files" [removable]="true" (removed)="onRemove(f)">
+                            <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label>
+                        </ngx-dropzone-preview>
+                    </ngx-dropzone>
+                   </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" (click)="update()" data-dismiss="modal">Update Changes</button>
             </div>
         </div>
     </div>
