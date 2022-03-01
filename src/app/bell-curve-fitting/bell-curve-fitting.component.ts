@@ -69,7 +69,7 @@ export class BellCurveFittingComponent implements OnInit {
             debugger;
             let temp: any = res
             this.StaffAppraisalList = temp;
-            this.FilteredStaffAppraisalList = this.StaffAppraisalList.filter((x: { avgGroupHeadScores: any; avgCIOScores: any; }) => ((x.avgGroupHeadScores + x.avgCIOScores) / 2) == this.ratingvalue)
+            this.FilteredStaffAppraisalList = this.StaffAppraisalList.filter((x: { avgGroupHeadScores: any; avgCIOScores: any; }) => (Math.round((x.avgGroupHeadScores + x.avgCIOScores) / 2)) == this.ratingvalue)
             this.count = this.FilteredStaffAppraisalList.length;
           }
         )

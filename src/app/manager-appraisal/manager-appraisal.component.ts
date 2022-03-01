@@ -113,7 +113,8 @@ export class ManagerAppraisalComponent implements OnInit {
   Score: any;
   ResultAreaID: any;
   ManagerSubmittedDate:any;
-  id: any;
+  managerattachment:any
+    id: any;
   public GetKPIID(details: any) {
     this.id = details.id;
     this.kpiid = details.kpiid;
@@ -175,6 +176,7 @@ export class ManagerAppraisalComponent implements OnInit {
       this.Score = temp[0].managerrating;
       this.SelfComments = temp[0].managercomments;
       this.attachment=details.photo;
+      this.managerattachment=details.photo;
 
     })
   }
@@ -235,7 +237,7 @@ export class ManagerAppraisalComponent implements OnInit {
   photoid:any;
   getattachment(details:any){
     debugger
-      this.attachment=details.photo;
+      this.managerattachment=details.photo;
       this.photoid=details.id;
       this.attachmentsurl[0]=details.selfattachment
     }
@@ -244,7 +246,7 @@ export class ManagerAppraisalComponent implements OnInit {
       debugger
       var entity = {
         'ID':this.photoid,
-        'Attachment': this.attachmentsurl[0]
+        'managerattachment': this.attachmentsurl[0]
       }
       this.PerformanceManagementService.UpdateManagerSelfAttachment(entity).subscribe(data => {
         debugger
