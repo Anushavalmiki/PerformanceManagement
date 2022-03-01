@@ -256,4 +256,22 @@ export class PerformanceManagementService {
     return this.http.post(this.url, data);
   }
 
+  
+  public DeleteStaffScores(ID: any) {
+    return this.http.get<any[]>(
+      this.baseURL + "/Master/DeleteStaffScores?ID=" + ID);
+  }
+
+
+  public UpdateEmployeeSelfRating(data: any) {
+    debugger;
+    this.url = this.baseURL + 'Master/UpdateEmployeeSelfRating';
+    return this.http.post(this.url, data);
+  }
+
+
+
+
+
+
 }

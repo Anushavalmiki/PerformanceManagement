@@ -25,6 +25,7 @@
                             <th>Sr.No.</th>
                             <th>Goal</th>
                             <th>KPI</th>
+                            <th>Rating</th>
                             <th>Action </th>
                         </tr>
                     </thead>
@@ -35,6 +36,7 @@
                                 {{i+1}}</td>
                             <td [ngClass]="{'bggreen':details.empupdate==1 }">{{details.kraName}}</td>
                             <td [ngClass]="{'bggreen':details.empupdate==1 }">{{details.kpiName}}</td>
+                            <td  [ngClass]="{'bggreen':details.empupdate==1 }">{{details.emprating}}</td>
                             <td [ngClass]="{'bggreen':details.empupdate==1 }">
                                 <button *ngIf="details.empupdate!=1" type="button" class="btn btn-primary"
                                     data-toggle="modal" (click)="GetKPIID(details)"
@@ -44,8 +46,8 @@
                                     data-target="#exampleModal1">View
                                     Details</button>&nbsp;
 
-                                <button class=" btn btn-primary action" data-toggle="modal" data-target="#exampleModal2"
-                                    (click)="getattachment(details)">View Attachments</button>
+                                <!-- <button class=" btn btn-primary action" data-toggle="modal" data-target="#exampleModal2"
+                                    (click)="getattachment(details)">View Attachments</button> -->
                             </td>
                         </tr>
                     </tbody>
@@ -63,7 +65,7 @@
 
 
 
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+<!-- <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content" >
@@ -102,7 +104,6 @@
                             data="<p>Enter Answer Here !</p>"></ckeditor>
                     </div>
                 </div>
-                <br>
                 <div class="row">
                     <div class="col-lg-1">
                     </div>
@@ -127,7 +128,11 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
+
+
+
+
 <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -168,11 +173,21 @@
                     </div>
                 </div>
                 <br>
-
+                <div class="row">
+                   <div class="col-lg-1">
+                   </div>
+                   <div class="col-lg-3">
+                    <p style="padding:5px">
+                        Attachments <span style="color: red;">*</span> </p>
+                   </div>
+                    <div class="col-lg-3">
+                        <button   data-toggle="modal" data-target="#exampleModal2"  class="cancel">View Attachments</button>
+                    </div>
+                </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" (click)="SaveDetails()">Save changes</button>
+                <button type="button" class="btn btn-primary" (click)="UpdateMain()">Update Changes</button>
             </div>
         </div>
     </div>
@@ -204,10 +219,10 @@
                 <div class="row">
                     <div class="col-lg-8"></div>
                     <div class="col-lg-2">
-                        <button class="form-control cancel" data-toggle="modal" data-target="#exampleModal3" data-dismiss="modal" >Update</button>
+                        <button class="form-control cancel" data-toggle="modal" data-target="#exampleModal3" data-dismiss="modal" (click)="update()">Update</button>
                     </div>
                     <div class="col-lg-2">
-                        <button class="form-control cancel" data-dismiss="modal">Cancel</button>
+                        <button class="form-control cancel" data-dismiss="modal" data-dismiss="modal" (click)="ondelete()">Delete</button>
                     </div>
                 </div>
             </div>
@@ -218,23 +233,21 @@
         </div>
     </div>
 </div>
-
-<div class="modal fade" id="exampleModal3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+ 
+ <div class="modal fade" id="exampleModal3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel"></h5>
+                <h5 class="modal-title" id="exampleModalLabel">Update Attachment</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body" style="width:800px;">
                 <br>
-                <div class="row">
-                    <br>
-                    <br>
-                    <div class="col-lg-3"></div>
+                <div class="row"  style="width:800px;">
+                    <div class="col-lg-2"></div>
                    <div class="col-lg-4">
                     <ngx-dropzone (change)="onSelect($event)" style="width:100% ;height: auto;">
                         <ngx-dropzone-label>Please Attach Photo!</ngx-dropzone-label>
@@ -244,11 +257,12 @@
                     </ngx-dropzone>
                    </div>
                 </div>
+                <br>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" (click)="update()" data-dismiss="modal">Update Changes</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Delete</button>
+                <button type="button" class="btn btn-primary"  data-dismiss="modal">Update Changes</button>
             </div>
         </div>
     </div>
-</div>
+</div> 

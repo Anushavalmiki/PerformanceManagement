@@ -34,6 +34,12 @@ export class SelfratingnewComponent implements OnInit {
   StaffID: any;
   ResultAreaList: any;
   PerformanceLists1: any;
+  score:any;
+  empcomments:any;
+  selfrating:any;
+  selfComments:any;
+
+
   ngOnInit(): void {
     this.Score = 0;
     this.HighScore();
@@ -154,6 +160,11 @@ export class SelfratingnewComponent implements OnInit {
       this.SelfComments = temp[0].empcomments;
 
     })
+
+    this.attachment=details.photo;
+    this.photoid=details.id;
+    this.attachmentsurl[0]=details.selfattachment;
+
   }
 
   files: File[] = [];
@@ -214,14 +225,6 @@ export class SelfratingnewComponent implements OnInit {
   // }
 
 
-  getattachment(details:any){
-    debugger
-      this.attachment=details.photo;
-      this.photoid=details.id;
-      this.attachmentsurl[0]=details.selfattachment
-    }
-
-
 
     update(){
       debugger
@@ -236,18 +239,47 @@ export class SelfratingnewComponent implements OnInit {
         this.PerformanceManagementService.GetKRAByStaffID(this.StaffID).subscribe(data => {
           debugger
           this.ResultAreaList = data;
-
           console.log("Result area", this.ResultAreaList);
-
         })
-
-      })
-    
+      })   
     }
   cancel(){
     location.href="/Selfratingnew";
   }
 
+
+   ondelete(){
+     debugger
+     this.PerformanceManagementService.DeleteStaffScores(this.photoid).subscribe(
+       data=>{
+         Swal.fire("Deleted Sucussfully");
+         this.ngOnInit();
+       }   
+     )
+   }
+
+   UpdateMain(){
+     debugger
+     var entity={
+       "StaffID":this.photoid,
+       "emprating":this.Score,
+       "empcomments":this.empcomments
+     }
+     this.PerformanceManagementService.UpdateEmployeeSelfRating(entity).subscribe(
+       data=>{
+
+         Swal.fire("Updated Sucessfully");
+       }
+     )
+   }
+
+
+
+   
+
+
+
+  
 
   }
 
