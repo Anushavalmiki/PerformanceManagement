@@ -23,7 +23,7 @@ export class HrratingnewComponent implements OnInit {
   RoleType: any;
   Department: any;
   count: any;
-
+  attachment:any;
 
   ParamID: any;
   EmployeeKradash: any
@@ -153,6 +153,37 @@ export class HrratingnewComponent implements OnInit {
     })
   }
 
+
+  public UpdateDetails(){
+    debugger
+    var entity = {
+      'SatffID': this.StaffID,
+      'StaffType': this.StaffID,
+      'Supervisor': this.id,
+      'ResultAreaID': this.ResultAreaID,
+      'PerformaceIndicatorID': this.kpiid,
+      'SelfScores': this.Score,
+      'SelfComments': this.SelfComments,
+      'Attachment': this.attachmentsurl[0]
+    }
+    this.PerformanceManagementService.InsertStaffScoresByHR(entity).subscribe(data => {
+      debugger
+      Swal.fire("Updated Successfully");
+    
+      this.Score = 0;
+      this.SelfComments = '';
+      const element1 = document.getElementById('close');
+      this.files.length = 0;
+      if (element1 !== null) {
+
+        element1.click();
+
+      }
+      this.ngOnInit();
+
+    })
+  }
+
   public GetKPIIDetails(details: any) {
     debugger
     this.PerformanceManagementService.GetEmployeeKraMap().subscribe(data => {
@@ -219,6 +250,11 @@ export class HrratingnewComponent implements OnInit {
       }
     })
   }
+
+  getattachment(details:any){
+    debugger
+      this.attachment=details.photo;
+    }
 
 }
 

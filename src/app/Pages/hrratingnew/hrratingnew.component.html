@@ -30,7 +30,7 @@
                             <th>Emp Comments</th>
                             <th>Manager Rating</th>
                             <th>Manager Comments</th>
-
+                            <th>HR Rating</th>
                             <th>Action </th>
                         </tr>
                     </thead>
@@ -53,6 +53,9 @@
                                     (click)="GEtmanagercomments(details)" data-target="#viewhrcomments">View
                                 </button>
                             </td>
+                            <td [ngClass]="{'bggreen':details.hrupdate==1 }">{{details.hrrrating}}
+                                <p *ngIf="details.hrupdate!=1" >NA</p>
+                            </td>
                             <td [ngClass]="{'bggreen':details.hrupdate==1 }">
                                 <button *ngIf="details.hrupdate!=1 &&details.managerupdate==1" type="button"
                                     class="btn btn-primary" data-toggle="modal" (click)="GetKPIID(details)"
@@ -60,7 +63,10 @@
                                 <button *ngIf="details.hrupdate==1" type="button" class="btn btn-success"
                                     data-toggle="modal" (click)="GetKPIIDetails(details)"
                                     data-target="#exampleModal1">View
-                                    Details</button>
+                                    Details</button>&nbsp;
+
+                                    <button class=" btn btn-primary action" data-toggle="modal" data-target="#exampleModal2"
+                                    (click)="getattachment(details)">View Attachments</button>
                             </td>
 
                         </tr>
@@ -142,11 +148,12 @@
             </div>
             <div class="modal-footer">
                 <button type="button" id="close" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" (click)="SaveDetails()">Save changes</button>
+                <button type="button" class="btn btn-primary" (click)="SaveDetails()">Save</button>
             </div>
         </div>
     </div>
 </div>
+
 <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -186,12 +193,14 @@
                             data="<p>Enter Answer Here !</p>"></ckeditor>
                     </div>
                 </div>
+                <button class=" btn btn-primary action" data-toggle="modal" data-target="#exampleModal2"
+                [(ngModel)]="attachment">Edit Attachments</button>
                 <br>
 
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" (click)="SaveDetails()">Save changes</button>
+                <button type="button" class="btn btn-primary" (click)="UpdateDetails()">Update changes</button>
             </div>
         </div>
     </div>
@@ -251,6 +260,38 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content" style="width: 800px;">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel"></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-lg-1">
+                    </div>
+                    <div class="col-lg-3">
+                        <p *ngIf="attachment==null">No Attachments</p>
+                    </div>
+                    <div class="col-lg-3">
+                        <img src="{{attachment}}" style="width: 400px;">
+                        <!-- <img src="http://103.133.214.197/digiofficeapi\Images\ProjectAttachments\AmazeLogo-20220214160917-20220228163117.jpg"> -->
+                    </div>
+                </div>
+                <br>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
             </div>
         </div>
     </div>
