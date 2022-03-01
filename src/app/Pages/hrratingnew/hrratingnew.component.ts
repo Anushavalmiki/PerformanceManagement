@@ -196,7 +196,7 @@ export class HrratingnewComponent implements OnInit {
 
  
 
-  public SubmitEmpApprisal() {
+  public SubmitHrAppraisal() {
     debugger
     Swal.fire({
       title: 'Are you sure?',
@@ -207,8 +207,15 @@ export class HrratingnewComponent implements OnInit {
       cancelButtonText: 'No, keep it'
     }).then((result) => {
       if (result.value == true) {
-       
-
+        debugger
+        var entity = {
+          'StaffID': this.StaffID,
+        }
+        this.PerformanceManagementService.SubmitHrAppraisal(entity).subscribe(data => {
+          debugger
+          Swal.fire("Submitted Appraisal Successfully");
+          this.ngOnInit();
+        })
       }
     })
   }

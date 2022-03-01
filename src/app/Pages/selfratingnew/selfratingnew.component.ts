@@ -178,9 +178,30 @@ export class SelfratingnewComponent implements OnInit {
     console.log(event);
     this.files.splice(this.files.indexOf(event), 1);
   }
-  public SubmitEmpApprisal() {
-    debugger
 
+
+ public SubmitEmployeeAppraisal() {
+    debugger
+    Swal.fire({
+      title: 'Are you sure?',
+      text: 'You Want to Submit it.',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, Submit it!',
+      cancelButtonText: 'No, keep it'
+    }).then((result) => {
+      if (result.value == true) {
+        debugger
+        var entity = {
+          'StaffID': this.StaffID,
+        }
+        this.PerformanceManagementService.SubmitEmployeeAppraisal(entity).subscribe(data => {
+          debugger
+          Swal.fire("Submitted Appraisal Successfully");
+          this.ngOnInit();
+        })
+      }
+    })
   }
 
 

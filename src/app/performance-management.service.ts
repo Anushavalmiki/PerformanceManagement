@@ -22,10 +22,22 @@ export class PerformanceManagementService {
   }
 
   
-  public SubmitEmpApprisal() {
+  public SubmitManagerAppraisal(data: any) {
     debugger;
-    // this.url = this.baseURL + 'Master/SubmitEmpApprisal';
-    // return this.http.post(this.url, data);
+    this.url = this.baseURL + 'Master/UpdateManagerSubmitted';
+    return this.http.post(this.url, data);
+  }
+
+  public SubmitHrAppraisal(data: any) {
+    debugger;
+    this.url = this.baseURL + 'Master/UpdateHrSubmitted';
+    return this.http.post(this.url, data);
+  }
+
+  public SubmitEmployeeAppraisal(data: any) {
+    debugger;
+    this.url = this.baseURL + 'Master/UpdateEmployeeSubmitted';
+    return this.http.post(this.url, data);
   }
 
 

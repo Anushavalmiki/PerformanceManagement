@@ -11,6 +11,7 @@ export class EmployeeKraMappingComponent implements OnInit {
 
   constructor(private PerformanceManagementService: PerformanceManagementService, private ActivatedRoute: ActivatedRoute) { }
 
+  
   Departmentlist: any;
   RoleTypeList: any;
   RoleID: any;
@@ -28,6 +29,8 @@ export class EmployeeKraMappingComponent implements OnInit {
   dropdownSettings2: any = {};
   Apprisalcyclelist: any;
   ngOnInit(): void {
+    this.RoleID="0";
+    this.Apprisalcycle="0"
 
 
     this.PerformanceManagementService.GetDepartmentMaster().subscribe(data => {
@@ -171,7 +174,7 @@ export class EmployeeKraMappingComponent implements OnInit {
       }
     }
 
-    Swal.fire('Goal Added Successfully.');
+    Swal.fire('Goal Setting Done Successfully.');
     location.href = "#/EmployeeKraMappingdashboard";
 
   }
