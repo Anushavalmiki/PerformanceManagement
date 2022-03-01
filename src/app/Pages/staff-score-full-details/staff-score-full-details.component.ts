@@ -22,6 +22,9 @@ export class StaffScoreFullDetailsComponent implements OnInit {
   DivisionHead: any;
   CIOHead: any;
   StaffDetailsBYConductAppraisals: any;
+  selfcomment:any;
+  managercomments:any;
+  hrcomment:any;
   ngOnInit() {
     this.route.params.subscribe(params => {
       debugger;
@@ -134,6 +137,21 @@ export class StaffScoreFullDetailsComponent implements OnInit {
       }
     )
   }
+
+  viewself(Scores:any){
+  this.selfcomment=Scores.selfComments;
+  }
+
+  manager(Scores:any){
+    this.managercomments=Scores.groupHeadComments;
+  }
+
+  hrcomments(Scores:any){
+    this.hrcomment=Scores.cIOComments;
+  }
+
+
+
 
 }
 

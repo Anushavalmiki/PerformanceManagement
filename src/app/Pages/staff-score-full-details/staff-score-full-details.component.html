@@ -22,6 +22,38 @@
             <div class="col-lg-1"></div>
         </div><br>
     </div> <br>
+    <!-- <div class="card">
+        <div class="row">
+            <div class="col-lg-12">
+                <p class="avg">Average</p>
+                <hr>
+            </div>
+        </div>
+        <div class="row">
+            <p class="col-lg-3 text1">Self Assessment Avg : {{overallScore}}</p>
+            <div class="col-lg-9">
+            </div>
+        </div>
+        <div class="row">
+            <p class="col-lg-3 text1" *ngIf="groupHeadAvgScores!=null">Manager Avg : {{groupHeadAvgScores}}</p>
+            <div class="col-lg-9">
+            </div>
+        </div>
+        <div class="row">
+            <p class="col-lg-3 text1" *ngIf="cioAvgScores!=null">HR Avg : {{cioAvgScores}}</p>
+            <div class="col-lg-9">
+            </div>
+        </div>
+        <div class="row">
+            <p class="col-lg-3 text1" *ngIf="cioAvgScores!=null">Total Avg : {{(groupHeadAvgScores+cioAvgScores)/2}}</p>
+            <div class="col-lg-9">
+            </div>
+        </div>
+    </div> -->
+
+
+
+
     <div class="row">
         <div class="col-lg-9">
         </div>
@@ -46,6 +78,12 @@
         <p class="col-lg-3" *ngIf="cioAvgScores!=null">Total Avg : {{(groupHeadAvgScores+cioAvgScores)/2}}</p>
     </div>
     <div class="container-fluid">
+        <!-- <div class="row">
+            <div class="col-lg-12">
+                <p class="Appraisal">Employee Appraisal Details </p>
+            </div>
+        </div>
+        <hr> -->
         <div class="row">
             <div class="col-lg-6">
                 <p style="margin-left: 14px;">Staff ID:{{StaffID}} </p>
@@ -68,25 +106,59 @@
         </div>
         <div class="row">
             <div class="col-lg-6">
-                <p style="margin-left: 14px;">Cycle Start Date:{{StartDate|date}} </p>
+                <p style="margin-left: 14px;">Appraisal Cycle Start Date:{{StartDate|date}} </p>
+            </div>
+            <div class="col-lg-4">
+                <p>Appraisal Cycle End Date:{{EndDate|date}} </p>
+            </div>
+            <div class="col-lg-2">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6">
+                <p style="margin-left: 14px;">Department:</p>
             </div>
             <div class="col-lg-3">
-                <p>Cycle End Date:{{EndDate|date}} </p>
+                <p>Role: </p>
             </div>
             <div class="col-lg-3">
             </div>
         </div>
-
-        <!-- <div class="row">
-            <div class="col-lg-9">
+        <div class="row">
+            <div class="col-lg-6">
+                <p style="margin-left: 14px;">Employee Submission Date:</p>
             </div>
-            <p class="col-lg-3">Overall Staff Score : {{overallScore}}</p>
-          </div> -->
+            <div class="col-lg-3">
+                <p>Manager Review Date :</p>
+            </div>
+            <div class="col-lg-3">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6">
+                <p style="margin-left: 14px;">Manager Submission Date: </p>
+            </div>
+            <div class="col-lg-3">
+                <p>HR Review Date : </p>
+            </div>
+            <div class="col-lg-3">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6">
+                <p style="margin-left: 14px;">Goal Setting  Date: </p>
+            </div>
+            <div class="col-lg-3">
+            </div>
+        </div>
+        <br>
+
+
 
         <div class="row">
             <div class="col-lg-12">
                 <table class="table">
-                    <tbody>
+                    <thead>
                         <tr>
                             <th>KRA Name </th>
                             <th>Performance Indicator</th>
@@ -101,18 +173,95 @@
                             <td>{{Scores.resultAreaName}}</td>
                             <td>{{Scores.performanceindicator}}</td>
                             <td>{{Scores.selfScores}}</td>
-                            <td>{{Scores.selfComments}}</td>
+                            <td>
+                                <button class="form-control edit" data-toggle="modal" data-target="#exampleModal"
+                                    (click)="viewself(Scores)">View</button>
+                            </td>
+                            <!-- <td>{{Scores.selfComments}}</td> -->
                             <td *ngIf="Scores.groupHeadScores!=null">{{Scores.groupHeadScores}}</td>
-                            <td *ngIf="Scores.groupHeadScores!=null">{{Scores.groupHeadComments}}</td>
+                            <td>
+                                <button class="form-control edit" data-toggle="modal" data-target="#exampleModal1"
+                                    (click)="manager(Scores)"> View</button>
+                            </td>
+                            <!-- <td *ngIf="Scores.groupHeadScores!=null">{{Scores.groupHeadComments}}</td> -->
                             <td *ngIf="Scores.cscores!=null">{{Scores.cscores}}</td>
-                            <td *ngIf="Scores.cscores!=null">{{Scores.cioComments}}</td>
+                            <td>
+                                <button class="form-control edit" *ngIf="Scores.cscores!=null" data-toggle="modal"
+                                    data-target="#exampleModal2" (click)="hrcomments(Scores)">View</button>
+                            </td>
+                            <!-- <td *ngIf="Scores.cscores!=null">{{Scores.cioComments}}</td> -->
                             <td *ngIf="Scores.divisionScores!=null">{{Scores.divisionScores}}</td>
                             <td *ngIf="Scores.divisionScores!=null">{{Scores.divisionComments}}</td>
                         </tr>
+                    </thead>
                 </table>
             </div>
         </div>
-      
+    </div>
+</div>
 
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content" style="width: 800px;">
+            <div class="modal-header">
+                <h5 class="modal-title cmmnt" id="exampleModalLabel">Employee Comments</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body scroll">
+                <p class="text" [innerHTML]=selfcomment></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary cancel" data-dismiss="modal">Close</button>
+                <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content" style="width: 800px;">
+            <div class="modal-header">
+                <h5 class="modal-title cmmnt" id="exampleModalLabel">Manager Comments</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body scroll">
+                <p class="text" [innerHTML]=managercomments></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary cancel" data-dismiss="modal">Close</button>
+                <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content" style="width: 800px;">
+            <div class="modal-header">
+                <h5 class="modal-title cmmnt" id="exampleModalLabel">HR Comments</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body scroll">
+                <p class="text" [innerHTML]=hrcomment></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary  cancel" data-dismiss="modal">Close</button>
+                <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+            </div>
+        </div>
     </div>
 </div>

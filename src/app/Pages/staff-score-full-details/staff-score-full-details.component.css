@@ -18,6 +18,35 @@
     border:none;
     width:50%;
   }
+  .scroll{
+    overflow-y: auto;
+    height:200px;
+  }
+  .cmmnt{
+    color:#3247D5;
+    font-size: 19px;
+  }
+  .text{
+    color:#0C275A;
+
+  }
+  .sideheading{
+    margin-left: 20px;
+  }
+  .avg{
+    color:#3247D5;
+    font-size: 19px;
+    margin-left: 15px;
+    text-align: center;
+    margin-top: 5px;
   
-  
-  
+  }
+  .text1{
+    color:#0C275A;
+    margin-left: 15px;
+  }
+  .Appraisal{
+    color:#3247D5;
+    font-size: 19px;
+    margin-left: 15px;
+  }

@@ -11,5 +11,8 @@
     border-radius: 5px;
     width:40%;
     height:auto;
-
+}
+.related{
+    color:#3247D5;
+    font-size: 19px;
 }

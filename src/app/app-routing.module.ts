@@ -65,6 +65,7 @@ const routes: Routes = [
   { path: 'SelfRatingPagenew/:id/:StaffID', component: SelfratingnewComponent },
   { path: 'ManagerAppraisal/:id/:StaffID', component: ManagerAppraisalComponent },
   { path: 'hrratingnew/:id/:StaffID', component: HrratingnewComponent },
+ 
 
 
 ];

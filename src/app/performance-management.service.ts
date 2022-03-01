@@ -219,4 +219,12 @@ export class PerformanceManagementService {
     return this.http.post<any[]>(this.url, formdata);
   }
 
+
+
+  public UpdateStaffScores(data: any) {
+    debugger;
+    this.url = this.baseURL + 'Master/UpdateStaffScores';
+    return this.http.post(this.url, data);
+  }
+
 }
