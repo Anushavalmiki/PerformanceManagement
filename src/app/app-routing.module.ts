@@ -66,13 +66,7 @@ const routes: Routes = [
   { path: 'SelfRatingPagenew/:id/:StaffID', component: SelfratingnewComponent },
   { path: 'ManagerAppraisal/:id/:StaffID', component: ManagerAppraisalComponent },
   { path: 'hrratingnew/:id/:StaffID', component: HrratingnewComponent },
-<<<<<<< HEAD
- 
-=======
   { path: 'BellCurveFitting', component: BellCurveFittingComponent },
->>>>>>> b28076a4a4aa27f3390b6e713fdb5c7ca3f4a018
-
-
 ];
 
 @NgModule({
