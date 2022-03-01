@@ -266,7 +266,6 @@ export class SelfratingnewComponent implements OnInit {
     })
   }
 
-<<<<<<< HEAD
    UpdateMain(){
      debugger
      var entity={
@@ -282,9 +281,6 @@ export class SelfratingnewComponent implements OnInit {
        }
      )
    }
-=======
-
->>>>>>> a259eb21d0f6d1a1f83f50b3f64380e701472919
 
 
   ondelete() {
@@ -297,20 +293,20 @@ export class SelfratingnewComponent implements OnInit {
     )
   }
 
-  UpdateMain() {
-    debugger
-    var entity = {
-      "StaffID": this.photoid,
-      "emprating": this.Score,
-      "empcomments": this.empcomments
-    }
-    this.PerformanceManagementService.UpdateEmployeeSelfRating(entity).subscribe(
-      data => {
+  // UpdateMain() {
+  //   debugger
+  //   var entity = {
+  //     "StaffID": this.photoid,
+  //     "emprating": this.Score,
+  //     "empcomments": this.empcomments
+  //   }
+  //   this.PerformanceManagementService.UpdateEmployeeSelfRating(entity).subscribe(
+  //     data => {
 
-        Swal.fire("Updated Sucessfully");
-      }
-    )
-  }
+  //       Swal.fire("Updated Sucessfully");
+  //     }
+  //   )
+  // }
 
   cancel() {
     location.href = "/Selfratingnew";
