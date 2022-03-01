@@ -19,6 +19,13 @@
             <div class="col-lg-5">
                 <input type="search" class="form-control search" placeholder="Search for Name.." [(ngModel)]="search">
             </div>
+            <div class="col-lg-3">
+                <select class="form-control" id="goal" name="goal" [(ngModel)]="goal" (ngModelChange)="Filtergoals()">
+                <option value="0">Select Goal</option>
+                <option *ngFor="let details of goallist" value="{{details.kraName}}">{{details.kraName}}
+                </option>
+            </select>
+            </div>
             <div class="col-lg-1"></div>
         </div><br>
     </div> <br>
