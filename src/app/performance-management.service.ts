@@ -256,16 +256,22 @@ export class PerformanceManagementService {
     return this.http.post(this.url, data);
   }
 
-  public UpdateManagerSelfAttachment(data: any) {
+  
+  public DeleteStaffScores(ID: any) {
+    return this.http.get<any[]>(
+      this.baseURL + "/Master/DeleteStaffScores?ID=" + ID);
+  }
+
+
+  public UpdateEmployeeSelfRating(data: any) {
     debugger;
-    this.url = this.baseURL + 'Master/UpdateManagerSelfAttachment';
+    this.url = this.baseURL + 'Master/UpdateEmployeeSelfRating';
     return this.http.post(this.url, data);
   }
 
-  public UpdateHrSelfAttachment(data: any) {
-    debugger;
-    this.url = this.baseURL + 'Master/UpdateHrSelfAttachment';
-    return this.http.post(this.url, data);
-  }
+
+
+
+
 
 }
