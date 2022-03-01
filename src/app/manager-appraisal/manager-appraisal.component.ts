@@ -236,7 +236,7 @@ export class ManagerAppraisalComponent implements OnInit {
         'ID':this.photoid,
         'Attachment': this.attachmentsurl[0]
       }
-      this.PerformanceManagementService.UpdateStaffScores(entity).subscribe(data => {
+      this.PerformanceManagementService.UpdateManagerSelfAttachment(entity).subscribe(data => {
         debugger
         Swal.fire("Updated Successfully");
         this.attachmentsurl=0;

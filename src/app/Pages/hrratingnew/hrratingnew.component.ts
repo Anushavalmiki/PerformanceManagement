@@ -256,13 +256,15 @@ export class HrratingnewComponent implements OnInit {
     debugger
       this.attachment=details.photo;
     }
+
+
     update(){
       debugger
       var entity = {
         'ID':this.photoid,
         'Attachment': this.attachmentsurl[0]
       }
-      this.PerformanceManagementService.UpdateStaffScores(entity).subscribe(data => {
+      this.PerformanceManagementService.UpdateHrSelfAttachment(entity).subscribe(data => {
         debugger
         Swal.fire("Updated Successfully");
         this.attachmentsurl=0;

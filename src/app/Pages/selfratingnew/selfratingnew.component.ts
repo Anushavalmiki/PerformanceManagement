@@ -233,6 +233,7 @@ export class SelfratingnewComponent implements OnInit {
         debugger
         Swal.fire("Updated Successfully");
         this.attachmentsurl=0;
+        this.files.length=0;
         this.PerformanceManagementService.GetKRAByStaffID(this.StaffID).subscribe(data => {
           debugger
           this.ResultAreaList = data;

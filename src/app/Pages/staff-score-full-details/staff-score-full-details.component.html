@@ -86,7 +86,7 @@
         <hr> -->
         <div class="row">
             <div class="col-lg-6">
-                <p style="margin-left: 14px;">Staff ID:{{StaffID}} </p>
+                <p style="margin-left: 14px;">Staff ID: {{StaffID}} </p>
             </div>
             <!-- <div class="col-lg-3">
             <p>Staff Type:{{StaffType}} </p>
@@ -96,39 +96,39 @@
         </div>
         <div class="row">
             <div class="col-lg-6">
-                <p style="margin-left: 14px;">Staff Name:{{EmployeeName}} </p>
+                <p style="margin-left: 14px;">Staff Name: {{EmployeeName}} </p>
             </div>
             <div class="col-lg-3">
-                <p>Appraisal Date:{{Appraisaldate|date}} </p>
+                <p>Employee Submission Date: {{EmployeeSubmittedDate|date}}</p>
             </div>
             <div class="col-lg-3">
             </div>
         </div>
         <div class="row">
             <div class="col-lg-6">
-                <p style="margin-left: 14px;">Appraisal Cycle Start Date:{{StartDate|date}} </p>
+                <p style="margin-left: 14px;">Appraisal Cycle Start Date: {{StartDate|date}} </p>
             </div>
             <div class="col-lg-4">
-                <p>Appraisal Cycle End Date:{{EndDate|date}} </p>
+                <p>Appraisal Cycle End Date: {{EndDate|date}} </p>
             </div>
             <div class="col-lg-2">
             </div>
         </div>
         <div class="row">
             <div class="col-lg-6">
-                <p style="margin-left: 14px;">Department:</p>
+                <p style="margin-left: 14px;">Department:{{DepartmentName}}</p>
             </div>
             <div class="col-lg-3">
-                <p>Role: </p>
+                <p>Role: {{Role}}</p>
             </div>
             <div class="col-lg-3">
             </div>
         </div>
         <div class="row">
             <div class="col-lg-6">
-                <p style="margin-left: 14px;">Employee Submission Date:</p>
+                <p style="margin-left: 14px;">HR Submission Date: {{HrSubmittedDate|date}}</p>
             </div>
-            <p class="col-lg-3">Overall Staff Score : {{overallScore}}</p>
+            <p style="margin-left: 14px;">Manager Submission Date: {{ManagerSubmittedDate|date}}</p>
           </div> 
     </div>
     <div class="row">
@@ -136,7 +136,7 @@
             <table class="table">
                 <thead>
                     <tr>
-                        <th>KRA Name </th>
+                        <th>Goal Name </th>
                         <th>Performance Indicator</th>
                         <th>Staff Score</th>
                         <th>Staff Comments</th>
