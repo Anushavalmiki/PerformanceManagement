@@ -37,7 +37,11 @@
                                 {{i+1}}</td>
                             <td [ngClass]="{'bggreen':details.empupdate==1 }">{{details.kraName}}</td>
                             <td [ngClass]="{'bggreen':details.empupdate==1 }">{{details.kpiName}}</td>
-                            <td  [ngClass]="{'bggreen':details.empupdate==1 }">{{details.emprating}}</td>
+                            <td  [ngClass]="{'bggreen':details.empupdate==1 }">
+                                {{details.emprating}}
+                                <p *ngIf="details.empupdate!=1">NA</p>
+                            </td>
+                            
                             <td [ngClass]="{'bggreen':details.empupdate==1 }">
                                 <button *ngIf="details.empupdate!=1" type="button" class="btn btn-primary"
                                     data-toggle="modal" (click)="GetKPIID(details)"
