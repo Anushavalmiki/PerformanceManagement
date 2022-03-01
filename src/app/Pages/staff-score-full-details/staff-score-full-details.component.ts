@@ -33,7 +33,11 @@ export class StaffScoreFullDetailsComponent implements OnInit {
   HrSubmittedDate:any;
   ManagerSubmittedDate:any;
   EmployeeSubmittedDate:any;
+  goallist:any;
+  StaffScoresListsCopy:any;
+  goal:any;
   ngOnInit() {
+    this.goal="0"
     this.route.params.subscribe(params => {
       debugger;
       this.StaffTypeID = params['StaffTypeID'];
@@ -62,6 +66,7 @@ export class StaffScoreFullDetailsComponent implements OnInit {
           debugger;
           let temp: any = data
           this.StaffScoresLists = temp;
+          this.StaffScoresListsCopy= this.StaffScoresLists
           this.StaffType = temp[0].staffType;
           //  this.Appraisaldate = data[0].appraisalDate;
           //  this.StartDate = data[0].fromDate;
@@ -106,8 +111,23 @@ export class StaffScoreFullDetailsComponent implements OnInit {
       }
     }
     );
+
+    this.PerformanceManagementService.GetKeyResultArea().subscribe(
+      res => {
+        debugger;
+      this.goallist=res
+      }
+    )
+    
   }
 
+  public Filtergoals() {
+    debugger
+    let searchCopy = this.goal.toLowerCase();
+    this.StaffScoresLists = this.StaffScoresListsCopy.filter((x: { resultAreaName: string; }) => x.resultAreaName.toLowerCase().includes(searchCopy));
+  }
+
+ 
 
   Stafflist1: any;
   EmployeeID: any;
@@ -148,7 +168,7 @@ export class StaffScoreFullDetailsComponent implements OnInit {
       res => {
         debugger;
         let temp: any = res
-        this.StaffAppraisalList = temp
+       this.StaffAppraisalList = temp
       }
     )
   }
