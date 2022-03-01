@@ -33,8 +33,10 @@ export class ManagerAppraisalComponent implements OnInit {
   StaffID: any;
   ResultAreaList: any;
   PerformanceLists1: any;
+  showbtn: any;
   ngOnInit(): void {
     this.Score = 0;
+    this.showbtn = false;
     this.HighScore();
     this.route.params.subscribe(params => {
       debugger;
@@ -47,6 +49,14 @@ export class ManagerAppraisalComponent implements OnInit {
         this.PerformanceManagementService.GetKRAByStaffID(this.StaffID).subscribe(data => {
           debugger
           this.ResultAreaList = data;
+
+          this.ResultAreaList.forEach((element: { managerupdate: any; }) => {
+            if (element.managerupdate != 1) {
+              this.showbtn = false
+            } else {
+              this.showbtn = true
+            }
+          });
 
         })
         // this.GetStaffAppraisalByID(this.ParamID);

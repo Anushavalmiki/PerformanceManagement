@@ -32,8 +32,10 @@ export class HrratingnewComponent implements OnInit {
   StaffID: any;
   ResultAreaList: any;
   PerformanceLists1: any;
+  showbtn: any;
   ngOnInit(): void {
     this.Score = 0;
+    this.showbtn = false;
     this.HighScore();
     this.route.params.subscribe(params => {
       debugger;
@@ -47,6 +49,13 @@ export class HrratingnewComponent implements OnInit {
           debugger
           this.ResultAreaList = data;
 
+          this.ResultAreaList.forEach((element: { hrupdate: any; }) => {
+            if (element.hrupdate != 1) {
+              this.showbtn = false
+            } else {
+              this.showbtn = true
+            }
+          });
         })
         // this.GetStaffAppraisalByID(this.ParamID);
 

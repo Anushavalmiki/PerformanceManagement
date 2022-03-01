@@ -24,9 +24,9 @@ export class SelfratingnewComponent implements OnInit {
   RoleType: any;
   Department: any;
   count: any;
-  attachment:any;
-  Attachmentlist:any;
-  photoid:any;
+  attachment: any;
+  Attachmentlist: any;
+  photoid: any;
   ParamID: any;
   EmployeeKradash: any
   StaffType: any;
@@ -34,13 +34,16 @@ export class SelfratingnewComponent implements OnInit {
   StaffID: any;
   ResultAreaList: any;
   PerformanceLists1: any;
+  showbtn: any;
   ngOnInit(): void {
     this.Score = 0;
+    this.showbtn = false;
     this.HighScore();
     this.route.params.subscribe(params => {
       debugger;
       this.ParamID = params['id'];
       if (params['id'] != undefined) {
+        debugger
         this.StaffType = params['StaffID'];
         this.StaffID = params['id'];
         this.StaffTypeID = this.StaffType;
@@ -48,6 +51,14 @@ export class SelfratingnewComponent implements OnInit {
         this.PerformanceManagementService.GetKRAByStaffID(this.StaffID).subscribe(data => {
           debugger
           this.ResultAreaList = data;
+
+          this.ResultAreaList.forEach((element: { empupdate: any; }) => {
+            if (element.empupdate != 1) {
+              this.showbtn = false
+            } else {
+              this.showbtn = true
+            }
+          });
 
           console.log("Result area", this.ResultAreaList);
 
@@ -162,7 +173,7 @@ export class SelfratingnewComponent implements OnInit {
     console.log(event);
     debugger
     this.files.push(...event.addedFiles);
-    this.attachmentsurl.length=0;
+    this.attachmentsurl.length = 0;
     this.PerformanceManagementService.ProjectAttachments(this.files).subscribe(res => {
       debugger
       if (res != undefined) {
@@ -181,7 +192,7 @@ export class SelfratingnewComponent implements OnInit {
   }
 
 
- public SubmitEmployeeAppraisal() {
+  public SubmitEmployeeAppraisal() {
     debugger
     Swal.fire({
       title: 'Are you sure?',
@@ -204,7 +215,7 @@ export class SelfratingnewComponent implements OnInit {
       }
     })
   }
- 
+
   // showAttachments(photo: any) {
   //   debugger
   //   this.PerformanceManagementService.GetKRAByStaffID(this.StaffID).subscribe(data => {
@@ -214,43 +225,43 @@ export class SelfratingnewComponent implements OnInit {
   // }
 
 
-  getattachment(details:any){
+  getattachment(details: any) {
     debugger
-      this.attachment=details.photo;
-      this.photoid=details.id;
-      this.attachmentsurl[0]=details.selfattachment
+    this.attachment = details.photo;
+    this.photoid = details.id;
+    this.attachmentsurl[0] = details.selfattachment
+  }
+
+
+
+  update() {
+    debugger
+    var entity = {
+      'ID': this.photoid,
+      'Attachment': this.attachmentsurl[0]
     }
-
-
-
-    update(){
+    this.PerformanceManagementService.UpdateStaffScores(entity).subscribe(data => {
       debugger
-      var entity = {
-        'ID':this.photoid,
-        'Attachment': this.attachmentsurl[0]
-      }
-      this.PerformanceManagementService.UpdateStaffScores(entity).subscribe(data => {
+      Swal.fire("Updated Successfully");
+      this.attachmentsurl = 0;
+      this.files.length = 0;
+      this.PerformanceManagementService.GetKRAByStaffID(this.StaffID).subscribe(data => {
         debugger
-        Swal.fire("Updated Successfully");
-        this.attachmentsurl=0;
-        this.files.length=0;
-        this.PerformanceManagementService.GetKRAByStaffID(this.StaffID).subscribe(data => {
-          debugger
-          this.ResultAreaList = data;
+        this.ResultAreaList = data;
 
-          console.log("Result area", this.ResultAreaList);
-
-        })
+        console.log("Result area", this.ResultAreaList);
 
       })
-    
-    }
-  cancel(){
-    location.href="/Selfratingnew";
+
+    })
+
+  }
+  cancel() {
+    location.href = "/Selfratingnew";
   }
 
 
-  }
+}
 
 
 

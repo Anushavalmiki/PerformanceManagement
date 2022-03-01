@@ -12,7 +12,8 @@
     <div class="row">
         <div class="col-lg-10"></div>
         <div class="col-lg-2">
-            <button type="button" class="btn btn-primary" (click)="SubmitEmployeeAppraisal()">Submit Appraisal</button>
+            <button type="button" *ngIf="showbtn" class="btn btn-primary" (click)="SubmitEmployeeAppraisal()">Submit
+                Appraisal</button>
         </div>
     </div>
     <br>
@@ -44,8 +45,9 @@
                                     data-target="#exampleModal1">View
                                     Details</button>&nbsp;
 
-                                <button class=" btn btn-primary action" data-toggle="modal" data-target="#exampleModal2"
-                                    (click)="getattachment(details)">View Attachments</button>
+                                <button *ngIf="details.empupdate==1" class=" btn btn-primary action" data-toggle="modal"
+                                    data-target="#exampleModal2" (click)="getattachment(details)">View
+                                    Attachments</button>
                             </td>
                         </tr>
                     </tbody>
@@ -66,7 +68,7 @@
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
     <div class="modal-dialog" role="document">
-        <div class="modal-content" >
+        <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel"></h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -172,7 +174,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" (click)="SaveDetails()">Save changes</button>
+                <button type="button" class="btn btn-primary" (click)="SaveDetails()">Update changes</button>
             </div>
         </div>
     </div>
@@ -204,7 +206,8 @@
                 <div class="row">
                     <div class="col-lg-8"></div>
                     <div class="col-lg-2">
-                        <button class="form-control cancel" data-toggle="modal" data-target="#exampleModal3" data-dismiss="modal" >Update</button>
+                        <button class="form-control cancel" data-toggle="modal" data-target="#exampleModal3"
+                            data-dismiss="modal">Update</button>
                     </div>
                     <div class="col-lg-2">
                         <button class="form-control cancel" data-dismiss="modal">Cancel</button>
@@ -235,19 +238,20 @@
                     <br>
                     <br>
                     <div class="col-lg-3"></div>
-                   <div class="col-lg-4">
-                    <ngx-dropzone (change)="onSelect($event)" style="width:100% ;height: auto;">
-                        <ngx-dropzone-label>Please Attach Photo!</ngx-dropzone-label>
-                        <ngx-dropzone-preview *ngFor="let f of files" [removable]="true" (removed)="onRemove(f)">
-                            <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label>
-                        </ngx-dropzone-preview>
-                    </ngx-dropzone>
-                   </div>
+                    <div class="col-lg-4">
+                        <ngx-dropzone (change)="onSelect($event)" style="width:100% ;height: auto;">
+                            <ngx-dropzone-label>Please Attach Photo!</ngx-dropzone-label>
+                            <ngx-dropzone-preview *ngFor="let f of files" [removable]="true" (removed)="onRemove(f)">
+                                <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label>
+                            </ngx-dropzone-preview>
+                        </ngx-dropzone>
+                    </div>
                 </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" (click)="update()" data-dismiss="modal">Update Changes</button>
+                <button type="button" class="btn btn-primary" (click)="update()" data-dismiss="modal">Update
+                    Changes</button>
             </div>
         </div>
     </div>
