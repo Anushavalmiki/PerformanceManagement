@@ -66,7 +66,7 @@
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
     <div class="modal-dialog" role="document">
-        <div class="modal-content" style="width: 800px;">
+        <div class="modal-content" >
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel"></h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -183,7 +183,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content" style="width: 800px;">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel"></h5>
+                <h5 class="modal-title related" id="exampleModalLabel">Related Attachments</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -196,15 +196,58 @@
                         <p *ngIf="attachment==null">No Attachments</p>
                     </div>
                     <div class="col-lg-3">
-                        <img src="{{attachment}}" style="width: 400px;">
+                        <img src="{{attachment}}" style="width:400px;">
                         <!-- <img src="http://103.133.214.197/digiofficeapi\Images\ProjectAttachments\AmazeLogo-20220214160917-20220228163117.jpg"> -->
                     </div>
                 </div>
                 <br>
+                <div class="row">
+                    <div class="col-lg-8"></div>
+                    <div class="col-lg-2">
+                        <button class="form-control cancel" data-toggle="modal" data-target="#exampleModal3" data-dismiss="modal" >Update</button>
+                    </div>
+                    <div class="col-lg-2">
+                        <button class="form-control cancel" data-dismiss="modal">Cancel</button>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="exampleModal3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel"></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" style="width:800px;">
+                <br>
+                <div class="row">
+                    <br>
+                    <br>
+                    <div class="col-lg-3"></div>
+                   <div class="col-lg-4">
+                    <ngx-dropzone (change)="onSelect($event)" style="width:100% ;height: auto;">
+                        <ngx-dropzone-label>Please Attach Photo!</ngx-dropzone-label>
+                        <ngx-dropzone-preview *ngFor="let f of files" [removable]="true" (removed)="onRemove(f)">
+                            <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label>
+                        </ngx-dropzone-preview>
+                    </ngx-dropzone>
+                   </div>
+                </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-
+                <button type="button" class="btn btn-primary" (click)="update()" data-dismiss="modal">Update Changes</button>
             </div>
         </div>
     </div>

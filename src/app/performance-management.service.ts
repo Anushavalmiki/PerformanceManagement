@@ -248,4 +248,12 @@ export class PerformanceManagementService {
     );
   }
 
+
+
+  public UpdateStaffScores(data: any) {
+    debugger;
+    this.url = this.baseURL + 'Master/UpdateStaffScores';
+    return this.http.post(this.url, data);
+  }
+
 }

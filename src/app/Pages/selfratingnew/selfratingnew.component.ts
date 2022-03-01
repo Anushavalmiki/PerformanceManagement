@@ -26,7 +26,7 @@ export class SelfratingnewComponent implements OnInit {
   count: any;
   attachment:any;
   Attachmentlist:any;
-
+  photoid:any;
   ParamID: any;
   EmployeeKradash: any
   StaffType: any;
@@ -162,6 +162,7 @@ export class SelfratingnewComponent implements OnInit {
     console.log(event);
     debugger
     this.files.push(...event.addedFiles);
+    this.attachmentsurl.length=0;
     this.PerformanceManagementService.ProjectAttachments(this.files).subscribe(res => {
       debugger
       if (res != undefined) {
@@ -203,10 +204,6 @@ export class SelfratingnewComponent implements OnInit {
       }
     })
   }
-
-
-
- 
  
   // showAttachments(photo: any) {
   //   debugger
@@ -220,7 +217,37 @@ export class SelfratingnewComponent implements OnInit {
   getattachment(details:any){
     debugger
       this.attachment=details.photo;
+      this.photoid=details.id;
+      this.attachmentsurl[0]=details.selfattachment
     }
+
+
+
+    update(){
+      debugger
+      var entity = {
+        'ID':this.photoid,
+        'Attachment': this.attachmentsurl[0]
+      }
+      this.PerformanceManagementService.UpdateStaffScores(entity).subscribe(data => {
+        debugger
+        Swal.fire("Updated Successfully");
+        this.attachmentsurl=0;
+        this.PerformanceManagementService.GetKRAByStaffID(this.StaffID).subscribe(data => {
+          debugger
+          this.ResultAreaList = data;
+
+          console.log("Result area", this.ResultAreaList);
+
+        })
+
+      })
+    
+    }
+  cancel(){
+    location.href="/Selfratingnew";
+  }
+
 
   }
 
