@@ -89,10 +89,13 @@
                             <!-- <td>{{details.appraisalSubmitionDate|date}}</td>
                             <td>{{details.cycleStartDate|date}}</td>
                             <td>{{details.cycleEndDate|date}}</td> -->
-                            <td>
+                            <!-- <td>
                                 <button class="btn btn-primary editable-table-button btn-xs"
                                     (click)="ViewScores(details)">View Details
                                 </button>
+                            </td> -->
+                            <td>
+                                <button class="edit" data-toggle="modal" data-target="#exampleModal" >Change Rating </button>
                             </td>
                         </tr>
                     </tbody>
@@ -104,6 +107,28 @@
                 </div>
             </div>
         </div>
+</div>
 
 
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document" style="width:800px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">New Rating </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body scroll">
+                <div class="col-lg-12">
+                   <p></p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">close</button>
+            </div>
+        </div>
+    </div>
 </div>
