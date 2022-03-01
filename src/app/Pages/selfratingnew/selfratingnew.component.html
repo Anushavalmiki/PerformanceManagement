@@ -138,7 +138,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content" style="width: 800px;">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel"></h5>
+                <h5 class="modal-title" id="exampleModalLabel">Employee Comments</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -187,7 +187,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" (click)="UpdateMain()">Update Changes</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="UpdateMain()">Update Changes</button>
             </div>
         </div>
     </div>
@@ -219,7 +219,7 @@
                 <div class="row">
                     <div class="col-lg-8"></div>
                     <div class="col-lg-2">
-                        <button class="form-control cancel" data-toggle="modal" data-target="#exampleModal3" data-dismiss="modal" (click)="update()">Update</button>
+                        <button class="form-control cancel" data-toggle="modal" data-target="#exampleModal3" data-dismiss="modal" >Update</button>
                     </div>
                     <div class="col-lg-2">
                         <button class="form-control cancel" data-dismiss="modal" data-dismiss="modal" (click)="ondelete()">Delete</button>
@@ -261,7 +261,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Delete</button>
-                <button type="button" class="btn btn-primary"  data-dismiss="modal">Update Changes</button>
+                <button type="button" class="btn btn-primary"  data-dismiss="modal" (click)="update()">Update Changes</button>
             </div>
         </div>
     </div>
