@@ -28,6 +28,11 @@ export class StaffScoreFullDetailsComponent implements OnInit {
   selfcomment:any;
   managercomments:any;
   hrcomment:any;
+  DepartmentName:any;
+  Role:any;
+  HrSubmittedDate:any;
+  ManagerSubmittedDate:any;
+  EmployeeSubmittedDate:any;
   ngOnInit() {
     this.route.params.subscribe(params => {
       debugger;
@@ -43,7 +48,14 @@ export class StaffScoreFullDetailsComponent implements OnInit {
             this.StartDate = this.StaffDetailsBYConductAppraisals[0].cycleStartDate;
             this.EndDate = this.StaffDetailsBYConductAppraisals[0].cycleEndDate;
             this.SupervisorName = this.StaffDetailsBYConductAppraisals[0].superviosrName;
-            this.Appraisaldate = this.StaffDetailsBYConductAppraisals[0].appraisalSubmitionDate
+            this.Appraisaldate = this.StaffDetailsBYConductAppraisals[0].appraisalSubmitionDate;
+            this.DepartmentName = this.StaffDetailsBYConductAppraisals[0].departmentName
+            this.Role = this.StaffDetailsBYConductAppraisals[0].role
+            this.HrSubmittedDate = this.StaffDetailsBYConductAppraisals[0].hrSubmittedDate
+            this.ManagerSubmittedDate = this.StaffDetailsBYConductAppraisals[0].managerSubmittedDate
+            this.EmployeeSubmittedDate = this.StaffDetailsBYConductAppraisals[0].employeeSubmittedDate
+
+          
           }
         )
         this.PerformanceManagementService.GetStaffScoresByStaffandYear(2021, this.StaffID).subscribe(data => {

@@ -164,6 +164,7 @@ export class ManagerAppraisalComponent implements OnInit {
       let temp: any = data.filter(x => x.id == details.id)
       this.Score = temp[0].managerrating;
       this.SelfComments = temp[0].managercomments;
+      this.attachment=details.photo;
 
     })
   }
@@ -219,6 +220,39 @@ export class ManagerAppraisalComponent implements OnInit {
         })
       }
     })
+  }
+  attachment:any;
+  photoid:any;
+  getattachment(details:any){
+    debugger
+      this.attachment=details.photo;
+      this.photoid=details.id;
+      this.attachmentsurl[0]=details.selfattachment
+    }
+
+    update(){
+      debugger
+      var entity = {
+        'ID':this.photoid,
+        'Attachment': this.attachmentsurl[0]
+      }
+      this.PerformanceManagementService.UpdateManagerSelfAttachment(entity).subscribe(data => {
+        debugger
+        Swal.fire("Updated Successfully");
+        this.attachmentsurl=0;
+        this.PerformanceManagementService.GetKRAByStaffID(this.StaffID).subscribe(data => {
+          debugger
+          this.ResultAreaList = data;
+
+          console.log("Result area", this.ResultAreaList);
+
+        })
+
+      })
+    
+    }
+  cancel(){
+    location.href="/Selfratingnew";
   }
 
 }
