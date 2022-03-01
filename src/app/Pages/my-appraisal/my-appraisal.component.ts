@@ -77,6 +77,7 @@ export class MyAppraisalComponent implements OnInit {
     this.PerformanceManagementService.GetEmployeeKraMap().subscribe(data => {
       debugger
       this.Staffkra = data.filter(x => x.staffName == details.staffid);
+      this.count = this.Staffkra.length;
     });
 
   }

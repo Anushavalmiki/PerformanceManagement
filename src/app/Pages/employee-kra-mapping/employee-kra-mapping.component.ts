@@ -11,6 +11,7 @@ export class EmployeeKraMappingComponent implements OnInit {
 
   constructor(private PerformanceManagementService: PerformanceManagementService, private ActivatedRoute: ActivatedRoute) { }
 
+  
   Departmentlist: any;
   RoleTypeList: any;
   RoleID: any;
@@ -28,6 +29,8 @@ export class EmployeeKraMappingComponent implements OnInit {
   dropdownSettings2: any = {};
   Apprisalcyclelist: any;
   ngOnInit(): void {
+    this.RoleID="0";
+    this.Apprisalcycle="0"
 
 
     this.PerformanceManagementService.GetDepartmentMaster().subscribe(data => {
@@ -143,7 +146,7 @@ export class EmployeeKraMappingComponent implements OnInit {
     for (let i = 0; i < this.keyresultArray.length; i++) {
 
       if (this.keyresultArray.length == 0) {
-        Swal.fire('Please Select Kra For Staff')
+        Swal.fire('Please Select Goals For Staff')
       }
       else {
         var Entity = {
@@ -170,9 +173,37 @@ export class EmployeeKraMappingComponent implements OnInit {
         )
       }
     }
-    Swal.fire('Kra Added Successfully.');
+
+    Swal.fire('Goal Setting Done Successfully.');
     location.href = "#/EmployeeKraMappingdashboard";
 
+  }
+
+
+  public InsertNotification() {
+    debugger
+
+    var entity = {
+      'Date': new Date(),
+      'Event': 'Apprisal Request',
+      'FromUser': 'Admin',
+      'ToUser': this.EmployeeId,
+      'Message': 'Your Manager has benn assigned a NEw Goal Setting to you',
+      'Photo': 'Null',
+      'Building': 'Dynamics 1',
+      'UserID': sessionStorage.getItem('EmaployedID'),
+      'NotificationTypeID': 17,
+      'VendorID': 0
+
+
+    }
+    this.PerformanceManagementService.InsertNotification(entity).subscribe(data => {
+      if (data != 0) {
+
+
+      }
+
+    })
   }
   public keyresultArray: any = [];
   public SaveDetails() {

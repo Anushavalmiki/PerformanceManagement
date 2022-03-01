@@ -1,5 +1,6 @@
 <div class="row  tab" *ngIf="temp==1">
     <div class="col-md-2 sidebar sidenav" style="margin-top: 84px;position: fixed;">
+
         <a data-toggle="collapse" class="togglebtn button" data-target="#userapplications"
             *ngIf="roleid=='1'" class="tablinks" (click)="highlight($event)"
             (click)="Performance()">
@@ -45,7 +46,7 @@
 
         </div>
 
-        <a class="togglebtn button" *ngIf="roleid!='1'||roleid=='2'" routerLink="/EmployeeDashboard" class="tablinks"
+        <a class="togglebtn button" *ngIf="roleid=='3'||roleid=='4'" routerLink="/EmployeeDashboard" class="tablinks"
             (click)="highlight($event)" (click)="Employee()">
             <img src="assets/Images/64 Blue/Staff.png" style="width:13% ;margin-right: 15px;"
                 [ngClass]="active != 'category' ? 'Active1' : 'Active2'" />
@@ -103,5 +104,15 @@
             &nbsp;
             <span [ngClass]="active == 'category' ? 'Active1' : 'Active3'"> Staff Score Details</span>
         </a>
+
+        <a class="togglebtn button" routerLink="/BellCurveFitting" class="tablinks" (click)="highlight($event)"
+        (click)="BellCurve()"  *ngIf="roleid=='3'">
+        <img src="assets/Images/64 Blue/Staff.png" style="width:13% ;margin-right: 15px;"
+            [ngClass]="active != 'Bell' ? 'Active1' : 'Active2'" />
+        <img [ngClass]="active == 'Bell' ? 'Active1' : 'Active2'" src="assets/Images/64/Staff.png"
+            style="width:13%; margin-right: 17px;">
+        &nbsp;
+        <span [ngClass]="active == 'Bell' ? 'Active1' : 'Active3'">Bell Curve Fitting</span>
+    </a>
 
     </div>

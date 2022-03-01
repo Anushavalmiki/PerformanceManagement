@@ -16,7 +16,7 @@ export class HrratingnewComponent implements OnInit {
   stafflist: any;
   term: any;
   p: any = 1;
-  count1: any = 5;
+  count1: any = 25;
   stafflistCopy: any;
   Departmentlist: any;
   RoleTypeList: any;
@@ -194,7 +194,31 @@ export class HrratingnewComponent implements OnInit {
     this.managercomments = detials.managercomments
   }
 
+ 
 
+  public SubmitHrAppraisal() {
+    debugger
+    Swal.fire({
+      title: 'Are you sure?',
+      text: 'You Want to Submit it.',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, Submit it!',
+      cancelButtonText: 'No, keep it'
+    }).then((result) => {
+      if (result.value == true) {
+        debugger
+        var entity = {
+          'StaffID': this.StaffID,
+        }
+        this.PerformanceManagementService.SubmitHrAppraisal(entity).subscribe(data => {
+          debugger
+          Swal.fire("Submitted Appraisal Successfully");
+          this.ngOnInit();
+        })
+      }
+    })
+  }
 
 }
 

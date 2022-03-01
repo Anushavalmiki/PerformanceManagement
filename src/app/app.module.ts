@@ -37,6 +37,7 @@ import { CKEditorModule } from 'ckeditor4-angular';
 import { SelfratingnewComponent } from './Pages/selfratingnew/selfratingnew.component';
 import { ManagerAppraisalComponent } from './manager-appraisal/manager-appraisal.component';
 import { HrratingnewComponent } from './Pages/hrratingnew/hrratingnew.component';
+import { BellCurveFittingComponent } from './bell-curve-fitting/bell-curve-fitting.component';
 
 @NgModule({
   declarations: [
@@ -67,7 +68,8 @@ import { HrratingnewComponent } from './Pages/hrratingnew/hrratingnew.component'
     StaffScoreFullDetailsComponent,
     SelfratingnewComponent,
     ManagerAppraisalComponent,
-    HrratingnewComponent
+    HrratingnewComponent,
+    BellCurveFittingComponent
   ],
   imports: [
     BrowserModule,

@@ -21,6 +21,25 @@ export class PerformanceManagementService {
     return this.http.post(this.url, data);
   }
 
+  
+  public SubmitManagerAppraisal(data: any) {
+    debugger;
+    this.url = this.baseURL + 'Master/UpdateManagerSubmitted';
+    return this.http.post(this.url, data);
+  }
+
+  public SubmitHrAppraisal(data: any) {
+    debugger;
+    this.url = this.baseURL + 'Master/UpdateHrSubmitted';
+    return this.http.post(this.url, data);
+  }
+
+  public SubmitEmployeeAppraisal(data: any) {
+    debugger;
+    this.url = this.baseURL + 'Master/UpdateEmployeeSubmitted';
+    return this.http.post(this.url, data);
+  }
+
 
   public GetFrequency() {
     return this.http.get<any[]>(
@@ -217,6 +236,16 @@ export class PerformanceManagementService {
     }
     this.url = this.baseURL + '/Master/ProjectAttachments';
     return this.http.post<any[]>(this.url, formdata);
+  }
+  public InsertNotification(data: any) {
+    debugger;
+    this.url = this.host + '/User/InsertNotification';
+    return this.http.post(this.url, data);
+  }
+  public GetNotification(UserID: any) {
+    return this.http.get<any[]>(
+      this.host + "/User/GetNotification?UserID=" + UserID
+    );
   }
 
 

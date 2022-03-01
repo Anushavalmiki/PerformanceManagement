@@ -21,6 +21,9 @@ export class StaffScoreFullDetailsComponent implements OnInit {
   GroupHead: any;
   DivisionHead: any;
   CIOHead: any;
+  p: any = 1;
+  count1: any = 25;
+  search:any
   StaffDetailsBYConductAppraisals: any;
   selfcomment:any;
   managercomments:any;
