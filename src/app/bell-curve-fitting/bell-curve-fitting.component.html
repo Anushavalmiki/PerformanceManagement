@@ -72,6 +72,7 @@
                             <th>Manager Rating</th>
                             <th>HR Rating</th>
                             <th>Total Average</th>
+                            <th>Bell Curve Fitting Score</th>
                             <th>Action </th>
                         </tr>
                     </thead>
@@ -87,11 +88,12 @@
                             <td>{{details.avgCIOScores}}</td>
                            
                             <td>{{((details.avgGroupHeadScores+details.avgCIOScores)/2)}}</td>
+                            <td>NA</td>
                             <!-- <td>{{details.appraisalSubmitionDate|date}}</td>
                             <td>{{details.cycleStartDate|date}}</td>
                             <td>{{details.cycleEndDate|date}}</td> -->
                             <td>
-                                <button class="btn btn-primary editable-table-button btn-xs"
+                                <button class="btn btn-primary editable-table-button btn-xs" data-toggle="modal" data-target="#viewbellcurve"
                                     (click)="ViewScores(details)">Change Rating
                                 </button>
                             </td>
@@ -105,6 +107,35 @@
                 </div>
             </div>
         </div>
+</div>
 
 
+<div class="modal fade" id="viewbellcurve" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content" style="width: 800px;">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Bell Curve Fitting</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body scroll">
+                <div class="row">
+                    <div class="col-lg-3">
+                    </div>
+                    <div class="col-lg-7">
+                        <!-- <p style="padding:5px" [innerHTML]="">
+                        </p> -->
+                    </div>
+                    <div class="col-lg-3">
+
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
 </div>

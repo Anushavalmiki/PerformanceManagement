@@ -241,8 +241,8 @@ export class ManagerAppraisalComponent implements OnInit {
           debugger
           Swal.fire("Submitted Appraisal Successfully");
           this.ngOnInit();
-           this.showbtn=false;
-           this.showbtn1=true
+          //  this.showbtn=false;
+          //  this.showbtn1=true
         })
       }
     })

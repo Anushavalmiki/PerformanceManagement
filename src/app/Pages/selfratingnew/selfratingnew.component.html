@@ -12,11 +12,18 @@
     <div class="row">
         <div class="col-lg-10"></div>
         <div class="col-lg-2">
-            <button type="button"  *ngIf="showbtn" class="btn btn-primary" (click)="SubmitEmployeeAppraisal()">Submit
+            <!-- <button type="button"  *ngIf="showbtn" class="btn btn-primary" (click)="SubmitEmployeeAppraisal()">Submit
                 Appraisal</button>
                 <p  *ngIf="showbtn">Appraisal Submitted!!</p>
                 <button type="button" *ngIf="!showbtn" class="btn btn-primary" disabled>Submit
-                    Appraisal</button>
+                    Appraisal</button> -->
+
+            <button type="button" *ngIf="showbtn && EmployeeSubmittedDate==null" class="btn btn-primary"
+                (click)="SubmitEmployeeAppraisal()">Submit
+                Appraisal</button>
+            <p *ngIf="showbtn && EmployeeSubmittedDate!=null" style="color:green">Appraisal Submitted!!</p>
+            <button type="button" *ngIf="!showbtn" class="btn btn-primary" disabled>Submit
+                Appraisal</button>
         </div>
     </div>
     <br>
@@ -40,11 +47,11 @@
                                 {{i+1}}</td>
                             <td [ngClass]="{'bggreen':details.empupdate==1 }">{{details.kraName}}</td>
                             <td [ngClass]="{'bggreen':details.empupdate==1 }">{{details.kpiName}}</td>
-                            <td  [ngClass]="{'bggreen':details.empupdate==1 }">
+                            <td [ngClass]="{'bggreen':details.empupdate==1 }">
                                 {{details.emprating}}
                                 <p *ngIf="details.empupdate!=1">NA</p>
                             </td>
-                            
+
                             <td [ngClass]="{'bggreen':details.empupdate==1 }">
                                 <button *ngIf="details.empupdate!=1" type="button" class="btn btn-primary"
                                     data-toggle="modal" (click)="GetKPIID(details)"
@@ -83,7 +90,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body" >
+            <div class="modal-body">
                 <div class="row">
                     <div class="col-lg-1">
                     </div>
@@ -182,20 +189,22 @@
                 </div>
                 <br>
                 <div class="row">
-                   <div class="col-lg-1">
-                   </div>
-                   <div class="col-lg-3">
-                    <p style="padding:5px">
-                        Attachments <span style="color: red;">*</span> </p>
-                   </div>
+                    <div class="col-lg-1">
+                    </div>
                     <div class="col-lg-3">
-                        <button   data-toggle="modal" data-target="#exampleModal2"  class="cancel">View Attachments</button>
+                        <p style="padding:5px">
+                            Attachments <span style="color: red;">*</span> </p>
+                    </div>
+                    <div class="col-lg-3">
+                        <button data-toggle="modal" data-target="#exampleModal2" class="cancel">View
+                            Attachments</button>
                     </div>
                 </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="UpdateMain()">Update Changes</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="UpdateMain()">Update
+                    Changes</button>
             </div>
         </div>
     </div>
@@ -227,10 +236,12 @@
                 <div class="row">
                     <div class="col-lg-8"></div>
                     <div class="col-lg-2">
-                        <button class="form-control cancel" data-toggle="modal" data-target="#exampleModal3" data-dismiss="modal" >Update</button>
+                        <button class="form-control cancel" data-toggle="modal" data-target="#exampleModal3"
+                            data-dismiss="modal">Update</button>
                     </div>
                     <div class="col-lg-2">
-                        <button class="form-control cancel" data-dismiss="modal" data-dismiss="modal" *ngIf="attachment!=null" (click)="ondelete()">Delete</button>
+                        <button class="form-control cancel" data-dismiss="modal" data-dismiss="modal"
+                            *ngIf="attachment!=null" (click)="ondelete()">Delete</button>
                     </div>
                 </div>
             </div>
@@ -241,8 +252,8 @@
         </div>
     </div>
 </div>
- 
- <div class="modal fade" id="exampleModal3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+
+<div class="modal fade" id="exampleModal3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -254,23 +265,24 @@
             </div>
             <div class="modal-body" style="width:800px;">
                 <br>
-                <div class="row"  style="width:800px;">
+                <div class="row" style="width:800px;">
                     <div class="col-lg-2"></div>
-                   <div class="col-lg-4">
-                    <ngx-dropzone (change)="onSelect($event)" style="width:100% ;height: auto;">
-                        <ngx-dropzone-label>Please Attach Photo!</ngx-dropzone-label>
-                        <ngx-dropzone-preview *ngFor="let f of files" [removable]="true" (removed)="onRemove(f)">
-                            <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label>
-                        </ngx-dropzone-preview>
-                    </ngx-dropzone>
-                   </div>
+                    <div class="col-lg-4">
+                        <ngx-dropzone (change)="onSelect($event)" style="width:100% ;height: auto;">
+                            <ngx-dropzone-label>Please Attach Photo!</ngx-dropzone-label>
+                            <ngx-dropzone-preview *ngFor="let f of files" [removable]="true" (removed)="onRemove(f)">
+                                <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label>
+                            </ngx-dropzone-preview>
+                        </ngx-dropzone>
+                    </div>
                 </div>
                 <br>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Delete</button>
-                <button type="button" class="btn btn-primary"  data-dismiss="modal" (click)="update()">Update Changes</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="update()">Update
+                    Changes</button>
             </div>
         </div>
     </div>
-</div> 
+</div>

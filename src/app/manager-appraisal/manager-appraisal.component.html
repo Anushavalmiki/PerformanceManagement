@@ -18,10 +18,16 @@
             Role:  <b>{{role}}</b></span>
         </div>
         <div class="col-lg-2">
-            <button type="button" class="btn btn-primary"  *ngIf="showbtn && !showbtn1" (click)="SubmitManagerAppraisal()">Submit Appraisal</button>
+            <!-- <button type="button" class="btn btn-primary"  *ngIf="showbtn && !showbtn1" (click)="SubmitManagerAppraisal()">Submit Appraisal</button>
             <p  *ngIf="showbtn1">Appraisal Submitted!!</p>
             <button type="button" *ngIf="!showbtn" class="btn btn-primary" disabled>Submit
-                Appraisal</button>
+                Appraisal</button> -->
+
+                <button type="button" *ngIf="showbtn && managerSubmittedDate==null" class="btn btn-primary" (click)="SubmitManagerAppraisal()">Submit
+                    Appraisal</button>
+                    <p  *ngIf="showbtn && managerSubmittedDate!=null" style="color:green">Appraisal Submitted!!</p>
+                <button type="button" *ngIf="!showbtn" class="btn btn-primary" disabled>Submit
+                    Appraisal</button>
         </div>
     </div>
     <br>
@@ -57,7 +63,8 @@
                             </td>
                             <td [ngClass]="{'bggreen':details.managerupdate==1 }">
                                 <button class=" btn btn-primary action" data-toggle="modal" data-target="#exampleModal2"
-                                    (click)="getattachment(details)">View Attachments</button>
+                                    (click)="getattachment(details)"  *ngIf="attachment!=null">View Attachments</button>
+                                    <p *ngIf="attachment==null">Not Available</p>
                             </td>
                             <td  [ngClass]="{'bg-warning':details.managerupdate==1 }" style="text-align: center;">
                                 {{details.managerrating}}

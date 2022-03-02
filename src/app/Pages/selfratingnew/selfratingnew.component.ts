@@ -39,8 +39,8 @@ export class SelfratingnewComponent implements OnInit {
   empcomments: any;
   selfrating: any;
   selfComments: any;
-  EmployeeSubmittedDate:any;
-  EmployeeId:any;
+  EmployeeSubmittedDate: any;
+  EmployeeId: any;
 
   ngOnInit(): void {
     this.Score = 0;
@@ -58,7 +58,7 @@ export class SelfratingnewComponent implements OnInit {
         this.PerformanceManagementService.GetKRAByStaffID(this.StaffID).subscribe(data => {
           debugger
           this.ResultAreaList = data;
-          this.EmployeeSubmittedDate=this.ResultAreaList[0].employeeSubmittedDate
+          this.EmployeeSubmittedDate = this.ResultAreaList[0].employeeSubmittedDate
 
 
           this.ResultAreaList.forEach((element: { empupdate: any; }) => {
@@ -223,7 +223,7 @@ export class SelfratingnewComponent implements OnInit {
         }
         this.PerformanceManagementService.SubmitEmployeeAppraisal(entity).subscribe(data => {
           debugger
-this. InsertNotification() ;
+          this.InsertNotification();
           Swal.fire("Submitted Appraisal Successfully");
           this.ngOnInit();
         })
@@ -238,7 +238,7 @@ this. InsertNotification() ;
       'Date': new Date(),
       'Event': 'Apprisal Request',
       'FromUser': 'Admin',
-      'ToUser':sessionStorage.getItem('EmaployedID') ,
+      'ToUser': sessionStorage.getItem('EmaployedID'),
       'Message': 'Your Employee Submitted the Appraisal',
       'Photo': 'Null',
       'Building': 'Dynamics 1',
@@ -296,21 +296,21 @@ this. InsertNotification() ;
     })
   }
 
-   UpdateMain(){
-     debugger
-     var entity={
-       "StaffID":this.photoid,
-       "emprating":this.Score,
-       "empcomments":this.SelfComments
-     }
-     this.PerformanceManagementService.UpdateEmployeeSelfRating(entity).subscribe(
-       data=>{
+  UpdateMain() {
+    debugger
+    var entity = {
+      "StaffID": this.photoid,
+      "emprating": this.Score,
+      "empcomments": this.SelfComments
+    }
+    this.PerformanceManagementService.UpdateEmployeeSelfRating(entity).subscribe(
+      data => {
 
-         Swal.fire("Updated Sucessfully");
-         this.ngOnInit();
-       }
-     )
-   }
+        Swal.fire("Updated Sucessfully");
+        this.ngOnInit();
+      }
+    )
+  }
 
 
   ondelete() {

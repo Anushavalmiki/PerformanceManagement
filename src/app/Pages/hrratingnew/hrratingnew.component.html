@@ -19,7 +19,7 @@
         <div class="col-lg-2" >
             <button type="button" *ngIf="showbtn && HrSubmittedDate==null" class="btn btn-primary" (click)="SubmitHrAppraisal()">Submit
                 Appraisal</button>
-                <p  *ngIf="showbtn && HrSubmittedDate!=null">Appraisal Submitted!!</p>
+                <p  *ngIf="showbtn && HrSubmittedDate!=null" style="color:green">Appraisal Submitted!!</p>
             <button type="button" *ngIf="!showbtn" class="btn btn-primary" disabled>Submit
                 Appraisal</button>
         </div>
@@ -60,8 +60,9 @@
                             </td>
                             <td [ngClass]="{'bggreen':details.hrupdate==1 }">
                                 <button class=" btn btn-primary action" data-toggle="modal" data-target="#exampleModal2"
-                                    (click)="getattachment(details)" >View Attachments</button>
-                                    <p *ngIf="details.hrupdate!=1">NA</p>
+                                    (click)="getattachment(details)" *ngIf="details.photo!=null">View Attachments</button>
+                                    <p *ngIf="details.photo==null">No Attachments</p>
+                                  
                             </td>
                             <td [ngClass]="{'bg-warning':details.hrupdate==1 }"style="text-align: center;">{{details.managerrating}}</td>
                             <td [ngClass]="{'bggreen':details.hrupdate==1 }">
@@ -71,7 +72,8 @@
                             </td>
                             <td [ngClass]="{'bggreen':details.hrupdate==1 }">
                                 <button class=" btn btn-primary action" data-toggle="modal" data-target="#exampleModal2"
-                                    (click)="getattachment(details)">View Attachments</button>
+                                (click)="getattachment(details)" *ngIf="details.photo!=null">View Attachments</button>
+                                <p *ngIf="details.photo==null">No Attachments</p>
                             </td>
                             <td [ngClass]="{'bg-warning':details.hrupdate==1 }"style="text-align: center;">{{details.hrrrating}}
                                 <p *ngIf="details.hrupdate!=1">NA</p>
