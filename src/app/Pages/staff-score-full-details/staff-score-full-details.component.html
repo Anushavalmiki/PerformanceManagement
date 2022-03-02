@@ -135,8 +135,8 @@
                     <tr>
                         <th>Goal Name </th>
                         <th>Performance Indicator</th>
-                        <th>Staff Score</th>
-                        <th>Staff Comments</th>
+                        <th>Employee Score</th>
+                        <th>Employee Comments</th>
                         <th>Manager Score</th>
                         <th>Manager Comments</th>
                         <th>HR Score</th>
@@ -149,18 +149,18 @@
                         <td>{{Scores.selfScores}}</td>
                         <!-- <td>{{Scores.selfComments}}</td> -->
                         <td>
-                            <button class="edit" (click)="viewself(Scores)" data-toggle="modal"
+                            <button class="form-control edit" (click)="viewself(Scores)" data-toggle="modal"
                                 data-target="#exampleModal">View</button>
                         </td>
                         <td *ngIf="Scores.groupHeadScores!=null">{{Scores.groupHeadScores}}</td>
                         <td>
-                            <button *ngIf="Scores.groupHeadScores!=null" class="edit" (click)="manager(Scores)"
+                            <button *ngIf="Scores.groupHeadScores!=null" class="form-control edit" (click)="manager(Scores)"
                                 data-toggle="modal" data-target="#exampleModal1">View</button>
                         </td>
                         <!-- <td *ngIf="Scores.groupHeadScores!=null">{{Scores.groupHeadComments}}</td> -->
                         <td *ngIf="Scores.cscores!=null">{{Scores.cscores}}</td>
                         <td>
-                            <button *ngIf="Scores.cscores!=null" class="edit" (click)="hrcomments(Scores)"
+                            <button *ngIf="Scores.cscores!=null" class="form-control edit" (click)="hrcomments(Scores)"
                                 data-toggle="modal" data-target="#exampleModal2">View</button>
                         </td>
                         <!-- <td *ngIf="Scores.cscores!=null">{{Scores.cioComments}}</td> -->

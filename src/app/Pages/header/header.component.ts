@@ -49,13 +49,14 @@ export class HeaderComponent implements OnInit {
     location.reload();
 
   }
-
+  notificationCount:any;
   public GetNotification() {
     debugger
 
     this.PerformanceManagementService.GetNotification(sessionStorage.getItem('EmaployedID')).subscribe(data => {
       debugger
       this.notificationslist = data.filter(x => x.notificationTypeID == 17);
+      this.notificationCount=this.notificationslist.length;
     })
   }
 
