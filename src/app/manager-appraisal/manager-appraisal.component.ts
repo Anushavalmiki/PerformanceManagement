@@ -34,13 +34,16 @@ export class ManagerAppraisalComponent implements OnInit {
   ResultAreaList: any;
   PerformanceLists1: any;
   showbtn: any;
+  showbtn1:any;
   Name:any;
   role:any;
   departmentName:any;
   managerSubmittedDate:any
+  EmployeeId: any;
   ngOnInit(): void {
     this.Score = 0;
     this.showbtn = false;
+    this.showbtn1 = false;
     this.HighScore();
     this.route.params.subscribe(params => {
       debugger;
@@ -60,7 +63,7 @@ export class ManagerAppraisalComponent implements OnInit {
           this.managerSubmittedDate=this.ResultAreaList[0].managerSubmittedDate
 
           this.ResultAreaList.forEach((element: { managerupdate: any; }) => {
-            if (element.managerupdate != 1) {
+            if (element.managerupdate != 1 ||  this.managerSubmittedDate==null) {
               this.showbtn = false
             } else {
               this.showbtn = true
@@ -238,6 +241,8 @@ export class ManagerAppraisalComponent implements OnInit {
           debugger
           Swal.fire("Submitted Appraisal Successfully");
           this.ngOnInit();
+           this.showbtn=false;
+           this.showbtn1=true
         })
       }
     })
@@ -274,6 +279,34 @@ export class ManagerAppraisalComponent implements OnInit {
     }
   cancel(){
     location.href="/Selfratingnew";
+  }
+
+  
+
+  public InsertNotification() {
+    debugger
+
+    var entity = {
+      'Date': new Date(),
+      'Event': 'Apprisal Request',
+      'FromUser': 'Admin',
+      'ToUser': sessionStorage.getItem('EmaployedID'),
+      'Message': 'Your Manager Assigned a New Goal Setting to you!!',
+      'Photo': 'Null',
+      'Building': 'Dynamics 1',
+      'UserID': this.EmployeeId,
+      'NotificationTypeID': 17,
+      'VendorID': 0
+
+
+    }
+    this.PerformanceManagementService.InsertNotification(entity).subscribe(data => {
+      if (data != 0) {
+
+
+      }
+
+    })
   }
 
 }

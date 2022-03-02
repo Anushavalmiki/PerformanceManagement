@@ -173,7 +173,7 @@ export class EmployeeKraMappingComponent implements OnInit {
         )
       }
     }
-
+    this.InsertNotification();
     Swal.fire('Goal Setting Done Successfully.');
     location.href = "#/EmployeeKraMappingdashboard";
 
@@ -187,11 +187,11 @@ export class EmployeeKraMappingComponent implements OnInit {
       'Date': new Date(),
       'Event': 'Apprisal Request',
       'FromUser': 'Admin',
-      'ToUser': this.EmployeeId,
-      'Message': 'Your Manager has benn assigned a NEw Goal Setting to you',
+      'ToUser': sessionStorage.getItem('EmaployedID'),
+      'Message': 'Your Manager Assigned a New Goal Setting to you!!',
       'Photo': 'Null',
       'Building': 'Dynamics 1',
-      'UserID': sessionStorage.getItem('EmaployedID'),
+      'UserID': this.EmployeeId,
       'NotificationTypeID': 17,
       'VendorID': 0
 

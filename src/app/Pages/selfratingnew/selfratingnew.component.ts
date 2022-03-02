@@ -40,6 +40,7 @@ export class SelfratingnewComponent implements OnInit {
   selfrating: any;
   selfComments: any;
   EmployeeSubmittedDate:any;
+  EmployeeId:any;
 
   ngOnInit(): void {
     this.Score = 0;
@@ -222,10 +223,37 @@ export class SelfratingnewComponent implements OnInit {
         }
         this.PerformanceManagementService.SubmitEmployeeAppraisal(entity).subscribe(data => {
           debugger
+this. InsertNotification() ;
           Swal.fire("Submitted Appraisal Successfully");
           this.ngOnInit();
         })
       }
+    })
+  }
+
+  public InsertNotification() {
+    debugger
+
+    var entity = {
+      'Date': new Date(),
+      'Event': 'Apprisal Request',
+      'FromUser': 'Admin',
+      'ToUser':sessionStorage.getItem('EmaployedID') ,
+      'Message': 'Your Employee Submitted the Appraisal',
+      'Photo': 'Null',
+      'Building': 'Dynamics 1',
+      'UserID': this.EmployeeId,
+      'NotificationTypeID': 17,
+      'VendorID': 0
+
+
+    }
+    this.PerformanceManagementService.InsertNotification(entity).subscribe(data => {
+      if (data != 0) {
+
+
+      }
+
     })
   }
 

@@ -12,9 +12,9 @@
     <div class="row">
         <div class="col-lg-10"></div>
         <div class="col-lg-2">
-            <button type="button"  *ngIf="showbtn && EmployeeSubmittedDate==null" class="btn btn-primary" (click)="SubmitEmployeeAppraisal()">Submit
+            <button type="button"  *ngIf="showbtn" class="btn btn-primary" (click)="SubmitEmployeeAppraisal()">Submit
                 Appraisal</button>
-                <!-- <p  *ngIf="showbtn && EmployeeSubmittedDate!=null">Appraisal Submitted!!</p> -->
+                <p  *ngIf="showbtn">Appraisal Submitted!!</p>
                 <button type="button" *ngIf="!showbtn" class="btn btn-primary" disabled>Submit
                     Appraisal</button>
         </div>
