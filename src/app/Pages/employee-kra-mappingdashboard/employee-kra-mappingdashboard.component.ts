@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PerformanceManagementService } from 'src/app/performance-management.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-employee-kra-mappingdashboard',
@@ -10,6 +11,8 @@ export class EmployeeKraMappingdashboardComponent implements OnInit {
 
   constructor(private PerformanceManagementService: PerformanceManagementService) { }
 
+  kpiid: any;
+  ID: any;
   stafflist: any;
   term: any;
   p: any = 1;
@@ -20,12 +23,19 @@ export class EmployeeKraMappingdashboardComponent implements OnInit {
   RoleType: any;
   Department: any;
   count: any;
-
+  kratypelist: any;
+  kraid: any;
+  indicatorlist: any;
+  dummindicatorlist: any;
 
 
   EmployeeKradash: any
 
   ngOnInit(): void {
+    this.GetKPI();
+
+
+    this.GetKeyResultArea();
 
     this.Department = "";
     this.RoleType = "";
@@ -47,6 +57,27 @@ export class EmployeeKraMappingdashboardComponent implements OnInit {
       this.count = this.EmployeeKradash.length;
     });
   }
+
+  getkpi(event: any) {
+    this.indicatorlist = event.target.value;
+  }
+
+
+
+  public GetKPI() {
+    debugger
+    this.PerformanceManagementService.GetKPI().subscribe(
+      data => {
+        this.indicatorlist = data;
+        this.dummindicatorlist = data;
+        this.count = this.indicatorlist.length;
+        console.log("kpilist", this.indicatorlist);
+      }
+    )
+    }
+
+
+
 
   public getRoleType(event: any) {
     debugger
@@ -77,12 +108,63 @@ export class EmployeeKraMappingdashboardComponent implements OnInit {
     debugger
     this.PerformanceManagementService.GetEmployeeKraMap().subscribe(data => {
       debugger
-      this.Staffkra = data.filter(x => x.staffName == details.staffid && x.kpiName != null);
+      this.Staffkra = data.filter(x =>x.kpiName != null);
+      // .filter(x => x.staffName == details.staffid && x.kpiName != null);
     });
 
   }
 
+  public GetKeyResultArea() {
+    this.PerformanceManagementService.GetKeyResultArea().subscribe(
+      data => {
+        this.kratypelist = data;
+        console.log("kratype", this.kratypelist);
+      }
+    )
+  }
 
+
+  getkraid(even: any) {
+    debugger
+    this.kraid = even.target.value;
+    debugger
+    if (even.target.value != 0) {
+      this.indicatorlist = this.dummindicatorlist.filter((x: { kraName: any; }) => x.kraName == this.kraid);
+      this.count = this.indicatorlist.length;
+    }
+    else {
+      this.GetKPI();
+    }
+  }
+
+  edit(details: any) {
+    debugger
+    this.kraid = details.kraid;
+    this.kpiid = details.kpiid;
+    this.ID = details.id;
+    this.GetKPI();
+    this.GetKeyResultArea();
+  }
+
+
+  update() {
+    debugger
+    var entity = {
+      "ID": this.ID,
+      "kraid": this.kraid,
+      "kpiid": this.kpiid
+    }
+    this.PerformanceManagementService.Updatekranew(entity).subscribe(
+      data => {
+      }
+    )
+    Swal.fire("Updated Successfully");
+  }
 }
+
+
+
+
+
 
 

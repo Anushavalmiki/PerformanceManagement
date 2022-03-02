@@ -126,4 +126,15 @@
             <span [ngClass]="active == 'Bell' ? 'Active1' : 'Active3'">Bell Curve Fitting</span>
         </a>
 
+
+        <a class="togglebtn button" routerLink="/AppraisalReport" class="tablinks" (click)="highlight($event)"
+            (click)="Report()" *ngIf="roleid=='3'">
+            <img src="assets/Images/64 Blue/Staff.png" style="width:13% ;margin-right: 15px;"
+                [ngClass]="active != 'Bell' ? 'Active1' : 'Active2'" />
+            <img [ngClass]="active == 'Bell' ? 'Active1' : 'Active2'" src="assets/Images/64/Staff.png"
+                style="width:13%; margin-right: 17px;">
+            &nbsp;
+            <span [ngClass]="active == 'Bell' ? 'Active1' : 'Active3'">Appraisal Report</span>
+        </a>
+
     </div>

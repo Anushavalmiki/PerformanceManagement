@@ -38,6 +38,7 @@ import { SelfratingnewComponent } from './Pages/selfratingnew/selfratingnew.comp
 import { ManagerAppraisalComponent } from './manager-appraisal/manager-appraisal.component';
 import { HrratingnewComponent } from './Pages/hrratingnew/hrratingnew.component';
 import { BellCurveFittingComponent } from './bell-curve-fitting/bell-curve-fitting.component';
+import { AppraisalReportComponent } from './Pages/appraisal-report/appraisal-report.component';
 
 @NgModule({
   declarations: [
@@ -69,7 +70,8 @@ import { BellCurveFittingComponent } from './bell-curve-fitting/bell-curve-fitti
     SelfratingnewComponent,
     ManagerAppraisalComponent,
     HrratingnewComponent,
-    BellCurveFittingComponent
+    BellCurveFittingComponent,
+    AppraisalReportComponent
   ],
   imports: [
     BrowserModule,

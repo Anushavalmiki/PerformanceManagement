@@ -28,6 +28,8 @@ export class ManagerratingdashComponent implements OnInit {
 
   ngOnInit(): void {
 
+
+
     this.Department = "";
     this.RoleType = "";
     this.PerformanceManagementService.GetMyDetails().subscribe(data => {

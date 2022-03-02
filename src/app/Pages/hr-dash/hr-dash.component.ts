@@ -35,7 +35,7 @@ export class HrDashComponent implements OnInit {
       debugger
       this.stafflist = data;
       this.stafflistCopy = this.stafflist
-      this.count = this.stafflist.length;
+      // this.count = this.EmployeeKradash.length;
     });
 
     this.PerformanceManagementService.GetDepartment().subscribe(data => {
