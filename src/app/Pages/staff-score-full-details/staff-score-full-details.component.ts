@@ -182,7 +182,7 @@ export class StaffScoreFullDetailsComponent implements OnInit {
   }
 
   hrcomments(Scores:any){
-    this.hrcomment=Scores.cIOComments;
+    this.hrcomment=Scores.cioComments;
   }
 
 
