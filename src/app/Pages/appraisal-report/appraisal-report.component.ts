@@ -18,12 +18,15 @@ export class AppraisalReportComponent implements OnInit {
    StaffAppraisalList:any;
    FilteredStaffAppraisalList:any;
    search:any;
+   dumpmanagerList:any;
+   uniquelist:any;
 
   ngOnInit(): void {
     this.GetRoleType();
     this.GetMyDetails();
     this.ConductappraisalStaffList();
-    this.managerList=0;
+    this.manager=0;
+    this.dumpmanagerList=0;
       
   }
 
@@ -49,9 +52,17 @@ export class AppraisalReportComponent implements OnInit {
   }
 
   public GetMyDetails() {
+    debugger
     this.PerformanceManagementService.GetMyDetails().subscribe(
       data => {
-        this.managerList = data;
+        debugger
+         this.managerList=data;
+         const key = 'manager';
+         const key1 = 'month'
+         this.uniquelist = [...new Map(this.managerList.map((item: { [x: string]: any; }) =>
+ 
+           [(item[key]), item])).values()]
+      
       }
     )
   }
@@ -64,13 +75,14 @@ export class AppraisalReportComponent implements OnInit {
         this.StaffAppraisalList = temp;
         this.FilteredStaffAppraisalList = this.StaffAppraisalList.filter((x: { cioScores: null; }) => x.cioScores != null)
         this.count = this.FilteredStaffAppraisalList.length;
+        this.managerList = this.dumpmanagerList.filter((x: { manager: any; })=>x.manager==this.manager);
       }
     )
   }
 
   
     fileName = 'Adjustment Report.xlsx';
-exportexcel(): void {
+   exportexcel(): void {
   /* table id is passed over here */
   let element = document.getElementById('download');
   const ws: XLSX.WorkSheet = XLSX.utils.table_to_sheet(element);
@@ -86,3 +98,7 @@ exportexcel(): void {
 
 
 }
+function x(x: any, manager: any): any {
+  throw new Error('Function not implemented.');
+}
+

@@ -11,7 +11,7 @@ export class EmployeeKraMappingComponent implements OnInit {
 
   constructor(private PerformanceManagementService: PerformanceManagementService, private ActivatedRoute: ActivatedRoute) { }
 
-  
+
   Departmentlist: any;
   RoleTypeList: any;
   RoleID: any;
@@ -29,8 +29,8 @@ export class EmployeeKraMappingComponent implements OnInit {
   dropdownSettings2: any = {};
   Apprisalcyclelist: any;
   ngOnInit(): void {
-    this.RoleID="0";
-    this.Apprisalcycle="0"
+    this.RoleID = "0";
+    this.Apprisalcycle = "0"
 
 
     this.PerformanceManagementService.GetDepartmentMaster().subscribe(data => {
@@ -96,10 +96,10 @@ export class EmployeeKraMappingComponent implements OnInit {
     });
 
   }
-  onItemSelect2(item: any) {
+  onItemSelect2(item1: any) {
     debugger
-    console.log(item);
-    this.selectedItems3.push(item);
+    this.selectedItems3.push(item1);
+    console.log("selecteditems", this.selectedItems3)
 
 
   }
@@ -143,7 +143,7 @@ export class EmployeeKraMappingComponent implements OnInit {
   tablecount: any;
   public InsertDetails() {
     debugger
-    for (let i = 0; i < this.keyresultArray.length; i++) {
+    for (let i = 1; i < this.keyresultArray.length; i++) {
 
       if (this.keyresultArray.length == 0) {
         Swal.fire('Please Select Goals For Staff')
@@ -209,15 +209,16 @@ export class EmployeeKraMappingComponent implements OnInit {
   public SaveDetails() {
     debugger
     this.tablecount = 1;
-    var json = {
-      "kraid": this.selectedItems2[0].id,
-      "kpiid": this.selectedItems3[0].id,
-      "kraname": this.selectedItems2[0].kraName,
-      "kpiname": this.selectedItems3[0].kpiName,
-
-    };
-    debugger
-    this.keyresultArray.push(json)
+    for (let i = 0; i < this.selectedItems3.length; i++) {
+      var json = {
+        "kraid": this.selectedItems2[0].id,
+        "kpiid": this.selectedItems3[i].id,
+        "kraname": this.selectedItems2[0].kraName,
+        "kpiname": this.selectedItems3[i].kpiName,
+      };
+      debugger
+      this.keyresultArray.push(json)
+    }
     this.selectedItems1 = [];
     this.selectedItems2 = [];
     this.selectedItems3 = [];
