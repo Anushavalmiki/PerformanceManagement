@@ -17,8 +17,9 @@
                 Role:  <b>{{role}}</b></span>
         </div>
         <div class="col-lg-2" >
-            <button type="button" *ngIf="showbtn" class="btn btn-primary" (click)="SubmitHrAppraisal()">Submit
+            <button type="button" *ngIf="showbtn && HrSubmittedDate==null" class="btn btn-primary" (click)="SubmitHrAppraisal()">Submit
                 Appraisal</button>
+                <p  *ngIf="showbtn && HrSubmittedDate!=null">Appraisal Submitted!!</p>
             <button type="button" *ngIf="!showbtn" class="btn btn-primary" disabled>Submit
                 Appraisal</button>
         </div>

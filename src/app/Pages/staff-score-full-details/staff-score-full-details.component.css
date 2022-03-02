@@ -36,6 +36,7 @@
 .text {
   color: #0C275A;
 
+
 }
 
 .sideheading {
@@ -54,6 +55,9 @@
 .text1 {
   color: #0C275A;
   margin-left: 15px;
+}
+.text2{
+  margin-left: 20px;
 }
 
 .Appraisal {

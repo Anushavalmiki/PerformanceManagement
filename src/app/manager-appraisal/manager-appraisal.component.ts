@@ -37,6 +37,7 @@ export class ManagerAppraisalComponent implements OnInit {
   Name:any;
   role:any;
   departmentName:any;
+  managerSubmittedDate:any
   ngOnInit(): void {
     this.Score = 0;
     this.showbtn = false;
@@ -56,6 +57,7 @@ export class ManagerAppraisalComponent implements OnInit {
           this.Name=this.ResultAreaList[0].name
           this.role=this.ResultAreaList[0].role
           this.departmentName=this.ResultAreaList[0].departmentName
+          this.managerSubmittedDate=this.ResultAreaList[0].managerSubmittedDate
 
           this.ResultAreaList.forEach((element: { managerupdate: any; }) => {
             if (element.managerupdate != 1) {

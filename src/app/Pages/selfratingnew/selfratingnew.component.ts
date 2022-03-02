@@ -39,7 +39,7 @@ export class SelfratingnewComponent implements OnInit {
   empcomments: any;
   selfrating: any;
   selfComments: any;
-
+  EmployeeSubmittedDate:any;
 
   ngOnInit(): void {
     this.Score = 0;
@@ -57,6 +57,8 @@ export class SelfratingnewComponent implements OnInit {
         this.PerformanceManagementService.GetKRAByStaffID(this.StaffID).subscribe(data => {
           debugger
           this.ResultAreaList = data;
+          this.EmployeeSubmittedDate=this.ResultAreaList[0].employeeSubmittedDate
+
 
           this.ResultAreaList.forEach((element: { empupdate: any; }) => {
             if (element.empupdate != 1) {
