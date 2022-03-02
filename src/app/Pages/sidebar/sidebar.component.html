@@ -1,6 +1,16 @@
 <div class="row  tab" *ngIf="temp==1">
     <div class="col-md-2 sidebar sidenav" style="margin-top: 84px;position: fixed;">
 
+        <a class="tablinks" (click)="highlight($event)" (click)="dashboard()" *ngIf="roleid!='1'">
+           
+            <img src="assets/Images/64 Blue/Staff.png" style="width:13% ;margin-right: 17px;"
+                [ngClass]="active != 'dashboard' ? 'Active1' : 'Active2'" />
+            <img [ngClass]="active == 'dashboard' ? 'Active1' : 'Active2'" src="assets/Images/64 Blue/Staff.png"
+                style="width:13%; margin-right: 17px;">
+            &nbsp;
+            <span [ngClass]="active == 'dashboard' ? 'Active1' : 'Active3'"> DASHBOARD </span>
+        </a>
+
         <a data-toggle="collapse" class="togglebtn button" data-target="#userapplications" *ngIf="roleid=='1'"
             class="tablinks" (click)="highlight($event)" (click)="Performance()">
             <img src="assets/Images/64 Blue/Staff.png" style="width:13% ;margin-right: 15px;"

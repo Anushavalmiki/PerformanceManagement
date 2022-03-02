@@ -29,6 +29,9 @@ import { ManagerAppraisalComponent } from './manager-appraisal/manager-appraisal
 import { HrratingnewComponent } from './Pages/hrratingnew/hrratingnew.component';
 import { BellCurveFittingComponent } from './bell-curve-fitting/bell-curve-fitting.component';
 import { AppraisalReportComponent } from './Pages/appraisal-report/appraisal-report.component';
+import { ManagerDashboardComponent } from './manager-dashboard/manager-dashboard.component';
+import { HRDashboardComponent } from './hrdashboard/hrdashboard.component';
+import { EmployeeTileDashboardComponent } from './employee-tile-dashboard/employee-tile-dashboard.component';
 
 
 const routes: Routes = [
@@ -68,7 +71,11 @@ const routes: Routes = [
   { path: 'ManagerAppraisal/:id/:StaffID', component: ManagerAppraisalComponent },
   { path: 'hrratingnew/:id/:StaffID', component: HrratingnewComponent },
   { path: 'BellCurveFitting', component: BellCurveFittingComponent },
-  {path:'AppraisalReport',component:AppraisalReportComponent}
+  {path:'AppraisalReport',component:AppraisalReportComponent},
+  {path:'ManagerDashboard',component:ManagerDashboardComponent},
+  {path:'HRDashboard',component:HRDashboardComponent},
+  {path:'EmployeeTileDashboard',component:EmployeeTileDashboardComponent},
+  
 ];
 
 @NgModule({

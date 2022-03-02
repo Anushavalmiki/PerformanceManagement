@@ -39,6 +39,9 @@ import { ManagerAppraisalComponent } from './manager-appraisal/manager-appraisal
 import { HrratingnewComponent } from './Pages/hrratingnew/hrratingnew.component';
 import { BellCurveFittingComponent } from './bell-curve-fitting/bell-curve-fitting.component';
 import { AppraisalReportComponent } from './Pages/appraisal-report/appraisal-report.component';
+import { ManagerDashboardComponent } from './manager-dashboard/manager-dashboard.component';
+import { HRDashboardComponent } from './hrdashboard/hrdashboard.component';
+import { EmployeeTileDashboardComponent } from './employee-tile-dashboard/employee-tile-dashboard.component';
 
 @NgModule({
   declarations: [
@@ -71,7 +74,10 @@ import { AppraisalReportComponent } from './Pages/appraisal-report/appraisal-rep
     ManagerAppraisalComponent,
     HrratingnewComponent,
     BellCurveFittingComponent,
-    AppraisalReportComponent
+    AppraisalReportComponent,
+    ManagerDashboardComponent,
+    HRDashboardComponent,
+    EmployeeTileDashboardComponent
   ],
   imports: [
     BrowserModule,

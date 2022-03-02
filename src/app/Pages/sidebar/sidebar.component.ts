@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
@@ -10,7 +10,7 @@ export class SidebarComponent implements OnInit {
   roleid: any;
   temp: any;
 
-  constructor() { }
+  constructor(public router: Router) { }
 
   ngOnInit(): void {
     this.temp = sessionStorage.getItem('temp');
@@ -69,5 +69,21 @@ export class SidebarComponent implements OnInit {
 
   Report(){
     localStorage.setItem("clickname","Appraisal Repor")
+  }
+
+  dashboard() {
+    this.active = 'dashboard';
+    localStorage.setItem("clickname", "dashboard")
+    if(this.roleid==2)
+    {
+      this.router.navigate(['/EmployeeTileDashboard']);
+    }
+    else if(this.roleid==3){
+      this.router.navigate(['/HRDashboard']);
+    }
+    else {
+      this.router.navigate(['/ManagerDashboard']);
+    }
+   
   }
 }
