@@ -27,6 +27,9 @@ export class BellCurveFittingComponent implements OnInit {
     manager: any;
     managerList: any;
     count: any;
+    uniquelist:any;
+    dumpmanagerList:any;
+    
     ngOnInit() {
       this.GetRoleType();
       this.YearID = 2020;
@@ -86,6 +89,7 @@ export class BellCurveFittingComponent implements OnInit {
           this.StaffAppraisalList = temp;
           this.FilteredStaffAppraisalList = this.StaffAppraisalList.filter((x: { cioScores: null; }) => x.cioScores != null)
           this.count = this.FilteredStaffAppraisalList.length;
+          this.managerList = this.dumpmanagerList.filter((x: { manager: any; })=>x.manager==this.manager);
         }
       )
     }
@@ -160,9 +164,17 @@ export class BellCurveFittingComponent implements OnInit {
     }
   
     public GetMyDetails() {
+      debugger
       this.PerformanceManagementService.GetMyDetails().subscribe(
         data => {
-          this.managerList = data;
+          debugger
+           this.managerList=data;
+           const key = 'manager';
+           const key1 = 'month'
+           this.uniquelist = [...new Map(this.managerList.map((item: { [x: string]: any; }) =>
+   
+             [(item[key]), item])).values()]
+        
         }
       )
     }

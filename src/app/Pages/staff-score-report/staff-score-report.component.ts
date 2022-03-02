@@ -25,6 +25,8 @@ export class StaffScoreReportComponent implements OnInit {
   manager: any;
   managerList: any;
   count: any;
+  uniquelist:any;
+  dumpmanagerList:any;
 
   
   ngOnInit() {
@@ -35,6 +37,7 @@ export class StaffScoreReportComponent implements OnInit {
     this.StaffID = 0;
     this.GetMyDetails();
     this.manager = 0;
+    this.dumpmanagerList=0;
     // this.StaffID = 0;
     this.UserID = localStorage.getItem('staffid');
     // this.PerformanceManagementService.GetStaffType(1).subscribe(data => {
@@ -71,6 +74,9 @@ export class StaffScoreReportComponent implements OnInit {
           this.StaffAppraisalList = temp;
           this.FilteredStaffAppraisalList = this.StaffAppraisalList.filter((x: { avgGroupHeadScores: any; avgCIOScores: any; }) => ((x.avgGroupHeadScores + x.avgCIOScores) / 2) == this.ratingvalue)
           this.count = this.FilteredStaffAppraisalList.length;
+          
+           
+
         }
       )
     }
@@ -86,6 +92,7 @@ export class StaffScoreReportComponent implements OnInit {
         this.StaffAppraisalList = temp;
         this.FilteredStaffAppraisalList = this.StaffAppraisalList.filter((x: { cioScores: null; }) => x.cioScores != null)
         this.count = this.FilteredStaffAppraisalList.length;
+        this.managerList = this.dumpmanagerList.filter((x: { manager: any; })=>x.manager==this.manager);
       }
     )
   }
@@ -154,15 +161,23 @@ export class StaffScoreReportComponent implements OnInit {
       }
     )
   }
-
+    
   getManager(even: any) {
     this.manager = even.target.value;
   }
 
   public GetMyDetails() {
+    debugger
     this.PerformanceManagementService.GetMyDetails().subscribe(
       data => {
-        this.managerList = data;
+        debugger
+         this.managerList=data;
+         const key = 'manager';
+         const key1 = 'month'
+         this.uniquelist = [...new Map(this.managerList.map((item: { [x: string]: any; }) =>
+ 
+           [(item[key]), item])).values()]
+      
       }
     )
   }

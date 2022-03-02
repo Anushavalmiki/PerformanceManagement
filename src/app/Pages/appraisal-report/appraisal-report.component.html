@@ -36,7 +36,7 @@
                 <select class="form-control" id="manager" name="manager" [(ngModel)]="manager"
                 (change)="getManager($event)">
                 <option value="0">Select Manager</option>
-                <option *ngFor="let details of managerList" value="{{details.name}}">{{details.name}}
+                <option *ngFor="let details of uniquelist" value="{{details.manager}}">{{details.manager}}
                 </option>
             </select>
             </div>
@@ -57,19 +57,21 @@
                 <table class="table" id="download">
                     <thead>
                         <tr>                          
-                            <th>Staff Name</th>
+                            <th>Employee  Name</th>
+                            <th>Role</th>
                             <th>Department</th>
                             <th>Manager Name</th>                       
-                            <th>Total Average</th>
+                            <th>Final Rating </th>
                             </tr>
                     </thead>
                     <tbody>
                         <tr
                             *ngFor="let details of FilteredStaffAppraisalList|filter:search">          
                             <td>{{details.name}}</td>
+                            <td>{{details.role}}</td>
                             <td>{{details.departmentName}}</td>
-                            <td>{{details.avgGroupHeadScores}}</td>
-                            <td>{{((details.avgGroupHeadScores+details.avgCIOScores)/2)}}</td>
+                            <td>{{details.managername}}</td>
+                            <td>{{((details.avgGroupHeadScores+details.avgCIOScores)/2)|number:'1.0-0'}}</td>
                             <!-- <td>
                                 <button class="btn btn-primary editable-table-button btn-xs"
                                     (click)="ViewScores(details)">Change Rating

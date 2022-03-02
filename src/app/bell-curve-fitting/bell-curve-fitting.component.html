@@ -44,11 +44,11 @@
             <div class="col-lg-2">
                 <p class="filter">Filter By Manager</p>
             </div>
-            <div class="col-lg-3 manager">
+            <div class="col-lg-3 ">
                 <select class="form-control" id="manager" name="manager" [(ngModel)]="manager"
                 (change)="getManager($event)">
                 <option value="0">Select Manager</option>
-                <option *ngFor="let details of managerList" value="{{details.name}}">{{details.name}}
+                <option *ngFor="let details of uniquelist" value="{{details.manager}}">{{details.manager}}
                 </option>
             </select>
             </div>
@@ -63,7 +63,7 @@
                         <tr>
                             <th>Appraisal Cycle</th>
                             <th>Role</th>
-                            <th>Staff Name</th>
+                            <th>Employee Name</th>
                             <th>Manager Name</th>
                             <!-- <th>Appraisal Date</th>
                             <th>Cycle Start Date</th>
@@ -80,15 +80,14 @@
                         <tr
                             *ngFor="let details of FilteredStaffAppraisalList |paginate: { itemsPerPage: count1, currentPage: p}|filter:search">
                             <td>{{details.appraisalCycleName}}</td>
-                            <td>{{details.departmentName}}</td>
+                            <td>{{details.role}}</td>
                             <td>{{details.name}}</td>
-                            <td>{{details.approvers1}}</td>
+                            <td>{{details.managername}}</td>
                             <td>{{details.avgSelfScore}}</td>
                             <td>{{details.avgGroupHeadScores}}</td>
                             <td>{{details.avgCIOScores}}</td>
                            
-                            <td>{{((details.avgGroupHeadScores+details.avgCIOScores)/2)}}</td>
-                            <td>NA</td>
+                            <td>{{((details.avgGroupHeadScores+details.avgCIOScores)/2)|number:"1.0-0"}}</td>
                             <!-- <td>{{details.appraisalSubmitionDate|date}}</td>
                             <td>{{details.cycleStartDate|date}}</td>
                             <td>{{details.cycleEndDate|date}}</td> -->
