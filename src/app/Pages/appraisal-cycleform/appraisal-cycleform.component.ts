@@ -23,6 +23,7 @@ export class AppraisalCycleformComponent implements OnInit {
   managerReviewDate:any;
   hrReviewDate:any;
   appraisalLastdate:any;
+  appraisalClosingLastDate:any;
 
 
   ngOnInit(): void {
@@ -54,7 +55,7 @@ export class AppraisalCycleformComponent implements OnInit {
     this.empsubDate=this.appraisallist[0].employeeSubmissionDate;
     this.managerReviewDate=this.appraisallist[0].managerReviewLastDate;
     this.hrReviewDate=this.appraisallist[0].hrReviewLastDate;
-    this.appraisalLastdate=this.appraisallist[0].AppraisalClosingLastDate;
+    this.appraisalClosingLastDate=this.appraisallist[0].appraisalClosingLastDate;
     
       }
     ) 
@@ -93,7 +94,7 @@ export class AppraisalCycleformComponent implements OnInit {
       "EmployeeSubmissionDate":this.empsubDate,
       "ManagerReviewLastDate":this.managerReviewDate,
       "HrReviewLastDate":this.hrReviewDate,
-      "AppraisalClosingLastDate":this.appraisalLastdate
+      "AppraisalClosingLastDate":this.appraisalClosingLastDate
         
       };
     

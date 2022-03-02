@@ -41,7 +41,7 @@
                 <select class="form-control" id="roleTypeid" name="roleTypeid" [(ngModel)]="roleTypeid"
                     (change)="getRoleID($event)">
                     <option value="0">Select Role</option>
-                    <option *ngFor="let details of roleTypeList" value="{{details.short}}">{{details.short}}
+                    <option *ngFor="let details of roleTypeList" value="{{details.id}}">{{details.short}}
                     </option>
                 </select>
             </div>

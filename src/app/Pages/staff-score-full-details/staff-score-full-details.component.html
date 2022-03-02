@@ -84,7 +84,7 @@
     <div class="row">
         <div class="col-lg-9">
         </div>
-        <p class="col-lg-3" *ngIf="cioAvgScores!=null">Total Avg : {{(groupHeadAvgScores+cioAvgScores)/2}}</p>
+        <p class="col-lg-3" *ngIf="cioAvgScores!=null">Total Avg : {{(groupHeadAvgScores+cioAvgScores)/2|number:"1.0-0"}}</p>
     </div>
     <div class="container-fluid">
         <!-- <div class="row">
