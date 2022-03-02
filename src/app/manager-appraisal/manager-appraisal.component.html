@@ -12,9 +12,16 @@
     <br>
 
     <div class="row">
-        <div class="col-lg-10"></div>
+        <div class="col-lg-10">
+            <p>Employee Name:  <b>{{Name}}</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <span>Department:  <b>{{departmentName}}</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            Role:  <b>{{role}}</b></span>
+        </div>
         <div class="col-lg-2">
-            <button type="button" class="btn btn-primary"  *ngIf="showbtn" (click)="SubmitManagerAppraisal()">Submit Appraisal</button>
+            <button type="button" class="btn btn-primary"  *ngIf="showbtn && managerSubmittedDate==null" (click)="SubmitManagerAppraisal()">Submit Appraisal</button>
+            <p  *ngIf="showbtn && managerSubmittedDate!=null">Appraisal Submitted!!</p>
+            <button type="button" *ngIf="!showbtn" class="btn btn-primary" disabled>Submit
+                Appraisal</button>
         </div>
     </div>
     <br>
@@ -29,7 +36,7 @@
                             <th>KPI</th>
                             <th>Employee Rating</th>
                             <th>Employee Comments</th>
-                            <th>Emp Attachment</th>
+                            <th>Employee Attachment</th>
                             <th>Manager Rating</th>
                             <th>Action </th>
                         </tr>
@@ -41,7 +48,7 @@
                                 {{i+1}}</td>
                             <td [ngClass]="{'bggreen':details.managerupdate==1 }">{{details.kraName}}</td>
                             <td [ngClass]="{'bggreen':details.managerupdate==1 }">{{details.kpiName}}</td>
-                            <td [ngClass]="{'bggreen':details.managerupdate==1 }">{{details.emprating}}</td>
+                            <td [ngClass]="{'bg-warning':details.managerupdate==1 }" style="text-align: center;">{{details.emprating}}</td>
 
                             <td [ngClass]="{'bggreen':details.managerupdate==1 }">
                                 <button type="button" class="btn btn-success" data-toggle="modal"
@@ -52,7 +59,7 @@
                                 <button class=" btn btn-primary action" data-toggle="modal" data-target="#exampleModal2"
                                     (click)="getattachment(details)">View Attachments</button>
                             </td>
-                            <td  [ngClass]="{'bggreen':details.managerupdate==1 }">
+                            <td  [ngClass]="{'bg-warning':details.managerupdate==1 }" style="text-align: center;">
                                 {{details.managerrating}}
                                 <p *ngIf="details.managerupdate!=1">NA</p>
                             </td>

@@ -14,6 +14,8 @@
         <br>
         <div class="row FilterClass ">
             <div class="col-lg-1">
+
+                
                 <p class="filter">Filter By</p>
             </div>
             <div class="col-lg-5">
@@ -91,53 +93,41 @@
             </div>
         </div>
         <hr> -->
+        <div class="card">
         <div class="row">
-            <div class="col-lg-6">
-                <p style="margin-left: 14px;">Staff ID: {{StaffID}} </p>
+            <div class="col-lg-12">
+                    <p class="text1">Staff ID : <b>{{StaffID}} </b>
+                        <span  class="text2">Staff Name : <b>{{EmployeeName}}</b> </span>
+                        <span class="text2">Department : <b>{{DepartmentName}}</b></span>
+                        <span class="text2">Role : <b>{{Role}}</b></span>
+                        <span class="text2">Manager : <b>Kumar</b></span>
             </div>
             <!-- <div class="col-lg-3">
             <p>Staff Type:{{StaffType}} </p>
           </div> -->
-            <div class="col-lg-3">
+          
+        </div><hr>
+            <div class="row">
+                <div class="col-lg-6">
+                    <p style="margin-left: 14px;">Appraisal Cycle Start Date: <b>{{StartDate|date}}</b>
+                </div>
+                <div class="col-lg-6">
+                        <span class="txt" style="margin-left: 20px;">Appraisal Cycle End Date: <b>{{EndDate|date}}</b></span>
+                </div>
+              
+            </div><hr>
+            <div class="row">
+                <div class="col-lg-12">
+                    <p>
+                        <span class="text1">Employee Submission Date: <b>{{EmployeeSubmittedDate|date}}</b></span>
+                        <span class="text2">Manager Submission Date: <b>{{ManagerSubmittedDate|date}}</b></span>
+                        <span class="text2">HR Submission Date: <b>{{HrSubmittedDate|date}}</b></span>
+                        <span class="text2">BellCurve Fitting Date: <b>{{HrSubmittedDate|date}}</b></span>
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-6">
-                <p style="margin-left: 14px;">Staff Name: {{EmployeeName}} </p>
-            </div>
-            <div class="col-lg-3">
-                <p>Employee Submission Date: {{EmployeeSubmittedDate|date}}</p>
-            </div>
-            <div class="col-lg-3">
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-6">
-                <p style="margin-left: 14px;">Appraisal Cycle Start Date: {{StartDate|date}} </p>
-            </div>
-            <div class="col-lg-4">
-                <p>Appraisal Cycle End Date: {{EndDate|date}} </p>
-            </div>
-            <div class="col-lg-2">
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-6">
-                <p style="margin-left: 14px;">Department:{{DepartmentName}}</p>
-            </div>
-            <div class="col-lg-3">
-                <p>Role: {{Role}}</p>
-            </div>
-            <div class="col-lg-3">
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-6">
-                <p style="margin-left: 14px;">HR Submission Date: {{HrSubmittedDate|date}}</p>
-            </div>
-            <p style="margin-left: 14px;">Manager Submission Date: {{ManagerSubmittedDate|date}}</p>
         </div>
     </div>
+    <br>
     <div class="row">
         <div class="col-lg-12">
             <table class="table">

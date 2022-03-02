@@ -12,8 +12,11 @@
     <div class="row">
         <div class="col-lg-10"></div>
         <div class="col-lg-2">
-            <button type="button" *ngIf="showbtn" class="btn btn-primary" (click)="SubmitEmployeeAppraisal()">Submit
+            <button type="button"  *ngIf="showbtn && EmployeeSubmittedDate==null" class="btn btn-primary" (click)="SubmitEmployeeAppraisal()">Submit
                 Appraisal</button>
+                <!-- <p  *ngIf="showbtn && EmployeeSubmittedDate!=null">Appraisal Submitted!!</p> -->
+                <button type="button" *ngIf="!showbtn" class="btn btn-primary" disabled>Submit
+                    Appraisal</button>
         </div>
     </div>
     <br>
@@ -45,7 +48,7 @@
                             <td [ngClass]="{'bggreen':details.empupdate==1 }">
                                 <button *ngIf="details.empupdate!=1" type="button" class="btn btn-primary"
                                     data-toggle="modal" (click)="GetKPIID(details)"
-                                    data-target="#exampleModal">Save</button>
+                                    data-target="#exampleModal">Rate</button>
                                 <button *ngIf="details.empupdate==1" type="button" class="btn btn-success"
                                     data-toggle="modal" (click)="GetKPIIDetails(details)"
                                     data-target="#exampleModal1">View
