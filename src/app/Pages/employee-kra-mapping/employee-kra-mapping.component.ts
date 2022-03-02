@@ -28,15 +28,13 @@ export class EmployeeKraMappingComponent implements OnInit {
 
   dropdownSettings2: any = {};
   Apprisalcyclelist: any;
+  Departmentid: any;
   ngOnInit(): void {
     this.RoleID = "0";
     this.Apprisalcycle = "0"
 
 
-    this.PerformanceManagementService.GetDepartmentMaster().subscribe(data => {
-      debugger
-      this.Departmentlist = data;
-    });
+
     this.PerformanceManagementService.GetAppraisalCycle().subscribe(data => {
       debugger
       this.Apprisalcyclelist = data;
@@ -48,6 +46,12 @@ export class EmployeeKraMappingComponent implements OnInit {
     this.PerformanceManagementService.GetMyDetails().subscribe(data => {
       debugger
       this.dropdownList = data;
+      let temp: any = data.filter(x => x.id == sessionStorage.getItem('EmaployedID'));
+      this.Departmentid = temp[0].department;
+      this.PerformanceManagementService.GetDepartmentMaster().subscribe(data => {
+        debugger
+        this.Departmentlist = data.filter(x => x.id == this.Departmentid);
+      });
     });
     this.PerformanceManagementService.GetKeyResultArea().subscribe(data => {
       debugger
@@ -98,7 +102,7 @@ export class EmployeeKraMappingComponent implements OnInit {
   }
   onItemSelect2(item1: any) {
     debugger
-   // this.selectedItems3.push(item1);
+    // this.selectedItems3.push(item1);
     console.log("selecteditems", this.selectedItems3)
 
 
@@ -129,6 +133,15 @@ export class EmployeeKraMappingComponent implements OnInit {
       this.AppraisalSubmitionDate = temp[0].employeeSubmissionDate;
       this.sDate = temp[0].cycleStartDate;
       this.eDate = temp[0].cycleEndDate;
+
+    });
+  }
+
+  public GetRoleID() {
+    this.PerformanceManagementService.GetMyDetails().subscribe(data => {
+      debugger
+      this.dropdownList = data.filter(x => x.type == this.RoleID && x.department == this.Departmentid && x.id != sessionStorage.getItem('EmaployedID'));
+
 
     });
   }

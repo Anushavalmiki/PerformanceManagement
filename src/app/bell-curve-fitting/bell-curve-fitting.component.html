@@ -88,8 +88,11 @@
                             <td>{{details.avgCIOScores}}</td>
                            
                             <td>{{((details.avgGroupHeadScores+details.avgCIOScores)/2)|number:"1.0-0"}}</td>
-                            <!-- <td>{{details.appraisalSubmitionDate|date}}</td>
-                            <td>{{details.cycleStartDate|date}}</td>
+
+                            <td >{{details.bellcurveScore}}
+                                <p *ngIf="details.bellcurveScore==null">NA</p>
+                            </td>
+                           <!--  <td>{{details.cycleStartDate|date}}</td>
                             <td>{{details.cycleEndDate|date}}</td> -->
                             <td>
                                 <button class="btn btn-primary editable-table-button btn-xs" data-toggle="modal" data-target="#viewbellcurve"
@@ -120,17 +123,32 @@
                 </button>
             </div>
             <div class="modal-body scroll">
-                <div class="row">
-                    <div class="col-lg-3">
+              
+                    <div class="row">
+                        <div class="col-lg-1">
+                        </div>
+                        <div class="col-lg-3">
+                            <p style="padding:5px">
+                                Rating <span style="color: red;">*</span> </p>
+                        </div>
+                        <div class="col-lg-7">
+                            <select class="dropdown form-control" id="Score" name="Score" [(ngModel)]="Score" required>
+                                <option value="0">Select Rating</option>
+                                <option *ngFor="let value of list" value="{{value.id}}">{{value.score}} - {{value.answers}}
+                                </option>
+                            </select>
+                        </div>
+                    </div><br>
+                    <div class="row">
+                        <div class="col-lg-3">
+                        </div>
+                        <div class="col-lg-3">
+                            <button class="btn btn-primary editable-table-button btn-xs" (click)="update()" data-dismiss="modal">Update Rate
+                        </button>
+                        </div>
+                       
                     </div>
-                    <div class="col-lg-7">
-                        <!-- <p style="padding:5px" [innerHTML]="">
-                        </p> -->
-                    </div>
-                    <div class="col-lg-3">
-
-                    </div>
-                </div>
+            
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

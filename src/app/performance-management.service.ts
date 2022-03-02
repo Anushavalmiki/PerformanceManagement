@@ -290,7 +290,11 @@ export class PerformanceManagementService {
   }
 
 
-
+  public UpdateBellCurveFitting(json: any) {
+    debugger
+    let APIURL = this.baseURL + "Master/UpdateBellCurveFitting";
+    return this.http.post<any[]>(APIURL, json);
+  }
 
 
 

@@ -33,7 +33,7 @@
             </div>
 
             <div class="col-lg-3">
-                <select class="form-control" id="RoleID" name="RoleID" [(ngModel)]="RoleID">
+                <select class="form-control" id="RoleID" name="RoleID" [(ngModel)]="RoleID" (change)="GetRoleID()">
                     <option value="0">Select Role</option>
                     <option *ngFor="let item of RoleTypeList" value="{{item.id}}">{{item.short}}
                     </option>

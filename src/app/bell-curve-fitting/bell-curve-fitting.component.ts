@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { PerformanceManagementService } from 'src/app/performance-management.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-bell-curve-fitting',
@@ -32,10 +33,12 @@ export class BellCurveFittingComponent implements OnInit {
     
     ngOnInit() {
       this.GetRoleType();
+      this.HighScore();
       this.YearID = 2020;
       this.ratingvalue = 0;
       this.StaffTypeID = 0;
       this.StaffID = 0;
+      this.Score=0;
       this.GetMyDetails();
       this.manager = 0;
       // this.StaffID = 0;
@@ -130,13 +133,27 @@ export class BellCurveFittingComponent implements OnInit {
     }
   
   
-  
+    update(){
+      debugger
+      var entity = {
+        'staffID':this.StaffID,
+        'bellcurveScore': this.Score
+      }
+      this.PerformanceManagementService.UpdateBellCurveFitting(entity).subscribe(data => {
+        debugger
+        Swal.fire("Updated Successfully");
+        this.ngOnInit();
+      })
+
+
+    
+    }
   
   
     public ViewScores(event: any) {
-      // debugger;
-      // let StaffID = event.id;
-      // let StaffTypeID = event.type;
+      debugger;
+       this.StaffID = event.id;
+      let StaffTypeID = event.type;
   
       // this.router.navigate(['/StaffScoreFullDetails', StaffID, StaffID]);
   
@@ -202,6 +219,16 @@ export class BellCurveFittingComponent implements OnInit {
     //   csvExporter.generateCsv(this.StaffAppraisalList);
     // }
   
+    list: any;
+    Score:any;
+    SelfComments: any;
+    public HighScore() {
+      debugger
+      this.PerformanceManagementService.GetHighScores().subscribe(data => {
+        debugger
+        this.list = data;
+      })
+    }
   
   }
   
