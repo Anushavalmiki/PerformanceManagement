@@ -35,7 +35,7 @@ export class HrDashComponent implements OnInit {
       debugger
       this.stafflist = data;
       this.stafflistCopy = this.stafflist
-      // this.count = this.EmployeeKradash.length;
+    
     });
 
     this.PerformanceManagementService.GetDepartment().subscribe(data => {
@@ -46,6 +46,8 @@ export class HrDashComponent implements OnInit {
     this.PerformanceManagementService.GetConductappraisalStaffList().subscribe(data => {
       debugger
       this.EmployeeKradash = data.filter(x => x.approver2 == sessionStorage.getItem('EmaployedID') && x.selfScores != null);
+      this.count=this.EmployeeKradash.length;
+    
     });
   }
 
@@ -60,6 +62,7 @@ export class HrDashComponent implements OnInit {
       debugger
       this.stafflist = data.filter(x => x.roleType == this.RoleType);
       this.count = this.stafflist.length;
+
     });
 
   }

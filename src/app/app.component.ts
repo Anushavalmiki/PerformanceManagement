@@ -23,8 +23,6 @@ export class AppComponent {
     this.temp=sessionStorage.getItem('temp');
     this.roleid=sessionStorage.getItem('roleid');
     this.userName=sessionStorage.getItem('loginName');
-  
-
 
   }
 
