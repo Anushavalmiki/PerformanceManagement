@@ -227,7 +227,7 @@
                         <button class="form-control cancel" data-toggle="modal" data-target="#exampleModal3" data-dismiss="modal" >Update</button>
                     </div>
                     <div class="col-lg-2">
-                        <button class="form-control cancel" data-dismiss="modal" data-dismiss="modal" (click)="ondelete()">Delete</button>
+                        <button class="form-control cancel" data-dismiss="modal" data-dismiss="modal" *ngIf="attachment!=null" (click)="ondelete()">Delete</button>
                     </div>
                 </div>
             </div>

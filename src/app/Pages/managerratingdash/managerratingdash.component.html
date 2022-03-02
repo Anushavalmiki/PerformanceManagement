@@ -37,7 +37,9 @@
                             <th>Department</th>
                             <th>Apprisal Start Date </th>
                             <th>Apprisal End Date </th>
-                            <th>Submission Date </th>
+                            <th>Last Submission  Date </th>
+                            <th>Employee Submitted Date</th>
+                            <th>HR Submitted  Date </th>
                             <th>Action </th>
                         </tr>
                     </thead>
@@ -48,6 +50,8 @@
                             <td>{{details.cycleStartDate|date}}</td>
                             <td>{{details.cycleEndDate|date}}</td>
                             <td>{{details.appraisalSubmitionDate|date}}</td>
+                            <td>{{details.employeeSubmittedDate}}</td>
+                            <td>{{details.hrSubmittedDate}}</td>
                             <td>
                                 <button [routerLink]="['/ManagerAppraisal', details.id,details.id ]"
                                     

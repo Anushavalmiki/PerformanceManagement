@@ -283,7 +283,11 @@ export class PerformanceManagementService {
     return this.http.post(this.url, data);
   }
 
-
+  public Updatekranew(data: any) {
+    debugger;
+    this.url = this.baseURL + 'Master/Updatekranew';
+    return this.http.post(this.url, data);
+  }
 
 
 
