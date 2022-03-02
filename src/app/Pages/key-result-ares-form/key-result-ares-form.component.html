@@ -3,7 +3,7 @@
     <div class="row">
         <br>
         <div class="col-lg-4">
-            <p class="headings">Key Result Type Details </p>
+            <p class="headings">Goal Details </p>
         </div>
         <div class="col-lg-8"></div>
     </div>
@@ -11,10 +11,10 @@
         <br>
         <div class="row ">
             <div class="col-lg-2 ">
-                <p class="columnname">KRA Name </p>
+                <p class="columnname">Goal Name </p>
             </div>
             <div class="col-lg-2">
-                <p class="columnname">KRA Type</p>
+                <p class="columnname">Goal Type</p>
             </div>
             <div class="col-lg-2">
                 <p class="columnname">Select Role </p>
@@ -26,12 +26,12 @@
         <div class="row header">
 
             <div class="col-lg-2 columnname">
-                <input class="form-control" placeholder="KRA Name " [(ngModel)]="kraName" name="kraName">
+                <input class="form-control" placeholder="Goal Name " [(ngModel)]="kraName" name="kraName">
             </div>
 
             <div class="col-lg-2">
                 <select class="form-control columnname" [(ngModel)]="kratypeid" name="kratypeid">
-                    <option value="0">Select KraType</option>
+                    <option value="0">Select Goal Type</option>
                     <option *ngFor="let details of kratypelist" value="{{details.kraType}}">{{details.kraType}}</option>
                 </select>
             </div>
@@ -46,12 +46,12 @@
                 </select>
             </div>
             <div class="col-lg-3 columnname">
-                <textarea class="form-control" [(ngModel)]="description">Description</textarea>
+                <textarea class="form-control" [(ngModel)]="description" placeholder="Write here.. " >Description</textarea>
             </div>
 
         </div> <br>
         <div class="row">
-            <div class="col-lg-10"></div>
+            <div class="col-lg-9"></div>
             <div class="col-lg-1">
                 <button class="form-control cancel" (click)="Add()">Add</button>
             </div>
