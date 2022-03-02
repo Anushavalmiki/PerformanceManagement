@@ -74,7 +74,7 @@ export class EmployeeKraMappingdashboardComponent implements OnInit {
         console.log("kpilist", this.indicatorlist);
       }
     )
-    }
+  }
 
 
 
@@ -108,7 +108,7 @@ export class EmployeeKraMappingdashboardComponent implements OnInit {
     debugger
     this.PerformanceManagementService.GetEmployeeKraMap().subscribe(data => {
       debugger
-      this.Staffkra = data.filter(x =>x.kpiName != null);
+      this.Staffkra = data.filter(x => x.kpiName != null && x.staffName == details.staffid);
       // .filter(x => x.staffName == details.staffid && x.kpiName != null);
     });
 

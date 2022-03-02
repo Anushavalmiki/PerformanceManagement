@@ -63,7 +63,7 @@ export class ManagerAppraisalComponent implements OnInit {
           this.managerSubmittedDate=this.ResultAreaList[0].managerSubmittedDate
 
           this.ResultAreaList.forEach((element: { managerupdate: any; }) => {
-            if (element.managerupdate != 1 ||  this.managerSubmittedDate==null) {
+            if (element.managerupdate != 1 ) {
               this.showbtn = false
             } else {
               this.showbtn = true

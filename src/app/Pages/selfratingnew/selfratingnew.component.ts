@@ -41,7 +41,7 @@ export class SelfratingnewComponent implements OnInit {
   selfComments: any;
   EmployeeSubmittedDate: any;
   EmployeeId: any;
-
+  ManagerID:any;
   ngOnInit(): void {
     this.Score = 0;
     this.showbtn = false;
@@ -59,6 +59,8 @@ export class SelfratingnewComponent implements OnInit {
           debugger
           this.ResultAreaList = data;
           this.EmployeeSubmittedDate = this.ResultAreaList[0].employeeSubmittedDate
+          this.ManagerID = this.ResultAreaList[0].approver1
+
 
 
           this.ResultAreaList.forEach((element: { empupdate: any; }) => {
@@ -239,10 +241,10 @@ export class SelfratingnewComponent implements OnInit {
       'Event': 'Apprisal Request',
       'FromUser': 'Admin',
       'ToUser': sessionStorage.getItem('EmaployedID'),
-      'Message': 'Your Employee Submitted the Appraisal',
+      'Message': sessionStorage.getItem('EmaployedID')+'Submitted the Appraisal',
       'Photo': 'Null',
       'Building': 'Dynamics 1',
-      'UserID': this.EmployeeId,
+      'UserID': this.ManagerID,
       'NotificationTypeID': 17,
       'VendorID': 0
 

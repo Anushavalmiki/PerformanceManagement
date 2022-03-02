@@ -63,7 +63,7 @@ export class EmployeeKraMappingComponent implements OnInit {
       allowSearchFilter: true
     };
     this.dropdownSettings = {
-      singleSelection: false,
+      singleSelection: true,
       idField: 'id',
       textField: 'name',
       selectAllText: 'Select All',
@@ -98,7 +98,7 @@ export class EmployeeKraMappingComponent implements OnInit {
   }
   onItemSelect2(item1: any) {
     debugger
-    this.selectedItems3.push(item1);
+   // this.selectedItems3.push(item1);
     console.log("selecteditems", this.selectedItems3)
 
 
@@ -143,7 +143,7 @@ export class EmployeeKraMappingComponent implements OnInit {
   tablecount: any;
   public InsertDetails() {
     debugger
-    for (let i = 1; i < this.keyresultArray.length; i++) {
+    for (let i = 0; i < this.keyresultArray.length; i++) {
 
       if (this.keyresultArray.length == 0) {
         Swal.fire('Please Select Goals For Staff')
@@ -158,7 +158,7 @@ export class EmployeeKraMappingComponent implements OnInit {
           'AppraisalSubmitionDate': this.AppraisalSubmitionDate,
           'CycleStartDate': this.sDate,
           'CycleEndDate': this.eDate,
-          'kraid': this.keyresultArray[i].kraid,
+          'KraID': this.keyresultArray[i].kraid,
           'kpiid': this.keyresultArray[i].kpiid
         }
         this.PerformanceManagementService.InsertEmployeeKraMap(Entity).subscribe(
