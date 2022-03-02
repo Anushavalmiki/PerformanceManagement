@@ -11,7 +11,11 @@
     </div>
     <br>
     <div class="row">
-        <div class="col-lg-10"></div>
+        <div class="col-lg-10">
+            <p>Employee Name:  <b>{{Name}}</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <span>Department:  <b>{{departmentName}}</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                Role:  <b>{{role}}</b></span>
+        </div>
         <div class="col-lg-2" >
             <button type="button" *ngIf="showbtn" class="btn btn-primary" (click)="SubmitHrAppraisal()">Submit
                 Appraisal</button>
@@ -47,7 +51,7 @@
                                 {{i+1}}</td>
                             <td [ngClass]="{'bggreen':details.hrupdate==1 }">{{details.kraName}}</td>
                             <td [ngClass]="{'bggreen':details.hrupdate==1 }">{{details.kpiName}}</td>
-                            <td [ngClass]="{'bggreen':details.hrupdate==1 }">{{details.emprating}}</td>
+                            <td [ngClass]="{'bg-warning':details.hrupdate==1 }" style="text-align: center;">{{details.emprating}}</td>
                             <td [ngClass]="{'bggreen':details.hrupdate==1 }">
                                 <button type="button" class="btn btn-success" data-toggle="modal"
                                     (click)="GetEmpComments(details)" data-target="#viewwmpcomments">View
@@ -55,9 +59,10 @@
                             </td>
                             <td [ngClass]="{'bggreen':details.hrupdate==1 }">
                                 <button class=" btn btn-primary action" data-toggle="modal" data-target="#exampleModal2"
-                                    (click)="getattachment(details)">View Attachments</button>
+                                    (click)="getattachment(details)" >View Attachments</button>
+                                    <p *ngIf="details.hrupdate!=1">NA</p>
                             </td>
-                            <td [ngClass]="{'bggreen':details.hrupdate==1 }">{{details.managerrating}}</td>
+                            <td [ngClass]="{'bg-warning':details.hrupdate==1 }"style="text-align: center;">{{details.managerrating}}</td>
                             <td [ngClass]="{'bggreen':details.hrupdate==1 }">
                                 <button type="button" class="btn btn-success" data-toggle="modal"
                                     (click)="GEtmanagercomments(details)" data-target="#viewhrcomments">View
@@ -67,7 +72,7 @@
                                 <button class=" btn btn-primary action" data-toggle="modal" data-target="#exampleModal2"
                                     (click)="getattachment(details)">View Attachments</button>
                             </td>
-                            <td [ngClass]="{'bggreen':details.hrupdate==1 }">{{details.hrrrating}}
+                            <td [ngClass]="{'bg-warning':details.hrupdate==1 }"style="text-align: center;">{{details.hrrrating}}
                                 <p *ngIf="details.hrupdate!=1">NA</p>
                             </td>
                             <td [ngClass]="{'bggreen':details.hrupdate==1 }">

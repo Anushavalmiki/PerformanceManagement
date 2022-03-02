@@ -33,6 +33,9 @@ export class HrratingnewComponent implements OnInit {
   ResultAreaList: any;
   PerformanceLists1: any;
   showbtn: any;
+  Name:any;
+  role:any;
+  departmentName:any;
   ngOnInit(): void {
     this.Score = 0;
     this.showbtn = false;
@@ -48,6 +51,10 @@ export class HrratingnewComponent implements OnInit {
         this.PerformanceManagementService.GetKRAByStaffID(this.StaffID).subscribe(data => {
           debugger
           this.ResultAreaList = data;
+
+          this.Name=this.ResultAreaList[0].name
+          this.role=this.ResultAreaList[0].role
+          this.departmentName=this.ResultAreaList[0].departmentName
 
           this.ResultAreaList.forEach((element: { hrupdate: any; }) => {
             if (element.hrupdate != 1) {
