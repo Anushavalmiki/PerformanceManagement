@@ -296,6 +296,13 @@ export class PerformanceManagementService {
     return this.http.post<any[]>(APIURL, json);
   }
 
+  
+ 
+
+  public GetAllCounts(TypeID:any, StaffID: any) {
+    return this.http.get<any[]>(
+      this.baseURL + '/Master/GetAllCounts?TypeID=' + TypeID + '&StaffID=' + StaffID);
+  }
 
 
 

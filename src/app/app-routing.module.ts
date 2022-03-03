@@ -10,7 +10,7 @@ import { KeyResultAreaComponent } from './Pages/key-result-area/key-result-area.
 import { MyAppraisalComponent } from './Pages/my-appraisal/my-appraisal.component'
 import { DashboardComponent } from './Pages/dashboard/dashboard.component';
 import { AppraisalCycleformComponent } from './Pages/appraisal-cycleform/appraisal-cycleform.component';
-import { KeyResultAresFormComponent } from './Pages/key-result-ares-form/key-result-ares-form.component'
+import { KeyResultAresFormComponent } from './Pages/key-result-ares-form/key-result-ares-form.component';
 import { KeyPerformanceIndicatorformComponent } from './Pages/key-performance-indicatorform/key-performance-indicatorform.component';
 import { EmployeeDashboardComponent } from './Pages/employee-dashboard/employee-dashboard.component';
 import { EmployeeFormComponent } from './Pages/employee-form/employee-form.component'
