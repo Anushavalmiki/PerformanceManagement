@@ -38,36 +38,51 @@
                     <tbody>
                     <tr>
                         <td>Appraisal Start date</td>
-                        <td>Mar 20, 2021</td>
+                        <td>{{CycleStartDate|date}}</td>
                     </tr>
                     <tr>
                         <td>Appraisal End Date</td>
-                        <td>Apr 20, 2022</td>
+                        <td>{{CycleEndDate|date}}</td>
                     </tr>
                     <tr>
-                        <td>Appraisal Submitted Date</td>
-                        <td>Mar 20, 2022</td>
+                        <td>Appraisal Submission Date</td>
+                        <td>{{AppraisalSubmitionDate|date}}</td>
                     </tr>
 
                     <tr>
                         <td>Goal Setting Completed Date</td>
-                        <td>Mar 2, 2022</td>
+                        <td>{{GoalSettingDate|date}}</td>
                     </tr>
                     <tr>
                         <td>Self Appraisal Completed Date</td>
-                        <td>Mar 2, 2022</td>
+                        <td *ngIf="EmployeeSubmittedDate!=null">{{EmployeeSubmittedDate|date}}
+                            <p *ngIf="EmployeeSubmittedDate==null">Pending</p>
+                        </td>
                     </tr>
                     <tr>
                         <td>Manager Appraisal Completed Date</td>
-                        <td>Mar 2, 2022</td>
+                        <td >
+                            <p *ngIf="ManagerSubmittedDate!=null">{{ManagerSubmittedDate|date}}</p>
+                            <p *ngIf="ManagerSubmittedDate==null">Pending</p>
+                        </td>
                     </tr>
                     <tr>
                         <td>HR Appraisal Completed Date</td>
-                        <td>Pending</td>
+                        <td>
+                            <p  *ngIf="HrSubmittedDate!=null">{{HrSubmittedDate|date}}</p>
+                            <p *ngIf="HrSubmittedDate==null">Pending</p>
+                        </td>
                     </tr>
                     <tr>
                         <td>Status</td>
-                        <td style="color: red;">HR Pending</td>
+                        <!-- <td style="color: red;">HR Pending</td> -->
+                        <td>
+                            <p *ngIf="EmployeeSubmittedDate==null"  style="color: red;"> Employee Pending</p>
+                            <p *ngIf="ManagerSubmittedDate==null"  style="color: red;"> Manager Pending</p>
+                            <p *ngIf="HrSubmittedDate==null" style="color: red;">HR Pending</p>
+
+                            <p *ngIf="HrSubmittedDate!=null" style="color: green;">Completed</p>
+                        </td>
                     </tr>
                     </tbody>
                 </table>

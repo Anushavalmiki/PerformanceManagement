@@ -63,8 +63,8 @@
                             </td>
                             <td [ngClass]="{'bggreen':details.managerupdate==1 }">
                                 <button class=" btn btn-primary action" data-toggle="modal" data-target="#exampleModal2"
-                                    (click)="getattachment(details)"  *ngIf="attachment!=null">View Attachments</button>
-                                    <p *ngIf="attachment==null">Not Available</p>
+                                    (click)="getattachment(details)"  *ngIf="selfAttachment!=null">View Attachments</button>
+                                    <p *ngIf="selfAttachment==null">Not Available</p>
                             </td>
                             <td  [ngClass]="{'bg-warning':details.managerupdate==1 }" style="text-align: center;">
                                 {{details.managerrating}}
@@ -272,10 +272,10 @@
                     <div class="col-lg-1">
                     </div>
                     <div class="col-lg-3">
-                        <p *ngIf="attachment==null">No Attachments</p>
+                        <p *ngIf="selfAttachment==null">No Attachments</p>
                     </div>
                     <div class="col-lg-3">
-                        <img src="{{attachment}}" style="width:400px;">
+                        <img src="{{selfAttachment}}" style="width:400px;">
                         <!-- <img src="http://103.133.214.197/digiofficeapi\Images\ProjectAttachments\AmazeLogo-20220214160917-20220228163117.jpg"> -->
                     </div>
                 </div>

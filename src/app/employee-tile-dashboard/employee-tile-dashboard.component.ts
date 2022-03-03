@@ -20,11 +20,15 @@ export class EmployeeTileDashboardComponent implements OnInit {
   RoleType: any;
   Department: any;
   count: any;
-
-
-
+  ResultAreaList:any;
+  HrSubmittedDate:any;
+  CycleEndDate:any;
   EmployeeKradash: any
-
+  ManagerSubmittedDate:any
+  EmployeeSubmittedDate:any
+  AppraisalSubmitionDate:any;
+  appraisallist:any;
+  GoalSettingDate:any;
   ngOnInit(): void {
 
     this.Department = "";
@@ -45,6 +49,31 @@ export class EmployeeTileDashboardComponent implements OnInit {
       debugger
       this.EmployeeKradash = data.filter(x => x.staffid == sessionStorage.getItem('EmaployedID'));
     });
+
+
+    this.PerformanceManagementService.GetKRAByStaffID(sessionStorage.getItem('EmaployedID')).subscribe(data => {
+      debugger
+      this.ResultAreaList = data;
+      this.CycleStartDate=this.ResultAreaList[0].cycleStartDate
+      this.CycleEndDate=this.ResultAreaList[0].cycleEndDate
+      this.ManagerSubmittedDate=this.ResultAreaList[0].managerSubmittedDate
+      this.HrSubmittedDate=this.ResultAreaList[0].hrSubmittedDate
+      this.EmployeeSubmittedDate=this.ResultAreaList[0].employeeSubmittedDate
+
+      this.AppraisalSubmitionDate=this.ResultAreaList[0].appraisalSubmitionDate
+
+    })
+
+
+
+      this.PerformanceManagementService.GetAppraisalCycle().subscribe(
+        data => {
+          debugger
+        this.appraisallist=data;
+        this.GoalSettingDate=this.appraisallist[0].goalSettingDate
+        this.count=this.appraisallist.length;
+        })
+
   }
 
   public getRoleType(event: any) {
@@ -72,6 +101,7 @@ export class EmployeeTileDashboardComponent implements OnInit {
 
   }
   Staffkra: any;
+  CycleStartDate:any;
   public GetStaffKraDetails(details: any) {
     debugger
     this.PerformanceManagementService.GetEmployeeKraMap().subscribe(data => {
@@ -79,8 +109,11 @@ export class EmployeeTileDashboardComponent implements OnInit {
       this.Staffkra = data.filter(x => x.staffName == details.staffid);
       this.count = this.Staffkra.length;
     });
-
   }
+
+
+
+  
 
 
 }
