@@ -30,6 +30,7 @@ export class KeyResultAresFormComponent implements OnInit {
 
     this.GetKraMaster();
     this.GetRoleType();
+    this.roleTypeid=0;
 
   
 
@@ -38,6 +39,9 @@ export class KeyResultAresFormComponent implements OnInit {
       if (this.id != undefined && this.id != null) {
         this.GetKeyResultArea();
         this.kratypeid=0;
+      }
+      else{
+       
       }
     })
 
@@ -52,9 +56,11 @@ export class KeyResultAresFormComponent implements OnInit {
     this.keyresultlist = data;
 		this.keyresultlist=this.keyresultlist.filter((x: { id: any; })=>x.id==Number(this.id));
 		this.kraName=this.keyresultlist[0].kraName;
-		this.kraType=this.keyresultlist[0].kratypeid;
-    this.roleTypeid=this.keyresultlist[0].short;
+		this.kratypeid=this.keyresultlist[0].kraTypeID;
+    this.roleTypeid=this.keyresultlist[0].role;
     this.description=this.keyresultlist[0].description
+
+    this.GetKraMaster();
       }
     ) 
   }
@@ -157,7 +163,7 @@ Add(){
        var json = {
         "ID": this.id,
         "KRAName":this.kraName,
-        "KraTypeID":this.kraType,
+        "KraTypeID":this.kratypeid,
          "Role":this.short,
         "Description ":this.description          
         };     
