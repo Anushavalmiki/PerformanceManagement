@@ -231,7 +231,7 @@
     margin-top: 5px;
   }
   .background{
-    background-color:black;
+    /* background-color:black; */
     font-size: 12px;
     padding-left: 5px;
   }
@@ -252,14 +252,14 @@
     background-color: white;
   }
   span:hover {
-    background-color:rgb(87, 87, 87);
+    /* background-color:rgb(87, 87, 87); */
     text-decoration: none;
     color: #ffc83d;
     cursor: pointer;
   }
   
   .togglebtn {
-    background-color: black;
+    /* background-color: black; */
     border: none;
     color: white;
     font-size: 16px;

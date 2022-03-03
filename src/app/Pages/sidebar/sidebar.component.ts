@@ -31,7 +31,7 @@ export class SidebarComponent implements OnInit {
 
   active: any;
   Performance() {
-    this.active = 'AppraisalCycle';
+    // this.active = 'AppraisalCycle';
     localStorage.setItem("clickname", "Performance Management")
   }
 
@@ -52,7 +52,7 @@ export class SidebarComponent implements OnInit {
   }
 
   Myappraisal() {
-    this.active = 'category';
+    // this.active = 'category';
 
     localStorage.setItem("clickname", "My Appraisal Dashboard")
   }
@@ -74,7 +74,7 @@ export class SidebarComponent implements OnInit {
   }
 
   dashboard() {
-    this.active = 'dashboard';
+    // this.active = 'dashboard';
     localStorage.setItem("clickname", "dashboard")
     if(this.roleid==2)
     {
