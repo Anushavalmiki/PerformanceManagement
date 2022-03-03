@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PerformanceManagementService } from '../performance-management.service';
 
 @Component({
   selector: 'app-manager-dashboard',
@@ -7,9 +8,32 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ManagerDashboardComponent implements OnInit {
 
-  constructor() { }
-
+  constructor(private PerformanceManagementService:PerformanceManagementService) { }
+  StaffID:any;
+  countList:any;
   ngOnInit(): void {
+    this.GetAllCounts();
+    this.StaffID=sessionStorage.getItem('EmaployedID');
   }
 
-}
+
+  public GetAllCounts(){
+    debugger
+    if(this.StaffID==undefined)
+    {
+     this.PerformanceManagementService.GetAllCounts(1,1).subscribe(
+       data=>{
+         this.countList=data[0];
+       }
+     )
+    }
+    else{
+     this.PerformanceManagementService.GetAllCounts(2,this.StaffID).subscribe(
+       data=>{
+         this.countList=data[0];
+       }
+     )
+    }
+  }
+
+  }
