@@ -42,6 +42,7 @@ export class SelfratingnewComponent implements OnInit {
   EmployeeSubmittedDate: any;
   EmployeeId: any;
   ManagerID:any;
+  StaffName:any;
   ngOnInit(): void {
     this.Score = 0;
     this.showbtn = false;
@@ -60,6 +61,7 @@ export class SelfratingnewComponent implements OnInit {
           this.ResultAreaList = data;
           this.EmployeeSubmittedDate = this.ResultAreaList[0].employeeSubmittedDate
           this.ManagerID = this.ResultAreaList[0].approver1
+          this.StaffName=this.ResultAreaList[0].name
 
 
 
@@ -240,8 +242,8 @@ export class SelfratingnewComponent implements OnInit {
       'Date': new Date(),
       'Event': 'Apprisal Request',
       'FromUser': 'Admin',
-      'ToUser': sessionStorage.getItem('EmaployedID'),
-      'Message': sessionStorage.getItem('EmaployedID')+'Submitted the Appraisal',
+      'ToUser': sessionStorage.getItem('username'),
+      'Message': this.StaffName +' '+'Submitted the Appraisal',
       'Photo': 'Null',
       'Building': 'Dynamics 1',
       'UserID': this.ManagerID,

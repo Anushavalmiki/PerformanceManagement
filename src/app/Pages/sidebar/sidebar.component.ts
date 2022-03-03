@@ -52,6 +52,8 @@ export class SidebarComponent implements OnInit {
   }
 
   Myappraisal() {
+    this.active = 'category';
+
     localStorage.setItem("clickname", "My Appraisal Dashboard")
   }
 
