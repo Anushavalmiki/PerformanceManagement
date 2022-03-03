@@ -37,6 +37,7 @@ export class HrratingnewComponent implements OnInit {
   role:any;
   departmentName:any;
   HrSubmittedDate:any;
+  hrattachment:any;
   ngOnInit(): void {
     this.Score = 0;
     this.showbtn = false;
@@ -210,20 +211,23 @@ export class HrratingnewComponent implements OnInit {
       let temp: any = data.filter(x => x.id == details.id)
       this.Score = temp[0].hrrrating;
       this.SelfComments = temp[0].hrcomments;
-      this.attachment=details.photo;
+      this.hrattachment=details.hPhoto;
 
     })
+    this.photoid=details.id;
   }
 
   files: File[] = [];
   attachmentsurl: any = []
   onSelect(event: any) {
     console.log(event);
+    this.attachmentsurl.length=0
     debugger
     this.files.push(...event.addedFiles);
     this.PerformanceManagementService.ProjectAttachments(this.files).subscribe(res => {
       debugger
       if (res != undefined) {
+        this.attachment=res;
         this.attachmentsurl.push(res);
 
 
@@ -281,7 +285,9 @@ export class HrratingnewComponent implements OnInit {
       debugger
       var entity = {
         'ID':this.photoid,
-        'Attachment': this.attachmentsurl[0]
+        // 'Attachment': this.attachmentsurl[0]
+        'Attachment': this.attachment
+
       }
       this.PerformanceManagementService.UpdateHrSelfAttachment(entity).subscribe(data => {
         debugger
