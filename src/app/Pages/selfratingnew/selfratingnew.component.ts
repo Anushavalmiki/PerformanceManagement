@@ -43,6 +43,7 @@ export class SelfratingnewComponent implements OnInit {
   EmployeeId: any;
   ManagerID: any;
   StaffName: any;
+  loader: any;
   ngOnInit(): void {
     this.Score = 0;
     this.showbtn = false;
@@ -196,10 +197,12 @@ export class SelfratingnewComponent implements OnInit {
     this.files.push(...event.addedFiles);
     // this.attachmentsurl.length = 0;
     this.PerformanceManagementService.ProjectAttachments(this.files).subscribe(res => {
+      this.loader = true;
       debugger
       if (res != undefined) {
         this.attachmentsurl.push(res);
         this.attachmentNew = res;
+        this.loader = false;
         alert('Attachment uploaded')
         //  this.files.length = 0;
 

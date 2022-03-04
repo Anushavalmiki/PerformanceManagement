@@ -27,13 +27,13 @@ export class EmployeeKraMappingdashboardComponent implements OnInit {
   kraid: any;
   indicatorlist: any;
   dummindicatorlist: any;
-
+  StaffID:any;
 
   EmployeeKradash: any
 
   ngOnInit(): void {
     this.GetKPI();
-
+    this.StaffID = sessionStorage.getItem('EmaployedID')
 
     this.GetKeyResultArea();
 
@@ -54,6 +54,7 @@ export class EmployeeKraMappingdashboardComponent implements OnInit {
     this.PerformanceManagementService.GetConductappraisalStaffList().subscribe(data => {
       debugger
       this.EmployeeKradash = data;
+      // this.EmployeeKradash=data.filter(x=>x.supervisor==this.StaffID)
       this.count = this.EmployeeKradash.length;
     });
   }
