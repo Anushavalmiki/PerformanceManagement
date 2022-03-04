@@ -17,6 +17,7 @@ export class LoginComponent implements OnInit {
   constructor(private PerformanceManagementService: PerformanceManagementService) { }
 
   ngOnInit(): void {
+    this.showpassword=0;
   }
 
   public getroleid(event: any) {

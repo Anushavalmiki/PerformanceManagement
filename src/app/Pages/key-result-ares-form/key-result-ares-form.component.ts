@@ -25,7 +25,7 @@ export class KeyResultAresFormComponent implements OnInit {
   short:any;
   tablecount:any;
   entity:any;
-
+  kratype:any;
   ngOnInit(): void {
 
     this.GetKraMaster();
@@ -59,6 +59,7 @@ export class KeyResultAresFormComponent implements OnInit {
 		this.kratypeid=this.keyresultlist[0].kraTypeID;
     this.roleTypeid=this.keyresultlist[0].role;
     this.description=this.keyresultlist[0].description
+    // this.kratype=this.kratypelist[0].kraType
 
     this.GetKraMaster();
       }
@@ -75,6 +76,7 @@ export class KeyResultAresFormComponent implements OnInit {
         this.kratypelist=data;
         console.log("kratype",this.kratypelist);
         this.kratypeid=0;
+        
       }
     )
    
@@ -106,6 +108,7 @@ Add(){
     "KraTypeID":this.kratypeid,
     "Role":this.roleTypeid,
     "Description":this.description
+ 
   };
   debugger
   this.keyresultArray.push(json)
@@ -117,6 +120,7 @@ Add(){
  
 
   save(){
+   
     for (let i=0; i<=this.keyresultArray.length;i++){
       var entity = {  
         "KRAName":this.keyresultArray[i].KRAName,

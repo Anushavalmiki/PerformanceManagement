@@ -133,45 +133,51 @@ export class HrratingnewComponent implements OnInit {
   }
 
   public SaveDetails() {
-    debugger
-    var entity = {
-      'SatffID': this.StaffID,
-      'StaffType': this.StaffID,
-      'Supervisor': this.id,
-      'ResultAreaID': this.ResultAreaID,
-      'PerformaceIndicatorID': this.kpiid,
-      'SelfScores': this.Score,
-      'SelfComments': this.SelfComments,
-      'Attachment': this.attachmentsurl[0]
+    if(this.Score==undefined||this.SelfComments==undefined){
+      Swal.fire("Please Enter the Mandatory Fields");
     }
-    this.PerformanceManagementService.InsertStaffScoresByHR(entity).subscribe(data => {
+    else{
       debugger
-      Swal.fire("Saved Successfully");
-      // var entity1 = {
-      //   'SatffID': this.StaffID,
-      //   'StaffType': this.StaffID,
-      //   // 'Supervisor': this.appraisalList[this.q].Supervisor,
-      //   'ResultAreaID': this.ResultAreaID,
-      //   'PerformaceIndicatorID': this.kpiid,
-      //   'GroupHeadScores': this.Score,
-      //   'GroupHeadComments': this.SelfComments,
-      // }
-      // this.PerformanceManagementService.UpdateCIOStaffScores(entity1).subscribe(data => {
-      //   debugger
-
-      // })
-      this.Score = 0;
-      this.SelfComments = '';
-      const element1 = document.getElementById('close');
-      this.files.length = 0;
-      if (element1 !== null) {
-
-        element1.click();
-
+      var entity = {
+        'SatffID': this.StaffID,
+        'StaffType': this.StaffID,
+        'Supervisor': this.id,
+        'ResultAreaID': this.ResultAreaID,
+        'PerformaceIndicatorID': this.kpiid,
+        'SelfScores': this.Score,
+        'SelfComments': this.SelfComments,
+        'Attachment': this.attachmentsurl[0]
       }
-      this.ngOnInit();
-
-    })
+      this.PerformanceManagementService.InsertStaffScoresByHR(entity).subscribe(data => {
+        debugger
+        Swal.fire("Saved Successfully");
+        // var entity1 = {
+        //   'SatffID': this.StaffID,
+        //   'StaffType': this.StaffID,
+        //   // 'Supervisor': this.appraisalList[this.q].Supervisor,
+        //   'ResultAreaID': this.ResultAreaID,
+        //   'PerformaceIndicatorID': this.kpiid,
+        //   'GroupHeadScores': this.Score,
+        //   'GroupHeadComments': this.SelfComments,
+        // }
+        // this.PerformanceManagementService.UpdateCIOStaffScores(entity1).subscribe(data => {
+        //   debugger
+  
+        // })
+        this.Score = 0;
+        this.SelfComments = '';
+        const element1 = document.getElementById('close');
+        this.files.length = 0;
+        if (element1 !== null) {
+  
+          element1.click();
+  
+        }
+        this.ngOnInit();
+  
+      })
+    }
+   
   }
 
 

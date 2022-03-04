@@ -143,7 +143,7 @@ export class KeyPerformanceIndicatorformComponent implements OnInit {
   }
 
  cancel(){
-   location.href="/KeyPerformanceIndicator";
+   location.href="#/KeyPerformanceIndicator";
  }
 
 

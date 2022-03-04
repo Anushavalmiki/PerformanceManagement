@@ -147,6 +147,7 @@ export class EmployeeKraMappingComponent implements OnInit {
   }
   public Cancel() {
     debugger
+    location.href = "#/EmployeeKraMappingdashboard";
   }
   Approver1: any;
   Approver2: any;

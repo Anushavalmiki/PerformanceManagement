@@ -3,7 +3,7 @@
        <div class="row">
            <br>
            <div class="col-lg-4">
-               <p class="headings">KeyPerformanceIndicator  Details </p>
+               <p class="headings">Key Performance Indicator  Details </p>
            </div>
            <div class="col-lg-8"></div>
        </div>
@@ -11,30 +11,30 @@
            <br>
            <div class="row ">
                <div class="col-lg-2 ">
-                   <p class="columnname">Key Area Result </p>
+                   <p class="columnname">Goals </p>
                </div>
                <!-- <div class="col-lg-3">
                    <p class="columnname">Performance Indicator</p>
                </div> -->
-               <div class="col-lg-2">
+               <div class="col-lg-3">
                 <p class="columnname">KPI Name</p>
                </div>
                <!-- <div class="col-lg-2">
                 <p class="columnname">Performance Indicator </p>
                </div> -->
-               <div class="col-lg-3">
+               <div class="col-lg-5">
                    <p class="columnname">Description </p>
                </div>
            </div>
            <div class="row header">
                <div class="col-lg-2">
                    <select class="form-control columnname" [(ngModel)]="kraid" name="kraid" (change)="getkraid($event)">
-                       <option value="0">Select KraResult</option>
+                       <option value="0">Select Goal</option>
                        <option *ngFor="let details of kratypelist"  value="{{details.id}}">{{details.kraName}}</option>
                   
                    </select>
                </div>
-               <div class="col-lg-2 columnname">
+               <div class="col-lg-3 columnname">
                 <textarea class="form-control" placeholder="KPI Name" type="text" [(ngModel)]="kpiName"  ></textarea>
                 </div>
 
@@ -45,7 +45,7 @@
                
                 </select>
             </div> -->
-               <div class="col-lg-2 columnname">
+               <div class="col-lg-5 column">
                 <textarea class="form-control" placeholder="Description" type="text" [(ngModel)]="description"  ></textarea>
                 </div>
 

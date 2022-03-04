@@ -34,14 +34,16 @@
                     <label >Username</label>
                 </div>
                 <div class="input-group">
-                    <input  type="password" class="inputclass" [(ngModel)]="passWord"
-                        name="password" />                 
+                    <input *ngIf="showpassword==0" type="password" class="inputclass" [(ngModel)]="passWord"
+                    name="password" /> 
+                <input *ngIf="showpassword==1" type="text" class="inputclass" [(ngModel)]="passWord"
+                    name="password" />                
                     <span class="fa fa-fw fa-eye field-icon toggle-password" style="color: #3247D5;
                     margin-left: -224px;
                     margin-top: 18px;" (click)="Showhidepassword()"></span>
                     <span class="highlight"></span>
                     <span class="bar"></span>
-                    <label >Password</label>
+                    <label>Password</label>
                 </div>
                 <div class="btnalign">
                     <a style=" color: #3247D5;"> Forgot Password</a>
