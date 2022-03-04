@@ -53,7 +53,7 @@ export class HrratingnewComponent implements OnInit {
 
         this.PerformanceManagementService.GetKRAByStaffID(this.StaffID).subscribe(data => {
           debugger
-          this.ResultAreaList = data;
+          this.ResultAreaList = data.filter((x: { managerSubmittedDate: any;employeeSubmittedDate: any;  })=>x.managerSubmittedDate!=null && x.employeeSubmittedDate!=null);
 
           this.Name=this.ResultAreaList[0].name
           this.role=this.ResultAreaList[0].role
