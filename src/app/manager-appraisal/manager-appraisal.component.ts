@@ -188,7 +188,7 @@ export class ManagerAppraisalComponent implements OnInit {
       let temp: any = data.filter(x => x.id == details.id)
       this.Score = temp[0].managerrating;
       this.SelfComments = temp[0].managercomments;
-      this.attachment=details.photo;
+      // this.attachment=details.photo;
       this.managerattachment=details.mPhoto;
 
     })

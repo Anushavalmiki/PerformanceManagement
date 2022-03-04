@@ -72,8 +72,8 @@
                             </td>
                             <td [ngClass]="{'bggreen':details.hrupdate==1 }">
                                 <button class=" btn btn-primary action" data-toggle="modal" data-target="#exampleModal2"
-                                (click)="getattachment(details)" *ngIf="details.photo!=null">View Attachments</button>
-                                <p *ngIf="details.photo==null">No Attachments</p>
+                                (click)="getattachment(details)" *ngIf="details.mphoto!=null">View Attachments</button>
+                                <p *ngIf="details.mphoto==null">No Attachments</p>
                             </td>
                             <td [ngClass]="{'bg-warning':details.hrupdate==1 }"style="text-align: center;">{{details.hrrrating}}
                                 <p *ngIf="details.hrupdate!=1">NA</p>
