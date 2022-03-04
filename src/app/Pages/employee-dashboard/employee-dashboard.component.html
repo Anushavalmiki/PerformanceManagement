@@ -35,17 +35,23 @@
                     <thead>
                         <tr>
                             <th>Employee Name</th>
+                            <th>Email ID</th>
+                            <th>Phone Number</th>
                             <th>Department</th>
                             <th>Role</th>
-                            <th>Manager Name</th>
+                            
+                            <!-- <th>Manager Name</th> -->
                         </tr>
                     </thead>
                     <tbody>
                         <tr *ngFor="let details of stafflist |paginate: { itemsPerPage: count1, currentPage: p}|filter:search">
                             <td>{{details.name}}</td>
+                            <td>{{details.emailID}}</td>
+                            <td>{{details.phoneNo}}</td>
                             <td>{{details.department_name}}</td>
                             <td>{{details.role}}</td>
-                            <td>{{details.manager}}</td>
+                           
+                            <!-- <td>{{details.manager}}</td> -->
                         </tr>
                     </tbody>
                 </table>

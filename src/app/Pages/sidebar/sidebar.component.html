@@ -74,7 +74,7 @@
             <img [ngClass]="active == 'EmployeeDashboard' ? 'Active1' : 'Active2'" src="assets/Images/64 Blue/Staff.png"
                 style="width:13%; margin-right: 17px;">
             &nbsp;
-            <span [ngClass]="active == 'EmployeeDashboard' ? 'Active1' : 'Active3'"> Employee Dashboard</span>
+            <span [ngClass]="active == 'EmployeeDashboard' ? 'Active1' : 'Active3'">My Team </span>
         </a>
 
         <a class="togglebtn button" *ngIf="roleid=='4'" routerLink="/EmployeeKraMappingdashboard" class="tablinks"
@@ -123,7 +123,7 @@
             <img [ngClass]="active == 'StaffScore' ? 'Active1' : 'Active2'"  src="assets/Images/64 Blue/Staff.png"
                 style="width:13%; margin-right: 17px;">
             &nbsp;
-            <span [ngClass]="active == 'StaffScore' ? 'Active1' : 'Active3'"> Staff Score Details</span>
+            <span [ngClass]="active == 'StaffScore' ? 'Active1' : 'Active3'">Appraisal Details</span>
         </a>
 
         <a class="togglebtn button" routerLink="/BellCurveFitting" class="tablinks" (click)="highlight($event)"

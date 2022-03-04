@@ -20,6 +20,7 @@ export class MyAppraisalComponent implements OnInit {
   RoleType: any;
   Department: any;
   count: any;
+  search:any;
 
 
 

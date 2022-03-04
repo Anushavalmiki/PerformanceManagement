@@ -16,9 +16,9 @@
             <div class="col-lg-2">
                 <p class="columnname">Goal Type</p>
             </div>
-            <div class="col-lg-2">
+            <!-- <div class="col-lg-2">
                 <p class="columnname">Select Role </p>
-            </div>
+            </div> -->
             <div class="col-lg-2">
                 <p class="columnname">Description</p>
             </div>
@@ -37,14 +37,14 @@
             </div>
 
 
-            <div class="col-lg-2">
+            <!-- <div class="col-lg-2">
                 <select class="form-control" id="roleTypeid" name="roleTypeid" [(ngModel)]="roleTypeid"
                     (change)="getRoleID($event)">
                     <option value="0">Select Role</option>
                     <option *ngFor="let details of roleTypeList" value="{{details.id}}">{{details.short}}
                     </option>
                 </select>
-            </div>
+            </div> -->
             <div class="col-lg-3 columnname">
                 <textarea class="form-control" [(ngModel)]="description" placeholder="Write here..">Description</textarea>
             </div>

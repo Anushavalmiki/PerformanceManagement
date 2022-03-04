@@ -34,6 +34,7 @@
                     <thead>
                         <tr>
                             <th>Sr.No.</th>
+                            <th>Goal Type </th>
                             <th>Goal</th>
                             <th>KPI</th>
                             <th>Rating</th>
@@ -45,6 +46,7 @@
                             *ngFor="let details of ResultAreaList |paginate: { itemsPerPage: count1, currentPage: p} index as i">
                             <td [ngClass]="{'bggreen':details.empupdate==1 }">
                                 {{i+1}}</td>
+                                <td [ngClass]="{'bggreen':details.empupdate==1 }">{{details.kraTypeID}}</td>
                             <td [ngClass]="{'bggreen':details.empupdate==1 }">{{details.kraName}}</td>
                             <td [ngClass]="{'bggreen':details.empupdate==1 }">{{details.kpiName}}</td>
                             <td [ngClass]="{'bggreen':details.empupdate==1 }">

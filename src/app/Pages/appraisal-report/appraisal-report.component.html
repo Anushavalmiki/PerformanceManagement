@@ -26,13 +26,7 @@
                     </option>
                 </select>
             </div>
-            <div class="col-lg-1"></div>
-        </div><br>
-        <div class="row">
-            <div class="col-lg-2">
-                <p class="filter">Filter By Manager</p>
-            </div>
-            <div class="col-lg-3 manager">
+            <div class="col-lg-3 ">
                 <select class="form-control" id="manager" name="manager" [(ngModel)]="manager"
                     (change)="getManager($event)">
                     <option value="0">Select Manager</option>
@@ -40,7 +34,14 @@
                     </option>
                 </select>
             </div>
-        </div> <br>
+            <div class="col-lg-1"></div>
+        </div><br>
+        <!-- <div class="row">
+            <div class="col-lg-1">
+                <p class="filter">Filter By Manager</p>
+            </div>
+            
+        </div> <br> -->
     </div> <br>
 
 
@@ -60,7 +61,7 @@
                             <th>Employee Name</th>
                             <th>Role</th>
                             <th>Department</th>
-                            <th>Manager Name</th>
+                            <!-- <th>Manager Name</th> -->
                             <th>Final Rating </th>
                         </tr>
                     </thead>
@@ -69,7 +70,7 @@
                             <td>{{details.name}}</td>
                             <td>{{details.role}}</td>
                             <td>{{details.departmentName}}</td>
-                            <td>{{details.managername}}</td>
+                            <!-- <td>{{details.managername}}</td> -->
                             <td>
                                 <p *ngIf="details.bellcurveScore==null">
                                     {{((details.avgGroupHeadScores+details.avgCIOScores)/2)|number:'1.0-0'}}</p>

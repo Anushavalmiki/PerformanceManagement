@@ -51,6 +51,10 @@ export class HRDashboardComponent implements OnInit {
         // this.managerList = this.dumpmanagerList.filter((x: { manager: any; })=>x.manager==this.manager);
       }
     )
+
+
+
+
   }
 
  public GetAllCounts(){
@@ -73,6 +77,10 @@ export class HRDashboardComponent implements OnInit {
 
    
  }
+
+
+
+
 
 
 

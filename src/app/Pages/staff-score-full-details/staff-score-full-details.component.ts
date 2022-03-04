@@ -37,6 +37,7 @@ export class StaffScoreFullDetailsComponent implements OnInit {
   StaffScoresListsCopy:any;
   goal:any;
   ngOnInit() {
+   
     this.goal="0"
     this.route.params.subscribe(params => {
       debugger;
@@ -123,8 +124,15 @@ export class StaffScoreFullDetailsComponent implements OnInit {
 
   public Filtergoals() {
     debugger
+   
     let searchCopy = this.goal.toLowerCase();
-    this.StaffScoresLists = this.StaffScoresListsCopy.filter((x: { resultAreaName: string; }) => x.resultAreaName.toLowerCase().includes(searchCopy));
+    if(searchCopy==0){
+     this.ngOnInit();
+    }
+    else{
+      this.StaffScoresLists = this.StaffScoresListsCopy.filter((x: { resultAreaName: string; }) => x.resultAreaName.toLowerCase().includes(searchCopy));
+    }
+   
   }
 
  

@@ -612,10 +612,11 @@ color: #0C275A;
 
   color: white;
   font-size: 19px;
-  line-height: 24px;
+  line-height: 23px;
   margin-top: 17px;
   font-weight: bold;
-  margin-left: 79px;
+  margin-left: 61px;
+  text-align: center;
 
 }
 .Submitted{
