@@ -36,7 +36,7 @@ export class ManagerDashboardComponent implements OnInit {
       var list2 = data.filter(x => x.hrSubmittedDate != null && x.approver1 == this.StaffID);
       this.hrSubmittedCount = list2.length;
       debugger
-      var list4 = data.filter(x => x.cioScores != null && x.approver1 == this.StaffID)
+      var list4 = data.filter(x => x.hrSubmittedDate != null && x.approver1 == this.StaffID)
       this.totalAppraisalCount = list4.length;
     });
 

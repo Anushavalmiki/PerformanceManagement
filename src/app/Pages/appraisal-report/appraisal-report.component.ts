@@ -77,14 +77,16 @@ export class AppraisalReportComponent implements OnInit {
         debugger;
         let temp: any = res
         this.StaffAppraisalList = temp;
-        this.FilteredStaffAppraisalList = this.StaffAppraisalList.filter((x: { cioScores: null; }) => x.cioScores != null)
+        this.FilteredStaffAppraisalList = this.StaffAppraisalList.filter((x: { cioScores: null;approver1:any }) => x.cioScores != null && x.approver1==this.StaffID)
+
+
         this.count = this.FilteredStaffAppraisalList.length;
-        if (this.roleid == 4) {
-          this.managerList = this.dumpmanagerList.filter((x: { manager: any; }) => x.manager == this.manager);
-        }
-        else if (this.roleid == 2) {
-          this.FilteredStaffAppraisalList = this.dumpmanagerList.filter((x: { ID: any; }) => x.ID == this.StaffID);
-        }
+        // if (this.roleid == 4) {
+        //   this.FilteredStaffAppraisalList = this.dumpmanagerList.filter((x: { approver1: any; }) => x.approver1 == this.StaffID);
+        // }
+        // else if (this.roleid == 2) {
+        //   this.FilteredStaffAppraisalList = this.dumpmanagerList.filter((x: { ID: any; }) => x.ID == this.StaffID);
+        // }
 
       }
     )
