@@ -188,14 +188,17 @@ export class ManagerAppraisalComponent implements OnInit {
       let temp: any = data.filter(x => x.id == details.id)
       this.Score = temp[0].managerrating;
       this.SelfComments = temp[0].managercomments;
-      this.attachment=details.photo;
-      this.managerattachment=details.photo;
+      // this.attachment=details.photo;
+      this.managerattachment=details.mPhoto;
 
     })
+
+    this.photoid=details.id;
   }
 
   files: File[] = [];
   attachmentsurl: any = []
+  attchmentss:any;
   onSelect(event: any) {
     console.log(event);
     debugger
@@ -203,7 +206,9 @@ export class ManagerAppraisalComponent implements OnInit {
     this.PerformanceManagementService.ProjectAttachments(this.files).subscribe(res => {
       debugger
       if (res != undefined) {
+        this.attchmentss=res;
         this.attachmentsurl.push(res);
+       
 
 
       }
@@ -252,7 +257,7 @@ export class ManagerAppraisalComponent implements OnInit {
   photoid:any;
   getattachment(details:any){
     debugger
-      this.managerattachment=details.photo;
+      this.selfAttachment=details.photo;
       this.photoid=details.id;
       this.attachmentsurl[0]=details.selfattachment
     }
@@ -261,7 +266,7 @@ export class ManagerAppraisalComponent implements OnInit {
       debugger
       var entity = {
         'ID':this.photoid,
-        'managerattachment': this.attachmentsurl[0]
+        'Attachment': this.attchmentss
       }
       this.PerformanceManagementService.UpdateManagerSelfAttachment(entity).subscribe(data => {
         debugger

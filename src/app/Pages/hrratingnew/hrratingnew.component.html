@@ -78,9 +78,8 @@
                             </td>
                             <td [ngClass]="{'bggreen':details.hrupdate==1 }">
                                 <button class=" btn btn-primary action" data-toggle="modal" data-target="#exampleModal2"
-                                    (click)="getattachment(details)" *ngIf="details.photo!=null">View
-                                    Attachments</button>
-                                <p *ngIf="details.photo==null">No Attachments</p>
+                                (click)="getattachment(details)" *ngIf="details.mphoto!=null">View Attachments</button>
+                                <p *ngIf="details.mphoto==null">No Attachments</p>
                             </td>
                             <td [ngClass]="{'bg-warning':details.hrupdate==1 }" style="text-align: center;">
                                 {{details.hrrrating}}
@@ -346,10 +345,10 @@
                     <div class="col-lg-1">
                     </div>
                     <div class="col-lg-3">
-                        <p *ngIf="attachment==null">No Attachments</p>
+                        <p *ngIf="hrattachment==null">No Attachments</p>
                     </div>
                     <div class="col-lg-3">
-                        <img src="{{attachment}}" style="width:400px;">
+                        <img src="{{hrattachment}}" style="width:400px;">
                         <!-- <img src="http://103.133.214.197/digiofficeapi\Images\ProjectAttachments\AmazeLogo-20220214160917-20220228163117.jpg"> -->
                     </div>
                 </div>

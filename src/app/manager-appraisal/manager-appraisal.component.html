@@ -63,8 +63,8 @@
                             </td>
                             <td [ngClass]="{'bggreen':details.managerupdate==1 }">
                                 <button class=" btn btn-primary action" data-toggle="modal" data-target="#exampleModal2"
-                                    (click)="getattachment(details)"  *ngIf="selfAttachment!=null">View Attachments</button>
-                                    <p *ngIf="selfAttachment==null">Not Available</p>
+                                    (click)="getattachment(details)"  *ngIf="selfAttachment!=0">View Attachments</button>
+                                    <p *ngIf="selfAttachment==0">Not Available</p>
                             </td>
                             <td  [ngClass]="{'bg-warning':details.managerupdate==1 }" style="text-align: center;">
                                 {{details.managerrating}}
@@ -307,7 +307,7 @@
                     <div class="col-lg-1">
                     </div>
                     <div class="col-lg-3">
-                        <p *ngIf="attachment==null">No Attachments</p>
+                        <p *ngIf="managerattachment==null">No Attachments</p>
                     </div>
                     <div class="col-lg-3">
                         <img src="{{managerattachment}}" style="width:400px;">

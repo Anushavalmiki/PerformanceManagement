@@ -41,8 +41,8 @@ export class SelfratingnewComponent implements OnInit {
   selfComments: any;
   EmployeeSubmittedDate: any;
   EmployeeId: any;
-  ManagerID:any;
-  StaffName:any;
+  ManagerID: any;
+  StaffName: any;
   ngOnInit(): void {
     this.Score = 0;
     this.showbtn = false;
@@ -61,7 +61,7 @@ export class SelfratingnewComponent implements OnInit {
           this.ResultAreaList = data;
           this.EmployeeSubmittedDate = this.ResultAreaList[0].employeeSubmittedDate
           this.ManagerID = this.ResultAreaList[0].approver1
-          this.StaffName=this.ResultAreaList[0].name
+          this.StaffName = this.ResultAreaList[0].name
 
 
 
@@ -180,6 +180,7 @@ export class SelfratingnewComponent implements OnInit {
     })
 
     this.attachment = details.photo;
+    this.attachmentNew=details.selfattachment;
     this.photoid = details.id;
     this.attachmentsurl[0] = details.selfattachment;
 
@@ -187,15 +188,18 @@ export class SelfratingnewComponent implements OnInit {
 
   files: File[] = [];
   attachmentsurl: any = []
+  attachmentNew: any;
+
   onSelect(event: any) {
     console.log(event);
     debugger
     this.files.push(...event.addedFiles);
-    this.attachmentsurl.length = 0;
+    // this.attachmentsurl.length = 0;
     this.PerformanceManagementService.ProjectAttachments(this.files).subscribe(res => {
       debugger
       if (res != undefined) {
         this.attachmentsurl.push(res);
+        this.attachmentNew = res;
         //  this.files.length = 0;
 
       }
@@ -243,7 +247,7 @@ export class SelfratingnewComponent implements OnInit {
       'Event': 'Apprisal Request',
       'FromUser': 'Admin',
       'ToUser': sessionStorage.getItem('username'),
-      'Message': this.StaffName +' '+'Submitted the Appraisal',
+      'Message': this.StaffName + ' ' + 'Submitted the Appraisal',
       'Photo': 'Null',
       'Building': 'Dynamics 1',
       'UserID': this.ManagerID,
@@ -275,7 +279,7 @@ export class SelfratingnewComponent implements OnInit {
     debugger
     var entity = {
       'ID': this.photoid,
-      'Attachment': this.attachmentsurl[0]
+      'Attachment': this.attachmentNew
     }
     this.PerformanceManagementService.UpdateStaffScores(entity).subscribe(data => {
       debugger
