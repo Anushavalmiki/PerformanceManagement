@@ -21,6 +21,7 @@ export class EmployeeDashboardComponent implements OnInit {
   Department: any;
   count:any;
   search:any;
+  dumpstafflist:any;
 
 
 
@@ -32,10 +33,15 @@ export class EmployeeDashboardComponent implements OnInit {
     this.RoleType="";
     this.PerformanceManagementService.GetMyDetails().subscribe(data => {
       debugger
+      this.dumpstafflist=data;
       this.stafflist = data;
-      this.stafflistCopy = this.stafflist
+      this.stafflistCopy = this.stafflist;
       this.count = this.stafflist.length;
+      this.stafflist=this.dumpstafflist.filter((x: {department: any; })=>x.department==4);
+   
     });
+
+    // this.filterByDepartment();
 
     this.PerformanceManagementService.GetDepartment().subscribe(data => {
       debugger
@@ -57,7 +63,9 @@ export class EmployeeDashboardComponent implements OnInit {
     debugger
     this.PerformanceManagementService.GetMyDetails().subscribe(data => {
       debugger
-      this.stafflist = data.filter(x=>x.roleType==this.RoleType);
+      // this.stafflist = data.filter(x=>x.roleType==this.RoleType);
+   
+      this.stafflist=this.dumpstafflist.filter((x: {department: any; })=>x.department==4);
       this.count = this.stafflist.length;
     });
  

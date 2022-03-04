@@ -12,8 +12,10 @@ export class ManagerDashboardComponent implements OnInit {
   StaffID:any;
   countList:any;
   ngOnInit(): void {
-    this.GetAllCounts();
+  
     this.StaffID=sessionStorage.getItem('EmaployedID');
+
+    this.GetAllCounts();
   }
 
 
@@ -21,6 +23,7 @@ export class ManagerDashboardComponent implements OnInit {
     debugger
     if(this.StaffID==undefined)
     {
+      debugger
      this.PerformanceManagementService.GetAllCounts(1,1).subscribe(
        data=>{
          this.countList=data[0];

@@ -24,6 +24,7 @@ export class HrratingnewComponent implements OnInit {
   Department: any;
   count: any;
   attachment:any;
+  description:any;
 
   ParamID: any;
   EmployeeKradash: any
@@ -301,6 +302,17 @@ export class HrratingnewComponent implements OnInit {
   cancel(){
     location.href="/Selfratingnew";
   }
+
+
+  
+  view(desc:any){
+    this.description=desc;   
+  }
+
+
+
+
+
 
 
   }
