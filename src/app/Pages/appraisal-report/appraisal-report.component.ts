@@ -9,25 +9,29 @@ import * as XLSX from 'xlsx';
 })
 export class AppraisalReportComponent implements OnInit {
 
-  constructor(private PerformanceManagementService:PerformanceManagementService ) { }
-   count:any;
-   roleTypeList:any;
-   roleTypeid:any;
-   manager:any;
-   managerList:any;
-   StaffAppraisalList:any;
-   FilteredStaffAppraisalList:any;
-   search:any;
-   dumpmanagerList:any;
-   uniquelist:any;
-
+  constructor(private PerformanceManagementService: PerformanceManagementService) { }
+  count: any;
+  roleTypeList: any;
+  roleTypeid: any;
+  manager: any;
+  managerList: any;
+  StaffAppraisalList: any;
+  FilteredStaffAppraisalList: any;
+  search: any;
+  dumpmanagerList: any;
+  uniquelist: any;
+  StaffID: any;
+  roleid: any;
+  employee: any;
   ngOnInit(): void {
+    this.StaffID = sessionStorage.getItem('EmaployedID')
+    this.roleid = sessionStorage.getItem('roleid');
     this.GetRoleType();
     this.GetMyDetails();
     this.ConductappraisalStaffList();
-    this.manager=0;
-    this.dumpmanagerList=0;
-      
+    this.manager = 0;
+    this.dumpmanagerList = 0;
+
   }
 
 
@@ -46,7 +50,7 @@ export class AppraisalReportComponent implements OnInit {
   }
 
 
-    
+
   getManager(even: any) {
     this.manager = even.target.value;
   }
@@ -56,13 +60,13 @@ export class AppraisalReportComponent implements OnInit {
     this.PerformanceManagementService.GetMyDetails().subscribe(
       data => {
         debugger
-         this.managerList=data;
-         const key = 'manager';
-         const key1 = 'month'
-         this.uniquelist = [...new Map(this.managerList.map((item: { [x: string]: any; }) =>
- 
-           [(item[key]), item])).values()]
-      
+        this.managerList = data;
+        const key = 'manager';
+        const key1 = 'month'
+        this.uniquelist = [...new Map(this.managerList.map((item: { [x: string]: any; }) =>
+
+          [(item[key]), item])).values()]
+
       }
     )
   }
@@ -75,24 +79,30 @@ export class AppraisalReportComponent implements OnInit {
         this.StaffAppraisalList = temp;
         this.FilteredStaffAppraisalList = this.StaffAppraisalList.filter((x: { cioScores: null; }) => x.cioScores != null)
         this.count = this.FilteredStaffAppraisalList.length;
-        this.managerList = this.dumpmanagerList.filter((x: { manager: any; })=>x.manager==this.manager);
+        if (this.roleid == 4) {
+          this.managerList = this.dumpmanagerList.filter((x: { manager: any; }) => x.manager == this.manager);
+        }
+        else if (this.roleid == 2) {
+          this.FilteredStaffAppraisalList = this.dumpmanagerList.filter((x: { ID: any; }) => x.ID == this.StaffID);
+        }
+
       }
     )
   }
 
-  
-    fileName = 'Adjustment Report.xlsx';
-   exportexcel(): void {
-  /* table id is passed over here */
-  let element = document.getElementById('download');
-  const ws: XLSX.WorkSheet = XLSX.utils.table_to_sheet(element);
-  /* generate workbook and add the worksheet */
-  const wb: XLSX.WorkBook = XLSX.utils.book_new();
-  XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
-  /* save to file */
-  XLSX.writeFile(wb, this.fileName);
-}
-  
+
+  fileName = 'Adjustment Report.xlsx';
+  exportexcel(): void {
+    /* table id is passed over here */
+    let element = document.getElementById('download');
+    const ws: XLSX.WorkSheet = XLSX.utils.table_to_sheet(element);
+    /* generate workbook and add the worksheet */
+    const wb: XLSX.WorkBook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
+    /* save to file */
+    XLSX.writeFile(wb, this.fileName);
+  }
+
 
 
 

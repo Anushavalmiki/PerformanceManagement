@@ -138,7 +138,7 @@
 
 
         <a class="togglebtn button" routerLink="/AppraisalReport" class="tablinks" (click)="highlight($event)"
-            (click)="AppraisalReport()" *ngIf="roleid=='3'|| roleid=='4'">
+            (click)="AppraisalReport()" *ngIf="roleid=='3'|| roleid=='4'||roleid=='2'">
             <img src="assets/Images/64/Staff.png" style="width:13% ;margin-right: 15px;"
                 [ngClass]="active != 'AppraisalReport' ? 'Active1' : 'Active2'" />
             <img [ngClass]="active == 'AppraisalReport' ? 'Active1' : 'Active2'" src="assets/Images/64 Blue/Staff.png"
