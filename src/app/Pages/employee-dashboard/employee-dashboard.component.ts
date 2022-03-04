@@ -36,8 +36,9 @@ export class EmployeeDashboardComponent implements OnInit {
       this.dumpstafflist=data;
       this.stafflist = data;
       this.stafflistCopy = this.stafflist;
-      this.count = this.stafflist.length;
+      
       this.stafflist=this.dumpstafflist.filter((x: {department: any; })=>x.department==4);
+      this.count = this.stafflist.length;
    
     });
 
