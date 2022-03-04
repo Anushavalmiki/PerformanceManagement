@@ -147,7 +147,7 @@ export class ManagerAppraisalComponent implements OnInit {
       'PerformaceIndicatorID': this.kpiid,
       'SelfScores': this.Score,
       'SelfComments': this.SelfComments,
-      'Attachment': this.attachmentsurl[0]
+      'Attachment': this.attchmentss
     }
     this.PerformanceManagementService.InsertStaffScoresByManager(entity).subscribe(data => {
       debugger

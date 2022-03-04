@@ -13,9 +13,11 @@ export class ManagerDashboardComponent implements OnInit {
   countList:any;
   EmployeeKradash:any;
   count:any;
+
   ngOnInit(): void {
     this.GetAllCounts();
     this.StaffID=sessionStorage.getItem('EmaployedID');
+  
 
     this.PerformanceManagementService.GetConductappraisalStaffList().subscribe(data => {
       debugger

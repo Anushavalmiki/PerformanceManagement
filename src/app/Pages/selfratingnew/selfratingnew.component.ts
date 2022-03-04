@@ -149,7 +149,7 @@ export class SelfratingnewComponent implements OnInit {
       'PerformaceIndicatorID': this.kpiid,
       'SelfScores': this.Score,
       'SelfComments': this.SelfComments,
-      'Attachment': this.attachmentsurl[0]
+      'Attachment': this.attachmentNew
     }
     this.PerformanceManagementService.InsertStaffScores(entity).subscribe(data => {
       debugger
@@ -200,6 +200,7 @@ export class SelfratingnewComponent implements OnInit {
       if (res != undefined) {
         this.attachmentsurl.push(res);
         this.attachmentNew = res;
+        alert('Attachment uploaded')
         //  this.files.length = 0;
 
       }
