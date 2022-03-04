@@ -54,7 +54,7 @@ export class EmployeeKraMappingdashboardComponent implements OnInit {
 
     this.PerformanceManagementService.GetConductappraisalStaffList().subscribe(data => {
       debugger
-      this.EmployeeKradash = data.filter(x=>x.supervisor==this.StaffID);
+      this.EmployeeKradash = data.filter(x=>x.approver1==this.StaffID);
       this.count = this.EmployeeKradash.length;
     });
   }

@@ -24,19 +24,19 @@ export class ManagerDashboardComponent implements OnInit {
     this.GetAllCounts();
     this.PerformanceManagementService.GetConductappraisalStaffList().subscribe(data => {
       debugger
-      this.EmployeeKradash = data.filter(x=>x.supervisor == this.StaffID);
+      this.EmployeeKradash = data.filter(x=>x.approver1 == this.StaffID);
       this.count = this.EmployeeKradash.length;
       debugger
-      var list = data.filter(x => x.employeeSubmittedDate != null && x.supervisor == this.StaffID)
+      var list = data.filter(x => x.employeeSubmittedDate != null && x.approver1 == this.StaffID)
       this.employeSubmissionDate = list.length;
 
-      var list1 = data.filter(x => x.managerSubmittedDate != null && x.supervisor == this.StaffID);
+      var list1 = data.filter(x => x.managerSubmittedDate != null && x.approver1 == this.StaffID);
       this.managerSubmittedCount = list1.length;
 
-      var list2 = data.filter(x => x.hrSubmittedDate != null && x.supervisor == this.StaffID);
+      var list2 = data.filter(x => x.hrSubmittedDate != null && x.approver1 == this.StaffID);
       this.hrSubmittedCount = list2.length;
       debugger
-      var list4 = data.filter(x => x.cioScores != null && x.supervisor == this.StaffID)
+      var list4 = data.filter(x => x.cioScores != null && x.approver1 == this.StaffID)
       this.totalAppraisalCount = list4.length;
     });
 

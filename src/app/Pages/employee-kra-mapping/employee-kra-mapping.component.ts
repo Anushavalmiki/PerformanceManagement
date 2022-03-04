@@ -140,7 +140,7 @@ export class EmployeeKraMappingComponent implements OnInit {
   public GetRoleID() {
     this.PerformanceManagementService.GetMyDetails().subscribe(data => {
       debugger
-      this.dropdownList = data.filter(x => x.type == this.RoleID && x.department == this.Departmentid && x.id != sessionStorage.getItem('EmaployedID'));
+      this.dropdownList = data.filter(x => x.type == this.RoleID && x.department == this.Departmentid && x.supervisor == sessionStorage.getItem('EmaployedID'));
 
 
     });
