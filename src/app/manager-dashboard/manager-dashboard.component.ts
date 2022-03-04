@@ -11,9 +11,17 @@ export class ManagerDashboardComponent implements OnInit {
   constructor(private PerformanceManagementService:PerformanceManagementService) { }
   StaffID:any;
   countList:any;
+  EmployeeKradash:any;
+  count:any;
   ngOnInit(): void {
     this.GetAllCounts();
     this.StaffID=sessionStorage.getItem('EmaployedID');
+
+    this.PerformanceManagementService.GetConductappraisalStaffList().subscribe(data => {
+      debugger
+      this.EmployeeKradash = data;
+      this.count = this.EmployeeKradash.length;
+    });
   }
 
 
@@ -35,5 +43,7 @@ export class ManagerDashboardComponent implements OnInit {
      )
     }
   }
+
+  
 
   }
