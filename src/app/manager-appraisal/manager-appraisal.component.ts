@@ -57,6 +57,7 @@ export class ManagerAppraisalComponent implements OnInit {
         this.PerformanceManagementService.GetKRAByStaffID(this.StaffID).subscribe(data => {
           debugger
           this.ResultAreaList = data;
+          console.log(this.ResultAreaList);
           
           this.Name=this.ResultAreaList[0].name
           this.role=this.ResultAreaList[0].role
@@ -314,6 +315,9 @@ export class ManagerAppraisalComponent implements OnInit {
 
     })
   }
+
+
+  
 
 }
 
