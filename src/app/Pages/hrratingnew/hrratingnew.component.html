@@ -77,7 +77,7 @@
                                 </button>
                             </td>
                             <td [ngClass]="{'bggreen':details.hrupdate==1 }">
-                                <button class=" btn btn-primary action" data-toggle="modal" data-target="#exampleModal2"
+                                <button class=" btn btn-primary action" data-toggle="modal" data-target="#exampleModal3"
                                 (click)="getattachment(details)" *ngIf="details.mphoto!=null">View Attachments</button>
                                 <p *ngIf="details.mphoto==null">No Attachments</p>
                             </td>
@@ -318,6 +318,37 @@
                     </div>
                     <div class="col-lg-3">
                         <img src="{{attachment}}" style="width:400px;">
+                        <!-- <img src="http://103.133.214.197/digiofficeapi\Images\ProjectAttachments\AmazeLogo-20220214160917-20220228163117.jpg"> -->
+                    </div>
+                </div>
+                <br>
+            </div>
+            <div class="modal-footer">
+                <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="exampleModal3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content" style="width: 800px;">
+            <div class="modal-header">
+                <h5 class="modal-title related" id="exampleModalLabel">Related Attachments</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-lg-1">
+                    </div>
+                    <div class="col-lg-3">
+                        <p *ngIf="managerattachment==null">No Attachments</p>
+                    </div>
+                    <div class="col-lg-3">
+                        <img src="{{managerattachment}}" style="width:400px;">
                         <!-- <img src="http://103.133.214.197/digiofficeapi\Images\ProjectAttachments\AmazeLogo-20220214160917-20220228163117.jpg"> -->
                     </div>
                 </div>

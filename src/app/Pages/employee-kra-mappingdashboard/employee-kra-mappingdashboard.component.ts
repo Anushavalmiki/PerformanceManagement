@@ -29,13 +29,12 @@ export class EmployeeKraMappingdashboardComponent implements OnInit {
   dummindicatorlist: any;
   StaffID:any;
 
-
   EmployeeKradash: any
 
   ngOnInit(): void {
     this.StaffID = sessionStorage.getItem('EmaployedID');
     this.GetKPI();
-
+    this.StaffID = sessionStorage.getItem('EmaployedID')
 
     this.GetKeyResultArea();
 

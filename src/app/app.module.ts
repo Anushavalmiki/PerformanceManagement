@@ -42,6 +42,7 @@ import { AppraisalReportComponent } from './Pages/appraisal-report/appraisal-rep
 import { ManagerDashboardComponent } from './manager-dashboard/manager-dashboard.component';
 import { HRDashboardComponent } from './hrdashboard/hrdashboard.component';
 import { EmployeeTileDashboardComponent } from './employee-tile-dashboard/employee-tile-dashboard.component';
+import { LoaderComponent } from './loader/loader.component';
 
 @NgModule({
   declarations: [
@@ -77,7 +78,8 @@ import { EmployeeTileDashboardComponent } from './employee-tile-dashboard/employ
     AppraisalReportComponent,
     ManagerDashboardComponent,
     HRDashboardComponent,
-    EmployeeTileDashboardComponent
+    EmployeeTileDashboardComponent,
+    LoaderComponent
   ],
   imports: [
     BrowserModule,

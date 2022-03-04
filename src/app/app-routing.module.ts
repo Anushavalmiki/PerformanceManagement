@@ -32,6 +32,7 @@ import { AppraisalReportComponent } from './Pages/appraisal-report/appraisal-rep
 import { ManagerDashboardComponent } from './manager-dashboard/manager-dashboard.component';
 import { HRDashboardComponent } from './hrdashboard/hrdashboard.component';
 import { EmployeeTileDashboardComponent } from './employee-tile-dashboard/employee-tile-dashboard.component';
+import { LoaderComponent } from './loader/loader.component';
 
 
 const routes: Routes = [
@@ -75,6 +76,7 @@ const routes: Routes = [
   {path:'ManagerDashboard',component:ManagerDashboardComponent},
   {path:'HRDashboard',component:HRDashboardComponent},
   {path:'EmployeeTileDashboard',component:EmployeeTileDashboardComponent},
+  { path: 'Loader', component:LoaderComponent },
   
 ];
 
