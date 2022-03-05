@@ -20,13 +20,13 @@
                 <input type="search" class="form-control search" placeholder="Search for Name.." [(ngModel)]="search">
             </div>
             <div class="col-lg-3">
-                <select class="form-control" id="roleTypeid" name="roleTypeid" [(ngModel)]="roleTypeid" >
+                <select class="form-control" id="roleTypeid" name="roleTypeid" [(ngModel)]="roleTypeid" (change)="GetFilteredCitiesBystateID()">
                     <option value="0">Select Role</option>
-                    <option *ngFor="let details of roleTypeList" value="{{details.short}}">{{details.short}}
+                    <option *ngFor="let details of roleTypeList" value="{{details.type}}">{{details.short}}
                     </option>
                 </select>
             </div>
-            <div class="col-lg-3 ">
+            <div class="col-lg-3 " *ngIf="roleid==3">
                 <select class="form-control" id="manager" name="manager" [(ngModel)]="manager"
                     (change)="getManager($event)">
                     <option value="0">Select Manager</option>

@@ -78,8 +78,8 @@
                             </td>
                             <td [ngClass]="{'bggreen':details.hrupdate==1 }">
                                 <button class=" btn btn-primary action" data-toggle="modal" data-target="#exampleModal3"
-                                (click)="getattachment(details)" *ngIf="details.mphoto!=null">View Attachments</button>
-                                <p *ngIf="details.mphoto==null">No Attachments</p>
+                                (click)="getattachment(details)" *ngIf="details.managerattachment!='0'">View Attachments</button>
+                                <p *ngIf="details.managerattachment=='0'">No Attachments</p>
                             </td>
                             <td [ngClass]="{'bg-warning':details.hrupdate==1 }" style="text-align: center;">
                                 {{details.hrrrating}}
@@ -93,10 +93,9 @@
                                     data-toggle="modal" (click)="GetKPIIDetails(details)"
                                     data-target="#exampleModal1">View
                                     Details</button>
-                                    <button class=" btn btn-primary action" data-toggle="modal" data-target="#exampleModal4"
-                                    (click)="getattachment(details)" *ngIf="details.hphoto!=null">View Attachments</button>
-                                    <p *ngIf="details.hphoto==null">No Attachments</p>
-
+                                    <button *ngIf="details.hrupdate==1" class=" btn btn-primary action" data-toggle="modal" data-target="#exampleModal1" 
+                                    (click)="GetKPIIDetails(details)">View Attachments</button>
+                                   
                             </td>
 
                         </tr>
@@ -237,7 +236,7 @@
                     </div>
                 </div>
             </div>
-            <div class="modal-footer">
+            <div class="modal-footer" *ngIf="HrSubmittedDate==null" >
                 <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
                 <button type="button" class="btn btn-primary" (click)="UpdateDetails()">Update changes</button>
             </div>

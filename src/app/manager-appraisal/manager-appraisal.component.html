@@ -219,9 +219,9 @@
 
 
             </div>
-            <div class="modal-footer" *ngIf="showbtn && managerSubmittedDate==null">
+            <div class="modal-footer" *ngIf=" managerSubmittedDate==null">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" (click)="SaveDetails()">Update changes</button>
+                <button type="button" class="btn btn-primary" (click)="SaveDetails()" data-dismiss="modal">Update changes</button>
             </div>
         </div>
     </div>
@@ -315,7 +315,7 @@
                     </div>
                 </div>
                 <br>
-                <div class="row" *ngIf="showbtn && managerSubmittedDate==null">
+                <div class="row" *ngIf=" managerSubmittedDate==null">
                     <div class="col-lg-8"></div>
                     <div class="col-lg-2">
                         <button class="form-control cancel" data-toggle="modal" data-target="#exampleModal5"

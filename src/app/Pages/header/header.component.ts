@@ -17,6 +17,7 @@ export class HeaderComponent implements OnInit {
   ampm: any;
   page: any;
   notificationslist: any;
+  unseen: any;
   constructor(public PerformanceManagementService: PerformanceManagementService) { }
 
   ngOnInit(): void {
@@ -49,31 +50,33 @@ export class HeaderComponent implements OnInit {
     location.reload();
 
   }
-  notificationCount:any;
+  notificationCount: any;
   public GetNotification() {
     debugger
-
+    this.unseen = 0;
     this.PerformanceManagementService.GetNotification(sessionStorage.getItem('EmaployedID')).subscribe(data => {
       debugger
       this.notificationslist = data.filter(x => x.notificationTypeID == 17);
-      this.notificationCount=this.notificationslist.length;
+      this.notificationCount = this.notificationslist.length;
     })
   }
 
 
   public ClearNotification() {
     debugger
-    // this.DigipayrollServiceService.ClearNotificationByID(Number(this.staffID)).subscribe(data => {
-    //   debugger
+    this.PerformanceManagementService.ClearNotificationByID(sessionStorage.getItem('EmaployedID')).subscribe(data => {
+      debugger
 
-    // })
+    })
 
     Swal.fire('Cleared Successfully');
     this.GetNotification();
 
   }
 
-
+ public seen(){
+    this.unseen = 1;
+  }
 
 
 

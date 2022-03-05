@@ -119,6 +119,11 @@ export class PerformanceManagementService {
       this.host + "/Announcement/GetMyDetails"
     );
   }
+ 
+  public ClearNotificationByID(ID: any) {
+    return this.http.get<any[]>(
+      this.host + "/Announcement/ClearNotificationByID?ID=" + ID);
+  }
 
 
   public InsertKPI(data: any) {

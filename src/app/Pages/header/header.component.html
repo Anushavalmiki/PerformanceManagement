@@ -88,7 +88,8 @@
 
                             </div>
                             <div class="col-lg-8">
-                                <h6>{{item.message}}</h6>
+                                <h6 *ngIf="unseen!=1" style="background-color: aqua;" (click)="seen()">{{item.message}}</h6>
+                                <h6 *ngIf="unseen==1">{{item.message}}</h6>
 
                             </div>
                         </div>

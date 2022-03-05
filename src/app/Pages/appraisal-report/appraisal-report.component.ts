@@ -106,11 +106,21 @@ export class AppraisalReportComponent implements OnInit {
     XLSX.writeFile(wb, this.fileName);
   }
 
-
+  public GetFilteredCitiesBystateID(){
+    this.PerformanceManagementService.GetConductappraisalStaffList().subscribe(data => {
+      debugger
+      this.StaffAppraisalList = data.filter(x=>x.type==this.roleTypeid)
+    })
+  }
 
 
 
 }
+
+
+
+
+
 function x(x: any, manager: any): any {
   throw new Error('Function not implemented.');
 }

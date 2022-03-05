@@ -214,7 +214,9 @@ export class ManagerAppraisalComponent implements OnInit {
       debugger
       if (res != undefined) {
         this.attchmentss=res;
-        this.attachmentsurl.push(res);
+        // this.attachmentsurl.push(res);
+     
+        alert('Attachment uploaded')
        
 
 

@@ -181,9 +181,9 @@ export class SelfratingnewComponent implements OnInit {
     })
 
     this.attachment = details.photo;
-    this.attachmentNew=details.selfattachment;
+    // this.attachmentNew=details.selfattachment;
     this.photoid = details.id;
-    this.attachmentsurl[0] = details.selfattachment;
+    // this.attachmentsurl[0] = details.selfattachment;
 
   }
 
@@ -200,7 +200,7 @@ export class SelfratingnewComponent implements OnInit {
       this.loader = true;
       debugger
       if (res != undefined) {
-        this.attachmentsurl.push(res);
+        // this.attachmentsurl.push(res);
         this.attachmentNew = res;
         this.loader = false;
         alert('Attachment uploaded')
@@ -335,20 +335,7 @@ export class SelfratingnewComponent implements OnInit {
     )
   }
 
-  // UpdateMain() {
-  //   debugger
-  //   var entity = {
-  //     "StaffID": this.photoid,
-  //     "emprating": this.Score,
-  //     "empcomments": this.empcomments
-  //   }
-  //   this.PerformanceManagementService.UpdateEmployeeSelfRating(entity).subscribe(
-  //     data => {
-
-  //       Swal.fire("Updated Sucessfully");
-  //     }
-  //   )
-  // }
+ 
 
   cancel() {
     location.href = "/Selfratingnew";
