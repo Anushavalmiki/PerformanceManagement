@@ -97,7 +97,7 @@ export class PerformanceManagementService {
 
   public UpdateKeyResultArea(json: any) {
     debugger
-    let APIURL = this.baseURL + "Master/UpdateKeyResultArea";
+    let APIURL = this.baseURL + "/Master/UpdateKeyResultArea";
     return this.http.post<any[]>(APIURL, json);
   }
 

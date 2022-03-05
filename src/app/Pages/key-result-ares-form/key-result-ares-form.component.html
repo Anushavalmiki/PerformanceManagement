@@ -20,7 +20,7 @@
                 <p class="columnname">Select Role </p>
             </div> -->
             <div class="col-lg-2">
-                <p >Description</p>
+                <p>Description <span style="color: red;">*</span></p>
             </div>
         </div>
         <div class="row header">
@@ -30,21 +30,19 @@
             </div>
 
             <div class="col-lg-2">
-                <select class="form-control" [(ngModel)]="kratypeid" name="kratypeid">
+                <select class="form-control" [(ngModel)]="kratypeid" (change)="getkratypeid($event)" name="kratypeid">
                     <option value="0">Select Goal Type</option>
-                    <option *ngFor="let details of kratypelist" value="{{details.kratypeid}}">{{details.kraType}}</option>
+                    <option *ngFor="let details of kratypelist" value="{{details.kraType}}">{{details.kraType}}</option>
                 </select>
             </div>
-
-
-            <!-- <div class="col-lg-2">
+            <div class="col-lg-2">
                 <select class="form-control" id="roleTypeid" name="roleTypeid" [(ngModel)]="roleTypeid"
                     (change)="getRoleID($event)">
                     <option value="0">Select Role</option>
                     <option *ngFor="let details of roleTypeList" value="{{details.id}}">{{details.short}}
                     </option>
                 </select>
-            </div> -->
+            </div>
             <div class="col-lg-3 ">
                 <textarea class="form-control" [(ngModel)]="description" placeholder="Write here..">Description</textarea>
             </div>
@@ -53,7 +51,8 @@
         <div class="row">
             <div class="col-lg-9"></div>
             <div class="col-lg-1">
-                <button class="form-control cancel" (click)="Add()">Add</button>
+                <button class="form-control cancel"  *ngIf="id==undefined" (click)="Add()">Add</button>
+                <button class="form-control cancel"  *ngIf="id!=undefined" (click)="Update()">Update</button>
             </div>
             <div class="col-lg-1">
                 <button class="form-control cancel" (click)="cancel()">Cancel</button>
