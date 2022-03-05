@@ -81,7 +81,7 @@ export class AppraisalReportComponent implements OnInit {
         if(this.roleid==3)
         {
           this.StaffAppraisalList = temp; 
-          
+
         }
         else if(this.roleid==4)
         {
@@ -106,13 +106,6 @@ export class AppraisalReportComponent implements OnInit {
     XLSX.writeFile(wb, this.fileName);
   }
 
-
-  public Filterholidays() {
-    debugger
-    let searchCopy = this.roleTypeid.toLowerCase();
-    this.rolelist = this.rolelistCopy.filter((x: { holiday: string }) =>
-      x.holiday.toLowerCase().includes(searchCopy));
-  }
 
 
 
