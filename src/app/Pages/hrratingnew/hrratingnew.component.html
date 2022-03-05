@@ -93,6 +93,10 @@
                                     data-toggle="modal" (click)="GetKPIIDetails(details)"
                                     data-target="#exampleModal1">View
                                     Details</button>
+                                    <button class=" btn btn-primary action" data-toggle="modal" data-target="#exampleModal4"
+                                    (click)="getattachment(details)" *ngIf="details.hphoto!=null">View Attachments</button>
+                                    <p *ngIf="details.hphoto==null">No Attachments</p>
+
                             </td>
 
                         </tr>

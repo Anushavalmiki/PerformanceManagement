@@ -54,7 +54,8 @@ export class LoginComponent implements OnInit {
     else if (this.roleId == 2) {
       this.PerformanceManagementService.GetMyDetails().subscribe(async data => {
         console.log("data", data);
-        let temp: any = data.filter(x => (x.emailID == this.userName || x.phoneNo == this.userName) && x.password == this.passWord);
+        let userNameCopy = this.userName.toLowerCase();
+        let temp: any = data.filter(x => (x.emailID.toLowerCase().includes(userNameCopy)  || x.phoneNo == this.userName) && x.password == this.passWord);
         this.result = temp[0];
         // this.loader = true;
         if (this.result != undefined || this.result != null) {
