@@ -37,10 +37,19 @@ export class EmployeeDashboardComponent implements OnInit {
       this.dumpstafflist=data;
       this.stafflist = data;
       this.stafflistCopy = this.stafflist;
-      if(this.roleid==4){
-        this.stafflist=this.dumpstafflist.filter((x: {department: any; })=>x.department==4);
+     
+      if(this.roleid!=3)
+      {
+        this.stafflist=this.dumpstafflist.filter((x: {department: any; supervisor:any})=>x.department==4&&x.supervisor==this.StaffID);
         console.log("stafflist",this.stafflist)
+      
       }
+      else{
+        this.stafflist=this.dumpstafflist;
+        console.log("stafflist",this.stafflist)
+      
+      }
+
    
       this.count = this.stafflist.length;
    

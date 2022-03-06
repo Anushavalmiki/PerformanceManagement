@@ -20,6 +20,7 @@ export class HRDashboardComponent implements OnInit {
   totalAppraisalCount: any;
   hrSubmittedlist: any;
   totalAppraisalList: any;
+  employeCount:any;
   ngOnInit(): void {
 
     this.GetAllCounts();
@@ -51,6 +52,15 @@ export class HRDashboardComponent implements OnInit {
         // this.managerList = this.dumpmanagerList.filter((x: { manager: any; })=>x.manager==this.manager);
       }
     )
+
+    this.PerformanceManagementService.GetMyDetails().subscribe(data => {
+      debugger
+   
+   
+      var list4=data;
+      this.employeCount=list4.length
+   
+    });
 
 
 
