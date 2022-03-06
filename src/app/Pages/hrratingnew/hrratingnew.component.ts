@@ -42,6 +42,7 @@ export class HrratingnewComponent implements OnInit {
   ngOnInit(): void {
     this.Score = 0;
     this.showbtn = false;
+
     this.HighScore();
     this.route.params.subscribe(params => {
       debugger;
@@ -182,37 +183,9 @@ export class HrratingnewComponent implements OnInit {
   }
 
 
-  public UpdateDetails() {
-    debugger
-    var entity = {
-      'SatffID': this.StaffID,
-      'StaffType': this.StaffID,
-      'Supervisor': this.id,
-      'ResultAreaID': this.ResultAreaID,
-      'PerformaceIndicatorID': this.kpiid,
-      'SelfScores': this.Score,
-      'SelfComments': this.SelfComments,
-      'Attachment': this.attachment
-    }
-    this.PerformanceManagementService.InsertStaffScoresByHR(entity).subscribe(data => {
-      debugger
-      Swal.fire("Updated Successfully");
+ 
 
-      this.Score = 0;
-      this.SelfComments = '';
-      const element1 = document.getElementById('close');
-      this.files.length = 0;
-      if (element1 !== null) {
 
-        element1.click();
-
-      }
-      this.ngOnInit();
-
-    })
-  }
-
-  
   managerattachment: any;
   public GetKPIIDetails(details: any) {
     debugger
@@ -264,6 +237,38 @@ export class HrratingnewComponent implements OnInit {
 
 
 
+   public UpdateDetails() {
+    debugger
+    var entity = {
+      'SatffID': this.StaffID,
+      'StaffType': this.StaffID,
+      'Supervisor': this.id,
+      'ResultAreaID': this.ResultAreaID,
+      'PerformaceIndicatorID': this.kpiid,
+      'SelfScores': this.Score,
+      'SelfComments': this.SelfComments,
+      'Attachment': this.attachment
+    }
+    this.PerformanceManagementService.InsertStaffScoresByHR(entity).subscribe(data => {
+      debugger
+      Swal.fire("Updated Successfully");
+
+      this.Score = 0;
+      this.SelfComments = '';
+      const element1 = document.getElementById('close');
+      this.files.length = 0;
+      if (element1 !== null) {
+
+        element1.click();
+
+      }
+      this.ngOnInit();
+
+    })
+  }
+
+
+
   public SubmitHrAppraisal() {
     debugger
     Swal.fire({
@@ -288,10 +293,14 @@ export class HrratingnewComponent implements OnInit {
     })
   }
   photoid: any;
+  show:any;
   getattachment(details: any) {
+
+    
     debugger
     this.attachment = details.photo;
     this.managerattachment = details.mPhoto;
+   
 
   }
 
