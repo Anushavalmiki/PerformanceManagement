@@ -63,6 +63,7 @@ export class AppraisalCycleformComponent implements OnInit {
 
   
   Save(){
+    debugger
    var json = {  
     "AppraisalCycleName":this.appraisal,
     "FrequencyType":this.frequencyid,
@@ -72,7 +73,7 @@ export class AppraisalCycleformComponent implements OnInit {
     "EmployeeSubmissionDate":this.empsubDate,
     "ManagerReviewLastDate":this.managerReviewDate,
     "HrReviewLastDate":this.hrReviewDate,
-    "AppraisalClosingLastDate":this.appraisalLastdate
+    "AppraisalClosingLastDate":this.appraisalClosingLastDate
     };
     this.PerformanceManagementService.InsertAppraisalCycle(json).subscribe(
       data => {

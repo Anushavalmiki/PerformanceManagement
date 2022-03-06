@@ -30,8 +30,7 @@
                 </div>
 
                 <div class="col-lg-2">
-                    <select class="form-control" [(ngModel)]="kratypeid" (change)="getkratypeid($event)" required
-                        name="kratypeid">
+                    <select class="form-control"  (change)="getkratypeid($event)"  [(ngModel)]="kratypeid" name="kratypeid" required>
                         <option value="0">Select Goal Type</option>
                         <option *ngFor="let details of kratypelist" value="{{details.kraType}}">{{details.kraType}}
                         </option>
@@ -46,7 +45,7 @@
                     </select>
                 </div>
                 <div class="col-lg-3 ">
-                    <textarea class="form-control" id="description" name="description" [(ngModel)]="description" required
+                    <textarea class="form-control" id="description"  [(ngModel)]="description" name="description" required
                         placeholder="Write here.."></textarea>
                 </div>
 
