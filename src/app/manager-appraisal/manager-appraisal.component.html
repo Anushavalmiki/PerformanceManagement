@@ -63,8 +63,8 @@
                             </td>
                             <td [ngClass]="{'bggreen':details.managerupdate==1 }">
                                 <button class=" btn btn-primary action" data-toggle="modal" data-target="#exampleModal2"
-                                    (click)="getattachment(details)"  *ngIf="details.selfattachment!='0'">View Attachments</button>
-                                    <p *ngIf="details.selfattachment=='0'">Not Available</p>
+                                    (click)="getattachment(details)"  *ngIf="details.selfattachment!='0'||details.selfattachment!=null">View Attachments</button>
+                                    <p *ngIf="details.selfattachment=='0'||details.selfattachment==null">Not Available</p>
                             </td>
                             <td  [ngClass]="{'bg-warning':details.managerupdate==1 }" style="text-align: center;">
                                 {{details.managerrating}}
@@ -78,6 +78,11 @@
                                     data-toggle="modal" (click)="GetKPIIDetails(details)"
                                     data-target="#exampleModal1">View
                                     Details</button><br><br>
+
+                                    <button *ngIf="details.managerupdate==1 && details.managerattachment!=null" type="button" class="btn btn-success"
+                                    data-toggle="modal" (click)="GetKPIIDetails(details)"
+                                    data-target="#exampleModal4"  >View Attachments</button>
+                                    <p *ngIf="details.managerattachment=='0'||details.managerattachment==null" >No Attachments</p>
 
                             </td>
 
@@ -202,7 +207,7 @@
                     </div>
                 </div>
                 <br>
-                <div class="row">
+                <!-- <div class="row">
                     <div class="col-lg-1">
                     </div>
                     <div class="col-lg-3">
@@ -214,7 +219,7 @@
                             Attachments</button>
                     </div>
                 </div>
-                <br>
+                <br> -->
 
 
 

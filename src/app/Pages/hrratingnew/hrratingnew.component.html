@@ -78,8 +78,8 @@
                             </td>
                             <td [ngClass]="{'bggreen':details.hrupdate==1 }">
                                 <button class=" btn btn-primary action" data-toggle="modal" data-target="#exampleModal3"
-                                (click)="getattachment(details)" *ngIf="details.managerattachment!='0'">View Attachments</button>
-                                <p *ngIf="details.managerattachment=='0'">No Attachments</p>
+                                (click)="getattachment(details)" *ngIf="details.managerattachment!=null">View Attachments</button>
+                                <p *ngIf="details.managerattachment=='0'||details.managerattachment==null" >No Attachments</p>
                             </td>
                             <td [ngClass]="{'bg-warning':details.hrupdate==1 }" style="text-align: center;">
                                 {{details.hrrrating}}
@@ -92,8 +92,8 @@
                                 <button *ngIf="details.hrupdate==1" type="button" class="btn btn-success"
                                     data-toggle="modal" (click)="GetKPIIDetails(details)"
                                     data-target="#exampleModal1">View
-                                    Details</button>
-                                    <button *ngIf="details.hrupdate==1" class=" btn btn-primary action" data-toggle="modal" data-target="#exampleModal1" 
+                                    Details</button><br><br>
+                                    <button *ngIf="details.hrupdate==1" class=" btn btn-primary action" data-toggle="modal" data-target="#exampleModal4" 
                                     (click)="GetKPIIDetails(details)">View Attachments</button>
                                    
                             </td>
@@ -223,7 +223,7 @@
                     </div>
                 </div>
                 <br>
-                <div class="row">
+                <!-- <div class="row">
                     <div class="col-lg-1">
                     </div>
                     <div class="col-lg-3">
@@ -234,7 +234,7 @@
                         <button class=" btn btn-primary action" data-toggle="modal" data-target="#exampleModal4">View
                             Attachments</button>
                     </div>
-                </div>
+                </div> -->
             </div>
             <div class="modal-footer" *ngIf="HrSubmittedDate==null" >
                 <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
