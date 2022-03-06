@@ -22,13 +22,13 @@ export class EmployeeDashboardComponent implements OnInit {
   count:any;
   search:any;
   dumpstafflist:any;
-
+  roleid: any;
 
 
 
 
   ngOnInit(): void {
-
+    this.roleid = sessionStorage.getItem('roleid');
     this.Department = "";
     this.RoleType="";
     this.PerformanceManagementService.GetMyDetails().subscribe(data => {
@@ -36,8 +36,10 @@ export class EmployeeDashboardComponent implements OnInit {
       this.dumpstafflist=data;
       this.stafflist = data;
       this.stafflistCopy = this.stafflist;
-      
-      this.stafflist=this.dumpstafflist.filter((x: {supervisor: any; })=>x.supervisor==sessionStorage.getItem('EmaployedID')) ;
+      if(this.roleid==4){
+        this.stafflist=this.dumpstafflist.filter((x: {department: any; })=>x.department==4);
+      }
+   
       this.count = this.stafflist.length;
    
     });

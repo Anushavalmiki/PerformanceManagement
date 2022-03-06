@@ -24,9 +24,6 @@ export class HRDashboardComponent implements OnInit {
     this.StaffID=sessionStorage.getItem('EmaployedID');
 
 
-    this.StaffID = sessionStorage.getItem('EmaployedID');
-
-    this.GetAllCounts();
     this.PerformanceManagementService.GetConductappraisalStaffList().subscribe(data => {
       debugger
       this.EmployeeKradash = data;
@@ -73,18 +70,7 @@ export class HRDashboardComponent implements OnInit {
         this.countList=data[0];
       }
     )
-   }
-
-   
+   } 
  }
-
-
-
-
-
-
-
-
-
 
 }

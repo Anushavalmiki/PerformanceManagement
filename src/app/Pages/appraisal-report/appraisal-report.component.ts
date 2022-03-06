@@ -109,7 +109,7 @@ export class AppraisalReportComponent implements OnInit {
   public GetFilteredCitiesBystateID(){
     this.PerformanceManagementService.GetConductappraisalStaffList().subscribe(data => {
       debugger
-      this.StaffAppraisalList = data.filter(x=>x.type==this.roleTypeid)
+      this.StaffAppraisalList = data.filter(x=>x.type==this.roleTypeid )
     })
   }
 

@@ -58,6 +58,7 @@ export class KeyResultAresFormComponent implements OnInit {
 		this.keyresultlist=this.keyresultlist.filter((x: { id: any; })=>x.id==Number(this.id));
 		this.kraName=this.keyresultlist[0].kraName;
 		this.kratypeid=this.keyresultlist[0].kraTypeID;
+    this.rolename=this.keyresultArray[0].type;
     this.roleTypeid=this.keyresultlist[0].roleTypeid;
     this.description=this.keyresultlist[0].description
     // this.kratype=this.kratypelist[0].kraType
@@ -84,7 +85,7 @@ export class KeyResultAresFormComponent implements OnInit {
   }
 
 
- 
+  rolename:any
   getRoleID(even:any){
     this.roleTypeid=even.target.value;
   }
@@ -93,6 +94,7 @@ public GetRoleType(){
   this.PerformanceManagementService.GetRoleType().subscribe(
     data=>{
       this.roleTypeList=data;
+      this.rolename=this.roleTypeList[0].type
       console.log("type",this.roleTypeList);
       this.roleTypeid=0;
     }
@@ -117,6 +119,7 @@ Add(){
   var json = {
     "KRAName":this.kraName,
     "KraTypeID":this.kratypeid,
+    "Type":this.rolename,
     "Role":this.roleTypeid,
     "Description":this.description
  
@@ -125,6 +128,7 @@ Add(){
   this.keyresultArray.push(json)
   this.kraName="";
   this.kratypeid=0;
+  this.rolename="";
   this.roleTypeid=0;
   this.description="";
  }

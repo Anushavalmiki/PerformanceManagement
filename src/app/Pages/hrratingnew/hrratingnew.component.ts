@@ -211,6 +211,8 @@ export class HrratingnewComponent implements OnInit {
 
     })
   }
+
+  
   managerattachment: any;
   public GetKPIIDetails(details: any) {
     debugger

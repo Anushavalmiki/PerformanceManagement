@@ -78,7 +78,8 @@ export class LoginComponent implements OnInit {
     else if (this.roleId == '4') {
       this.PerformanceManagementService.GetMyDetails().subscribe(data => {
         console.log("data", data);
-        let temp: any = data.filter(x => (x.emailID == this.userName || x.phoneNo == this.userName) && x.password == this.passWord);
+        let userNameCopy = this.userName.toLowerCase();
+        let temp: any = data.filter(x => (x.emailID.toLowerCase().includes(userNameCopy)  || x.phoneNo == this.userName) && x.password == this.passWord);
         this.result = temp[0];
         debugger;
         // this.loader = true;
@@ -106,7 +107,8 @@ export class LoginComponent implements OnInit {
     else if (this.roleId == '3') {
       this.PerformanceManagementService.GetMyDetails().subscribe(data => {
         console.log("data", data);
-        let temp: any = data.filter(x => (x.emailID == this.userName || x.phoneNo == this.userName) && x.password == this.passWord);
+        let userNameCopy = this.userName.toLowerCase();
+        let temp: any = data.filter(x => (x.emailID.toLowerCase().includes(userNameCopy)  || x.phoneNo == this.userName) && x.password == this.passWord);
         this.result = temp[0];
         debugger;
         // this.loader = true;
