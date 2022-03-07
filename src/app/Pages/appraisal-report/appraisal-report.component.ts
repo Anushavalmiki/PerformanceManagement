@@ -62,7 +62,7 @@ export class AppraisalReportComponent implements OnInit {
     this.PerformanceManagementService.GetMyDetails().subscribe(
       data => {
         debugger
-        this.managerList = data.filter(x=>x.supervisor==10422)     // 10422 HR is taken as manager for all managers 
+        this.managerList = data.filter(x=>x.supervisor==null)     // 10422 HR is taken as manager for all managers 
         const key = 'manager';
         const key1 = 'month'
         this.uniquelist = [...new Map(this.managerList.map((item: { [x: string]: any; }) =>

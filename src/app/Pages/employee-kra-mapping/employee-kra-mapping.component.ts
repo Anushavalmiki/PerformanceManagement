@@ -45,7 +45,7 @@ export class EmployeeKraMappingComponent implements OnInit {
     });
     this.PerformanceManagementService.GetMyDetails().subscribe(data => {
       debugger
-      this.dropdownList = data;
+      this.dropdownList = data.filter(x=>x.supervisor==sessionStorage.getItem('EmaployedID'));
       let temp: any = data.filter(x => x.id == sessionStorage.getItem('EmaployedID'));
       this.Departmentid = temp[0].department;
       this.PerformanceManagementService.GetDepartmentMaster().subscribe(data => {

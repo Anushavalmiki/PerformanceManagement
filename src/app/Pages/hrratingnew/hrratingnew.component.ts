@@ -253,15 +253,15 @@ export class HrratingnewComponent implements OnInit {
       debugger
       Swal.fire("Updated Successfully");
 
-      this.Score = 0;
-      this.SelfComments = '';
-      const element1 = document.getElementById('close');
-      this.files.length = 0;
-      if (element1 !== null) {
+      // this.Score = 0;
+      // this.SelfComments = '';
+      // const element1 = document.getElementById('close');
+      // this.files.length = 0;
+      // if (element1 !== null) {
 
-        element1.click();
+      //   element1.click();
 
-      }
+      // }
       this.ngOnInit();
 
     })

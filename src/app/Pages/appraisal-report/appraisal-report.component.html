@@ -28,7 +28,7 @@
                 </select>
             </div>
             <div class="col-lg-3 ">
-                <select class="form-control" id="manager" name="manager" [(ngModel)]="manager"
+                <select class="form-control" id="manager" name="manager" [(ngModel)]="manager"  *ngIf="roleid==3"
                     (change)="getManager($event)" (change)="GetFilteredManager()">
                     <option value="0">Select Manager</option>
                     <option *ngFor="let details of managerList" value="{{details.name}}">{{details.name}}

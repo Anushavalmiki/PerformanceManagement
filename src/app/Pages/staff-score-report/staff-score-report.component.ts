@@ -171,7 +171,7 @@ export class StaffScoreReportComponent implements OnInit {
     this.PerformanceManagementService.GetMyDetails().subscribe(
       data => {
         debugger
-         this.managerList=data;
+        this.managerList = data.filter(x=>x.supervisor==10422)     // 10422 HR is taken as manager for all managers 
          const key = 'manager';
          const key1 = 'month'
          this.uniquelist = [...new Map(this.managerList.map((item: { [x: string]: any; }) =>
@@ -182,7 +182,12 @@ export class StaffScoreReportComponent implements OnInit {
     )
   }
 
-
+  public GetFilteredManager(){
+    this.PerformanceManagementService.GetConductappraisalStaffList().subscribe(data => {
+      debugger
+      this.StaffAppraisalList = data.filter(x=>x.managername==this.manager )
+    })
+  }
 
 
 

@@ -51,8 +51,10 @@
                             <td>{{details.cycleEndDate|date}}</td>
                             <td>{{details.appraisalSubmitionDate|date}}</td>
                             <td>{{details.employeeSubmittedDate}}</td>
-                            <td *ngIf="details.managerSubmittedDate!=null">{{details.managerSubmittedDate}}
-                                <p *ngIf="details.managerSubmittedDate==null">NA</p>
+                            <td *ngIf="details.managerSubmittedDate!=null">{{details.managerSubmittedDate}} 
+                            </td>
+                            <td  *ngIf="details.managerSubmittedDate==null">
+                                <p>NA</p>
                             </td>
                             <td>
                                 <button [routerLink]="['/ManagerAppraisal', details.id,details.id ]"
