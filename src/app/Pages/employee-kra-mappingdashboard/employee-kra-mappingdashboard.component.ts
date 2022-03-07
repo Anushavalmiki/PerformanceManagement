@@ -28,7 +28,7 @@ export class EmployeeKraMappingdashboardComponent implements OnInit {
   indicatorlist: any;
   dummindicatorlist: any;
   StaffID:any;
-
+  search:any;
   EmployeeKradash: any
 
   ngOnInit(): void {

@@ -12,18 +12,12 @@
     <div class="row">
         <div class="col-lg-10"></div>
         <div class="col-lg-2">
-            <!-- <button type="button"  *ngIf="showbtn" class="btn btn-primary" (click)="SubmitEmployeeAppraisal()">Submit
-                Appraisal</button>
-                <p  *ngIf="showbtn">Appraisal Submitted!!</p>
+       
+                <button type="button" *ngIf="showbtn && EmployeeSubmittedDate==null" class="btn btn-primary" (click)="SubmitEmployeeAppraisal()">Submit
+                    Appraisal</button>
+                    <p  *ngIf="showbtn && EmployeeSubmittedDate!=null" style="color:green">Appraisal Submitted!!</p>
                 <button type="button" *ngIf="!showbtn" class="btn btn-primary" disabled>Submit
-                    Appraisal</button> -->
-
-            <button type="button" *ngIf="showbtn && EmployeeSubmittedDate==null" class="btn btn-primary"
-                (click)="SubmitEmployeeAppraisal()">Submit
-                Appraisal</button>
-            <p *ngIf="showbtn && EmployeeSubmittedDate!=null" style="color:green">Appraisal Submitted!!</p>
-            <button type="button" *ngIf="!showbtn" class="btn btn-primary" disabled>Submit
-                Appraisal</button>
+                    Appraisal</button>
         </div>
     </div>
     <br>
@@ -46,7 +40,7 @@
                             *ngFor="let details of ResultAreaList |paginate: { itemsPerPage: count1, currentPage: p} index as i">
                             <td [ngClass]="{'bggreen':details.empupdate==1 }">
                                 {{i+1}}</td>
-                                <td [ngClass]="{'bggreen':details.empupdate==1 }">{{details.kraTypeID}}</td>
+                            <td [ngClass]="{'bggreen':details.empupdate==1 }">{{details.kraTypeID}}</td>
                             <td [ngClass]="{'bggreen':details.empupdate==1 }">{{details.kraName}}</td>
                             <td [ngClass]="{'bggreen':details.empupdate==1 }">{{details.kpiName}}</td>
                             <td [ngClass]="{'bggreen':details.empupdate==1 }">
@@ -62,9 +56,21 @@
                                     data-toggle="modal" (click)="GetKPIIDetails(details)"
                                     data-target="#exampleModal1">View
                                     Details</button>&nbsp;
+                                <!-- <button data-toggle="modal" data-target="#exampleModal2" class="cancel"
+                                    *ngIf="details.empupdate==1 && details.attachment!=null">View
+                                    Attachments</button>
+                                <p
+                                    *ngIf="details.attachment=='0'|| details.attachment==null && details.empupdate==1">
+                                    No Attachments</p> -->
 
-                                <!-- <button class=" btn btn-primary action" data-toggle="modal" data-target="#exampleModal2"
-                                    (click)="getattachment(details)">View Attachments</button> -->
+                                <button *ngIf="details.empupdate==1  && details.attachment!='0'"
+                                    type="button" class="btn btn-success" data-toggle="modal"
+                                    (click)="GetKPIIDetails(details)" data-target="#exampleModal2">View
+                                    Attachments</button>
+                                <p
+                                    *ngIf="details.attachment=='0'   && details.empupdate==1">
+                                    No Attachments</p>
+
                             </td>
                         </tr>
                     </tbody>
@@ -84,7 +90,7 @@
 
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document" >
+    <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Self Rating</h5>
@@ -204,6 +210,7 @@
                 </div>
             </div>
             <div class="modal-footer" *ngIf="EmployeeSubmittedDate==null">
+                <!-- *ngIf="EmployeeSubmittedDate==null" -->
                 <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
                 <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="UpdateMain()">Update
                     Changes</button>
@@ -236,6 +243,7 @@
                 </div>
                 <br>
                 <div class="row" *ngIf="EmployeeSubmittedDate==null">
+                    <!--*ngIf="EmployeeSubmittedDate==null"-->
                     <div class="col-lg-8"></div>
                     <div class="col-lg-2">
                         <button class="form-control cancel" data-toggle="modal" data-target="#exampleModal3"

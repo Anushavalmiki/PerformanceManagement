@@ -57,7 +57,7 @@
   margin-left: 15px;
 }
 .text2{
-  margin-left: 20px;
+  margin-left: 30px;
 }
 
 .Appraisal {
@@ -68,4 +68,7 @@
 
 .txt{
   float:left;
+}
+.align{
+  text-align: center;
 }
