@@ -137,7 +137,7 @@ export class KeyPerformanceIndicatorformComponent implements OnInit {
         data => {
         debugger
         let indicatorlist = data;
-        Swal.fire("Updated Sucessfully");
+        Swal.fire("Updated Successfully");
         location.href="#/KeyPerformanceIndicator";
       })
   }

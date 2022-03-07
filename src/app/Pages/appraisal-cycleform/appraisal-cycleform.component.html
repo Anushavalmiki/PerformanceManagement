@@ -39,15 +39,14 @@
                 </div>
 
                 <div class="col-lg-3">
-                    <input class="form-control" type="Date" [(ngModel)]="startdate" name="startdate" minDate="startdate" required>
+                    <input class="form-control" type="Date" [(ngModel)]="startdate" name="startdate" min="{{todaydate}}"  required >
                 </div>
                 <div class="col-lg-3">
-                    <input class="form-control" type="Date" [(ngModel)]="enddate" name="enddate" minDate="startdate" required>
+                    <input class="form-control" type="Date" [(ngModel)]="enddate" name="enddate" min="{{startdate}}" required>
                 </div>
             </div>
             <br>
 
-<<<<<<< HEAD
             <div class="row column">
                 <div class="col-lg-3">
                     <p>Goal Setting Date <span style="color:red">*</span> </p>
@@ -56,23 +55,16 @@
                     <p>Employee Submission Last Date <span style="color:red">*</span> </p>
                 </div>
                 <div class="col-lg-3">
-                    <p>Manager Review LastDate <span style="color:red">*</span></p>
+                    <p>Manager Review Last Date <span style="color:red">*</span></p>
                 </div>
                 <div class="col-lg-3">
-                    <p>HR Review LastDate <span style="color:red">*</span></p>
+                    <p>HR Review Last Date <span style="color:red">*</span></p>
                 </div>
             </div>
             <div class="row">
                 <div class="col-lg-3">
                     <input class="form-control" type="Date" [(ngModel)]="goalDate" name="goalDate" required>
                 </div>
-=======
-        <div class="row column">
-            <div class="col-lg-3">
-                <p>Appraisal Closing Last Date </p>
-            </div>
-        </div>
->>>>>>> abd04c4ca1c8f3dc16bd26535e8b6d54524c0017
 
                 <div class="col-lg-3">
                     <input class="form-control" type="Date" [(ngModel)]="empsubDate" name="empsubDate" required>
@@ -89,7 +81,7 @@
             <br>
             <div class="row column">
                 <div class="col-lg-3">
-                    <p>Appraisal Closing LastDate <span style="color:red">*</span> </p>
+                    <p>Appraisal Closing Last Date <span style="color:red">*</span> </p>
                 </div>
             </div>
 

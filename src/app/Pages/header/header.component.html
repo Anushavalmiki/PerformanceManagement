@@ -81,7 +81,7 @@
 <br>
                     <div class="container-fluid contain" style="font-family: 'Poppins';">
                         <!-- <h6>No Notification Today !</h6> -->
-                        <div class="row" *ngFor="let item of notificationslist" [style.background]="item.seenColorCode">
+                        <div class="row" *ngFor="let item of notificationslist" [style.background]="item.seenColorCode" (click)="seennotification(item.id)">
                             <div class="col-lg-4" >
                            
                                 {{item.date|date}} <br><br><br>

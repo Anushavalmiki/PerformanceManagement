@@ -176,7 +176,7 @@ Add(){
         this.PerformanceManagementService.UpdateKeyResultArea(json).subscribe(
           data => {
           debugger
-         Swal.fire("Updated Sucessfully");
+         Swal.fire("Updated Successfully");
           location.href="#/KeyResultArea";
         })
     }
