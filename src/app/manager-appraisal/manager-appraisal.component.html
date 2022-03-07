@@ -85,7 +85,6 @@
                                     <p *ngIf="details.managerattachment=='0'||details.managerattachment==null" >No Attachments</p>
 
                             </td>
-
                         </tr>
                     </tbody>
                 </table>
@@ -167,6 +166,9 @@
         </div>
     </div>
 </div>
+
+
+
 <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -203,7 +205,7 @@
                     </div>
                     <div class="col-lg-7">
                         <ckeditor id="SelfComments" name="SelfComments" [(ngModel)]="SelfComments"
-                            data="<p>Enter Answer Here !</p>"></ckeditor>
+                            data="<p>Enter Answer Here !</p>" required></ckeditor>
                     </div>
                 </div>
                 <br>

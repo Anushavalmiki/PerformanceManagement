@@ -38,7 +38,7 @@ export class HRDashboardComponent implements OnInit {
       var list1 = data.filter(x => x.managerSubmittedDate != null);
       this.managerSubmittedCount = list1.length;
 
-      this.hrSubmittedlist = data.filter(x => x.hrSubmittedDate != null);
+      this.hrSubmittedlist = data.filter(x => x.hrSubmittedDate == null);
       console.log("hr", this.hrSubmittedlist)
       this.hrSubmittedCount = this.hrSubmittedlist.length;
     });
@@ -47,7 +47,7 @@ export class HRDashboardComponent implements OnInit {
       res => {
         debugger;
         let temp: any = res
-        this.totalAppraisalList = res.filter((x: { cioScores: null; }) => x.cioScores != null)
+        this.totalAppraisalList = res.filter((x: { cioScores: any; }) => x.cioScores != null)
         this.totalAppraisalCount = this.totalAppraisalList.length;
         // this.managerList = this.dumpmanagerList.filter((x: { manager: any; })=>x.manager==this.manager);
       }

@@ -25,13 +25,15 @@ export class EmployeeKraMappingComponent implements OnInit {
 
   dropdownList2: any = [];
   selectedItems3: any = [];
-
+  departmentName: any;
   dropdownSettings2: any = {};
   Apprisalcyclelist: any;
   Departmentid: any;
   ngOnInit(): void {
-    this.RoleID = "0";
-    this.Apprisalcycle = "0"
+    this.RoleID = "";
+    this.departmentName = "";
+    this.Apprisalcycle = "";
+
 
 
 
@@ -45,7 +47,7 @@ export class EmployeeKraMappingComponent implements OnInit {
     });
     this.PerformanceManagementService.GetMyDetails().subscribe(data => {
       debugger
-      this.dropdownList = data.filter(x=>x.supervisor==sessionStorage.getItem('EmaployedID'));
+      this.dropdownList = data.filter(x => x.supervisor == sessionStorage.getItem('EmaployedID'));
       let temp: any = data.filter(x => x.id == sessionStorage.getItem('EmaployedID'));
       this.Departmentid = temp[0].department;
       this.PerformanceManagementService.GetDepartmentMaster().subscribe(data => {
@@ -102,7 +104,7 @@ export class EmployeeKraMappingComponent implements OnInit {
   }
   onItemSelect2(item1: any) {
     debugger
-    // this.selectedItems3.push(item1);
+    this.selectedItems3.push(item1);
     console.log("selecteditems", this.selectedItems3)
 
 
@@ -155,6 +157,7 @@ export class EmployeeKraMappingComponent implements OnInit {
   sDate: any;
   eDate: any;
   tablecount: any;
+
   public InsertDetails() {
     debugger
     for (let i = 0; i < this.keyresultArray.length; i++) {
@@ -222,20 +225,27 @@ export class EmployeeKraMappingComponent implements OnInit {
   public keyresultArray: any = [];
   public SaveDetails() {
     debugger
-    this.tablecount = 1;
-    for (let i = 0; i < this.selectedItems3.length; i++) {
-      var json = {
-        "kraid": this.selectedItems2[0].id,
-        "kpiid": this.selectedItems3[i].id,
-        "kraname": this.selectedItems2[0].kraName,
-        "kpiname": this.selectedItems3[i].kpiName,
-      };
-      debugger
-      this.keyresultArray.push(json)
+    if (this.EmployeeId == undefined || this.selectedItems2.length == 0 || this.selectedItems3.length == 0) {
+      Swal.fire("Please Enter Mandatory Fields")
     }
-    this.selectedItems1 = [];
-    this.selectedItems2 = [];
-    this.selectedItems3 = [];
+    else {
+      this.tablecount = 1;
+      for (let i = 0; i < this.selectedItems3.length; i++) {
+        var json = {
+          "kraid": this.selectedItems2[0].id,
+          "kpiid": this.selectedItems3[i].id,
+          "kraname": this.selectedItems2[0].kraName,
+          "kpiname": this.selectedItems3[i].kpiName,
+        };
+        debugger
+        this.keyresultArray.push(json)
+      }
+      this.selectedItems1 = [];
+      this.selectedItems2 = [];
+      this.selectedItems3 = [];
+    }
   }
+
+
 
 }

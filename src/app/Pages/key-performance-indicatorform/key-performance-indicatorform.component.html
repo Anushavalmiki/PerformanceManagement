@@ -12,19 +12,19 @@
             <br>
             <div class="row ">
                 <div class="col-lg-2 ">
-                    <p class="columnname">Goals<span style="color: red;"></span> </p>
+                    <p class="columnname">Goals<span style="color: red;">*</span> </p>
                 </div>
                 <!-- <div class="col-lg-3">
                    <p class="columnname">Performance Indicator</p>
                </div> -->
                 <div class="col-lg-3">
-                    <p class="columnname">KPI Name <span style="color: red;"></span></p>
+                    <p class="columnname">KPI Name <span style="color: red;">*</span></p>
                 </div>
                 <!-- <div class="col-lg-2">
                 <p class="columnname">Performance Indicator </p>
                </div> -->
                 <div class="col-lg-5">
-                    <p class="columnname">Description <span style="color: red;"></span> </p>
+                    <p class="columnname">Description <span style="color: red;">*</span> </p>
                 </div>
             </div>
             <div class="row header">
@@ -44,8 +44,7 @@
                 <!-- <div class="col-lg-2">
                 <select class="form-control columnname" [(ngModel)]="indicatorid" name="indicatorid" (change)="getindicatorid($event)">
                     <option value="0">Select KraResult</option>
-                    <option *ngFor="let details of performancelist"  value="{{details.id}}">{{details.rating}}</option>
-               
+                   <option *ngFor="let details of performancelist"  value="{{details.id}}">{{details.rating}}</option>              
                 </select>
             </div> -->
                 <div class="col-lg-5 column">
