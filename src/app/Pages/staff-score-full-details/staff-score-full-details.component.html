@@ -100,7 +100,7 @@
                         <span  class="text2">Staff Name : <b>{{EmployeeName}}</b> </span>
                         <span class="text2">Department : <b>{{DepartmentName}}</b></span>
                         <span class="text2">Role : <b>{{Role}}</b></span>
-                        <span class="text2">Manager : <b>Kumar</b></span>
+                        <!-- <span class="text2">Manager : <b>Kumar</b></span> -->
                     </div>
             <!-- <div class="col-lg-3">
             <p>Staff Type:{{StaffType}} </p>
@@ -114,19 +114,21 @@
 
                         <span class="text2">Appraisal Cycle End Date: <b>{{EndDate|date}}</b></span>
                         <span *ngIf="EndDate==null"><b>NA</b></span>
+
+                        <span class="text2">Employee Submission Date: <b>{{EmployeeSubmittedDate|date}}</b></span>
+                        <span *ngIf="EmployeeSubmittedDate==null"><b>NA</b></span>
                 </div>
               
                
             <div class="row">
                 <div class="col-lg-12">
-                    <p  style="margin-left: 30px;">Employee Submission Date: <b>{{EmployeeSubmittedDate|date}}</b>
-                        <span *ngIf="EmployeeSubmittedDate==null"><b>NA</b></span>
+                   
                      
-                        <span class="text2">Manager Submission Date: <b>{{ManagerSubmittedDate|date}}</b></span>
+                        <p style="margin-left: 30px;">Manager Submission Date: <b>{{ManagerSubmittedDate|date}}</b>
                         <span *ngIf="ManagerSubmittedDate==null"><b>NA</b></span>
                         <span class="text2">HR Submission Date: <b>{{HrSubmittedDate|date}}</b></span>
                         <span *ngIf="HrSubmittedDate==null"><b>NA</b></span>
-                        <span class="text2">BellCurve Fitting Date: <b>{{HrSubmittedDate|date}}</b></span>
+                        <span style="margin-left: 50px;">Bell Curve Fitting Date: <b>{{HrSubmittedDate|date}}</b></span>
                         <span *ngIf="HrSubmittedDate==null"><b>NA</b></span>
                 </div>
             </div>

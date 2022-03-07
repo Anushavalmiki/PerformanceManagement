@@ -99,7 +99,7 @@
 
   .user{
     position: absolute;
-    left: 73%;
+    left: 70%;
     right: 6.04%;
     top: 2.57%;
     bottom: 38.57%;
@@ -110,7 +110,8 @@
     line-height: 16px;
     color: #FFFFFF;
     margin-top: 20px;
-    float: right;
+    float: left;
+    word-break: break-all;
   }
   
   .dropdown-submenu>.dropdown-menu {
