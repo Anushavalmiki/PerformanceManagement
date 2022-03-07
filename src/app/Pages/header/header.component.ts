@@ -74,10 +74,20 @@ export class HeaderComponent implements OnInit {
 
   }
 
- public seen(){
+  public seen() {
     this.unseen = 1;
   }
 
-
+  seennotification(id: any) {
+    debugger
+    var entity = {
+      'ID': id,
+      "Seen": 1
+    }
+    this.PerformanceManagementService.UpdateNotificationSeen(entity).subscribe(data => {
+      debugger
+      this.GetNotification();
+    })
+  }
 
 }

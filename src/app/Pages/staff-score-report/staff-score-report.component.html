@@ -49,7 +49,7 @@
                 <select class="form-control" id="manager" name="manager" [(ngModel)]="manager"
                 (change)="getManager($event)" (change)="GetFilteredManager()">
                 <option value="0">Select Manager</option>
-                <option *ngFor="let details of managerList" value="{{details.manager}}">{{details.superviser}}
+                <option *ngFor="let details of uniquelist" value="{{details.manager}}">{{details.superviser}}
                 </option>
             </select>
             </div>

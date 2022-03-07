@@ -310,5 +310,11 @@ export class PerformanceManagementService {
   }
 
 
+  public UpdateNotificationSeen(data: any) {
+    debugger;
+    this.url = this.baseURL + 'Master/UpdateNotificationSeen';
+    return this.http.post(this.url, data);
+  }
+
 
 }

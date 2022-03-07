@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PerformanceManagementService } from 'src/app/performance-management.service';
 import { ActivatedRoute } from '@angular/router';
 import Swal from 'sweetalert2';
+import { formatDate } from '@angular/common';
 
 @Component({
   selector: 'app-appraisal-cycleform',
@@ -24,10 +25,15 @@ export class AppraisalCycleformComponent implements OnInit {
   hrReviewDate:any;
   appraisalLastdate:any;
   appraisalClosingLastDate:any;
+  todaydate:any;
 
 
   ngOnInit(): void {
+    const format = 'yyyy-MM-dd';
 
+    const myDate = new Date();
+    const locale = 'en-US';
+    this.todaydate = formatDate(myDate, format, locale);
 
     
     this.GetFrequency();
