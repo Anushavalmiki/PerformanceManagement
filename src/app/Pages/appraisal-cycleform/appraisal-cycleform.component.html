@@ -6,102 +6,102 @@
         </div>
     </div>
     <div class="card">
-        <br>
-        <div class="row column">
-            <div class="col-lg-3">
-                <p>Appraisal Cycle Name </p>
+        <form #appraisalform="ngForm">
+            <br>
+            <div class="row column">
+                <div class="col-lg-3">
+                    <p>Appraisal Cycle Name <span style="color:red">*</span> </p>
+                </div>
+                <div class="col-lg-3">
+                    <p>Frequency Type <span style="color:red">*</span></p>
+                </div>
+                <div class="col-lg-3">
+                    <p>Cycle Start Date <span style="color:red">*</span></p>
+                </div>
+                <div class="col-lg-3">
+                    <p>Cycle End date <span style="color:red">*</span></p>
+                </div>
             </div>
-            <div class="col-lg-3">
-                <p>Frequency Type </p>
+            <div class="row">
+                <div class="col-lg-3">
+                    <input class="form-control" placeholder="Appraisal Cycle Name" [(ngModel)]="appraisal"
+                        name="appraisal" required>
+                </div>
+
+                <div class="col-lg-3">
+                    <select class="form-control columnname" (change)="getfrequency($event)" [(ngModel)]="frequencyid"
+                        name="frequencyid">
+                        <option value="">Select Frequency Type</option>
+                        <option *ngFor="let details of frequency" value="{{details.id}}">{{details.frequencyName}}
+                        </option>
+
+                    </select>
+                </div>
+
+                <div class="col-lg-3">
+                    <input class="form-control" type="Date" [(ngModel)]="startdate" name="startdate" minDate="startdate" required>
+                </div>
+                <div class="col-lg-3">
+                    <input class="form-control" type="Date" [(ngModel)]="enddate" name="enddate" minDate="startdate" required>
+                </div>
             </div>
-            <div class="col-lg-3">
-                <p>Cycle Start Date</p>
+            <br>
+
+            <div class="row column">
+                <div class="col-lg-3">
+                    <p>Goal Setting Date <span style="color:red">*</span> </p>
+                </div>
+                <div class="col-lg-3">
+                    <p>Employee Submission Last Date <span style="color:red">*</span> </p>
+                </div>
+                <div class="col-lg-3">
+                    <p>Manager Review LastDate <span style="color:red">*</span></p>
+                </div>
+                <div class="col-lg-3">
+                    <p>HR Review LastDate <span style="color:red">*</span></p>
+                </div>
             </div>
-            <div class="col-lg-3">
-                <p>Cycle End date</p>
+            <div class="row">
+                <div class="col-lg-3">
+                    <input class="form-control" type="Date" [(ngModel)]="goalDate" name="goalDate" required>
+                </div>
+
+                <div class="col-lg-3">
+                    <input class="form-control" type="Date" [(ngModel)]="empsubDate" name="empsubDate" required>
+                </div>
+
+                <div class="col-lg-3">
+                    <input class="form-control" type="Date" [(ngModel)]="managerReviewDate" name="managerReviewDate"
+                        required>
+                </div>
+                <div class="col-lg-3">
+                    <input class="form-control" type="Date" [(ngModel)]="hrReviewDate" name="hrReviewDate" required>
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-3">
-                <input class="form-control" placeholder="Appraisal Cycle Name" [(ngModel)]="appraisal" name="appraisal">
+            <br>
+            <div class="row column">
+                <div class="col-lg-3">
+                    <p>Appraisal Closing LastDate <span style="color:red">*</span> </p>
+                </div>
             </div>
 
-            <div class="col-lg-3">
-                <select class="form-control columnname"(change)="getfrequency($event)" [(ngModel)]="frequencyid" name="frequencyid">
-                    <option value="0">Select Frequency Type</option>
-                    <option *ngFor="let details of frequency" value="{{details.id}}">{{details.frequencyName}}</option>
-                   
-                </select>
+            <div class="row">
+                <div class="col-lg-3">
+                    <input class="form-control" type="Date" required [(ngModel)]="appraisalClosingLastDate"
+                        name="appraisalClosingLastDate">
+                </div>
             </div>
-
-            <div class="col-lg-3">
-                <input class="form-control" type="Date" [(ngModel)]="startdate" name="startdate">
+            <div class="row">
+                <div class="col-lg-9"></div>
+                <div class="col-lg-1">
+                    <button class="form-control cancel" *ngIf="id==undefined" [disabled]="appraisalform.form.invalid"
+                        (click)="Save()">Save</button>
+                    <button class="form-control cancel" *ngIf="id!= undefined" (click)="Update()">Update</button>
+                </div>
+                <div class="col-lg-1">
+                    <button class="form-control cancel" (click)="Cancel()">Cancel</button>
+                </div>
             </div>
-            <div class="col-lg-3">
-                <input class="form-control" type="Date" [(ngModel)]="enddate" name="enddate">
-            </div>
-        </div>
-        <br>
-
-        <div class="row column">
-            <div class="col-lg-3">
-                <p>Goal Setting Date </p>
-            </div>
-            <div class="col-lg-3">
-                <p>Employee Submission Last Date </p>
-            </div>
-            <div class="col-lg-3">
-                <p>Manager Review LastDate</p>
-            </div>
-            <div class="col-lg-3">
-                <p>HR Review LastDate</p>
-            </div>
-        </div>
-
- 
-
-        <div class="row">
-            <div class="col-lg-3">
-                <input class="form-control" type="Date" [(ngModel)]="goalDate" name="goalDate">
-            </div>
-
-            <div class="col-lg-3">
-                <input class="form-control" type="Date" [(ngModel)]="empsubDate" name="empsubDate">
-            </div>
-
-            <div class="col-lg-3">
-                <input class="form-control" type="Date" [(ngModel)]="managerReviewDate" name="managerReviewDate">
-            </div>
-            <div class="col-lg-3">
-                <input class="form-control" type="Date" [(ngModel)]="hrReviewDate" name="hrReviewDate">
-            </div>
-        </div>
-         <br>
-     
-
-        <div class="row column">
-            <div class="col-lg-3">
-                <p>Appraisal Closing LastDate </p>
-            </div>
-        </div>
-
-
-        
-        <div class="row">
-            <div class="col-lg-3">
-                <input class="form-control" type="Date" [(ngModel)]="appraisalClosingLastDate" name="appraisalClosingLastDate">
-            </div>
-        </div>
-
-
-        <div class="row">
-            <div class="col-lg-9"></div>
-            <div class="col-lg-1">
-                <button class="form-control cancel" *ngIf="id==undefined" (click)="Save()">Save</button>
-                <button class="form-control cancel" *ngIf="id!= undefined" (click)="Update()">Update</button>
-            </div>
-            <div class="col-lg-1">
-                <button class="form-control cancel" (click)="Cancel()">Cancel</button>
-            </div>
-        </div>
+        </form>
     </div>
+</div>
