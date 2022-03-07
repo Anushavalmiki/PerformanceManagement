@@ -55,6 +55,7 @@ export class LoginComponent implements OnInit {
       this.PerformanceManagementService.GetMyDetails().subscribe(async data => {
         console.log("data", data);
         let userNameCopy = this.userName.toLowerCase();
+        let password = this.userName.toLowerCase();
         let temp: any = data.filter(x => (x.emailID.toLowerCase().includes(userNameCopy)  || x.phoneNo == this.userName) && x.password == this.passWord);
         this.result = temp[0];
         // this.loader = true;

@@ -14,7 +14,7 @@
     <div class="card">
         <br>
         <div class="row FilterClass ">
-            <div class="col-lg-1">
+            <div class="col-lg-2">
                 <p class="filter">Filter By</p>
             </div>
             <div class="col-lg-3">
@@ -49,7 +49,7 @@
                 <select class="form-control" id="manager" name="manager" [(ngModel)]="manager"
                 (change)="getManager($event)" (change)="GetFilteredManager()">
                 <option value="0">Select Manager</option>
-                <option *ngFor="let details of managerList" value="{{details.manager}}">{{details.manager}}
+                <option *ngFor="let details of managerList" value="{{details.manager}}">{{details.superviser}}
                 </option>
             </select>
             </div>

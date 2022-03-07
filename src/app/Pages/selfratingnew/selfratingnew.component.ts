@@ -290,6 +290,7 @@ export class SelfratingnewComponent implements OnInit {
       Swal.fire("Updated Successfully");
       this.attachmentsurl = 0;
       this.files.length = 0;
+      this.attachmentNew="";
       this.PerformanceManagementService.GetKRAByStaffID(this.StaffID).subscribe(data => {
         debugger
         this.ResultAreaList = data;
@@ -300,6 +301,7 @@ export class SelfratingnewComponent implements OnInit {
       Swal.fire("Updated Successfully");
       this.attachmentsurl = 0;
       this.files.length = 0;
+      this.attachmentNew="";
       this.PerformanceManagementService.GetKRAByStaffID(this.StaffID).subscribe(data => {
         debugger
         this.ResultAreaList = data;

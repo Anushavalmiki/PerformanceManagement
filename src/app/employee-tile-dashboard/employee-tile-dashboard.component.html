@@ -55,8 +55,11 @@
                     </tr>
                     <tr>
                         <td>Self Appraisal Completed Date</td>
-                        <td *ngIf="EmployeeSubmittedDate!=null">{{EmployeeSubmittedDate|date}}
+                        <td >
+
+                            <p *ngIf="EmployeeSubmittedDate!=null">{{EmployeeSubmittedDate|date}}</p>
                             <p *ngIf="EmployeeSubmittedDate==null">Pending</p>
+                            
                         </td>
                     </tr>
                     <tr>

@@ -108,20 +108,26 @@
           
         </div><hr>
             <div class="row">
-                <div class="col-lg-4">
+                <div class="col-lg-12">
                     <p style="margin-left: 14px;">Appraisal Cycle Start Date: <b>{{StartDate|date}}</b>
+                        <span *ngIf="StartDate==null"><b>NA</b></span>
+
+                        <span class="text2">Appraisal Cycle End Date: <b>{{EndDate|date}}</b></span>
+                        <span *ngIf="EndDate==null"><b>NA</b></span>
                 </div>
-                <div class="col-lg-4">
-                        <p>Appraisal Cycle End Date: <b>{{EndDate|date}}</b></p>
-                </div> 
+              
                
             <div class="row">
                 <div class="col-lg-12">
-                    <p>
-                        <span class="text1">Employee Submission Date: <b>{{EmployeeSubmittedDate|date}}</b></span>
+                    <p  style="margin-left: 30px;">Employee Submission Date: <b>{{EmployeeSubmittedDate|date}}</b>
+                        <span *ngIf="EmployeeSubmittedDate==null"><b>NA</b></span>
+                     
                         <span class="text2">Manager Submission Date: <b>{{ManagerSubmittedDate|date}}</b></span>
+                        <span *ngIf="ManagerSubmittedDate==null"><b>NA</b></span>
                         <span class="text2">HR Submission Date: <b>{{HrSubmittedDate|date}}</b></span>
+                        <span *ngIf="HrSubmittedDate==null"><b>NA</b></span>
                         <span class="text2">BellCurve Fitting Date: <b>{{HrSubmittedDate|date}}</b></span>
+                        <span *ngIf="HrSubmittedDate==null"><b>NA</b></span>
                 </div>
             </div>
         </div>
@@ -145,22 +151,30 @@
                         *ngFor="let Scores of StaffScoresLists|paginate: { itemsPerPage: count1, currentPage: p}|filter:search">
                         <td>{{Scores.resultAreaName}}</td>
                         <td>{{Scores.performanceindicator}}</td>
-                        <td>{{Scores.selfScores}}</td>
+                        <td class="align">{{Scores.selfScores}}</td>
                         <!-- <td>{{Scores.selfComments}}</td> -->
                         <td>
                             <button class="form-control edit" (click)="viewself(Scores)" data-toggle="modal"
                                 data-target="#exampleModal">View</button>
                         </td>
-                        <td *ngIf="Scores.groupHeadScores!=null">{{Scores.groupHeadScores}}</td>
+                        <td>
+                            <p class="align" *ngIf="Scores.groupHeadScores!=null">{{Scores.groupHeadScores}}</p>
+                            <p *ngIf="Scores.groupHeadScores==null">NA</p>
+                        </td>
                         <td>
                             <button *ngIf="Scores.groupHeadScores!=null" class="form-control edit" (click)="manager(Scores)"
                                 data-toggle="modal" data-target="#exampleModal1">View</button>
+                                <p *ngIf="Scores.groupHeadScores==null">NA</p>
                         </td>
                         <!-- <td *ngIf="Scores.groupHeadScores!=null">{{Scores.groupHeadComments}}</td> -->
-                        <td *ngIf="Scores.cscores!=null">{{Scores.cscores}}</td>
+                        <td>
+                            <p class="align" *ngIf="Scores.cscores!=null">{{Scores.cscores}}</p>
+                            <p *ngIf="Scores.cscores==null">NA</p>
+                        </td>
                         <td>
                             <button *ngIf="Scores.cscores!=null" class="form-control edit" (click)="hrcomments(Scores)"
                                 data-toggle="modal" data-target="#exampleModal2">View</button>
+                                <p *ngIf="Scores.cscores==null">NA</p>
                         </td>
                         <!-- <td *ngIf="Scores.cscores!=null">{{Scores.cioComments}}</td> -->
                         <td *ngIf="Scores.divisionScores!=null">{{Scores.divisionScores}}</td>
