@@ -13,11 +13,17 @@
         <div class="col-lg-10"></div>
         <div class="col-lg-2">
        
-                <button type="button" *ngIf="showbtn && EmployeeSubmittedDate==null" class="btn btn-primary" (click)="SubmitEmployeeAppraisal()">Submit
+                <!-- <button type="button" *ngIf="showbtn && EmployeeSubmittedDate==null" class="btn btn-primary" (click)="SubmitEmployeeAppraisal()">Submit
                     Appraisal</button>
                     <p  *ngIf="showbtn && EmployeeSubmittedDate!=null" style="color:green">Appraisal Submitted!!</p>
                 <button type="button" *ngIf="!showbtn" class="btn btn-primary" disabled>Submit
-                    Appraisal</button>
+                    Appraisal</button> -->
+
+                    <button type="button"class="btn btn-primary" *ngIf="showbtn && EmployeeSubmittedDate==null"  (click)="SubmitEmployeeAppraisal()">Submit
+                        Appraisal</button>
+                        <p *ngIf="showbtn && EmployeeSubmittedDate!=null"  style="color:green">Appraisal Submitted!!</p>
+                    <button type="button"  *ngIf="!showbtn" class="btn btn-primary" disabled>Submit
+                        Appraisal</button>
         </div>
     </div>
     <br>
@@ -210,7 +216,7 @@
                 </div>
             </div>
             <div class="modal-footer" *ngIf="EmployeeSubmittedDate==null">
-                <!-- *ngIf="EmployeeSubmittedDate==null" -->
+          
                 <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
                 <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="UpdateMain()">Update
                     Changes</button>
@@ -243,7 +249,7 @@
                 </div>
                 <br>
                 <div class="row" *ngIf="EmployeeSubmittedDate==null">
-                    <!--*ngIf="EmployeeSubmittedDate==null"-->
+             
                     <div class="col-lg-8"></div>
                     <div class="col-lg-2">
                         <button class="form-control cancel" data-toggle="modal" data-target="#exampleModal3"

@@ -158,6 +158,7 @@ export class SelfratingnewComponent implements OnInit {
       this.Score = 0;
       this.SelfComments = '';
       this.files.length = 0;
+      this.attachmentNew='';
       const element1 = document.getElementById('close');
 
       if (element1 !== null) {
@@ -290,7 +291,7 @@ export class SelfratingnewComponent implements OnInit {
       Swal.fire("Updated Successfully");
       this.attachmentsurl = 0;
       this.files.length = 0;
-      this.attachmentNew="";
+      this.attachmentNew='';
       this.PerformanceManagementService.GetKRAByStaffID(this.StaffID).subscribe(data => {
         debugger
         this.ResultAreaList = data;

@@ -161,7 +161,7 @@ export class StaffScoreReportComponent implements OnInit {
       }
     )
   }
-    
+  managerList1:any;
   getManager(even: any) {
     this.manager = even.target.value;
   }
@@ -171,7 +171,7 @@ export class StaffScoreReportComponent implements OnInit {
     this.PerformanceManagementService.GetMyDetails().subscribe(
       data => {
         debugger
-        this.managerList = data.filter(x=>x.supervisor==null)     // 10422 HR is taken as manager for all managers 
+        this.managerList1 = data.filter(x=>x.supervisor==null)     // 10422 HR is taken as manager for all managers 
          const key = 'manager';
          const key1 = 'month'
          this.uniquelist = [...new Map(this.managerList.map((item: { [x: string]: any; }) =>
@@ -185,7 +185,14 @@ export class StaffScoreReportComponent implements OnInit {
   public GetFilteredManager(){
     this.PerformanceManagementService.GetConductappraisalStaffList().subscribe(data => {
       debugger
-      this.StaffAppraisalList = data.filter(x=>x.managername==this.manager )
+      this.FilteredStaffAppraisalList = data.filter(x=>x.managername==this.manager )
+    })
+  }
+
+  public GetFilteredRoleType(){
+    this.PerformanceManagementService.GetConductappraisalStaffList().subscribe(data => {
+      debugger
+      this.FilteredStaffAppraisalList = data.filter(x=>x.type==this.roleTypeid )
     })
   }
 
