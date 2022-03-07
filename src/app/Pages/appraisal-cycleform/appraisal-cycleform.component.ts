@@ -28,6 +28,7 @@ export class AppraisalCycleformComponent implements OnInit {
 
   ngOnInit(): void {
     this.GetFrequency();
+    this.frequency();
     
 
     this.ActivatedRoute.params.subscribe(params => {

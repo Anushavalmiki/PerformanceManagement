@@ -50,7 +50,7 @@ export class ManagerDashboardComponent implements OnInit {
       debugger
    
    
-      var list4=data.filter((x: {department: any; supervisor:any})=>x.department==4&&x.supervisor==this.StaffID);
+      var list4=data.filter((x: {department: any; supervisor:any})=>x.supervisor==this.StaffID);
       this.employeCount=list4.length
    
     });

@@ -40,7 +40,7 @@ export class EmployeeDashboardComponent implements OnInit {
      
       if(this.roleid!=3)
       {
-        this.stafflist=this.dumpstafflist.filter((x: {department: any; supervisor:any})=>x.department==4&&x.supervisor==this.StaffID);
+        this.stafflist=this.dumpstafflist.filter((x: { supervisor:any})=>x.supervisor==this.StaffID);
         console.log("stafflist",this.stafflist)
       
       }
