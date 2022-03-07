@@ -31,7 +31,7 @@ export class KeyResultAresFormComponent implements OnInit {
 
     this.GetKraMaster();
     this.GetRoleType();
-    this.roleTypeid=0;
+    this.roleTypeid="";
 
   
 
@@ -39,7 +39,7 @@ export class KeyResultAresFormComponent implements OnInit {
       this.id = params['id'];
       if (this.id != undefined && this.id != null) {
         this.GetKeyResultArea();
-        this.kratypeid=0;
+        this.kratypeid="";
       }
       else{
        
@@ -75,7 +75,7 @@ export class KeyResultAresFormComponent implements OnInit {
       data=>{
         this.kratypelist=data;
         console.log("kratype",this.kratypelist);
-        this.kratypeid=0;
+        this.kratypeid="";
         
       }
     )
@@ -86,6 +86,9 @@ export class KeyResultAresFormComponent implements OnInit {
   rolename:any
   getRoleID(even:any){
     this.roleTypeid=even.target.value;
+var list= this.roleTypeList.filter((x: { id: any; })=>x.id==this.roleTypeid);
+    this.rolename=list[0].short
+    console.log("type",this.roleTypeList);
   }
 
 public GetRoleType(){
@@ -94,7 +97,7 @@ public GetRoleType(){
       this.roleTypeList=data;
       this.rolename=this.roleTypeList[0].type
       console.log("type",this.roleTypeList);
-      this.roleTypeid=0;
+      this.roleTypeid="";
     }
   )
 }
@@ -125,9 +128,9 @@ Add(){
   debugger
   this.keyresultArray.push(json)
   this.kraName="";
-  this.kratypeid=0;
+  this.kratypeid="";
   this.rolename="";
-  this.roleTypeid=0;
+  this.roleTypeid="";
   this.description="";
  }
  

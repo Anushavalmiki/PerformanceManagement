@@ -93,12 +93,16 @@
                                     data-toggle="modal" (click)="GetKPIIDetails(details)"
                                     data-target="#exampleModal1">View
                                     Details</button><br><br>
+<<<<<<< HEAD
+                                    <button *ngIf="details.hrupdate==1" class=" btn btn-primary action" data-toggle="modal" data-target="#exampleModal4" 
+                                    (click)="GetKPIIDetails(details)">View Attachments</button>  
+=======
                                     <button class=" btn btn-primary action" data-toggle="modal" data-target="#exampleModal4" 
                                     (click)="GetKPIIDetails(details)" *ngIf="details.hrattachment!=null">View Attachments</button>
                                     <p *ngIf="details.hrattachment=='0'||details.hrattachment==null" >No Attachments</p>
                                    
+>>>>>>> abd04c4ca1c8f3dc16bd26535e8b6d54524c0017
                             </td>
-
                         </tr>
                     </tbody>
                 </table>
@@ -150,7 +154,7 @@
                             Comments<span style="color: red;">*</span> </p>
                     </div>
                     <div class="col-lg-7">
-                        <ckeditor id="SelfComments" name="SelfComments" [(ngModel)]="SelfComments"
+                        <ckeditor id="SelfComments" name="SelfComments" [(ngModel)]="SelfComments" required
                             data="<p>Enter Answer Here !</p>"></ckeditor>
                     </div>
                 </div>

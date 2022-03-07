@@ -133,7 +133,7 @@ export class ManagerAppraisalComponent implements OnInit {
     this.id = details.id;
     this.kpiid = details.kpiid;
     this.ResultAreaID = details.resultAreaID;
-    this.Score = 0;
+    this.Score = "";
     this.SelfComments = '';
 
   }
@@ -170,8 +170,8 @@ export class ManagerAppraisalComponent implements OnInit {
         //   debugger
   
         // })
-        this.Score = 0;
-        this.SelfComments = '';
+        this.Score = "";
+        this.SelfComments = "";
         this.files.length = 0;
         const element1 = document.getElementById('close');
   

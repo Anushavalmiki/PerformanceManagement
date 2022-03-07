@@ -79,7 +79,7 @@ export class EmployeeDashboardComponent implements OnInit {
       debugger
       // this.stafflist = data.filter(x=>x.roleType==this.RoleType);
    
-      this.stafflist=this.dumpstafflist.filter((x: {department: any; })=>x.department==4);
+      this.stafflist=this.dumpstafflist;
       console.log("stafflist",this.stafflist)
       this.count = this.stafflist.length;
     });

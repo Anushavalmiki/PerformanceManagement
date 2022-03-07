@@ -18,7 +18,7 @@
                     <p>Goal Type<span style="color: red;">*</span></p>
                 </div>
                 <div class="col-lg-2">
-                <p class="columnname">Select Role </p>
+                <p class="columnname">Select Role <span style="color: red;">*</span> </p>
             </div>
                 <div class="col-lg-2">
                     <p>Description <span style="color: red;">*</span></p>
@@ -31,7 +31,7 @@
 
                 <div class="col-lg-2">
                     <select class="form-control"  (change)="getkratypeid($event)"  [(ngModel)]="kratypeid" name="kratypeid" required>
-                        <option value="0">Select Goal Type</option>
+                        <option value="">Select Goal Type</option>
                         <option *ngFor="let details of kratypelist" value="{{details.kraType}}">{{details.kraType}}
                         </option>
                     </select>
@@ -39,7 +39,7 @@
                 <div class="col-lg-2">
                     <select class="form-control" id="roleTypeid" name="roleTypeid" required [(ngModel)]="roleTypeid"
                         (change)="getRoleID($event)">
-                        <option value="0">Select Role</option>
+                        <option value="">Select Role</option>
                         <option *ngFor="let details of roleTypeList" value="{{details.id}}">{{details.short}}
                         </option>
                     </select>
@@ -75,7 +75,7 @@
                             <tr *ngFor="let details of keyresultArray">
                                 <td>{{details.KRAName}}</td>
                                 <td>{{details.KraTypeID}}</td>
-                                <td>{{details.Role}}</td>
+                                <td>{{details.Type}}</td>
                                 <td>{{details.Description}}</td>
                             </tr>
                         </thead>
