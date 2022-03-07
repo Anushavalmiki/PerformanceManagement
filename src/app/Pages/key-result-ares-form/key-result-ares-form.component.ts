@@ -58,12 +58,10 @@ export class KeyResultAresFormComponent implements OnInit {
 		this.keyresultlist=this.keyresultlist.filter((x: { id: any; })=>x.id==Number(this.id));
 		this.kraName=this.keyresultlist[0].kraName;
 		this.kratypeid=this.keyresultlist[0].kraTypeID;
-    this.rolename=this.keyresultArray[0].type;
-    this.roleTypeid=this.keyresultlist[0].roleTypeid;
+    // this.rolename=this.keyresultArray[0].type;
+    this.roleTypeid=this.keyresultlist[0].role;
     this.description=this.keyresultlist[0].description
     // this.kratype=this.kratypelist[0].kraType
-
-    this.GetKraMaster();
       }
     ) 
   }
@@ -135,15 +133,18 @@ Add(){
  
 
   save(){   
+    debugger
     for (let i=0; i<=this.keyresultArray.length;i++){
+      debugger
       var entity = {  
-        "KRAName":this.keyresultArray[i].kraName,
-        "KraTypeID":this.keyresultArray[i].kratypeid,
-        "Role":this.keyresultArray[i].roleTypeid,
-        "Description":this.keyresultArray[i].description
+        "KRAName":this.keyresultArray[i].KRAName,
+        "KraTypeID":this.keyresultArray[i].KraTypeID,
+        "Role":this.keyresultArray[i].Role,
+        "Description":this.keyresultArray[i].Description
         };
         this.PerformanceManagementService.InsertKeyResultArea(entity).subscribe(
           data => {
+            debugger
             let kratypelist=data;
             Swal.fire("Successfully Submitted...!");
             this.tablecount=0;
@@ -167,7 +168,7 @@ Add(){
         "KRAName":this.kraName,
         "KraTypeID":this.kratypeid,
          "Role":this.roleTypeid,
-        "Description ":this.description          
+        "Description":this.description          
         };     
         this.PerformanceManagementService.UpdateKeyResultArea(json).subscribe(
           data => {
