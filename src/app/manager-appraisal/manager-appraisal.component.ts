@@ -258,6 +258,8 @@ export class ManagerAppraisalComponent implements OnInit {
           this.ngOnInit();
           //  this.showbtn=false;
           //  this.showbtn1=true
+          this.InsertNotificationHR();
+          this.InsertNotificationEmployeeAppraisalSubmit();
         })
       }
     })
@@ -334,6 +336,33 @@ export class ManagerAppraisalComponent implements OnInit {
       'FromUser': 'Admin',
       'ToUser': sessionStorage.getItem('EmaployedID'),
       'Message': 'Your Manager has submitted the Appraisal',
+      'Photo': 'Null',
+      'Building': 'Dynamics 1',
+      'UserID': 10422,
+      'NotificationTypeID': 17,
+      'VendorID': 0
+
+
+    }
+    this.PerformanceManagementService.InsertNotification(entity).subscribe(data => {
+      if (data != 0) {
+
+
+      }
+
+    })
+  }
+
+
+  public InsertNotificationEmployeeAppraisalSubmit() {
+    debugger
+
+    var entity = {
+      'Date': new Date(),
+      'Event': 'Apprisal Request',
+      'FromUser': 'Admin',
+      'ToUser': sessionStorage.getItem('EmaployedID'),
+      'Message': 'Manager has Submitted your Appraisal',
       'Photo': 'Null',
       'Building': 'Dynamics 1',
       'UserID': this.EmployeeId,
