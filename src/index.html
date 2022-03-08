@@ -39,4 +39,76 @@
 <body>
   <app-root></app-root>
 </body>
+
+
+<script>
+  debugger
+  window.addEventListener('storage', () => {
+  debugger
+  window.alert('Digi Perfomance is opened in another tab. Please logout from that tab to login here');
+  sessionStorage.clear();
+  localStorage.clear();
+  location.href = "#/Login";
+  // location.reload();
+  
+
+  debugger
+  }, false)
+  localStorage.setItem('Sentinel', Math.random())
+  </script>
+  
+  
+  
+  
+  
+  <script>
+  debugger
+  
+  
+  
+  if ((navigator.userAgent.indexOf("Opera") || navigator.userAgent.indexOf('OPR')) != -1) {
+  debugger
+  // alert('Opera');
+  window.alert('Digi Perfomance is opened in another tab. Please logout from that tab to login here');
+  sessionStorage.clear();
+  localStorage.clear();
+  location.href = "#/Login";
+  }
+  else if (navigator.userAgent.indexOf("Chrome") != -1) {
+  debugger
+  // alert('Chrome');
+  }
+  else if (navigator.userAgent.indexOf("Safari") != -1) {
+  // alert('Safari');
+  window.alert('Digi Perfomance only Allowed in Google Chrome browser.It will not support any other browsers');
+  sessionStorage.clear();
+  localStorage.clear();
+  location.href = "#/Login";
+  }
+  else if (navigator.userAgent.indexOf("Firefox") != -1) {
+  // alert('Firefox');
+  window.alert('Digi Perfomance only Allowed in Google Chrome browser.It will not support any other browsers');
+  sessionStorage.clear();
+  localStorage.clear();
+  location.href = "#/Login"; 
+  }
+  else if ((navigator.userAgent.indexOf("MSIE") != -1) || (!!document.documentMode == true)) //IF IE > 10
+  {
+  // alert('IE');
+  window.alert('Digi Perfomance only Allowed in Google Chrome browser.It will not support any other browsers');
+  sessionStorage.clear();
+  localStorage.clear();
+  location.href = "#/Login";
+  }
+  else {
+  // alert('unknown');
+  window.alert('Digi Perfomance Allowed in Google Chrome browser.It will not support any other browsers');
+  sessionStorage.clear();
+  localStorage.clear();
+  location.href = "#/Login";
+  }
+  
+  
+  
+  </script>
 </html>

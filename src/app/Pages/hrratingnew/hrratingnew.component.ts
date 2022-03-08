@@ -60,7 +60,7 @@ export class HrratingnewComponent implements OnInit {
           this.role = this.ResultAreaList[0].role
           this.departmentName = this.ResultAreaList[0].departmentName
           this.HrSubmittedDate = this.ResultAreaList[0].hrSubmittedDate
-          this.managerattachment=this.ResultAreaList[0].mPhoto
+          this.managerattachment = this.ResultAreaList[0].mPhoto
 
 
           this.ResultAreaList.forEach((element: { hrupdate: any; }) => {
@@ -168,6 +168,7 @@ export class HrratingnewComponent implements OnInit {
         // })
         this.Score = 0;
         this.SelfComments = '';
+        this.attachment = '';
         const element1 = document.getElementById('close');
         this.files.length = 0;
         if (element1 !== null) {
@@ -183,7 +184,7 @@ export class HrratingnewComponent implements OnInit {
   }
 
 
- 
+
 
 
   managerattachment: any;
@@ -199,6 +200,7 @@ export class HrratingnewComponent implements OnInit {
 
     })
     this.photoid = details.id;
+    this.id = details.id;
   }
 
   files: File[] = [];
@@ -237,7 +239,7 @@ export class HrratingnewComponent implements OnInit {
 
 
 
-   public UpdateDetails() {
+  public UpdateDetails() {
     debugger
     var entity = {
       'SatffID': this.StaffID,
@@ -252,16 +254,14 @@ export class HrratingnewComponent implements OnInit {
     this.PerformanceManagementService.InsertStaffScoresByHR(entity).subscribe(data => {
       debugger
       Swal.fire("Updated Successfully");
+      this.attachment = "";
+      const element1 = document.getElementById('close');
+      this.files.length = 0;
+      if (element1 !== null) {
 
-      // this.Score = 0;
-      // this.SelfComments = '';
-      // const element1 = document.getElementById('close');
-      // this.files.length = 0;
-      // if (element1 !== null) {
+        element1.click();
 
-      //   element1.click();
-
-      // }
+      }
       this.ngOnInit();
 
     })
@@ -293,14 +293,14 @@ export class HrratingnewComponent implements OnInit {
     })
   }
   photoid: any;
-  show:any;
+  show: any;
   getattachment(details: any) {
 
-    
+
     debugger
     this.attachment = details.photo;
     this.managerattachment = details.mPhoto;
-   
+
 
   }
 
@@ -316,7 +316,9 @@ export class HrratingnewComponent implements OnInit {
     this.PerformanceManagementService.UpdateHrSelfAttachment(entity).subscribe(data => {
       debugger
       Swal.fire("Updated Successfully");
-      this.attachmentsurl = 0;
+      this.attachment = 0;
+      this.attachment = "";
+
       this.PerformanceManagementService.GetKRAByStaffID(this.StaffID).subscribe(data => {
         debugger
         this.ResultAreaList = data;
