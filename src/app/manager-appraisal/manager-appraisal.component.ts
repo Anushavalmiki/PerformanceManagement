@@ -281,6 +281,7 @@ export class ManagerAppraisalComponent implements OnInit {
         debugger
         Swal.fire("Updated Successfully");
         this.attachmentsurl=0;
+        this.attchmentss="";
         this.PerformanceManagementService.GetKRAByStaffID(this.StaffID).subscribe(data => {
           debugger
           this.ResultAreaList = data;
