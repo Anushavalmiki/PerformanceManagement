@@ -39,7 +39,7 @@ export class HeaderComponent implements OnInit {
       this.page = sessionStorage.getItem('clickname')
     }));
 
-    this.GetNotification();
+    this.GetNotification(); 
 
 
   }

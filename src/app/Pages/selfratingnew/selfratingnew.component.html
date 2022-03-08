@@ -55,9 +55,11 @@
                             </td>
 
                             <td [ngClass]="{'bggreen':details.empupdate==1 }">
+
                                 <button *ngIf="details.empupdate!=1" type="button" class="btn btn-primary"
                                     data-toggle="modal" (click)="GetKPIID(details)"
                                     data-target="#exampleModal">Rate</button>
+
                                 <button *ngIf="details.empupdate==1" type="button" class="btn btn-success"
                                     data-toggle="modal" (click)="GetKPIIDetails(details)"
                                     data-target="#exampleModal1">View
@@ -69,12 +71,12 @@
                                     *ngIf="details.attachment=='0'|| details.attachment==null && details.empupdate==1">
                                     No Attachments</p> -->
 
-                                <button *ngIf="details.empupdate==1  && details.attachment!='0'"
+                                <button *ngIf="details.empupdate==1  && details.attachment!='0' ||details.attachment!=null " 
                                     type="button" class="btn btn-success" data-toggle="modal"
                                     (click)="GetKPIIDetails(details)" data-target="#exampleModal2">View
                                     Attachments</button>
                                 <p
-                                    *ngIf="details.attachment=='0'   && details.empupdate==1">
+                                    *ngIf="details.attachment=='0'||details.attachment==null && details.empupdate!=1 ">
                                     No Attachments</p>
 
                             </td>

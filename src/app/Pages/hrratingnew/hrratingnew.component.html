@@ -86,13 +86,16 @@
                                 <p *ngIf="details.hrupdate!=1">NA</p>
                             </td>
                             <td [ngClass]="{'bggreen':details.hrupdate==1 }">
+                                
                                 <button *ngIf="details.hrupdate!=1 &&details.managerupdate==1" type="button"
                                     class="btn btn-primary" data-toggle="modal" (click)="GetKPIID(details)"
                                     data-target="#exampleModal">Rate Employee</button>
+
                                 <button *ngIf="details.hrupdate==1" type="button" class="btn btn-success"
                                     data-toggle="modal" (click)="GetKPIIDetails(details)"
                                     data-target="#exampleModal1">View
                                     Details</button><br><br>
+
                                     <button class=" btn btn-primary action" data-toggle="modal" data-target="#exampleModal4" 
                                     (click)="GetKPIIDetails(details)" *ngIf="details.hrattachment!=null">View Attachments</button>
                                     <p *ngIf="details.hrattachment=='0'||details.hrattachment==null && details.hrupdate==1" >No Attachments</p>
