@@ -33,10 +33,11 @@ export class HRDashboardComponent implements OnInit {
       this.EmployeeKradash = data;
       this.count = this.EmployeeKradash.length;
       debugger
-      var list = data.filter(x => x.employeeSubmittedDate != null)
+      var list = data.filter(x => x.employeeSubmittedDate != null && x.selfScores != null && 
+       x.cycleStartDate !=null && x.cycleEndDate != null && x.appraisalSubmitionDate != null  && x.employeeSubmittedDate !=null && x.managerSubmittedDate!= null )
       this.employeSubmissionDate = list.length;
 
-      var list1 = data.filter(x => x.managerSubmittedDate != null);
+      var list1 = data.filter(x => x.managerSubmittedDate != null );
       this.managerSubmittedCount = list1.length;
 
       this.hrSubmittedlist = data.filter(x => x.hrSubmittedDate == null);
@@ -49,7 +50,7 @@ export class HRDashboardComponent implements OnInit {
       res => {
         debugger;
         let temp: any = res
-        this.totalAppraisalList = res.filter((x: { cioScores: any; }) => x.cioScores != null)
+        this.totalAppraisalList = res.filter((x: { cioScores: any;managerSubmittedDate:any;employeeSubmittedDate:any }) => x.cioScores != null && x.managerSubmittedDate!=null &&  x.employeeSubmittedDate != null)
         this.totalAppraisalCount = this.totalAppraisalList.length;
         // this.managerList = this.dumpmanagerList.filter((x: { manager: any; })=>x.manager==this.manager);
       }
