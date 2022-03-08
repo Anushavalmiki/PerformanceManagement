@@ -30,8 +30,17 @@ export class BellCurveFittingComponent implements OnInit {
     count: any;
     uniquelist:any;
     dumpmanagerList:any;
-    
+    roleid:any;
+    list: any;
+    Score:any;
+    SelfComments: any;
+    StaffAppraisalList: any;
+    FilteredStaffAppraisalList: any;
+    Stafflist: any
+    StaffType: any;
+    StaffTypeID: any;
     ngOnInit() {
+      this.roleid = sessionStorage.getItem('roleid');
       this.GetRoleType();
       this.HighScore();
       this.YearID = 2020;
@@ -49,9 +58,6 @@ export class BellCurveFittingComponent implements OnInit {
       // })
   
       this.ConductappraisalStaffList();
-  
-  
-  
     }
     ratingvalue: any;
     public Getratingvalue(event: any) {
@@ -82,8 +88,7 @@ export class BellCurveFittingComponent implements OnInit {
       }
     }
   
-    StaffAppraisalList: any;
-    FilteredStaffAppraisalList: any;
+
     public ConductappraisalStaffList() {
       this.PerformanceManagementService.GetConductappraisalStaffList().subscribe(
         res => {
@@ -98,9 +103,7 @@ export class BellCurveFittingComponent implements OnInit {
     }
   
   
-    Stafflist: any
-    StaffType: any;
-    StaffTypeID: any;
+  
     GetStaffTypeID(event: any) {
       this.StaffTypeID = event.target.value;
       if (this.StaffTypeID == 0) {
@@ -160,6 +163,25 @@ export class BellCurveFittingComponent implements OnInit {
     }
   
   
+    getManager(even: any) {
+      this.manager = even.target.value;
+    }
+  
+    public GetMyDetails() {
+      debugger
+      this.PerformanceManagementService.GetMyDetails().subscribe(
+        data => {
+          debugger
+          this.managerList = data.filter(x=>x.supervisor==null) 
+           const key = 'manager';
+           const key1 = 'month'
+           this.uniquelist = [...new Map(this.managerList.map((item: { [x: string]: any; }) =>
+   
+             [(item[key]), item])).values()]
+        
+        }
+      )
+    }
   
   
     getRoleID(even: any) {
@@ -174,30 +196,14 @@ export class BellCurveFittingComponent implements OnInit {
           this.roleTypeid = 0;
         }
       )
+    } 
+
+    public GetFilteredRoleType(){
+      this.PerformanceManagementService.GetConductappraisalStaffList().subscribe(data => {
+        debugger
+        this.FilteredStaffAppraisalList = data.filter(x=>x.type==this.roleTypeid )
+      })
     }
-  
-    getManager(even: any) {
-      this.manager = even.target.value;
-    }
-  
-    public GetMyDetails() {
-      debugger
-      this.PerformanceManagementService.GetMyDetails().subscribe(
-        data => {
-          debugger
-           this.managerList=data;
-           const key = 'manager';
-           const key1 = 'month'
-           this.uniquelist = [...new Map(this.managerList.map((item: { [x: string]: any; }) =>
-   
-             [(item[key]), item])).values()]
-        
-        }
-      )
-    }
-  
-  
-  
   
   
   
@@ -219,14 +225,20 @@ export class BellCurveFittingComponent implements OnInit {
     //   csvExporter.generateCsv(this.StaffAppraisalList);
     // }
   
-    list: any;
-    Score:any;
-    SelfComments: any;
+ 
     public HighScore() {
       debugger
       this.PerformanceManagementService.GetHighScores().subscribe(data => {
         debugger
         this.list = data;
+      })
+    }
+
+   
+    public GetFilteredManager(){
+      this.PerformanceManagementService.GetConductappraisalStaffList().subscribe(data => {
+        debugger
+        this.FilteredStaffAppraisalList = data.filter(x=>x.managername==this.manager )
       })
     }
   

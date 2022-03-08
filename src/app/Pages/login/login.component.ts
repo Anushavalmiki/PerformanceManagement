@@ -39,7 +39,7 @@ export class LoginComponent implements OnInit {
   login() {
     debugger
     if (this.roleId == 1) {
-      if (this.userName == 'Admin' && this.passWord == 'welcome') {
+      if (this.userName == 'Admin'||'admin' && this.passWord == 'welcome') {
         sessionStorage.setItem("temp", '1');
         sessionStorage.setItem("roleid", this.roleId);
 
