@@ -95,7 +95,7 @@
                                     Details</button><br><br>
                                     <button class=" btn btn-primary action" data-toggle="modal" data-target="#exampleModal4" 
                                     (click)="GetKPIIDetails(details)" *ngIf="details.hrattachment!=null">View Attachments</button>
-                                    <p *ngIf="details.hrattachment=='0'||details.hrattachment==null" >No Attachments</p>
+                                    <p *ngIf="details.hrattachment=='0'||details.hrattachment==null && details.hrupdate==1" >No Attachments</p>
                                    
                             </td>
                         </tr>
@@ -238,7 +238,7 @@
             </div>
             <div class="modal-footer" *ngIf="HrSubmittedDate==null" >
                 <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
-                <button type="button" class="btn btn-primary" (click)="UpdateDetails()">Update changes</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="UpdateDetails()">Update changes</button>
             </div>
         </div>
     </div>
