@@ -190,6 +190,7 @@ export class ManagerAppraisalComponent implements OnInit {
 
   public GetKPIIDetails(details: any) {
     debugger
+    this.managerattachment='';
     this.PerformanceManagementService.GetEmployeeKraMap().subscribe(data => {
       debugger
       let temp: any = data.filter(x => x.id == details.id)
@@ -347,7 +348,6 @@ export class ManagerAppraisalComponent implements OnInit {
     this.PerformanceManagementService.InsertNotification(entity).subscribe(data => {
       if (data != 0) {
 
-
       }
 
     })
@@ -362,7 +362,7 @@ export class ManagerAppraisalComponent implements OnInit {
       'Event': 'Apprisal Request',
       'FromUser': 'Admin',
       'ToUser': sessionStorage.getItem('EmaployedID'),
-      'Message': 'Manager has Submitted your Appraisal',
+      'Message': 'Manager has Completed your Appraisal',
       'Photo': 'Null',
       'Building': 'Dynamics 1',
       'UserID': this.EmployeeId,
