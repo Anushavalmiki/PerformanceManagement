@@ -28,7 +28,7 @@
                 </select>
             </div>
             <div class="col-lg-3 ">
-                <select class="form-control" id="manager" name="manager" [(ngModel)]="manager"  *ngIf="roleid==3"
+                <select class="form-control" id="manager" name="manager" [(ngModel)]="manager" *ngIf="roleid==3"
                     (change)="getManager($event)" (change)="GetFilteredManager()">
                     <option value="0">Select Manager</option>
                     <option *ngFor="let details of managerList" value="{{details.name}}">{{details.name}}
@@ -62,22 +62,25 @@
                             <th>Employee Name</th>
                             <th>Role</th>
                             <th>Department</th>
+                            <th>Appraisal Cycle</th>
                             <th *ngIf="roleid==3">Manager Name</th>
                             <th>Final Rating </th>
                             <th>Status</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let details of StaffAppraisalList| paginate: { itemsPerPage: count1, currentPage: p}|filter:search">
+                        <tr
+                            *ngFor="let details of StaffAppraisalList| paginate: { itemsPerPage: count1, currentPage: p}|filter:search">
                             <td>{{details.name}}</td>
                             <td>{{details.role}}</td>
                             <td>{{details.departmentName}}</td>
+                            <td>{{details.appraisalCycleName}}</td>
                             <td *ngIf="roleid==3">{{details.managername}}</td>
                             <td>
                                 <p *ngIf="details.bellcurveScore==null">
                                     {{((details.avgGroupHeadScores+details.avgCIOScores)/2)|number:'1.0-0'}}</p>
                                 <p *ngIf="details.bellcurveScore!=null">{{details.bellcurveScore}}</p>
-                               
+
 
                             </td>
                             <td>
@@ -87,7 +90,7 @@
                                 <p *ngIf="details.hrSubmittedDate!=null" style="color: green;"><b>Completed</b></p>
 
                             </td>
-                        
+
                         </tr>
                     </tbody>
                 </table>

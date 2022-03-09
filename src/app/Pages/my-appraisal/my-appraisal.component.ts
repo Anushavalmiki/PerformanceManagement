@@ -21,15 +21,14 @@ export class MyAppraisalComponent implements OnInit {
   Department: any;
   count: any;
   search:any;
-
-
-
   EmployeeKradash: any
+  roleid:any; 
 
   ngOnInit(): void {
 
     this.Department = "";
     this.RoleType = "";
+    this.roleid = sessionStorage.getItem('roleid');
     this.PerformanceManagementService.GetMyDetails().subscribe(data => {
       debugger
       this.stafflist = data;

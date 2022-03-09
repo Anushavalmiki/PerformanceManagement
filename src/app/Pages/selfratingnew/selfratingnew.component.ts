@@ -44,6 +44,7 @@ export class SelfratingnewComponent implements OnInit {
   ManagerID: any;
   StaffName: any;
   loader: any;
+  appraislid: any;
   ngOnInit(): void {
     this.Score = 0;
     this.showbtn = false;
@@ -53,13 +54,13 @@ export class SelfratingnewComponent implements OnInit {
       this.ParamID = params['id'];
       if (params['id'] != undefined) {
         debugger
-        this.StaffType = params['StaffID'];
+        this.appraislid = params['StaffID'];
         this.StaffID = params['id'];
         this.StaffTypeID = this.StaffType;
 
         this.PerformanceManagementService.GetKRAByStaffID(this.StaffID).subscribe(data => {
           debugger
-          this.ResultAreaList = data;
+          this.ResultAreaList = data.filter((x: { appraiselID: any; }) => x.appraiselID == this.appraislid);
           this.EmployeeSubmittedDate = this.ResultAreaList[0].employeeSubmittedDate
           this.ManagerID = this.ResultAreaList[0].approver1
           this.StaffName = this.ResultAreaList[0].name
@@ -158,7 +159,7 @@ export class SelfratingnewComponent implements OnInit {
       this.Score = 0;
       this.SelfComments = '';
       this.files.length = 0;
-      this.attachmentNew='';
+      this.attachmentNew = '';
       const element1 = document.getElementById('close');
 
       if (element1 !== null) {
@@ -291,7 +292,7 @@ export class SelfratingnewComponent implements OnInit {
       Swal.fire("Updated Successfully");
       this.attachmentsurl = 0;
       this.files.length = 0;
-      this.attachmentNew='';
+      this.attachmentNew = '';
       this.PerformanceManagementService.GetKRAByStaffID(this.StaffID).subscribe(data => {
         debugger
         this.ResultAreaList = data;
@@ -302,7 +303,7 @@ export class SelfratingnewComponent implements OnInit {
       Swal.fire("Updated Successfully");
       this.attachmentsurl = 0;
       this.files.length = 0;
-      this.attachmentNew="";
+      this.attachmentNew = "";
       this.PerformanceManagementService.GetKRAByStaffID(this.StaffID).subscribe(data => {
         debugger
         this.ResultAreaList = data;
@@ -338,7 +339,7 @@ export class SelfratingnewComponent implements OnInit {
     )
   }
 
- 
+
 
   cancel() {
     location.href = "/Selfratingnew";

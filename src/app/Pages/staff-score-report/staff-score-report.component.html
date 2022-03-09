@@ -127,7 +127,7 @@
                         <tr
                             *ngFor="let details of FilteredStaffAppraisalList |paginate: { itemsPerPage: count1, currentPage: p}|filter:search">
                             <!-- <td>{{details.appraisalCycleName}}</td> -->
-                            <td>{{details.department_name}}</td>
+                            <td>{{details.departmentName}}</td>
                             <td>{{details.role}}</td>
                             <td>{{details.name}}</td>
                             <td>{{details.managername}}</td>
