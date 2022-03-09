@@ -37,6 +37,7 @@
                             <th>Role</th>
                             <th>Appraisal  Cycle Start Date </th>
                             <th>Appraisal Cycle End Date </th>
+                            <th>Appraisal Cycle type</th>
                             <th>Employee Submission Last Date </th>
                             <th>Action </th>
                         </tr>
@@ -47,6 +48,7 @@
                             <td>{{details.departmentName}}</td>
                             <td>{{details.cycleStartDate|date}}</td>
                             <td>{{details.cycleEndDate|date}}</td>
+                            <td>{{details.frequencyName}}</td>
                             <td>{{details.employeeSubmissionDate|date}}</td>
                             <td>
                                 <button [routerLink]="['/SelfRatingPagenew', details.id,details.id ]"                                  
