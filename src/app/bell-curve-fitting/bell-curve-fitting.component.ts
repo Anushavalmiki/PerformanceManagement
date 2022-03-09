@@ -47,12 +47,22 @@ export class BellCurveFittingComponent implements OnInit {
   eDate:any;
   appraisalCycleName:any
   pending:any;
+
+  employeSubmissionDate:any;
+  managerSubmittedCount:any;
+  hrSubmittedlist:any;
+  hrSubmittedCount:any;
+  appraisalcount:any;
+  hrPendingCount:any;
+  EmployeePendingCount:any;
+  appraisalPendingCount:any;
   ngOnInit() {
     this.pending=0;
     this.roleid = sessionStorage.getItem('roleid');
     this.GetRoleType();
     this. GetDepartment();
     this.HighScore();
+    this.Conductappraisalcounts();
     this.YearID = 2020;
     this.ratingvalue = 0;
     this.StaffTypeID = 0;
@@ -301,6 +311,35 @@ export class BellCurveFittingComponent implements OnInit {
       debugger
       this.FilteredStaffAppraisalList = data.filter(x => x.appraisalCycleName == this.appraisalCycleName)
     })
+  }
+
+
+  public Conductappraisalcounts(){
+    this.PerformanceManagementService.GetConductappraisalStaffList().subscribe(
+      res => {
+        debugger
+        let temp: any = res
+        this.StaffAppraisalList = temp;
+        this.appraisalcount = this.StaffAppraisalList.length;
+        var list = res.filter(x => x.employeeSubmittedDate != null && x.selfScores != null && 
+         x.cycleStartDate !=null && x.cycleEndDate != null && x.appraisalSubmitionDate != null  && x.employeeSubmittedDate !=null && x.managerSubmittedDate!= null )
+        this.employeSubmissionDate = list.length;
+    
+        var list1 = res.filter(x => x.managerSubmittedDate != null );
+        this.managerSubmittedCount = list1.length;
+    
+        this.hrSubmittedlist = res.filter(x => x.hrSubmittedDate != null &&  x.cycleStartDate !=null && x.cycleEndDate != null && x.appraisalSubmitionDate != null  && x.employeeSubmittedDate !=null && x.managerSubmittedDate!= null );
+        console.log("data",res)
+        console.log("hr", this.hrSubmittedlist)
+        this.hrSubmittedCount = this.hrSubmittedlist.length;
+
+        this.hrSubmittedlist = res.filter(x => x.hrSubmittedDate == null &&  x.cycleStartDate !=null && x.cycleEndDate != null && x.appraisalSubmitionDate != null  );
+        console.log("data",res)
+        console.log("hr", this.hrSubmittedlist)
+        this.appraisalPendingCount = this.hrSubmittedlist.length;
+        
+      });
+
   }
 
 }

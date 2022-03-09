@@ -38,7 +38,6 @@
             <!-- <div class="col-lg-1"></div> -->
         </div>
     </div> <br>
-    <span *ngIf="pending==0"><button class="btn btn-success">Complete Appraisal</button></span><br><br>
     <div class="card">
        
         <div class="row">
@@ -69,17 +68,19 @@
                </p>
             </div>
             <div class="col-lg-1">
-                <p style="color:green">23
-                   <br> <span>11</span><br>
-                    <span>11</span><br>
-                    <span>10</span><br>
-                    <span style="color: red;">13</span>
+                <p style="color:green">{{appraisalcount}}
+                   <br> <span>{{employeSubmissionDate}}</span><br>
+                    <span>{{managerSubmittedCount}}</span><br>
+                    <span>{{hrSubmittedCount}}</span><br>
+                    <span style="color: red;">{{appraisalPendingCount}}</span>
                    
                 </p>
              </div>
         </div>
     </div>
     <br>
+    <span *ngIf="appraisalPendingCount==0"><button class="btn btn-success">Complete Appraisal</button></span><br><br>
+
  
     <div class="container-fluid" id="demo" class="collapse"  *ngIf="appraisalCycleName!=0">
         <div class="row">

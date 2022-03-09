@@ -32,9 +32,28 @@ export class StaffScoreReportComponent implements OnInit {
   AppraisalSubmitionDate:any;
   sDate:any;
   eDate:any;
+  pending:any;
   appraisalCycleName:any
   Apprisalcyclelist:any;
+  employeSubmissionDate:any;
+  managerSubmittedCount:any;
+  hrSubmittedlist:any;
+  hrSubmittedCount:any;
+  appraisalcount:any;
+  hrPendingCount:any;
+  EmployeePendingCount:any;
+  appraisalPendingCount:any;
+  
+  Stafflist: any
+  StaffType: any;
+  StaffTypeID: any;
+
+  StaffAppraisalList: any;
+  FilteredStaffAppraisalList: any;
+  managerList1:any;
+
   ngOnInit() {
+    this.pending=0;
     this.GetRoleType();
     this.GetDepartment();
     this.YearID = 2020;
@@ -43,6 +62,7 @@ export class StaffScoreReportComponent implements OnInit {
     this.departmentid=0;
     this.StaffID = 0;
     this.GetMyDetails();
+    this.Conductappraisalcounts();
     this.manager = 0;
     this.dumpmanagerList=0;
     this.appraisalCycleName=0;
@@ -84,18 +104,17 @@ export class StaffScoreReportComponent implements OnInit {
           debugger;
           let temp: any = res
           this.StaffAppraisalList = temp;
+      
           this.FilteredStaffAppraisalList = this.StaffAppraisalList.filter((x: { avgGroupHeadScores: any; avgCIOScores: any; }) => ((x.avgGroupHeadScores + x.avgCIOScores) / 2) == this.ratingvalue)
           this.count = this.FilteredStaffAppraisalList.length;
-          
-           
+     
 
         }
       )
     }
+   
   }
 
-  StaffAppraisalList: any;
-  FilteredStaffAppraisalList: any;
   public ConductappraisalStaffList() {
     this.PerformanceManagementService.GetConductappraisalStaffList().subscribe(
       res => {
@@ -110,9 +129,35 @@ export class StaffScoreReportComponent implements OnInit {
   }
 
 
-  Stafflist: any
-  StaffType: any;
-  StaffTypeID: any;
+  public Conductappraisalcounts(){
+    this.PerformanceManagementService.GetConductappraisalStaffList().subscribe(
+      res => {
+        debugger
+        let temp: any = res
+        this.StaffAppraisalList = temp;
+        this.appraisalcount = this.StaffAppraisalList.length;
+        var list = res.filter(x => x.employeeSubmittedDate != null && x.selfScores != null && 
+         x.cycleStartDate !=null && x.cycleEndDate != null && x.appraisalSubmitionDate != null  && x.employeeSubmittedDate !=null && x.managerSubmittedDate!= null )
+        this.employeSubmissionDate = list.length;
+    
+        var list1 = res.filter(x => x.managerSubmittedDate != null );
+        this.managerSubmittedCount = list1.length;
+    
+        this.hrSubmittedlist = res.filter(x => x.hrSubmittedDate != null &&  x.cycleStartDate !=null && x.cycleEndDate != null && x.appraisalSubmitionDate != null  && x.employeeSubmittedDate !=null && x.managerSubmittedDate!= null );
+        console.log("data",res)
+        console.log("hr", this.hrSubmittedlist)
+        this.hrSubmittedCount = this.hrSubmittedlist.length;
+
+        this.hrSubmittedlist = res.filter(x => x.hrSubmittedDate == null &&  x.cycleStartDate !=null && x.cycleEndDate != null && x.appraisalSubmitionDate != null  );
+        console.log("data",res)
+        console.log("hr", this.hrSubmittedlist)
+        this.appraisalPendingCount = this.hrSubmittedlist.length;
+        
+      });
+
+  }
+
+
   GetStaffTypeID(event: any) {
     this.StaffTypeID = event.target.value;
     if (this.StaffTypeID == 0) {
@@ -145,9 +190,6 @@ export class StaffScoreReportComponent implements OnInit {
   }
 
 
-
-
-
   public ViewScores(event: any) {
     debugger;
     let StaffID = event.id;
@@ -173,7 +215,7 @@ export class StaffScoreReportComponent implements OnInit {
       }
     )
   }
-  managerList1:any;
+
   getManager(even: any) {
     this.manager = even.target.value;
   }
