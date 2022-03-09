@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { PerformanceManagementService } from 'src/app/performance-management.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-staff-score-report',
@@ -313,6 +314,25 @@ export class StaffScoreReportComponent implements OnInit {
   //   const csvExporter = new ExportToCsv(Export_to_excel_options);
   //   csvExporter.generateCsv(this.StaffAppraisalList);
   // }
-
-
+public CloseAppraisal(){
+  debugger
+  Swal.fire({
+    title: 'Are you sure?',
+    text: 'You Want to Close the Appraisal Cycle.',
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonText: 'Yes, Close it!',
+    cancelButtonText: 'No, keep it'
+  }).then((result) => {
+    if (result.value == true) {
+      // this.PerformanceManagementService.DeleteGrivenceRequests(ID).subscribe(data => {
+      //   debugger
+      //   Swal.fire('Cancelled Successfully')
+      //   location.reload();
+      // })
+    }
+    Swal.fire('Appraisal Cycle Closed Successfully')
+  })
+ 
+}
 }

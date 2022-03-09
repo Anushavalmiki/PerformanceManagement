@@ -36,7 +36,6 @@
                         <tr>
                             <th>Employee Name</th>
                             <th>Role</th>
-                            <th>Appraisal</th>
                             <th>Appraisal Start Date</th>
                             <th>Appraisal End Date</th>
                             <th>Last Submission Date</th>
@@ -53,8 +52,8 @@
                             <td>{{details.cycleStartDate|date}}</td>
                             <td>{{details.cycleEndDate|date}}</td>
                             <td>{{details.appraisalSubmitionDate|date}}</td>
-                            <td>{{details.employeeSubmittedDate}}</td>
-                            <td>{{details.managerSubmittedDate}}</td>
+                            <td>{{details.employeeSubmittedDate|date}}</td>
+                            <td>{{details.managerSubmittedDate|date}}</td>
                             <td>
                                 <button [routerLink]="['/hrratingnew', details.id,details.id ] "*ngIf="details.hrSubmittedDate==null"
                                     class=" btn btn-primary editable-table-button btn-xs">Conduct Appraisal</button>
