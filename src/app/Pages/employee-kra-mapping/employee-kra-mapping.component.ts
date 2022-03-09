@@ -29,10 +29,14 @@ export class EmployeeKraMappingComponent implements OnInit {
   dropdownSettings2: any = {};
   Apprisalcyclelist: any;
   Departmentid: any;
+  kratypeid: any;
+  kratypelist: any;
+
   ngOnInit(): void {
     this.RoleID = "";
     this.departmentName = "";
     this.Apprisalcycle = "";
+    this.kratypeid="";
 
 
 
@@ -55,10 +59,7 @@ export class EmployeeKraMappingComponent implements OnInit {
         this.Departmentlist = data.filter(x => x.id == this.Departmentid);
       });
     });
-    this.PerformanceManagementService.GetKeyResultArea().subscribe(data => {
-      debugger
-      this.dropdownList1 = data;
-    });
+
 
     this.dropdownSettings2 = {
       singleSelection: false,
@@ -87,6 +88,7 @@ export class EmployeeKraMappingComponent implements OnInit {
       allowSearchFilter: true
     };
 
+    this.GetEmployeeKraMap()
   }
   EmployeeId: any;
   onItemSelect(item: any) {
@@ -236,6 +238,7 @@ export class EmployeeKraMappingComponent implements OnInit {
           "kpiid": this.selectedItems3[i].id,
           "kraname": this.selectedItems2[0].kraName,
           "kpiname": this.selectedItems3[i].kpiName,
+          'KraTypeID': this.kratypeid
         };
         debugger
         this.keyresultArray.push(json)
@@ -245,6 +248,29 @@ export class EmployeeKraMappingComponent implements OnInit {
       this.selectedItems3 = [];
     }
   }
+
+
+  getkratypeid(event: any) {
+    debugger
+    this.kratypeid = event.target.value;
+
+    this.PerformanceManagementService.GetKeyResultArea().subscribe(data => {
+      debugger
+      this.dropdownList1 = data.filter(x => x.kraTypeID == this.kratypeid);
+    });
+
+  }
+
+
+  public GetEmployeeKraMap() {
+    this.PerformanceManagementService.GetKraMaster().subscribe(
+      data => {
+        this.kratypelist = data;
+      }
+    )
+  }
+
+
 
 
 
