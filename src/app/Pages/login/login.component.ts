@@ -14,9 +14,11 @@ export class LoginComponent implements OnInit {
   loginName: any;
   showpassword: any;
   result: any;
+  admin:any;
   constructor(private PerformanceManagementService: PerformanceManagementService) { }
 
   ngOnInit(): void {
+    this.admin="Admin"
     this.showpassword=0;
   }
 
@@ -39,11 +41,12 @@ export class LoginComponent implements OnInit {
   login() {
     debugger
     if (this.roleId == 1) {
-      if (this.userName == 'Admin'||'admin' && this.passWord == 'welcome') {
+      let adminCopy = this.admin.toLowerCase();
+      if (this.userName.toLowerCase().includes(adminCopy)  && this.passWord == 'welcome') {
         sessionStorage.setItem("temp", '1');
         sessionStorage.setItem("roleid", this.roleId);
 
-        sessionStorage.setItem("loginName", this.userName);
+        sessionStorage.setItem("loginName", this.admin);
         location.href = "#/AppraisalCycle";
         location.reload();
       }
@@ -56,7 +59,7 @@ export class LoginComponent implements OnInit {
         console.log("data", data);
         let userNameCopy = this.userName.toLowerCase();
         let password = this.userName.toLowerCase();
-        let temp: any = data.filter(x => (x.emailID.toLowerCase().includes(userNameCopy)  || x.phoneNo == this.userName) && x.password == this.passWord);
+        let temp: any = data.filter(x => (x.emailID.toLowerCase().includes(userNameCopy)  || x.phoneNo == this.userName) && x.password == this.passWord );
         this.result = temp[0];
         // this.loader = true;
         if (this.result != undefined || this.result != null) {
@@ -80,7 +83,7 @@ export class LoginComponent implements OnInit {
       this.PerformanceManagementService.GetMyDetails().subscribe(data => {
         console.log("data", data);
         let userNameCopy = this.userName.toLowerCase();
-        let temp: any = data.filter(x => (x.emailID.toLowerCase().includes(userNameCopy)  || x.phoneNo == this.userName) && x.password == this.passWord);
+        let temp: any = data.filter(x => (x.emailID.toLowerCase().includes(userNameCopy)  || x.phoneNo == this.userName) && x.password == this.passWord && x.role=='Manager');
         this.result = temp[0];
         debugger;
         // this.loader = true;
@@ -109,7 +112,7 @@ export class LoginComponent implements OnInit {
       this.PerformanceManagementService.GetMyDetails().subscribe(data => {
         console.log("data", data);
         let userNameCopy = this.userName.toLowerCase();
-        let temp: any = data.filter(x => (x.emailID.toLowerCase().includes(userNameCopy)  || x.phoneNo == this.userName) && x.password == this.passWord);
+        let temp: any = data.filter(x => (x.emailID.toLowerCase().includes(userNameCopy)  || x.phoneNo == this.userName) && x.password == this.passWord && x.role=='HR');
         this.result = temp[0];
         debugger;
         // this.loader = true;

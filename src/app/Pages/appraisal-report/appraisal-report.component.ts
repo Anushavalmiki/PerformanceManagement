@@ -25,6 +25,8 @@ export class AppraisalReportComponent implements OnInit {
   employee: any;
   rolelist:any;
   rolelistCopy:any;
+  p: any = 1;
+  count1: any = 10;
   ngOnInit(): void {
     this.StaffID = sessionStorage.getItem('EmaployedID')
     this.roleid = sessionStorage.getItem('roleid');
