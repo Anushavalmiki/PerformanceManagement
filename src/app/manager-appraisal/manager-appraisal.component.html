@@ -112,6 +112,7 @@
                 </button>
             </div>
             <div class="modal-body">
+                <form #managerrateform="ngForm">
                 <div class="row">
                     <div class="col-lg-1">
                     </div>
@@ -121,7 +122,7 @@
                     </div>
                     <div class="col-lg-7">
                         <select class="dropdown form-control" id="Score" name="Score" [(ngModel)]="Score" required>
-                            <option value="0">Select Rating</option>
+                            <option value="">Select Rating</option>
                             <option *ngFor="let value of list" value="{{value.id}}">{{value.score}} - {{value.answers}}
                             </option>
                         </select>
@@ -137,7 +138,7 @@
                     </div>
                     <div class="col-lg-7 scroll">
                         <ckeditor id="SelfComments" name="SelfComments" [(ngModel)]="SelfComments"
-                            data="<p>Enter Answer Here !</p>"></ckeditor>
+                         required    data="<p>Enter Answer Here !</p>"></ckeditor>
                     </div>
                 </div>
                 <br>
@@ -158,10 +159,11 @@
                     </div>
                 </div>
                 <br>
+            </form>
             </div>
             <div class="modal-footer">
                 <button type="button" id="close" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" (click)="SaveDetails()">Save changes</button>
+                <button type="button" class="btn btn-primary" (click)="SaveDetails()" [disabled]="managerrateform.form.invalid" >Save changes</button>
             </div>
         </div>
     </div>
