@@ -75,10 +75,7 @@
             <div class="text-right">
                 <br>
                 <pagination-controls (pageChange)="p = $event" class="poppinns"></pagination-controls>
-            </div>
-          
-
-           
+            </div>       
         </div>
      
     </div>
@@ -150,12 +147,25 @@
             <div class="modal-body">
                 <div class="row">
                     <div class="col-lg-3">
+                    <p>Goal Type </p>
+                    </div>
+                    <div class="col-lg-9">
+                        <select class="form-control"  (change)="getkratypeid($event)"  [(ngModel)]="kratypeid" name="kratypeid"  required>
+                            <option value="">Select Goal Type</option>
+                            <option *ngFor="let details of GoalTypelist" value="{{details.kraType}}">{{details.kraType}}
+                            </option>
+                        </select>
+                    </div>
+                </div>`
+                <br>
+                <div class="row">
+                    <div class="col-lg-3">
                         <p>Goals</p>
                     </div>
                     <div class="col-lg-9">
-                        <select class="form-control columnname" [(ngModel)]="kraid" name="kraid">
-                            <option value="0">Select Goal</option>
-                            <option *ngFor="let details of kratypelist" value="{{details.id}}">{{details.kraName}}
+                        <select class="form-control columnname" (change)="getgoaltype($event)" id="kraid" [(ngModel)]="kraid" name="kraid" required>
+                            <option value="">Select Goal</option>
+                            <option *ngFor="let details of kratypelist" value="{{details.kraName}}">{{details.kraName}}
                             </option>
                         </select>
                     </div>
