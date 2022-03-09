@@ -303,5 +303,15 @@ export class BellCurveFittingComponent implements OnInit {
     })
   }
 
+
+ 
+
+
+
+
+
+
+
+      
 }
 

@@ -128,6 +128,7 @@ export class EmployeeKraMappingComponent implements OnInit {
 
   }
   Apprisalcycle: any;
+  appraisalid:any;
 
   public GetApprisalcycle(event: any) {
     debugger
@@ -137,7 +138,7 @@ export class EmployeeKraMappingComponent implements OnInit {
       this.AppraisalSubmitionDate = temp[0].employeeSubmissionDate;
       this.sDate = temp[0].cycleStartDate;
       this.eDate = temp[0].cycleEndDate;
-
+      this.appraisalid=event.target.value;
     });
   }
 
@@ -159,6 +160,7 @@ export class EmployeeKraMappingComponent implements OnInit {
   sDate: any;
   eDate: any;
   tablecount: any;
+  Approver3:any;
 
   public InsertDetails() {
     debugger
@@ -173,12 +175,13 @@ export class EmployeeKraMappingComponent implements OnInit {
           'StaffName': this.EmployeeId,
           'Approver1': this.Approver1,
           'Approver2': this.Approver2,
-          // 'Approver3': this.Approver3,
+          'Approver3': this.Approver3,
           'AppraisalSubmitionDate': this.AppraisalSubmitionDate,
           'CycleStartDate': this.sDate,
           'CycleEndDate': this.eDate,
           'KraID': this.keyresultArray[i].kraid,
-          'kpiid': this.keyresultArray[i].kpiid
+          'kpiid': this.keyresultArray[i].kpiid,
+          'AppraiselID':this.appraisalid
         }
         this.PerformanceManagementService.InsertEmployeeKraMap(Entity).subscribe(
           data => {
