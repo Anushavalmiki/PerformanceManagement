@@ -88,8 +88,10 @@ export class AppraisalReportComponent implements OnInit {
         {
           this.StaffAppraisalList = temp;
           this.dumpmanagerList= this.StaffAppraisalList
-           this.StaffAppraisalList = this.dumpmanagerList.filter((x: { cioScores: null;approver1:any }) => x.cioScores != null && x.approver1==this.StaffID)
-        }
+          //  this.StaffAppraisalList = this.dumpmanagerList.filter((x: { cioScores: null;approver1:any }) => x.cioScores != null && x.approver1==this.StaffID)
+           this.StaffAppraisalList = this.dumpmanagerList.filter((x: { approver1:any }) => x.approver1==this.StaffID)
+
+          }
       }
     )
   }
