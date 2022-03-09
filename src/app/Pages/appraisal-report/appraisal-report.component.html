@@ -64,6 +64,7 @@
                             <th>Department</th>
                             <th *ngIf="roleid==3">Manager Name</th>
                             <th>Final Rating </th>
+                            <th>Status</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -76,13 +77,17 @@
                                 <p *ngIf="details.bellcurveScore==null">
                                     {{((details.avgGroupHeadScores+details.avgCIOScores)/2)|number:'1.0-0'}}</p>
                                 <p *ngIf="details.bellcurveScore!=null">{{details.bellcurveScore}}</p>
+                               
 
                             </td>
-                            <!-- <td>
-                                <button class="btn btn-primary editable-table-button btn-xs"
-                                    (click)="ViewScores(details)">Change Rating
-                                </button>
-                            </td> -->
+                            <td>
+                                <!-- <p *ngIf="details.EmployeeSubmittedDate==null">Employee submitted</p> -->
+                                <p *ngIf="details.managerSubmittedDate==null" style="color: red;">Manager pending</p>
+                                <p *ngIf="details.hrSubmittedDate==null" style="color: red;">HR Pending</p>
+                                <p *ngIf="details.hrSubmittedDate!=null" style="color: green;">Completed</p>
+
+                            </td>
+                        
                         </tr>
                     </tbody>
                 </table>

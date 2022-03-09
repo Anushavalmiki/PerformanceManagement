@@ -27,17 +27,25 @@ export class StaffScoreReportComponent implements OnInit {
   count: any;
   uniquelist:any;
   dumpmanagerList:any;
-
-  
+  departmentid: any;
+  departmentList: any;
+  AppraisalSubmitionDate:any;
+  sDate:any;
+  eDate:any;
+  appraisalCycleName:any
+  Apprisalcyclelist:any;
   ngOnInit() {
     this.GetRoleType();
+    this.GetDepartment();
     this.YearID = 2020;
     this.ratingvalue = 0;
     this.StaffTypeID = 0;
+    this.departmentid=0;
     this.StaffID = 0;
     this.GetMyDetails();
     this.manager = 0;
     this.dumpmanagerList=0;
+    this.appraisalCycleName=0;
     // this.StaffID = 0;
     this.UserID = localStorage.getItem('staffid');
     // this.PerformanceManagementService.GetStaffType(1).subscribe(data => {
@@ -47,6 +55,10 @@ export class StaffScoreReportComponent implements OnInit {
 
     this.ConductappraisalStaffList();
 
+    this.PerformanceManagementService.GetAppraisalCycle().subscribe(data => {
+      debugger
+      this.Apprisalcyclelist = data;
+    });
 
 
   }
@@ -195,6 +207,49 @@ export class StaffScoreReportComponent implements OnInit {
       this.FilteredStaffAppraisalList = data.filter(x=>x.type==this.roleTypeid )
     })
   }
+
+  getdepartmentID(even: any) {
+    this.departmentid = even.target.value;
+  }
+
+  public GetDepartment() {
+    this.PerformanceManagementService.GetDepartmentMaster().subscribe(
+      data => {
+        this.departmentList = data;
+        console.log("departmentName", this.departmentList);
+        // this.roleTypeid = 0;
+      }
+    )
+  }
+
+  public GetFilteredDepartment() {
+    this.PerformanceManagementService.GetConductappraisalStaffList().subscribe(data => {
+      debugger
+      this.FilteredStaffAppraisalList = data.filter(x => x.department == this.departmentid)
+    })
+  }
+
+
+  public GetApprisalcycle(event: any) {
+    debugger
+    this.PerformanceManagementService.GetAppraisalCycle().subscribe(data => {
+      debugger
+      let temp: any = data.filter(x => x.id == event.target.value);
+      this.AppraisalSubmitionDate = temp[0].employeeSubmissionDate;
+      this.appraisalCycleName=temp[0].appraisalCycleName
+      this.sDate = temp[0].cycleStartDate;
+      this.eDate = temp[0].cycleEndDate;
+
+    });
+  }
+
+  public GetFilteredAppraisalCycle() {
+    this.PerformanceManagementService.GetConductappraisalStaffList().subscribe(data => {
+      debugger
+      this.FilteredStaffAppraisalList = data.filter(x => x.appraisalCycleName == this.appraisalCycleName)
+    })
+  }
+
 
 
 
