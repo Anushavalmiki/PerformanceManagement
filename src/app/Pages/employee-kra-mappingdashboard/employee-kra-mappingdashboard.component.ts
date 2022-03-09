@@ -56,6 +56,7 @@ export class EmployeeKraMappingdashboardComponent implements OnInit {
       debugger
       this.EmployeeKradash = data.filter(x=>x.approver1==this.StaffID);
       this.count = this.EmployeeKradash.length;
+      console.log("list",this.EmployeeKradash);
     });
   }
 
