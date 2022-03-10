@@ -64,7 +64,7 @@
                             </td>
                             <td [ngClass]="{'bggreen':details.hrupdate==1 }">
                                 <button class=" btn btn-primary action" data-toggle="modal" data-target="#exampleModal2"
-                                    (click)="getattachment(details)" *ngIf="details.selfattachment!=null">View
+                                    (click)="getattachment(details)" *ngIf="details.selfattachment!=null ">View
                                     Attachments</button>
                                 <p *ngIf="details.selfattachment==null||details.selfattachment=='0'">No Attachments</p>
 

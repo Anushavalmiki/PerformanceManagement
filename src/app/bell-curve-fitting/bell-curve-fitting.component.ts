@@ -56,6 +56,7 @@ export class BellCurveFittingComponent implements OnInit {
   hrPendingCount:any;
   EmployeePendingCount:any;
   appraisalPendingCount:any;
+  appraisalClose:any;
   ngOnInit() {
     this.pending=0;
     this.roleid = sessionStorage.getItem('roleid');
@@ -123,6 +124,8 @@ export class BellCurveFittingComponent implements OnInit {
         debugger;
         let temp: any = res
         this.StaffAppraisalList = temp;
+        this.AppraisalCycleID =this.StaffAppraisalList[0].appraiselID
+        this.appraisalClose=this.StaffAppraisalList[0].appraisalClose
         this.FilteredStaffAppraisalList = this.StaffAppraisalList.filter((x: { cioScores: null; }) => x.cioScores != null)
         this.count = this.FilteredStaffAppraisalList.length;
         this.managerList = this.dumpmanagerList.filter((x: { manager: any; }) => x.manager == this.manager);
@@ -292,13 +295,14 @@ export class BellCurveFittingComponent implements OnInit {
       this.FilteredStaffAppraisalList = data.filter(x => x.managername == this.manager)
     })
   }
-
+  AppraisalCycleID:any;
   public GetApprisalcycle(event: any) {
     debugger
     this.PerformanceManagementService.GetAppraisalCycle().subscribe(data => {
       debugger
       let temp: any = data.filter(x => x.id == event.target.value);
       this.AppraisalSubmitionDate = temp[0].employeeSubmissionDate;
+
       this.appraisalCycleName=temp[0].appraisalCycleName
       this.sDate = temp[0].cycleStartDate;
       this.eDate = temp[0].cycleEndDate;
@@ -310,6 +314,26 @@ export class BellCurveFittingComponent implements OnInit {
     this.PerformanceManagementService.GetConductappraisalStaffList().subscribe(data => {
       debugger
       this.FilteredStaffAppraisalList = data.filter(x => x.appraisalCycleName == this.appraisalCycleName)
+
+
+      
+      this.appraisalcount = this.FilteredStaffAppraisalList.length;
+      var list = data.filter(x => x.employeeSubmittedDate != null && x.selfScores != null && x.appraisalCycleName == this.appraisalCycleName &&
+       x.cycleStartDate !=null && x.cycleEndDate != null && x.appraisalSubmitionDate != null  && x.employeeSubmittedDate !=null )
+      this.employeSubmissionDate = list.length;
+  
+      var list1 = data.filter(x => x.managerSubmittedDate != null && x.appraisalCycleName == this.appraisalCycleName);
+      this.managerSubmittedCount = list1.length;
+  
+      this.hrSubmittedlist = data.filter(x => x.hrSubmittedDate != null &&  x.cycleStartDate !=null && x.cycleEndDate != null && x.appraisalSubmitionDate != null  && x.employeeSubmittedDate !=null && x.managerSubmittedDate!= null && x.appraisalCycleName == this.appraisalCycleName );
+      console.log("data",data)
+      console.log("hr", this.hrSubmittedlist)
+      this.hrSubmittedCount = this.hrSubmittedlist.length;
+
+      this.hrSubmittedlist = data.filter(x => x.hrSubmittedDate == null &&  x.cycleStartDate !=null && x.cycleEndDate != null && x.appraisalSubmitionDate != null  && x.appraisalCycleName == this.appraisalCycleName);
+      console.log("data",data)
+      console.log("hr", this.hrSubmittedlist)
+      this.appraisalPendingCount = this.hrSubmittedlist.length;
     })
   }
 
@@ -342,5 +366,31 @@ export class BellCurveFittingComponent implements OnInit {
 
   }
 
+public CloseAppraisal(){
+  
+  debugger
+  Swal.fire({
+    title: 'Are you sure?',
+    text: 'You Want to Close the Appraisal Cycle.',
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonText: 'Yes, Close it!',
+    cancelButtonText: 'No, keep it'
+  }).then((result) => {
+    if (result.value == true && this.appraisalClose!=1) {
+       this.PerformanceManagementService.CloseAppraisalCycle(this.AppraisalCycleID).subscribe(data => {
+         debugger
+         Swal.fire('Appraisal Cycle Closed Successfully!!')
+         location.reload();
+       })
+       
+    }
+    else{
+      Swal.fire('Appraisal Cycle Closed Already!!')
+    }
+  
+    
+  })
+}
 }
 

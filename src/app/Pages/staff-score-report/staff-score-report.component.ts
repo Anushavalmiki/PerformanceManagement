@@ -52,6 +52,7 @@ export class StaffScoreReportComponent implements OnInit {
   StaffAppraisalList: any;
   FilteredStaffAppraisalList: any;
   managerList1:any;
+  appraislid:any;
 
   ngOnInit() {
     this.pending=0;
@@ -134,9 +135,29 @@ export class StaffScoreReportComponent implements OnInit {
     this.PerformanceManagementService.GetConductappraisalStaffList().subscribe(
       res => {
         debugger
+        // let temp: any = res
+        // this.StaffAppraisalList = temp;
+        // this.appraisalcount = this.StaffAppraisalList.length;
+        // var list = res.filter(x => x.employeeSubmittedDate != null && x.selfScores != null && 
+        //  x.cycleStartDate !=null && x.cycleEndDate != null && x.appraisalSubmitionDate != null  && x.employeeSubmittedDate !=null )
+        // this.employeSubmissionDate = list.length;
+    
+        // var list1 = res.filter(x => x.managerSubmittedDate != null );
+        // this.managerSubmittedCount = list1.length;
+    
+        // this.hrSubmittedlist = res.filter(x => x.hrSubmittedDate != null &&  x.cycleStartDate !=null && x.cycleEndDate != null && x.appraisalSubmitionDate != null  && x.employeeSubmittedDate !=null && x.managerSubmittedDate!= null  );
+        // console.log("data",res)
+        // console.log("hr", this.hrSubmittedlist)
+        // this.hrSubmittedCount = this.hrSubmittedlist.length;
+
+        // this.hrSubmittedlist = res.filter(x => x.hrSubmittedDate == null &&  x.cycleStartDate !=null && x.cycleEndDate != null && x.appraisalSubmitionDate != null  );
+        // console.log("data",res)
+        // console.log("hr", this.hrSubmittedlist)
+        // this.appraisalPendingCount = this.hrSubmittedlist.length;
+
         let temp: any = res
-        this.StaffAppraisalList = temp;
-        this.appraisalcount = this.StaffAppraisalList.length;
+        this.FilteredStaffAppraisalList = temp;
+        this.appraisalcount = this.FilteredStaffAppraisalList.length;
         var list = res.filter(x => x.employeeSubmittedDate != null && x.selfScores != null && 
          x.cycleStartDate !=null && x.cycleEndDate != null && x.appraisalSubmitionDate != null  && x.employeeSubmittedDate !=null )
         this.employeSubmissionDate = list.length;
@@ -144,7 +165,7 @@ export class StaffScoreReportComponent implements OnInit {
         var list1 = res.filter(x => x.managerSubmittedDate != null );
         this.managerSubmittedCount = list1.length;
     
-        this.hrSubmittedlist = res.filter(x => x.hrSubmittedDate != null &&  x.cycleStartDate !=null && x.cycleEndDate != null && x.appraisalSubmitionDate != null  && x.employeeSubmittedDate !=null && x.managerSubmittedDate!= null );
+        this.hrSubmittedlist = res.filter(x => x.hrSubmittedDate != null &&  x.cycleStartDate !=null && x.cycleEndDate != null && x.appraisalSubmitionDate != null  && x.employeeSubmittedDate !=null && x.managerSubmittedDate!= null  );
         console.log("data",res)
         console.log("hr", this.hrSubmittedlist)
         this.hrSubmittedCount = this.hrSubmittedlist.length;
@@ -182,7 +203,7 @@ export class StaffScoreReportComponent implements OnInit {
       this.FilteredStaffAppraisalList = this.StaffAppraisalList;
     }
     else {
-      this.FilteredStaffAppraisalList = this.StaffAppraisalList.filter((x: { scoreBit: number; type: any; id: any; }) => x.scoreBit == 1 && x.type == this.StaffTypeID && x.id == this.StaffID);
+      this.FilteredStaffAppraisalList = this.StaffAppraisalList.filter((x: { scoreBit: number; type: any; id: any; appraiselID: any;}) => x.scoreBit == 1 && x.type == this.StaffTypeID && x.id == this.StaffID  && x.appraiselID == this.appraislid);
     }
   }
 
@@ -195,7 +216,7 @@ export class StaffScoreReportComponent implements OnInit {
     debugger;
     let StaffID = event.id;
     let StaffTypeID = event.type;
-    let appraisalid= event.appraisalid;
+    let appraisalid= event.appraiselID;
 
     this.router.navigate(['/StaffScoreFullDetails', StaffID, appraisalid]);
 
@@ -290,7 +311,28 @@ export class StaffScoreReportComponent implements OnInit {
   public GetFilteredAppraisalCycle() {
     this.PerformanceManagementService.GetConductappraisalStaffList().subscribe(data => {
       debugger
+
       this.FilteredStaffAppraisalList = data.filter(x => x.appraisalCycleName == this.appraisalCycleName)
+
+      
+        this.appraisalcount = this.FilteredStaffAppraisalList.length;
+        var list = data.filter(x => x.employeeSubmittedDate != null && x.selfScores != null && x.appraisalCycleName == this.appraisalCycleName &&
+         x.cycleStartDate !=null && x.cycleEndDate != null && x.appraisalSubmitionDate != null  && x.employeeSubmittedDate !=null )
+        this.employeSubmissionDate = list.length;
+    
+        var list1 = data.filter(x => x.managerSubmittedDate != null && x.appraisalCycleName == this.appraisalCycleName);
+        this.managerSubmittedCount = list1.length;
+    
+        this.hrSubmittedlist = data.filter(x => x.hrSubmittedDate != null &&  x.cycleStartDate !=null && x.cycleEndDate != null && x.appraisalSubmitionDate != null  && x.employeeSubmittedDate !=null && x.managerSubmittedDate!= null && x.appraisalCycleName == this.appraisalCycleName );
+        console.log("data",data)
+        console.log("hr", this.hrSubmittedlist)
+        this.hrSubmittedCount = this.hrSubmittedlist.length;
+
+        this.hrSubmittedlist = data.filter(x => x.hrSubmittedDate == null &&  x.cycleStartDate !=null && x.cycleEndDate != null && x.appraisalSubmitionDate != null  && x.appraisalCycleName == this.appraisalCycleName);
+        console.log("data",data)
+        console.log("hr", this.hrSubmittedlist)
+        this.appraisalPendingCount = this.hrSubmittedlist.length;
+        
     })
   }
 
@@ -336,4 +378,6 @@ public CloseAppraisal(){
   })
  
 }
+
+
 }

@@ -151,7 +151,8 @@ export class SelfratingnewComponent implements OnInit {
       'PerformaceIndicatorID': this.kpiid,
       'SelfScores': this.Score,
       'SelfComments': this.SelfComments,
-      'Attachment': this.attachmentNew
+      'Attachment': this.attachmentNew,
+      'ApprisalID': this.appraislid
     }
     this.PerformanceManagementService.InsertStaffScores(entity).subscribe(data => {
       debugger
