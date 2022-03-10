@@ -37,16 +37,22 @@ export class EmployeeKraMappingdashboardComponent implements OnInit {
   eDate:any;
   appraisalCycleName:any
 
+
+  kratypeid:any;
+  dropdownList1:any;
+  GoalTypelist:any;
   ngOnInit(): void {
+    this.kraid="";
     this.StaffID = sessionStorage.getItem('EmaployedID');
     this.GetKPI();
     this.StaffID = sessionStorage.getItem('EmaployedID')
 
     this.GetKeyResultArea();
-
+    this.kratypeid="";
     this.Department = "";
     this.RoleType = "";
     this.appraisalCycleName=0;
+  
     this.PerformanceManagementService.GetMyDetails().subscribe(data => {
       debugger
       this.stafflist = data;
@@ -71,10 +77,20 @@ export class EmployeeKraMappingdashboardComponent implements OnInit {
       this.Apprisalcyclelist = data;
     });
 
+    this.PerformanceManagementService.GetKraMaster().subscribe(data => {
+      debugger
+      this.GoalTypelist = data;
+    });
+    this.PerformanceManagementService.GetKPI().subscribe(
+      data=>{
+        this.indicatorlist=data;
+      }
+    )
   }
 
   getkpi(event: any) {
     this.indicatorlist = event.target.value;
+ 
   }
 
 
@@ -129,10 +145,13 @@ export class EmployeeKraMappingdashboardComponent implements OnInit {
 
   }
 
+
+
   public GetKeyResultArea() {
+    debugger
     this.PerformanceManagementService.GetKeyResultArea().subscribe(
       data => {
-        this.kratypelist = data;
+        this.kratypelist = data.filter(x=>x.kraTypeID==this.kratypeid);
         console.log("kratype", this.kratypelist);
       }
     )
@@ -197,6 +216,28 @@ export class EmployeeKraMappingdashboardComponent implements OnInit {
     )
     Swal.fire("Updated Successfully");
   }
+
+
+  getkratypeid(event: any) {
+    debugger
+    this.kratypeid = event.target.value;
+    this.PerformanceManagementService.GetKeyResultArea().subscribe(
+      data => {
+        this.kratypelist = data.filter(x=>x.kraTypeID==this.kratypeid);
+        console.log("kratype", this.kratypelist);
+      }
+    )
+  }
+
+
+  getgoaltype(event:any){
+    this.kraid=event.target.value;
+  }
+
+
+
+
+
 }
 
 
