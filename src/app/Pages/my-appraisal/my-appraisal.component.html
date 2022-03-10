@@ -51,7 +51,7 @@
                             <td>{{details.cycleStartDate|date}}</td>
                             <td>{{details.cycleEndDate|date}}</td>
                             <td *ngIf="roleid==2">{{details.frequencyName}}</td>
-                            <td>{{details.employeeSubmissionDate|date}}</td>
+                            <td>{{details.employeeSubmissionLastDate|date}}</td>
                             <td>
                                 <button [routerLink]="['/SelfRatingPagenew', details.id,details.appraiselID ]"    *ngIf="details.employeeSubmittedDate==null"                              
                                     class=" btn btn-primary editable-table-button btn-xs Add">Self Appraisal</button>
