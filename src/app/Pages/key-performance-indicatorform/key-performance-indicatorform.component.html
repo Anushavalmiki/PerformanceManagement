@@ -11,23 +11,30 @@
         <form #kpiform="ngForm">
             <br>
             <div class="row ">
+                <div class="col-lg-2">
+                   <p class="columnname">Goal Type <span style="color: red;">*</span> </p>
+               </div>
                 <div class="col-lg-2 ">
-                    <p class="columnname">Goals<span style="color: red;">*</span> </p>
+                    <p class="columnname">Goal<span style="color: red;">*</span> </p>
                 </div>
-                <!-- <div class="col-lg-3">
-                   <p class="columnname">Performance Indicator</p>
-               </div> -->
                 <div class="col-lg-3">
                     <p class="columnname">KPI Name <span style="color: red;">*</span></p>
                 </div>
                 <!-- <div class="col-lg-2">
                 <p class="columnname">Performance Indicator </p>
                </div> -->
-                <div class="col-lg-5">
+                <div class="col-lg-4">
                     <p class="columnname">Description <span style="color: red;">*</span> </p>
                 </div>
             </div>
             <div class="row header">
+                <div class="col-lg-2">
+                    <select class="form-control columnname" [(ngModel)]="goaltypeid" name="goaltypeid" id="goaltypeid" required
+                        (change)="getgoaltype($event)">
+                        <option value="">Select Goal Type</option>
+                        <option *ngFor="let details of goaltypelist" value="{{details.kraType}}">{{details.kraType}}</option>
+                    </select>
+                </div>
                 <div class="col-lg-2">
                     <select class="form-control columnname" [(ngModel)]="kraid" name="kraid" required
                         (change)="getkraid($event)">
@@ -47,7 +54,7 @@
                    <option *ngFor="let details of performancelist"  value="{{details.id}}">{{details.rating}}</option>              
                 </select>
             </div> -->
-                <div class="col-lg-5 column">
+                <div class="col-lg-4 column">
                     <textarea class="form-control" placeholder="Description" type="text" required
                         [(ngModel)]="description" name="description"></textarea>
                 </div>

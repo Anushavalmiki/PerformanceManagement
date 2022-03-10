@@ -8,6 +8,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./employee-kra-mappingdashboard.component.css']
 })
 export class EmployeeKraMappingdashboardComponent implements OnInit {
+  [x: string]: any;
 
   constructor(private PerformanceManagementService: PerformanceManagementService) { }
 
@@ -41,12 +42,15 @@ export class EmployeeKraMappingdashboardComponent implements OnInit {
   kratypeid:any;
   dropdownList1:any;
   GoalTypelist:any;
+  kpilist:any;
+kpitypelist:any;
+
   ngOnInit(): void {
     this.kraid="";
     this.StaffID = sessionStorage.getItem('EmaployedID');
     this.GetKPI();
     this.StaffID = sessionStorage.getItem('EmaployedID')
-
+    this.kraid="";
     this.GetKeyResultArea();
     this.kratypeid="";
     this.Department = "";
@@ -86,13 +90,15 @@ export class EmployeeKraMappingdashboardComponent implements OnInit {
         this.indicatorlist=data;
       }
     )
+
+   
   }
 
-  getkpi(event: any) {
-    this.indicatorlist = event.target.value;
- 
-  }
+  getkpiid(event: any) {
+    this.kpiid = event.target.value;
 
+
+  }
 
 
   public GetKPI() {
@@ -197,9 +203,23 @@ export class EmployeeKraMappingdashboardComponent implements OnInit {
     debugger
     this.kraid = details.kraid;
     this.kpiid = details.kpiid;
+    this.kratypeid=details.kraTypeID
     this.ID = details.id;
     this.GetKPI();
     this.GetKeyResultArea();
+    this.PerformanceManagementService.GetKeyResultArea().subscribe(
+      data => {
+        this.kratypelist = data;
+      
+      }
+    )
+    this.PerformanceManagementService.GetKPI().subscribe(
+      data=>{
+        debugger
+        this.kpitypelist=data.filter(x=>x.kraFilterid==this.kraid);
+        debugger
+      }
+    )
   }
 
 
@@ -231,9 +251,17 @@ export class EmployeeKraMappingdashboardComponent implements OnInit {
 
 
   getgoaltype(event:any){
+    debugger
     this.kraid=event.target.value;
+    debugger
+    this.PerformanceManagementService.GetKPI().subscribe(
+      data=>{
+        debugger
+        this.kpitypelist=data.filter(x=>x.kraFilterid==this.kraid);
+        debugger
+      }
+    )
   }
-
 
 
 

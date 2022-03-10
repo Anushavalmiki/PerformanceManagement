@@ -41,6 +41,7 @@
                     <table class="table">
                     <thead>
                         <tr>
+                            <th>Goal Type</th>
                             <th>Goal Name</th>
                             <th>KPI Name</th>
                             <th>Description</th>
@@ -49,6 +50,7 @@
                     </thead>
                     <tbody>    
                         <tr *ngFor="let details of indicatorlist |filter:search">
+                            <td>{{details.kraTypeID}}</td>
                             <td>{{details.kraName}}</td>                        
                             <td>{{details.kpiName}}</td>
                             <td>{{details.description}}</td>
