@@ -62,8 +62,7 @@
                             <th>Appraisal Cycle</th>
                             <th>Employee Name</th>
                             <th>Role</th>
-                            <th>Department</th>
-                          
+                            <th>Department</th>                        
                             <th *ngIf="roleid==3">Manager Name</th>
                             <th>Final Rating </th>
                             <th>Status</th>
@@ -75,16 +74,13 @@
                             <td>{{details.appraisalCycleName}}</td>
                             <td>{{details.name}}</td>
                             <td>{{details.role}}</td>
-                            <td>{{details.departmentName}}</td>
-                           
+                            <td>{{details.departmentName}}</td>                          
                             <td *ngIf="roleid==3">{{details.managername}}</td>
                             <td>
                                 <p *ngIf="details.bellcurveScore==null && details.hrSubmittedDate!=null ">
                                     {{((details.avgGroupHeadScores+details.avgCIOScores)/2)|number:'1.0-0'}}</p>
                                 <p *ngIf="details.bellcurveScore!=null">{{details.bellcurveScore}}</p>
                                 <p *ngIf="details.hrSubmittedDate==null">NA</p>
-
-
                             </td>
                             <td>
                                 <p *ngIf="details.employeeSubmittedDate==null" style="color: red;">Employee pending</p>

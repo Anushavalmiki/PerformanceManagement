@@ -64,6 +64,7 @@ export class HrratingnewComponent implements OnInit {
           this.HrSubmittedDate = this.ResultAreaList[0].hrSubmittedDate
           this.managerattachment = this.ResultAreaList[0].mPhoto
 
+          console.log("resultarea",this.ResultAreaList)
 
           this.ResultAreaList.forEach((element: { hrupdate: any; }) => {
             if (element.hrupdate != 1) {

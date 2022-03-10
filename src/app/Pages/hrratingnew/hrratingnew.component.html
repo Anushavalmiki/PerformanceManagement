@@ -64,9 +64,9 @@
                             </td>
                             <td [ngClass]="{'bggreen':details.hrupdate==1 }">
                                 <button class=" btn btn-primary action" data-toggle="modal" data-target="#exampleModal2"
-                                    (click)="getattachment(details)" *ngIf="details.selfattachment!=null">View
+                                    (click)="getattachment(details)" *ngIf="details.selfattachment!=null&&details.selfattachment!='0'&&details.selfattachment!=''">View
                                     Attachments</button>
-                                <p *ngIf="details.selfattachment==null||details.selfattachment=='0'">No Attachments</p>
+                                <p *ngIf="details.selfattachment==null||details.selfattachment=='0'||details.selfattachment==''">No Attachments</p>
 
                             </td>
                             <td [ngClass]="{'bg-warning':details.hrupdate==1 }" style="text-align: center;">
@@ -97,8 +97,8 @@
                                     Details</button><br><br>
 
                                     <button class=" btn btn-primary action" data-toggle="modal" data-target="#exampleModal4" 
-                                    (click)="GetKPIIDetails(details)" *ngIf="details.hrattachment!=null">View Attachments</button>
-                                    <p *ngIf="details.hrattachment=='0'||details.hrattachment==null && details.hrupdate==1" >No Attachments</p>
+                                    (click)="GetKPIIDetails(details)" *ngIf="details.hrattachment!=null&&details.hrattachment!='0'&&details.hrattachment!=''">View Attachments</button>
+                                    <p *ngIf="details.hrattachment=='0'||details.hrattachment==null ||details.hrattachment=='' && details.hrupdate==1" >No Attachments</p>
                                    
                             </td>
                         </tr>
@@ -174,9 +174,6 @@
                     </div>
                 </div>
                 <br>
-
-
-
             </div>
             <div class="modal-footer">
                 <button type="button" id="close" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -362,7 +359,6 @@
             </div>
             <div class="modal-footer">
                 <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
-
             </div>
         </div>
     </div>
