@@ -41,6 +41,7 @@ export class ManagerAppraisalComponent implements OnInit {
   managerSubmittedDate:any
   selfAttachment:any;
   EmployeeId: any;
+  appraislid:any;
   ngOnInit(): void {
     this.Score = 0;
     this.showbtn = false;
@@ -50,13 +51,14 @@ export class ManagerAppraisalComponent implements OnInit {
       debugger;
       this.ParamID = params['id'];
       if (params['id'] != undefined) {
-        this.StaffType = params['StaffID'];
+        // this.StaffType = params['StaffID'];
+        this.appraislid = params['StaffID'];
         this.StaffID = params['id'];
         this.StaffTypeID = this.StaffType;
 
         this.PerformanceManagementService.GetKRAByStaffID(this.StaffID).subscribe(data => {
           debugger
-          this.ResultAreaList = data.filter((x: { employeeSubmittedDate: any; })=>x.employeeSubmittedDate!=null);
+          this.ResultAreaList = data.filter((x: { employeeSubmittedDate: any; appraiselID: any;})=>x.employeeSubmittedDate!=null && x.appraiselID == this.appraislid);
           console.log(this.ResultAreaList);
           
           this.Name=this.ResultAreaList[0].name

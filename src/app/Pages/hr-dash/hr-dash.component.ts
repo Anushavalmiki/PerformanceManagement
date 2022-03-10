@@ -22,6 +22,11 @@ export class HrDashComponent implements OnInit {
   Department: any;
   count: any;
   search:any;
+  Apprisalcyclelist:any;
+  AppraisalSubmitionDate:any;
+  sDate:any;
+  eDate:any;
+  appraisalCycleName:any
 
 
 
@@ -31,6 +36,7 @@ export class HrDashComponent implements OnInit {
 
     this.Department = "";
     this.RoleType = "";
+    this.appraisalCycleName=0;
     this.PerformanceManagementService.GetMyDetails().subscribe(data => {
       debugger
       this.stafflist = data;
@@ -50,6 +56,11 @@ export class HrDashComponent implements OnInit {
       
       this.count=this.EmployeeKradash.length;
     
+    });
+
+    this.PerformanceManagementService.GetAppraisalCycle().subscribe(data => {
+      debugger
+      this.Apprisalcyclelist = data;
     });
 
  
@@ -89,5 +100,27 @@ export class HrDashComponent implements OnInit {
     });
 
   }
+
+  public GetApprisalcycle(event: any) {
+    debugger
+    this.PerformanceManagementService.GetAppraisalCycle().subscribe(data => {
+      debugger
+      let temp: any = data.filter(x => x.id == event.target.value);
+      this.AppraisalSubmitionDate = temp[0].employeeSubmissionDate;
+      this.appraisalCycleName=temp[0].appraisalCycleName
+      this.sDate = temp[0].cycleStartDate;
+      this.eDate = temp[0].cycleEndDate;
+
+    });
+  }
+
+  public GetFilteredAppraisalCycle() {
+    this.PerformanceManagementService.GetConductappraisalStaffList().subscribe(data => {
+      debugger
+      this.EmployeeKradash = data.filter(x => x.appraisalCycleName == this.appraisalCycleName)
+    })
+  }
+
+
 
 }

@@ -36,19 +36,21 @@ export class StaffScoreFullDetailsComponent implements OnInit {
   goallist:any;
   StaffScoresListsCopy:any;
   goal:any;
+  appraislid:any;
   ngOnInit() {
    
     this.goal="0"
     this.route.params.subscribe(params => {
       debugger;
-      this.StaffTypeID = params['StaffTypeID'];
+       // this.StaffType = params['StaffID'];
+       this.appraislid = params['StaffID'];
       if (params['StaffTypeID'] != undefined) {
         this.StaffID = params['StaffID'];
         this.PerformanceManagementService.GetConductappraisalStaffList().subscribe(
           res => {
             debugger;
             let temp: any = res
-            this.StaffDetailsBYConductAppraisals = temp.filter((x: { id: any; }) => x.id == this.StaffID);
+            this.StaffDetailsBYConductAppraisals = temp.filter((x: { id: any; appraiselID: any;}) => x.id == this.StaffID && x.appraiselID == this.appraislid);
             this.EmployeeName = this.StaffDetailsBYConductAppraisals[0].name;
             this.StartDate = this.StaffDetailsBYConductAppraisals[0].cycleStartDate;
             this.EndDate = this.StaffDetailsBYConductAppraisals[0].cycleEndDate;

@@ -48,7 +48,7 @@
                 <select class="form-control" id="appraisalCycleName" name="appraisalCycleName"
                     [(ngModel)]="appraisalCycleName" (change)="GetApprisalcycle($event)"
                     (change)="GetFilteredAppraisalCycle()">
-                    <option value="0">Select Cycle</option>
+                    <option value="0">Select Appraisal Cycle</option>
                     <option *ngFor="let item of Apprisalcyclelist" value="{{item.appraisalCycleName}}">
                         {{item.appraisalCycleName}}
                     </option>
@@ -169,7 +169,7 @@
                         </div>
                     </div><br>
                     <div class="row">
-                        <div class="col-lg-3">
+                        <div class="col-lg-4">
                         </div>
                         <div class="col-lg-3">
                             <button class="btn btn-primary editable-table-button btn-xs" (click)="update()" data-dismiss="modal">Update Rate
@@ -179,9 +179,9 @@
                     </div>
             
             </div>
-            <div class="modal-footer">
+            <!-- <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            </div>
+            </div> -->
         </div>
     </div>
 </div>
