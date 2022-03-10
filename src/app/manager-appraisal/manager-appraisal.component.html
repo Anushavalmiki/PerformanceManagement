@@ -267,6 +267,8 @@
         </div>
     </div>
 </div>
+
+
 <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -282,7 +284,7 @@
                     <div class="col-lg-1">
                     </div>
                     <div class="col-lg-3">
-                        <p *ngIf="selfAttachment==null">No Attachments</p>
+                        <p *ngIf="selfAttachment==0">No Attachments</p>
                     </div>
                     <div class="col-lg-3">
                         <img src="{{selfAttachment}}" style="width:400px;">
@@ -294,7 +296,6 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-
             </div>
         </div>
     </div>
