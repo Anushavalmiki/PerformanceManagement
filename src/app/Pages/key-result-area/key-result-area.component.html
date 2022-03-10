@@ -48,8 +48,8 @@
                 <table class="table">
                     <thead>
                         <tr>
-                            <th>Goal Name</th>
                             <th>Goal Type</th>
+                            <th>Goal Name</th>                          
                             <th>Role</th>
                             <th>Description</th>
                             <th>Actions</th>
@@ -57,8 +57,8 @@
                     </thead>
                     <tbody>
                         <tr *ngFor="let details of keyresultlist | filter:search">
-                            <td>{{details.kraName}}</td>
                             <td>{{details.kraTypeID}}</td>
+                            <td>{{details.kraName}}</td>                    
                             <td>{{details.short}}</td>
                             <td>{{details.description}}</td>
                             <td>
