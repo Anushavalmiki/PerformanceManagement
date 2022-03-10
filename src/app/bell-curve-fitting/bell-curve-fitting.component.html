@@ -79,7 +79,7 @@
         </div>
     </div>
     <br>
-    <span *ngIf="appraisalPendingCount==0"><button class="btn btn-success">Complete Appraisal</button></span><br><br>
+    <span *ngIf="appraisalPendingCount==0"><button class="btn btn-success" (click)="CloseAppraisal()">Complete Appraisal</button></span><br><br>
 
  
     <div class="container-fluid" id="demo" class="collapse"  *ngIf="appraisalCycleName!=0">

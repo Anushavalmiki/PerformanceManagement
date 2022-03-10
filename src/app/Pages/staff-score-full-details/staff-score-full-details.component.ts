@@ -45,12 +45,12 @@ export class StaffScoreFullDetailsComponent implements OnInit {
        // this.StaffType = params['StaffID'];
        this.appraislid = params['StaffID'];
       if (params['StaffTypeID'] != undefined) {
-        this.StaffID = params['StaffID'];
+        this.StaffID = params['StaffTypeID'];
         this.PerformanceManagementService.GetConductappraisalStaffList().subscribe(
           res => {
             debugger;
             let temp: any = res
-            this.StaffDetailsBYConductAppraisals = temp.filter((x: { id: any; appraiselID: any;}) => x.id == this.StaffID && x.appraiselID == this.appraislid);
+            this.StaffDetailsBYConductAppraisals = temp.filter((x: { id: any;}) => x.id == this.StaffID );
             this.EmployeeName = this.StaffDetailsBYConductAppraisals[0].name;
             this.StartDate = this.StaffDetailsBYConductAppraisals[0].cycleStartDate;
             this.EndDate = this.StaffDetailsBYConductAppraisals[0].cycleEndDate;
@@ -68,7 +68,7 @@ export class StaffScoreFullDetailsComponent implements OnInit {
         this.PerformanceManagementService.GetStaffScoresByStaffandYear(2021, this.StaffID).subscribe(data => {
           debugger;
           let temp: any = data
-          this.StaffScoresLists = temp;
+          this.StaffScoresLists = temp.filter((x:{apprisalID: any;} )=> x.apprisalID== this.appraislid)
           this.StaffScoresListsCopy= this.StaffScoresLists
           this.StaffType = temp[0].staffType;
           //  this.Appraisaldate = data[0].appraisalDate;

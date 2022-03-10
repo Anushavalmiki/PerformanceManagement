@@ -316,5 +316,12 @@ export class PerformanceManagementService {
     return this.http.post(this.url, data);
   }
 
+  
+  public CloseAppraisalCycle(json: any) {
+    debugger
+    let APIURL = this.baseURL + "Master/UpdateAppraisalCycle";
+    return this.http.post<any[]>(APIURL, json);
+  }
+
 
 }

@@ -135,8 +135,9 @@
                             <td>{{details.avgGroupHeadScores}}</td>
                             <td>{{details.avgCIOScores}}</td>
                             <td>
-                                <p *ngIf="details.hrSubmittedDate!=null ">
+                                <p *ngIf="details.bellcurveScore==null && details.hrSubmittedDate!=null ">
                                 {{((details.avgGroupHeadScores+details.avgCIOScores)/2)|number:"1.0-0"}}
+                                <p *ngIf="details.bellcurveScore!=null">{{details.bellcurveScore}}</p>
                                 <p *ngIf="details.hrSubmittedDate==null">NA</p>
                             </td>
                             <!-- <td>{{details.appraisalSubmitionDate|date}}</td>
