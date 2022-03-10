@@ -59,10 +59,11 @@
                 <table class="table" id="download">
                     <thead>
                         <tr>
+                            <th>Appraisal Cycle</th>
                             <th>Employee Name</th>
                             <th>Role</th>
                             <th>Department</th>
-                            <th>Appraisal Cycle</th>
+                          
                             <th *ngIf="roleid==3">Manager Name</th>
                             <th>Final Rating </th>
                             <th>Status</th>
@@ -71,15 +72,17 @@
                     <tbody>
                         <tr
                             *ngFor="let details of StaffAppraisalList| paginate: { itemsPerPage: count1, currentPage: p}|filter:search">
+                            <td>{{details.appraisalCycleName}}</td>
                             <td>{{details.name}}</td>
                             <td>{{details.role}}</td>
                             <td>{{details.departmentName}}</td>
-                            <td>{{details.appraisalCycleName}}</td>
+                           
                             <td *ngIf="roleid==3">{{details.managername}}</td>
                             <td>
-                                <p *ngIf="details.bellcurveScore==null">
+                                <p *ngIf="details.bellcurveScore==null && details.hrSubmittedDate!=null ">
                                     {{((details.avgGroupHeadScores+details.avgCIOScores)/2)|number:'1.0-0'}}</p>
                                 <p *ngIf="details.bellcurveScore!=null">{{details.bellcurveScore}}</p>
+                                <p *ngIf="details.hrSubmittedDate==null">NA</p>
 
 
                             </td>
@@ -87,7 +90,7 @@
                                 <p *ngIf="details.employeeSubmittedDate==null" style="color: red;">Employee pending</p>
                                 <p *ngIf="details.managerSubmittedDate==null" style="color: red;">Manager pending</p>
                                 <p *ngIf="details.hrSubmittedDate==null" style="color: red;">HR Pending</p>
-                                <p *ngIf="details.hrSubmittedDate!=null" style="color: green;"><b>Completed</b></p>
+                                <p *ngIf="details.hrSubmittedDate!=null" style="color: green;"><b>HR Completed</b></p>
 
                             </td>
 

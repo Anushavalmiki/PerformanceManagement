@@ -35,7 +35,6 @@
                     <thead>
                         <tr>
                             <th>Sr.No.</th>
-                            <th>Goal Type</th>
                             <th>Goal</th>
                             <th>KPI</th>
                             <th>Employee Rating</th>
@@ -53,7 +52,6 @@
                             *ngFor="let details of ResultAreaList |paginate: { itemsPerPage: count1, currentPage: p} index as i">
                             <td [ngClass]="{'bggreen':details.hrupdate==1 }">
                                 {{i+1}}</td>
-                                <td [ngClass]="{'bggreen':details.hrupdate==1 }">{{details.kraTypeID}}</td>
                             <td [ngClass]="{'bggreen':details.hrupdate==1 }">{{details.kraName}}
                             </td>
                             <td [ngClass]="{'bggreen':details.hrupdate==1 }">{{details.kpiName}}</td>
@@ -66,9 +64,9 @@
                             </td>
                             <td [ngClass]="{'bggreen':details.hrupdate==1 }">
                                 <button class=" btn btn-primary action" data-toggle="modal" data-target="#exampleModal2"
-                                    (click)="getattachment(details)" *ngIf="details.photo!=null">View
+                                    (click)="getattachment(details)" *ngIf="details.selfattachment!=null">View
                                     Attachments</button>
-                                <p *ngIf="details.photo==null">No Attachments</p>
+                                <p *ngIf="details.selfattachment==null||details.selfattachment=='0'">No Attachments</p>
 
                             </td>
                             <td [ngClass]="{'bg-warning':details.hrupdate==1 }" style="text-align: center;">
@@ -130,13 +128,12 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form #hrrateform="ngForm">
                 <div class="row">
                     <div class="col-lg-1">
                     </div>
                     <div class="col-lg-3">
                         <p style="padding:5px">
-                            Rating <span style="color: red;">*</span> </p>
+                            Rating<span style="color: red;">*</span> </p>
                     </div>
                     <div class="col-lg-7">
                         <select class="dropdown form-control" id="Score" name="Score" [(ngModel)]="Score" required>
@@ -177,11 +174,13 @@
                     </div>
                 </div>
                 <br>
-            </form>
+
+
+
             </div>
             <div class="modal-footer">
                 <button type="button" id="close" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" [disabled]="hrrateform.form.invalid"  (click)="SaveDetails()">Save</button>
+                <button type="button" class="btn btn-primary" (click)="SaveDetails()">Save</button>
             </div>
         </div>
     </div>
@@ -239,7 +238,7 @@
                             Attachments</button>
                     </div>
                 </div> -->
-          </div>
+            </div>
             <div class="modal-footer" *ngIf="HrSubmittedDate==null" >
                 <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
                 <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="UpdateDetails()">Update changes</button>

@@ -70,7 +70,7 @@
                 <select class="form-control" id="appraisalCycleName" name="appraisalCycleName"
                     [(ngModel)]="appraisalCycleName" (change)="GetApprisalcycle($event)"
                     (change)="GetFilteredAppraisalCycle()">
-                    <option value="0">Select Cycle</option>
+                    <option value="0">Select Appraisal Cycle</option>
                     <option *ngFor="let item of Apprisalcyclelist" value="{{item.appraisalCycleName}}">
                         {{item.appraisalCycleName}}
                     </option>
@@ -108,7 +108,7 @@
                 <table class="table">
                     <thead>
                         <tr>
-                            <!-- <th>Appraisal Cycle</th> -->
+                            <th>Appraisal Cycle</th>
                             <th>Department</th>
                             <th>Role</th>
                             <th>Employee Name</th>
@@ -126,7 +126,7 @@
                     <tbody>
                         <tr
                             *ngFor="let details of FilteredStaffAppraisalList |paginate: { itemsPerPage: count1, currentPage: p}|filter:search">
-                            <!-- <td>{{details.appraisalCycleName}}</td> -->
+                            <td>{{details.appraisalCycleName}}</td>
                             <td>{{details.departmentName}}</td>
                             <td>{{details.role}}</td>
                             <td>{{details.name}}</td>
@@ -134,7 +134,11 @@
                             <td>{{details.avgSelfScore}}</td>
                             <td>{{details.avgGroupHeadScores}}</td>
                             <td>{{details.avgCIOScores}}</td>
-                            <td>{{((details.avgGroupHeadScores+details.avgCIOScores)/2)|number:"1.0-0"}}</td>
+                            <td>
+                                <p *ngIf="details.hrSubmittedDate!=null ">
+                                {{((details.avgGroupHeadScores+details.avgCIOScores)/2)|number:"1.0-0"}}
+                                <p *ngIf="details.hrSubmittedDate==null">NA</p>
+                            </td>
                             <!-- <td>{{details.appraisalSubmitionDate|date}}</td>
                             <td>{{details.cycleStartDate|date}}</td>
                             <td>{{details.cycleEndDate|date}}</td> -->

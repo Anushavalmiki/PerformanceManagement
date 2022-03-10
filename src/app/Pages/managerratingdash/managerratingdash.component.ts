@@ -21,7 +21,11 @@ export class ManagerratingdashComponent implements OnInit {
   Department: any;
   count: any;
   search:any;
-
+  Apprisalcyclelist:any;
+  AppraisalSubmitionDate:any;
+  sDate:any;
+  eDate:any;
+  appraisalCycleName:any
 
 
   EmployeeKradash: any
@@ -29,7 +33,7 @@ export class ManagerratingdashComponent implements OnInit {
   ngOnInit(): void {
 
 
-
+    this.appraisalCycleName=0;
     this.Department = "";
     this.RoleType = "";
     this.PerformanceManagementService.GetMyDetails().subscribe(data => {
@@ -49,6 +53,12 @@ export class ManagerratingdashComponent implements OnInit {
       this.EmployeeKradash = data.filter(x => x.approver1 == sessionStorage.getItem('EmaployedID') && x.selfScores != null && x.employeeSubmittedDate!=null);
       this.count = this.EmployeeKradash.length;
     });
+
+    this.PerformanceManagementService.GetAppraisalCycle().subscribe(data => {
+      debugger
+      this.Apprisalcyclelist = data;
+    });
+
   }
 
   public getRoleType(event: any) {
@@ -84,6 +94,27 @@ export class ManagerratingdashComponent implements OnInit {
     });
 
   }
+
+  public GetApprisalcycle(event: any) {
+    debugger
+    this.PerformanceManagementService.GetAppraisalCycle().subscribe(data => {
+      debugger
+      let temp: any = data.filter(x => x.id == event.target.value);
+      this.AppraisalSubmitionDate = temp[0].employeeSubmissionDate;
+      this.appraisalCycleName=temp[0].appraisalCycleName
+      this.sDate = temp[0].cycleStartDate;
+      this.eDate = temp[0].cycleEndDate;
+
+    });
+  }
+
+  public GetFilteredAppraisalCycle() {
+    this.PerformanceManagementService.GetConductappraisalStaffList().subscribe(data => {
+      debugger
+      this.EmployeeKradash = data.filter(x => x.appraisalCycleName == this.appraisalCycleName)
+    })
+  }
+
 
 
 }

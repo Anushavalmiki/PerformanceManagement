@@ -34,7 +34,7 @@ export class HRDashboardComponent implements OnInit {
       this.count = this.EmployeeKradash.length;
       debugger
       var list = data.filter(x => x.employeeSubmittedDate != null && x.selfScores != null && 
-       x.cycleStartDate !=null && x.cycleEndDate != null && x.appraisalSubmitionDate != null  && x.employeeSubmittedDate !=null && x.managerSubmittedDate!= null )
+       x.cycleStartDate !=null && x.cycleEndDate != null && x.appraisalSubmitionDate != null  && x.employeeSubmittedDate !=null )
       this.employeSubmissionDate = list.length;
 
       var list1 = data.filter(x => x.managerSubmittedDate != null );

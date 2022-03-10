@@ -322,7 +322,7 @@ export class BellCurveFittingComponent implements OnInit {
         this.StaffAppraisalList = temp;
         this.appraisalcount = this.StaffAppraisalList.length;
         var list = res.filter(x => x.employeeSubmittedDate != null && x.selfScores != null && 
-         x.cycleStartDate !=null && x.cycleEndDate != null && x.appraisalSubmitionDate != null  && x.employeeSubmittedDate !=null && x.managerSubmittedDate!= null )
+         x.cycleStartDate !=null && x.cycleEndDate != null && x.appraisalSubmitionDate != null  && x.employeeSubmittedDate !=null  )
         this.employeSubmissionDate = list.length;
     
         var list1 = res.filter(x => x.managerSubmittedDate != null );

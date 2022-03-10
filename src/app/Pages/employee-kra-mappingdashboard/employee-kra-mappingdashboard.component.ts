@@ -31,6 +31,12 @@ export class EmployeeKraMappingdashboardComponent implements OnInit {
   search:any;
   EmployeeKradash: any
 
+  Apprisalcyclelist:any;
+  AppraisalSubmitionDate:any;
+  sDate:any;
+  eDate:any;
+  appraisalCycleName:any
+
   ngOnInit(): void {
     this.StaffID = sessionStorage.getItem('EmaployedID');
     this.GetKPI();
@@ -40,6 +46,7 @@ export class EmployeeKraMappingdashboardComponent implements OnInit {
 
     this.Department = "";
     this.RoleType = "";
+    this.appraisalCycleName=0;
     this.PerformanceManagementService.GetMyDetails().subscribe(data => {
       debugger
       this.stafflist = data;
@@ -58,6 +65,12 @@ export class EmployeeKraMappingdashboardComponent implements OnInit {
       this.count = this.EmployeeKradash.length;
       console.log("list",this.EmployeeKradash);
     });
+
+    this.PerformanceManagementService.GetAppraisalCycle().subscribe(data => {
+      debugger
+      this.Apprisalcyclelist = data;
+    });
+
   }
 
   getkpi(event: any) {
@@ -137,6 +150,28 @@ export class EmployeeKraMappingdashboardComponent implements OnInit {
     else {
       this.GetKPI();
     }
+  }
+
+
+
+  public GetApprisalcycle(event: any) {
+    debugger
+    this.PerformanceManagementService.GetAppraisalCycle().subscribe(data => {
+      debugger
+      let temp: any = data.filter(x => x.id == event.target.value);
+      this.AppraisalSubmitionDate = temp[0].employeeSubmissionDate;
+      this.appraisalCycleName=temp[0].appraisalCycleName
+      this.sDate = temp[0].cycleStartDate;
+      this.eDate = temp[0].cycleEndDate;
+
+    });
+  }
+
+  public GetFilteredAppraisalCycle() {
+    this.PerformanceManagementService.GetConductappraisalStaffList().subscribe(data => {
+      debugger
+      this.EmployeeKradash = data.filter(x => x.appraisalCycleName == this.appraisalCycleName)
+    })
   }
 
   edit(details: any) {

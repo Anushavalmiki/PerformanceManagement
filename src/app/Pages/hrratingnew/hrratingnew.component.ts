@@ -39,6 +39,7 @@ export class HrratingnewComponent implements OnInit {
   departmentName: any;
   HrSubmittedDate: any;
   hrattachment: any;
+  appraislid:any;
   ngOnInit(): void {
     this.Score = 0;
     this.showbtn = false;
@@ -48,13 +49,14 @@ export class HrratingnewComponent implements OnInit {
       debugger;
       this.ParamID = params['id'];
       if (params['id'] != undefined) {
-        this.StaffType = params['StaffID'];
+        // this.StaffType = params['StaffID'];
+        this.appraislid = params['StaffID'];
         this.StaffID = params['id'];
         this.StaffTypeID = this.StaffType;
 
         this.PerformanceManagementService.GetKRAByStaffID(this.StaffID).subscribe(data => {
           debugger
-          this.ResultAreaList = data.filter((x: { managerSubmittedDate: any; employeeSubmittedDate: any; }) => x.managerSubmittedDate != null && x.employeeSubmittedDate != null);
+          this.ResultAreaList = data.filter((x: { managerSubmittedDate: any; employeeSubmittedDate: any;appraiselID: any; }) => x.managerSubmittedDate != null && x.employeeSubmittedDate != null  && x.appraiselID == this.appraislid);
 
           this.Name = this.ResultAreaList[0].name
           this.role = this.ResultAreaList[0].role

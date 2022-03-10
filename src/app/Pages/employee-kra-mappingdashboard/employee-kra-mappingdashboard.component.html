@@ -16,9 +16,20 @@
             <div class="col-lg-1">
                 <p class="filter">Filter By</p>
             </div>
-            <div class="col-lg-5">
+            <div class="col-lg-4">
                 <input type="search" class="form-control search" placeholder="Search for Name.." [(ngModel)]="search">
             </div>
+            <div class="col-lg-3">
+                <select class="form-control" id="appraisalCycleName" name="appraisalCycleName"
+                [(ngModel)]="appraisalCycleName" (change)="GetApprisalcycle($event)"
+                (change)="GetFilteredAppraisalCycle()">
+                <option value="0">Select Cycle</option>
+                <option *ngFor="let item of Apprisalcyclelist" value="{{item.appraisalCycleName}}">
+                    {{item.appraisalCycleName}}
+                </option>
+            </select>
+            </div>
+            
             <div class="col-lg-1"></div>
         </div><br>
     </div> <br>
@@ -34,13 +45,14 @@
             <table class="table">
                 <thead>
                     <tr>
+                        <th>Appraisal Cycle</th>
+                        <th>Appraisal Cycle Start Date </th>
+                        <th>Appraisal Cycle End Date </th>
+                        <!-- <th>Appraisal Cycle type</th> -->
+                        <th>Goal Type</th>
                         <th>Employee Name</th>
                         <th>Role</th>
                         <th>Department</th>
-                        <th>Goal Type</th>
-                        <th>Appraisal Cycle Start Date </th>
-                        <th>Appraisal Cycle End Date </th>
-                        <th>Appraisal Cycle type</th>
                         <th>Employee Submission Last Date</th>
                         <!-- <th>Submission Date </th> -->
                         <th>Goal Setting Date </th>
@@ -52,13 +64,15 @@
                 <tbody>
                     <tr
                         *ngFor="let details of EmployeeKradash |paginate: { itemsPerPage: count1, currentPage: p}|filter:search">
+
+                        <td>{{details.appraisalCycleName}}</td>
+                        <td>{{details.cycleStartDate|date}}</td>
+                        <td>{{details.cycleEndDate|date}}</td>
+                        <!-- <td>{{details.frequencyName}}</td> -->
+                        <td>{{details.goalType}}</td>
                         <td>{{details.name}}</td>
                         <td>{{details.role}}</td>
                         <td>{{details.departmentName}}</td>
-                        <td>{{details.goalType}}</td>
-                        <td>{{details.cycleStartDate|date}}</td>
-                        <td>{{details.cycleEndDate|date}}</td>
-                        <td>{{details.frequencyName}}</td>
                         <td>{{details.employeeSubmissionDate}}</td>
                         <td>{{details.goalSettingDate}}</td>
                         <td>{{details.managerReviewLastDate}}</td>
@@ -71,16 +85,16 @@
                     </tr>
                 </tbody>
             </table>
-           
+
             <div class="text-right">
                 <br>
                 <pagination-controls (pageChange)="p = $event" class="poppinns"></pagination-controls>
             </div>
-          
 
-           
+
+
         </div>
-     
+
     </div>
 </div>
 
