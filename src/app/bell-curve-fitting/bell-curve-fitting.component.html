@@ -78,8 +78,9 @@
              </div>
         </div>
     </div>
-    <br>
-    <span *ngIf="appraisalPendingCount==0"><button class="btn btn-success" (click)="CloseAppraisal()">Complete Appraisal</button></span><br><br>
+   
+    <span *ngIf="appraisalPendingCount==0 && appraisalClose!='1'"><button class="btn btn-success" (click)="CloseAppraisal()">Complete Appraisal</button></span><br>
+    <span *ngIf="appraisalPendingCount==0 && appraisalClose=='1'" style="color: red;">Appraisal Cycle Closed</span><br><br>
 
  
     <div class="container-fluid" id="demo" class="collapse"  *ngIf="appraisalCycleName!=0">
@@ -125,7 +126,7 @@
                             <td>{{details.cycleEndDate|date}}</td> -->
                             <td>
                                 <button class="btn btn-primary editable-table-button btn-xs" data-toggle="modal" data-target="#viewbellcurve"
-                                    (click)="ViewScores(details)">Change Rating
+                                [disabled]="details.appraisalClose=='1'" (click)="ViewScores(details)">Change Rating
                                 </button>
                             </td>
                         </tr>
