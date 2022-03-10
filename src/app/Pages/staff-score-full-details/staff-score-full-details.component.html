@@ -126,9 +126,10 @@
                      
                         <p style="margin-left: 30px;">Manager Submission Date: <b>{{ManagerSubmittedDate|date}}</b>
                         <span *ngIf="ManagerSubmittedDate==null"><b>NA</b></span>
-                        <span class="text2">HR Submission Date: <b>{{HrSubmittedDate|date}}</b></span>
+                        <span style="margin-left: 40px;">HR Submission Date: <b>{{HrSubmittedDate|date}}</b></span>
                         <span *ngIf="HrSubmittedDate==null"><b>NA</b></span>
-                        <span style="margin-left: 50px;">Bell Curve Fitting Date: <b>{{HrSubmittedDate|date}}</b></span>
+                        <span style="margin-left: 80px;" *ngIf="HrSubmittedDate!=null">Bell Curve Fitting Date: <b>NA</b></span>
+                        <!-- <b>{{HrSubmittedDate|date}}</b> -->
                         <span *ngIf="HrSubmittedDate==null"><b>NA</b></span>
                 </div>
             </div>

@@ -53,7 +53,7 @@ export class StaffScoreReportComponent implements OnInit {
   FilteredStaffAppraisalList: any;
   managerList1:any;
   appraislid:any;
-
+  appraisalClose:any;
   ngOnInit() {
     this.pending=0;
     this.GetRoleType();
@@ -123,6 +123,7 @@ export class StaffScoreReportComponent implements OnInit {
         debugger;
         let temp: any = res
         this.StaffAppraisalList = temp;
+        this.appraisalClose=this.StaffAppraisalList[0].appraisalClose
         this.FilteredStaffAppraisalList = this.StaffAppraisalList.filter((x: { cioScores: null; }) => x.cioScores != null)
         this.count = this.FilteredStaffAppraisalList.length;
         this.managerList = this.dumpmanagerList.filter((x: { manager: any; })=>x.manager==this.manager);
