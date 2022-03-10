@@ -313,7 +313,7 @@ export class BellCurveFittingComponent implements OnInit {
   public GetFilteredAppraisalCycle() {
     this.PerformanceManagementService.GetConductappraisalStaffList().subscribe(data => {
       debugger
-      this.FilteredStaffAppraisalList = data.filter(x => x.appraisalCycleName == this.appraisalCycleName)
+      this.FilteredStaffAppraisalList = data.filter(x => x.appraisalCycleName == this.appraisalCycleName )
 
 
       
@@ -377,19 +377,21 @@ public CloseAppraisal(){
     confirmButtonText: 'Yes, Close it!',
     cancelButtonText: 'No, keep it'
   }).then((result) => {
-    if (result.value == true && this.appraisalClose!=1) {
-       this.PerformanceManagementService.CloseAppraisalCycle(this.AppraisalCycleID).subscribe(data => {
-         debugger
-         Swal.fire('Appraisal Cycle Closed Successfully!!')
-         location.reload();
-       })
-       
+    if (result.value == true) {
+      if(this.appraisalClose==0){
+        var obj={
+          'appraiselID':this.AppraisalCycleID
+        }
+        this.PerformanceManagementService.CloseAppraisalCycle(obj).subscribe(data => {
+          debugger
+          Swal.fire('Appraisal Cycle Closed Successfully!!')
+          location.reload();
+        }) 
+      }
+      else{
+        Swal.fire('Appraisal Cycle Closed Already!!')
+      }
     }
-    else{
-      Swal.fire('Appraisal Cycle Closed Already!!')
-    }
-  
-    
   })
 }
 }

@@ -319,7 +319,7 @@ export class PerformanceManagementService {
   
   public CloseAppraisalCycle(json: any) {
     debugger
-    let APIURL = this.baseURL + "Master/UpdateAppraisalCycle";
+    let APIURL = this.baseURL + "Master/CloseAppraisalCycle";
     return this.http.post<any[]>(APIURL, json);
   }
 

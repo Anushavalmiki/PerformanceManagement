@@ -125,7 +125,7 @@
                             <td>{{details.cycleEndDate|date}}</td> -->
                             <td>
                                 <button class="btn btn-primary editable-table-button btn-xs" data-toggle="modal" data-target="#viewbellcurve"
-                                    (click)="ViewScores(details)">Change Rating
+                                disabled]="details.appraisalClose=='1'" (click)="ViewScores(details)">Change Rating
                                 </button>
                             </td>
                         </tr>
