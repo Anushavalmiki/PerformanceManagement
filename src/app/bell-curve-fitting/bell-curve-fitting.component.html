@@ -80,7 +80,7 @@
     </div>
    
     <span *ngIf="appraisalPendingCount==0 && appraisalClose!='1'"><button class="btn btn-success" (click)="CloseAppraisal()">Complete Appraisal</button></span><br>
-    <span *ngIf="appraisalPendingCount==0 && appraisalClose=='1'" style="color: red;">Appraisal Cycle Closed</span><br><br>
+    <span *ngIf="appraisalPendingCount==0 && appraisalClose=='1'" style="color: red;">Appraisal Cycle is Closed</span><br><br>
 
  
     <div class="container-fluid" id="demo" class="collapse"  *ngIf="appraisalCycleName!=0">
