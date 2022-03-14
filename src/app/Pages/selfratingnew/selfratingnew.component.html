@@ -12,18 +12,19 @@
     <div class="row">
         <div class="col-lg-10"></div>
         <div class="col-lg-2">
-       
-                <!-- <button type="button" *ngIf="showbtn && EmployeeSubmittedDate==null" class="btn btn-primary" (click)="SubmitEmployeeAppraisal()">Submit
+
+            <!-- <button type="button" *ngIf="showbtn && EmployeeSubmittedDate==null" class="btn btn-primary" (click)="SubmitEmployeeAppraisal()">Submit
                     Appraisal</button>
                     <p  *ngIf="showbtn && EmployeeSubmittedDate!=null" style="color:green">Appraisal Submitted!!</p>
                 <button type="button" *ngIf="!showbtn" class="btn btn-primary" disabled>Submit
                     Appraisal</button> -->
 
-                    <button type="button"class="btn btn-primary" *ngIf="showbtn && EmployeeSubmittedDate==null"  (click)="SubmitEmployeeAppraisal()">Submit
-                        Appraisal</button>
-                        <p *ngIf="showbtn && EmployeeSubmittedDate!=null"  style="color:green">Appraisal Submitted!!</p>
-                    <button type="button"  *ngIf="!showbtn" class="btn btn-primary" disabled>Submit
-                        Appraisal</button>
+            <button type="button" class="btn btn-primary" *ngIf="showbtn && EmployeeSubmittedDate==null"
+                (click)="SubmitEmployeeAppraisal()">Submit
+                Appraisal</button>
+            <p *ngIf="showbtn && EmployeeSubmittedDate!=null" style="color:green">Appraisal Submitted!!</p>
+            <button type="button" *ngIf="!showbtn" class="btn btn-primary" disabled>Submit
+                Appraisal</button>
         </div>
     </div>
     <br>
@@ -55,25 +56,28 @@
                             </td>
 
                             <td [ngClass]="{'bggreen':details.empupdate==1 }">
-                                <button *ngIf="details.empupdate!=1" type="button" class="btn btn-primary" [disabled]="details.appraiasalcheck=='0'"
-                                    data-toggle="modal" (click)="GetKPIID(details)"
-                                    data-target="#exampleModal">Rate</button> 
-                                    
-                                    
+                                <button *ngIf="details.empupdate!=1" type="button" class="btn btn-primary"
+                                    [disabled]="details.appraiasalcheck==0" data-toggle="modal"
+                                    (click)="GetKPIID(details)" data-target="#exampleModal">Rate</button>
+
+
                                 <!-- <button data-toggle="modal" data-target="#exampleModal2" class="cancel"
                                     *ngIf="details.empupdate==1 && details.attachment!=null">View
                                     Attachments</button>
                                 <p
                                     *ngIf="details.attachment=='0'|| details.attachment==null && details.empupdate==1">
-                                    No Attachments</p> -->                                  
+                                    No Attachments</p> -->
                                 <button *ngIf="details.empupdate==1" type="button" class="btn btn-success"
-                                data-toggle="modal" (click)="GetKPIIDetails(details)" 
-                                data-target="#exampleModal1">View
-                                Details</button><br><br>
+                                    data-toggle="modal" (click)="GetKPIIDetails(details)"
+                                    data-target="#exampleModal1">View
+                                    Details</button><br><br>
 
-                                <button class=" btn btn-primary action1" data-toggle="modal" data-target="#exampleModal2" 
-                                (click)="GetKPIIDetails(details)" *ngIf="details.selfattachment!=0 &&details.empupdate==1">View Attachments</button>
-                                <p *ngIf="details.empupdate==1&&(details.selfattachment=='0'||details.selfattachment==null)" >No Attachments</p>
+                                <button class=" btn btn-primary action1" data-toggle="modal"
+                                    data-target="#exampleModal2" (click)="GetKPIIDetails(details)"
+                                    *ngIf="details.selfattachment!=0 &&details.empupdate==1">View Attachments</button>
+                                <p
+                                    *ngIf="details.empupdate==1&&(details.selfattachment=='0'||details.selfattachment==null)">
+                                    No Attachments</p>
                                 <!-- <button *ngIf="details.empupdate==1" type="button" class="btn btn-success"
                                 data-toggle="modal" (click)="GetKPIIDetails(details)"
                                 data-target="#exampleModal1">View
@@ -114,56 +118,59 @@
             </div>
             <div class="modal-body">
                 <form #selfrateform="ngForm">
-                <div class="row">
-                    <div class="col-lg-1">
+                    <div class="row">
+                        <div class="col-lg-1">
+                        </div>
+                        <div class="col-lg-3">
+                            <p style="padding:5px">
+                                Rating<span style="color: red;">*</span> </p>
+                        </div>
+                        <div class="col-lg-7">
+                            <select class="dropdown form-control" id="Score" name="Score" [(ngModel)]="Score" required>
+                                <option value="0">Select Rating</option>
+                                <option *ngFor="let value of list" value="{{value.id}}">{{value.score}} -
+                                    {{value.answers}}
+                                </option>
+                            </select>
+                        </div>
                     </div>
-                    <div class="col-lg-3">
-                        <p style="padding:5px">
-                            Rating<span style="color: red;">*</span> </p>
+                    <br>
+                    <div class="row">
+                        <div class="col-lg-1">
+                        </div>
+                        <div class="col-lg-3">
+                            <p style="padding:5px">
+                                Comments<span style="color: red;">*</span> </p>
+                        </div>
+                        <div class="col-lg-7">
+                            <ckeditor id="SelfComments" name="SelfComments" [(ngModel)]="SelfComments" required
+                                data="<p>Enter Answer Here !</p>"></ckeditor>
+                        </div>
+                    </div><br>
+                    <div class="row">
+                        <div class="col-lg-1">
+                        </div>
+                        <div class="col-lg-3">
+                            <p style="padding:5px">
+                                Attachment<span style="color: red;"></span> </p>
+                        </div>
+                        <div class="col-lg-7">
+                            <ngx-dropzone (change)="onSelect($event)" style="width:100% ;height: auto;">
+                                <ngx-dropzone-label>Drag or Click to Upload</ngx-dropzone-label>
+                                <ngx-dropzone-preview *ngFor="let f of files" [removable]="true"
+                                    (removed)="onRemove(f)">
+                                    <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label>
+                                </ngx-dropzone-preview>
+                            </ngx-dropzone>
+                        </div>
                     </div>
-                    <div class="col-lg-7">
-                        <select class="dropdown form-control" id="Score" name="Score" [(ngModel)]="Score" required>
-                            <option value="0">Select Rating</option>
-                            <option *ngFor="let value of list" value="{{value.id}}">{{value.score}} - {{value.answers}}
-                            </option>
-                        </select>
-                    </div>
-                </div>
-                <br>
-                <div class="row">
-                    <div class="col-lg-1">
-                    </div>
-                    <div class="col-lg-3">
-                        <p style="padding:5px">
-                            Comments<span style="color: red;">*</span> </p>
-                    </div>
-                    <div class="col-lg-7">
-                        <ckeditor id="SelfComments" name="SelfComments" [(ngModel)]="SelfComments"
-                          required    data="<p>Enter Answer Here !</p>"></ckeditor>
-                    </div>
-                </div><br>
-                <div class="row">
-                    <div class="col-lg-1">
-                    </div>
-                    <div class="col-lg-3">
-                        <p style="padding:5px">
-                            Attachment<span style="color: red;"></span> </p>
-                    </div> 
-                    <div class="col-lg-7">
-                        <ngx-dropzone (change)="onSelect($event)" style="width:100% ;height: auto;">
-                            <ngx-dropzone-label>Drag or Click to Upload</ngx-dropzone-label>
-                            <ngx-dropzone-preview *ngFor="let f of files" [removable]="true" (removed)="onRemove(f)">
-                                <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label>
-                            </ngx-dropzone-preview>
-                        </ngx-dropzone>
-                    </div>
-                </div>
-                <br>
-            </form>
+                    <br>
+                </form>
             </div>
             <div class="modal-footer">
                 <button type="button" id="close" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" [disabled]="selfrateform.form.invalid" (click)="SaveDetails()">Save </button>
+                <button type="button" class="btn btn-primary" [disabled]="selfrateform.form.invalid"
+                    (click)="SaveDetails()">Save </button>
             </div>
         </div>
     </div>
@@ -225,9 +232,9 @@
                     </div>
                 </div> -->
             </div>
-            <div class="modal-footer" *ngIf="EmployeeSubmittedDate==null">    
+            <div class="modal-footer" *ngIf="EmployeeSubmittedDate==null">
                 <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
-                <button type="button" class="btn btn-primary" data-dismiss="modal"  (click)="UpdateMain()">Update
+                <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="UpdateMain()">Update
                     Changes</button>
             </div>
         </div>
@@ -258,7 +265,7 @@
                 </div>
                 <br>
                 <div class="row" *ngIf="EmployeeSubmittedDate==null">
-             
+
                     <div class="col-lg-8"></div>
                     <div class="col-lg-2">
                         <button class="form-control cancel" data-toggle="modal" data-target="#exampleModal3"

@@ -58,7 +58,7 @@ export class ManagerAppraisalComponent implements OnInit {
 
         this.PerformanceManagementService.GetKRAByStaffID(this.StaffID).subscribe(data => {
           debugger
-          this.ResultAreaList = data.filter((x: { employeeSubmittedDate: any; appraiselID: any;})=>x.employeeSubmittedDate!=null && x.appraiselID == this.appraislid);
+          this.ResultAreaList = data.filter((x: { emplosubmitdate: any; appraiselID: any;})=>x.emplosubmitdate!=null && x.appraiselID == this.appraislid);
           console.log(this.ResultAreaList);
           
           this.Name=this.ResultAreaList[0].name
