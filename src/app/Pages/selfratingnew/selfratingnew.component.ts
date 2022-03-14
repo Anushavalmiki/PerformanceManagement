@@ -152,7 +152,7 @@ export class SelfratingnewComponent implements OnInit {
       'SelfScores': this.Score,
       'SelfComments': this.SelfComments,
       'Attachment': this.attachmentNew,
-      'ApprisalID': this.appraislid
+       'ApprisalID': this.appraislid
     }
     this.PerformanceManagementService.InsertStaffScores(entity).subscribe(data => {
       debugger

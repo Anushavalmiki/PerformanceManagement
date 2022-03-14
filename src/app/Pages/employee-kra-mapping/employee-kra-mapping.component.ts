@@ -43,7 +43,7 @@ export class EmployeeKraMappingComponent implements OnInit {
 
     this.PerformanceManagementService.GetAppraisalCycle().subscribe(data => {
       debugger
-      this.Apprisalcyclelist = data.filter(x=>x.appraisalClose==null);
+      this.Apprisalcyclelist = data.filter(x=>x.appraisalClose==0);
     });
     this.PerformanceManagementService.GetRoleType().subscribe(data => {
       debugger

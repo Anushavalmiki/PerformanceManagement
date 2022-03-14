@@ -78,7 +78,7 @@ kpitypelist:any;
 
     this.PerformanceManagementService.GetAppraisalCycle().subscribe(data => {
       debugger
-      this.Apprisalcyclelist = data;
+      this.Apprisalcyclelist = data.filter(x=>x.appraisalClose!=1);
     });
 
     this.PerformanceManagementService.GetKraMaster().subscribe(data => {

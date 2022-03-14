@@ -43,6 +43,7 @@ import { ManagerDashboardComponent } from './manager-dashboard/manager-dashboard
 import { HRDashboardComponent } from './hrdashboard/hrdashboard.component';
 import { EmployeeTileDashboardComponent } from './employee-tile-dashboard/employee-tile-dashboard.component';
 import { LoaderComponent } from './loader/loader.component';
+import { PipComponent } from './pip/pip.component';
 
 @NgModule({
   declarations: [
@@ -79,7 +80,8 @@ import { LoaderComponent } from './loader/loader.component';
     ManagerDashboardComponent,
     HRDashboardComponent,
     EmployeeTileDashboardComponent,
-    LoaderComponent
+    LoaderComponent,
+    PipComponent
   ],
   imports: [
     BrowserModule,
