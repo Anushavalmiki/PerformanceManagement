@@ -185,6 +185,13 @@ export class PerformanceManagementService {
     );
   }
 
+  
+  public GetConductappraisalStaffListforpip() {
+    return this.http.get<any[]>(
+      this.baseURL + "/Master/GetConductappraisalStaffListforpip"
+    );
+  }
+
   public InsertEmployeeKraMap(data: any) {
     debugger;
     this.url = this.baseURL + 'Master/InsertEmployeeKraMap';

@@ -27,124 +27,123 @@ export class PipComponent implements OnInit {
   rolelistCopy:any;
   p: any = 1;
   count1: any = 10;
+  department:any;
+  role:any;
+  rate:any;
+  comments:any;
+  remove:any;
+  updaterate:any;
+  separation:any;
+  list:any;
+  Score:any;
 
   ngOnInit(): void {
     this.StaffID = sessionStorage.getItem('EmaployedID')
     this.roleid = sessionStorage.getItem('roleid');
-    this.GetRoleType();
-    this.GetMyDetails();
+    // this.GetMyDetails();
     this.ConductappraisalStaffList();
+    this.HighScore();
     this.employee = 0;
     this.dumpmanagerList = 0;
 
   }
 
 
-  getRoleID(even: any) {
-    this.roleTypeid = even.target.value;
-  }
-
-  public GetRoleType() {
-    this.PerformanceManagementService.GetRoleType().subscribe(
-      data => {
-        this.roleTypeList = data;
-        console.log("type", this.roleTypeList);
-        this.roleTypeid = 0;
-      }
-    )
-  }
-
+ 
 
 
   getEmployee(even: any) {
-    this.manager = even.target.value;
-  }
-
-  public GetMyDetails() {
-    debugger
-    this.PerformanceManagementService.GetMyDetails().subscribe(
-      data => {
-        debugger
-        this.managerList = data.filter(x=>x.supervisor==null)    
-        const key = 'manager';
-        const key1 = 'month'
-        this.uniquelist = [...new Map(this.managerList.map((item: { [x: string]: any; }) =>
-
-          [(item[key]), item])).values()]
-
+    this.employee = even.target.value;
+    this.PerformanceManagementService.GetConductappraisalStaffListforpip().subscribe(
+      res => {
+        debugger;
+        let temp: any = res
+          this.StaffAppraisalList = temp.filter((x: { id: any; })=>x.id==this.employee);;
+          this.role=this.StaffAppraisalList[0].role
+          this.department=this.StaffAppraisalList[0].departmentName
+          this.rate=this.StaffAppraisalList[0].finalrating
+          this.StaffAppraisalList = temp
+        
       }
     )
   }
 
+  // public GetMyDetails() {
+  //   debugger
+  //   this.PerformanceManagementService.GetMyDetails().subscribe(
+  //     data => {
+  //       debugger
+  //       this.managerList = data.filter(x=>x.supervisor==null)    
+  //       const key = 'manager';
+  //       const key1 = 'month'
+  //       this.uniquelist = [...new Map(this.managerList.map((item: { [x: string]: any; }) =>
+
+  //         [(item[key]), item])).values()]
+
+  //     }
+  //   )
+  // }
+
   public ConductappraisalStaffList() {
-    this.PerformanceManagementService.GetConductappraisalStaffList().subscribe(
+    this.PerformanceManagementService.GetConductappraisalStaffListforpip().subscribe(
       res => {
         debugger;
         let temp: any = res
-        if(this.roleid==3)
-        {
-          this.StaffAppraisalList = temp; 
-        
-
-        }
-        else if(this.roleid==4)
-        {
           this.StaffAppraisalList = temp;
+  
+         
+
           const key = 'employee';
           const key1 = 'month'
           this.uniquelist = [...new Map(this.StaffAppraisalList.map((item: { [x: string]: any; }) =>
   
             [(item[key]), item])).values()]
-          this.dumpmanagerList= this.StaffAppraisalList
-          //  this.StaffAppraisalList = this.dumpmanagerList.filter((x: { cioScores: null;approver1:any }) => x.cioScores != null && x.approver1==this.StaffID)
-           this.StaffAppraisalList = this.dumpmanagerList.filter((x: { approver1:any }) => x.approver1==this.StaffID)
-
-
-
-          }
       }
     )
   }
 
 
-  // fileName = 'Adjustment Report.xlsx';
-  // exportexcel(): void {
-  //   /* table id is passed over here */
-  //   let element = document.getElementById('download');
-  //   const ws: XLSX.WorkSheet = XLSX.utils.table_to_sheet(element);
-  //   /* generate workbook and add the worksheet */
-  //   const wb: XLSX.WorkBook = XLSX.utils.book_new();
-  //   XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
-  //   /* save to file */
-  //   XLSX.writeFile(wb, this.fileName);
-  // }
-
-  public GetFilteredRoleType(){
-    this.PerformanceManagementService.GetConductappraisalStaffList().subscribe(data => {
+  
+  update() {
+    debugger
+    var entity = {
+      'staffID': this.StaffID,
+      'bellcurveScore': this.Score
+    }
+    this.PerformanceManagementService.UpdateBellCurveFitting(entity).subscribe(data => {
       debugger
-      this.StaffAppraisalList = data.filter(x=>x.type==this.roleTypeid )
+      Swal.fire("Updated Successfully");
+      this.ngOnInit();
     })
+
+
+
   }
 
+  public ViewScores(event: any) {
+    debugger;
+    this.StaffID = event.id;
+    let StaffTypeID = event.type;
 
-  public GetFilteredManager(){
-    this.PerformanceManagementService.GetConductappraisalStaffList().subscribe(data => {
-      debugger
-      this.StaffAppraisalList = data.filter(x=>x.managername==this.manager )
-    })
+    // this.router.navigate(['/StaffScoreFullDetails', StaffID, StaffID]);
+
   }
 
-
-
-
+  public HighScore() {
+    debugger
+    this.PerformanceManagementService.GetHighScores().subscribe(data => {
+      debugger
+      this.list = data;
+    })
+  }
 }
 
 
 
 
 
-function x(x: any, manager: any): any {
-  throw new Error('Function not implemented.');
-}
+
+
+
 
 
