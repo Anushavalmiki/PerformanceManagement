@@ -27,13 +27,14 @@ export class PipComponent implements OnInit {
   rolelistCopy:any;
   p: any = 1;
   count1: any = 10;
+
   ngOnInit(): void {
     this.StaffID = sessionStorage.getItem('EmaployedID')
     this.roleid = sessionStorage.getItem('roleid');
     this.GetRoleType();
     this.GetMyDetails();
     this.ConductappraisalStaffList();
-    this.manager = 0;
+    this.employee = 0;
     this.dumpmanagerList = 0;
 
   }
@@ -55,7 +56,7 @@ export class PipComponent implements OnInit {
 
 
 
-  getManager(even: any) {
+  getEmployee(even: any) {
     this.manager = even.target.value;
   }
 
@@ -64,7 +65,7 @@ export class PipComponent implements OnInit {
     this.PerformanceManagementService.GetMyDetails().subscribe(
       data => {
         debugger
-        this.managerList = data.filter(x=>x.supervisor==null)     // 10422 HR is taken as manager for all managers 
+        this.managerList = data.filter(x=>x.supervisor==null)    
         const key = 'manager';
         const key1 = 'month'
         this.uniquelist = [...new Map(this.managerList.map((item: { [x: string]: any; }) =>
@@ -89,9 +90,16 @@ export class PipComponent implements OnInit {
         else if(this.roleid==4)
         {
           this.StaffAppraisalList = temp;
+          const key = 'employee';
+          const key1 = 'month'
+          this.uniquelist = [...new Map(this.StaffAppraisalList.map((item: { [x: string]: any; }) =>
+  
+            [(item[key]), item])).values()]
           this.dumpmanagerList= this.StaffAppraisalList
           //  this.StaffAppraisalList = this.dumpmanagerList.filter((x: { cioScores: null;approver1:any }) => x.cioScores != null && x.approver1==this.StaffID)
            this.StaffAppraisalList = this.dumpmanagerList.filter((x: { approver1:any }) => x.approver1==this.StaffID)
+
+
 
           }
       }

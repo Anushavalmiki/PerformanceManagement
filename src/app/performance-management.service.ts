@@ -73,6 +73,8 @@ export class PerformanceManagementService {
     return this.http.post<any[]>(APIURL, json);
   }
 
+
+
   public GetKeyResultArea() {
     return this.http.get<any[]>(
       this.baseURL + "/Master/GetKeyResultArea"

@@ -97,6 +97,14 @@ table {
   width: 92%;
 }
 
+.card {
+  padding: 20px;
+  background: #ffffff;
+  box-shadow: 1px 1px 15px 3px rgba(0, 0, 0, 0.12);
+  border-radius: 12px;
+  width: 100%;
+}
+
 .cancel {
   border: none;
   background: #3247D5;
