@@ -78,7 +78,7 @@ const routes: Routes = [
   {path:'HRDashboard',component:HRDashboardComponent},
   {path:'EmployeeTileDashboard',component:EmployeeTileDashboardComponent},
   { path: 'Loader', component:LoaderComponent },
-  { path: 'PIP', component:PipComponent },
+  { path: 'Pip', component:PipComponent },
   
 ];
 

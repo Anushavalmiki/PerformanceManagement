@@ -95,7 +95,7 @@ export class SidebarComponent implements OnInit {
 
   pip(){
     this.active = 'pip';
-    localStorage.setItem("clickname","Appraisal pip")
+    localStorage.setItem("clickname","PIP")
   }
 
   dashboard() {

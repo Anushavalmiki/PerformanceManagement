@@ -229,6 +229,12 @@ export class PerformanceManagementService {
     return this.http.post(this.url, data);
   }
 
+  public UpdateReAppraisalHRrating(data: any) {
+    debugger;
+    this.url = this.baseURL + 'Master/UpdateReAppraisalHRrating';
+    return this.http.post(this.url, data);
+  }
+
   public GetStaffScoresByStaffandYear(Year: any, StaffID: any) {
     return this.http.get<any[]>(this.baseURL + '/Master/GetStaffScoresByStaffandYear?Year=' + Year + '&StaffID=' + StaffID);
   }
@@ -332,5 +338,9 @@ export class PerformanceManagementService {
     return this.http.post<any[]>(APIURL, json);
   }
 
-
+  public InsertStaffExitFormality(data: any) {
+    debugger;
+    this.url = this.host + '/Announcement/InsertStaffExitFormality';
+    return this.http.post(this.url, data);
+  }
 }

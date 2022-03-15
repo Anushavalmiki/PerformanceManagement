@@ -31,13 +31,18 @@ export class PipComponent implements OnInit {
   role:any;
   rate:any;
   comments:any;
-  remove:any;
+
   updaterate:any;
   separation:any;
   list:any;
   Score:any;
+  Type:any
+  lastworkingdate:any;
+  Notes:any;
 
   ngOnInit(): void {
+    this.Type="Select Type"
+    this.Score="0"
     this.StaffID = sessionStorage.getItem('EmaployedID')
     this.roleid = sessionStorage.getItem('roleid');
     // this.GetMyDetails();
@@ -47,10 +52,6 @@ export class PipComponent implements OnInit {
     this.dumpmanagerList = 0;
 
   }
-
-
- 
-
 
   getEmployee(even: any) {
     this.employee = even.target.value;
@@ -68,21 +69,6 @@ export class PipComponent implements OnInit {
     )
   }
 
-  // public GetMyDetails() {
-  //   debugger
-  //   this.PerformanceManagementService.GetMyDetails().subscribe(
-  //     data => {
-  //       debugger
-  //       this.managerList = data.filter(x=>x.supervisor==null)    
-  //       const key = 'manager';
-  //       const key1 = 'month'
-  //       this.uniquelist = [...new Map(this.managerList.map((item: { [x: string]: any; }) =>
-
-  //         [(item[key]), item])).values()]
-
-  //     }
-  //   )
-  // }
 
   public ConductappraisalStaffList() {
     this.PerformanceManagementService.GetConductappraisalStaffListforpip().subscribe(
@@ -90,9 +76,6 @@ export class PipComponent implements OnInit {
         debugger;
         let temp: any = res
           this.StaffAppraisalList = temp;
-  
-         
-
           const key = 'employee';
           const key1 = 'month'
           this.uniquelist = [...new Map(this.StaffAppraisalList.map((item: { [x: string]: any; }) =>
@@ -108,17 +91,15 @@ export class PipComponent implements OnInit {
     debugger
     var entity = {
       'staffID': this.StaffID,
-      'bellcurveScore': this.Score
+      'cIOScores': this.Score
     }
-    this.PerformanceManagementService.UpdateBellCurveFitting(entity).subscribe(data => {
+    this.PerformanceManagementService.UpdateReAppraisalHRrating(entity).subscribe(data => {
       debugger
       Swal.fire("Updated Successfully");
       this.ngOnInit();
     })
-
-
-
   }
+
 
   public ViewScores(event: any) {
     debugger;
@@ -133,7 +114,25 @@ export class PipComponent implements OnInit {
     debugger
     this.PerformanceManagementService.GetHighScores().subscribe(data => {
       debugger
-      this.list = data;
+      this.list = data.filter(x=>x.score>2);
+    })
+  }
+ 
+  remove(){
+    var eb = {
+      'StaffID': this.StaffID,
+      'Notes': this.Notes,
+      'lastworkingdate': this.lastworkingdate,
+      'type': this.Type
+    }
+    this.PerformanceManagementService.InsertStaffExitFormality(eb).subscribe(data => {
+      debugger
+      Swal.fire("Successfully Moved to Exit Formality!!");
+      this.StaffID="",
+      this.Notes="",
+      this.lastworkingdate="",
+      this.Type=""
+      this.ngOnInit();
     })
   }
 }
