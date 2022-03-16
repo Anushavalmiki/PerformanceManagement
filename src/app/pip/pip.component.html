@@ -95,11 +95,14 @@
                         <td>{{details.role}}</td>
                         <td>{{details.departmentName}}</td>
                         <td *ngIf="roleid==3">{{details.managername}}</td>
-                        <td>
+                        <!-- <td>
                             <p *ngIf="details.bellcurveScore==null && details.hrSubmittedDate!=null ">
                                 {{((details.avgGroupHeadScores+details.avgCIOScores)/2)|number:'1.0-0'}}</p>
                             <p *ngIf="details.bellcurveScore!=null">{{details.bellcurveScore}}</p>
                             <p *ngIf="details.hrSubmittedDate==null">NA</p>
+                        </td> -->
+                        <td>
+                            {{details.finalrating}}
                         </td>
                         <td>
                             <button class="btn btn-primary editable-table-button btn-xs" data-toggle="modal"
@@ -145,6 +148,7 @@
                             <option value="Select Type">Select Type</option>
                             <option value="1">Retirement</option>
                             <option value="2">Resignation </option>
+                            <option value="3">Terminated </option>
                         </select>
                     </div>
                 </div><br>
