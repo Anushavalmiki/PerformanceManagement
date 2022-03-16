@@ -64,9 +64,12 @@
                             </td>
                             <td [ngClass]="{'bggreen':details.hrupdate==1 }">
                                 <button class=" btn btn-primary action" data-toggle="modal" data-target="#exampleModal2"
-                                    (click)="getattachment(details)" *ngIf="details.selfattachment!=null&&details.selfattachment!='0'&&details.selfattachment!=''">View
+                                    (click)="getattachment(details)"
+                                    *ngIf="details.selfattachment!=null&&details.selfattachment!='0'&&details.selfattachment!=''">View
                                     Attachments</button>
-                                <p *ngIf="details.selfattachment==null||details.selfattachment=='0'||details.selfattachment==''">No Attachments</p>
+                                <p
+                                    *ngIf="details.selfattachment==null||details.selfattachment=='0'||details.selfattachment==''">
+                                    No Attachments</p>
 
                             </td>
                             <td [ngClass]="{'bg-warning':details.hrupdate==1 }" style="text-align: center;">
@@ -78,15 +81,17 @@
                             </td>
                             <td [ngClass]="{'bggreen':details.hrupdate==1 }">
                                 <button class=" btn btn-primary action" data-toggle="modal" data-target="#exampleModal3"
-                                (click)="getattachment(details)" *ngIf="details.managerattachment!=null">View Attachments</button>
-                                <p *ngIf="details.managerattachment=='0'||details.managerattachment==null" >No Attachments</p>
+                                    (click)="getattachment(details)" *ngIf="details.managerattachment!=null">View
+                                    Attachments</button>
+                                <p *ngIf="details.managerattachment=='0'||details.managerattachment==null">No
+                                    Attachments</p>
                             </td>
                             <td [ngClass]="{'bg-warning':details.hrupdate==1 }" style="text-align: center;">
                                 {{details.hrrrating}}
                                 <p *ngIf="details.hrupdate!=1">NA</p>
                             </td>
                             <td [ngClass]="{'bggreen':details.hrupdate==1 }">
-                                
+
                                 <button *ngIf="details.hrupdate!=1 &&details.managerupdate==1" type="button"
                                     class="btn btn-primary" data-toggle="modal" (click)="GetKPIID(details)"
                                     data-target="#exampleModal">Rate Employee</button>
@@ -96,10 +101,11 @@
                                     data-target="#exampleModal1">View
                                     Details</button><br><br>
 
-                                    <button class=" btn btn-primary action" data-toggle="modal" data-target="#exampleModal4" 
-                                    (click)="GetKPIIDetails(details)" *ngIf="details.hrattachment!=null&&details.hrattachment!='0'&&details.hrattachment!=''">View Attachments</button>
-                                    <p *ngIf="details.hrattachment=='0'||details.hrattachment==null ||details.hrattachment=='' && details.hrupdate==1" >No Attachments</p>
-                                   
+                                <button class=" btn btn-primary action" data-toggle="modal" data-target="#exampleModal4"
+                                    (click)="GetKPIIDetails(details)"
+                                    *ngIf="details.hrattachment!=null&&details.hrattachment!='0'&&details.hrattachment!=''">View
+                                    Attachments</button>
+                                <p *ngIf="details.hrattachment==null">No Attachments</p>
                             </td>
                         </tr>
                     </tbody>
@@ -128,56 +134,60 @@
                 </button>
             </div>
             <div class="modal-body">
-                <div class="row">
-                    <div class="col-lg-1">
+                <form #empratingform="ngForm">
+                    <div class="row">
+                        <div class="col-lg-1">
+                        </div>
+                        <div class="col-lg-3">
+                            <p style="padding:5px">
+                                Rating<span style="color: red;">*</span> </p>
+                        </div>
+                        <div class="col-lg-7">
+                            <select class="dropdown form-control" id="Score" name="Score" [(ngModel)]="Score" required>
+                                <option value="0">Select Rating</option>
+                                <option *ngFor="let value of list" value="{{value.id}}">{{value.score}} -
+                                    {{value.answers}}
+                                </option>
+                            </select>
+                        </div>
                     </div>
-                    <div class="col-lg-3">
-                        <p style="padding:5px">
-                            Rating<span style="color: red;">*</span> </p>
+                    <br>
+                    <div class="row">
+                        <div class="col-lg-1">
+                        </div>
+                        <div class="col-lg-3">
+                            <p style="padding:5px">
+                                Comments<span style="color: red;">*</span> </p>
+                        </div>
+                        <div class="col-lg-7">
+                            <ckeditor id="SelfComments" name="SelfComments" [(ngModel)]="SelfComments" required
+                                data="<p>Enter Answer Here !</p>"></ckeditor>
+                        </div>
                     </div>
-                    <div class="col-lg-7">
-                        <select class="dropdown form-control" id="Score" name="Score" [(ngModel)]="Score" required>
-                            <option value="0">Select Rating</option>
-                            <option *ngFor="let value of list" value="{{value.id}}">{{value.score}} - {{value.answers}}
-                            </option>
-                        </select>
+                    <br>
+                    <div class="row">
+                        <div class="col-lg-1">
+                        </div>
+                        <div class="col-lg-3">
+                            <p style="padding:5px" required>
+                                Attachment</p>
+                        </div>
+                        <div class="col-lg-7">
+                            <ngx-dropzone (change)="onSelect($event)" style="width:100% ;height: auto;">
+                                <ngx-dropzone-label>Drag or Click to Upload</ngx-dropzone-label>
+                                <ngx-dropzone-preview *ngFor="let f of files" [removable]="true"
+                                    (removed)="onRemove(f)" required>
+                                    <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label>
+                                </ngx-dropzone-preview>
+                            </ngx-dropzone>
+                        </div>
                     </div>
-                </div>
-                <br>
-                <div class="row">
-                    <div class="col-lg-1">          
-                    </div>
-                    <div class="col-lg-3">
-                        <p style="padding:5px">
-                            Comments<span style="color: red;">*</span> </p>
-                    </div>
-                    <div class="col-lg-7">
-                        <ckeditor id="SelfComments" name="SelfComments" [(ngModel)]="SelfComments" required
-                            data="<p>Enter Answer Here !</p>"></ckeditor>
-                    </div>
-                </div>
-                <br>
-                <div class="row">
-                    <div class="col-lg-1">
-                    </div>
-                    <div class="col-lg-3">
-                        <p style="padding:5px">
-                            Attachment</p>
-                    </div>
-                    <div class="col-lg-7">
-                        <ngx-dropzone (change)="onSelect($event)" style="width:100% ;height: auto;">
-                            <ngx-dropzone-label>Drag or Click to Upload</ngx-dropzone-label>
-                            <ngx-dropzone-preview *ngFor="let f of files" [removable]="true" (removed)="onRemove(f)">
-                                <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label>
-                            </ngx-dropzone-preview>
-                        </ngx-dropzone>
-                    </div>
-                </div>
-                <br>
+                    <br>
+                </form>
             </div>
             <div class="modal-footer">
                 <button type="button" id="close" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" (click)="SaveDetails()">Save</button>
+                <button type="button" class="btn btn-primary" (click)="SaveDetails()" [disabled]="empratingform.invalid">Save</button>
             </div>
         </div>
     </div>
@@ -194,11 +204,12 @@
                 </button>
             </div>
             <div class="modal-body">
+                <form #selfratingform="ngForm">
                 <div class="row">
                     <div class="col-lg-1">
                     </div>
                     <div class="col-lg-3">
-                        <p style="padding:5px">
+                        <p style="padding:5px" >
                             Rating <span style="color: red;">*</span> </p>
                     </div>
                     <div class="col-lg-7">
@@ -218,7 +229,7 @@
                             Comments <span style="color: red;">*</span> </p>
                     </div>
                     <div class="col-lg-7">
-                        <ckeditor id="SelfComments" name="SelfComments" [(ngModel)]="SelfComments"
+                        <ckeditor id="SelfComments" name="SelfComments" [(ngModel)]="SelfComments" required
                             data="<p>Enter Answer Here !</p>"></ckeditor>
                     </div>
                 </div>
@@ -235,10 +246,12 @@
                             Attachments</button>
                     </div>
                 </div> -->
+            </form>
             </div>
-            <div class="modal-footer" *ngIf="HrSubmittedDate==null" >
+            <div class="modal-footer" *ngIf="HrSubmittedDate==null">
                 <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
-                <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="UpdateDetails()">Update changes</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="UpdateDetails()">Update
+                    changes</button>
             </div>
         </div>
     </div>
@@ -386,7 +399,7 @@
                     </div>
                 </div>
                 <br>
-                <div class="row"  *ngIf="HrSubmittedDate==null">
+                <div class="row" *ngIf="HrSubmittedDate==null">
                     <div class="col-lg-8"></div>
                     <div class="col-lg-2">
                         <button class="form-control cancel" data-toggle="modal" data-target="#exampleModal5"

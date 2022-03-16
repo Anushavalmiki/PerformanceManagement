@@ -38,7 +38,8 @@ export class EmployeeKraMappingComponent implements OnInit {
     this.RoleID = "";
     this.departmentName = "";
     this.Apprisalcycle = "";
-    this.kratypeid = "";
+    this.kratypeid="";
+    this.selectedItems3.length=0;
 
 
 
@@ -167,7 +168,6 @@ export class EmployeeKraMappingComponent implements OnInit {
   public InsertDetails() {
     debugger
     for (let i = 0; i < this.keyresultArray.length; i++) {
-
       if (this.keyresultArray.length == 0) {
         Swal.fire('Please Select Goals For Staff')
       }
