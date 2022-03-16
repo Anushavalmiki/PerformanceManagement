@@ -29,13 +29,13 @@
                 </div>
 
                 <div class="col-lg-3">
-                    <select class="form-control columnname" (change)="getfrequency($event)" [(ngModel)]="frequencyid"
-                        name="frequencyid">
-                        <option value="">Select Frequency Type</option>
-                        <option *ngFor="let details of frequency" value="{{details.id}}">{{details.frequencyName}}
-                        </option>
-
-                    </select>
+                    <select class="form-control" id="frequencyid" (change)="getfrequency($event)"
+                    name="frequencyid" required [(ngModel)]="frequencyid">
+                    <option value="">Select Frequency Type </option>
+                    <option *ngFor="let item of frequency" value="{{item.id}}">{{item.frequencyName}}
+                      
+                    </option>
+                </select>
                 </div>
 
                 <div class="col-lg-3">
