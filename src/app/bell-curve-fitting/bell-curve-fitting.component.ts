@@ -57,6 +57,7 @@ export class BellCurveFittingComponent implements OnInit {
   EmployeePendingCount:any;
   appraisalPendingCount:any;
   appraisalClose:any;
+  AppraisalCycleID:any;
   ngOnInit() {
     this.pending=0;
     this.roleid = sessionStorage.getItem('roleid');
@@ -295,18 +296,20 @@ export class BellCurveFittingComponent implements OnInit {
       this.FilteredStaffAppraisalList = data.filter(x => x.managername == this.manager)
     })
   }
-  AppraisalCycleID:any;
+
   public GetApprisalcycle(event: any) {
     debugger
+    this.appraisalCycleName=event.target.value;
     this.PerformanceManagementService.GetAppraisalCycle().subscribe(data => {
       debugger
-      let temp: any = data.filter(x => x.id == event.target.value);
+      let temp: any = data.filter(x => x.appraisalCycleName ==this.appraisalCycleName );
       this.AppraisalSubmitionDate = temp[0].employeeSubmissionDate;
 
       this.appraisalCycleName=temp[0].appraisalCycleName
       this.sDate = temp[0].cycleStartDate;
       this.eDate = temp[0].cycleEndDate;
-
+      debugger
+      this.GetFilteredAppraisalCycle()
     });
   }
 
@@ -318,6 +321,7 @@ export class BellCurveFittingComponent implements OnInit {
 
       
       this.appraisalcount = this.FilteredStaffAppraisalList.length;
+      this.appraisalClose=this.FilteredStaffAppraisalList[0].appraisalClose
       var list = data.filter(x => x.employeeSubmittedDate != null && x.selfScores != null && x.appraisalCycleName == this.appraisalCycleName &&
        x.cycleStartDate !=null && x.cycleEndDate != null && x.appraisalSubmitionDate != null  && x.employeeSubmittedDate !=null )
       this.employeSubmissionDate = list.length;
@@ -378,14 +382,14 @@ public CloseAppraisal(){
     cancelButtonText: 'No, keep it'
   }).then((result) => {
     if (result.value == true) {
-      if(this.appraisalClose==0){
+      if(this.appraisalClose==null || this.appraisalClose==0 ){
         var obj={
           'appraiselID':this.AppraisalCycleID
         }
         this.PerformanceManagementService.CloseAppraisalCycle(obj).subscribe(data => {
           debugger
           Swal.fire('Appraisal Cycle Closed Successfully!!')
-          location.reload();
+       
         }) 
       }
       else{
