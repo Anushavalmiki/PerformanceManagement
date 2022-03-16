@@ -315,6 +315,7 @@ export class StaffScoreReportComponent implements OnInit {
   }
 
   public GetFilteredAppraisalCycle() {
+    debugger
     this.PerformanceManagementService.GetConductappraisalStaffList().subscribe(data => {
       debugger
 
@@ -338,6 +339,7 @@ export class StaffScoreReportComponent implements OnInit {
         this.hrSubmittedlist = data.filter(x => x.hrSubmittedDate == null &&  x.cycleStartDate !=null && x.cycleEndDate != null && x.appraisalSubmitionDate != null  && x.appraisalCycleName == this.appraisalCycleName);
         console.log("data",data)
         console.log("hr", this.hrSubmittedlist)
+        debugger
         this.appraisalPendingCount = this.hrSubmittedlist.length;
         
     })
