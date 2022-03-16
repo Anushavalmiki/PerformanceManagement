@@ -321,3 +321,23 @@
   margin-left: 123px;
 
 }
+
+@media screen and (min-width: 1900px) {
+  .user{
+    position: absolute;
+    left: 76%;
+    right: 6.04%;
+    top: 2.57%;
+    bottom: 38.57%;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 13px;
+    line-height: 16px;
+    color: #FFFFFF;
+    margin-top: 20px;
+    float: left;
+    word-break: break-all;
+  }
+
+}
