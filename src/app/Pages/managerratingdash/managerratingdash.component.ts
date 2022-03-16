@@ -50,7 +50,7 @@ export class ManagerratingdashComponent implements OnInit {
 
     this.PerformanceManagementService.GetConductappraisalStaffList().subscribe(data => {
       debugger
-      this.EmployeeKradash = data.filter(x => x.approver1 == sessionStorage.getItem('EmaployedID') && x.selfScores != null && x.emplosubmitdate!=null);
+      this.EmployeeKradash = data.filter(x => x.approver1 == sessionStorage.getItem('EmaployedID') && x.selfScores != null && x.employeeSubmittedDate!=null);
       this.count = this.EmployeeKradash.length;
     });
 

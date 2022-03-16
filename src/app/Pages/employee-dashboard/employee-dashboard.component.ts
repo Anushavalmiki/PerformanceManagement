@@ -99,8 +99,7 @@ export class EmployeeDashboardComponent implements OnInit {
   public Filterstaff() {
     debugger
     let searchCopy = this.term.toLowerCase();
-    this.stafflist = this.stafflistCopy.filter((x: { name: string }) =>
-      x.name.toLowerCase().includes(searchCopy));
+    this.stafflist = this.stafflistCopy.filter((x: { name: string ,supervisor:number}) =>x.name.toLowerCase().includes(searchCopy) && x.supervisor==this.StaffID);
       this.count = this.stafflist.length;
   }
 
