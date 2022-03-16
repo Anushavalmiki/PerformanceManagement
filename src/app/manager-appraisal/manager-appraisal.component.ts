@@ -42,6 +42,7 @@ export class ManagerAppraisalComponent implements OnInit {
   selfAttachment:any;
   EmployeeId: any;
   appraislid:any;
+  managerrating:any;
   ngOnInit(): void {
     this.Score = 0;
     this.showbtn = false;
@@ -201,6 +202,8 @@ export class ManagerAppraisalComponent implements OnInit {
       // this.attachment=details.photo;
       this.managerattachment=details.mPhoto;
 
+      
+    
     })
 
     this.photoid=details.id;
