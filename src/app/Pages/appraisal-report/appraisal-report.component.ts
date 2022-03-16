@@ -23,8 +23,8 @@ export class AppraisalReportComponent implements OnInit {
   StaffID: any;
   roleid: any;
   employee: any;
-  rolelist:any;
-  rolelistCopy:any;
+  rolelist: any;
+  rolelistCopy: any;
   p: any = 1;
   count1: any = 10;
   ngOnInit(): void {
@@ -64,7 +64,7 @@ export class AppraisalReportComponent implements OnInit {
     this.PerformanceManagementService.GetMyDetails().subscribe(
       data => {
         debugger
-        this.managerList = data.filter(x=>x.supervisor==null)     // 10422 HR is taken as manager for all managers 
+        this.managerList = data.filter(x => x.supervisor == null)     // 10422 HR is taken as manager for all managers 
         const key = 'manager';
         const key1 = 'month'
         this.uniquelist = [...new Map(this.managerList.map((item: { [x: string]: any; }) =>
@@ -80,20 +80,18 @@ export class AppraisalReportComponent implements OnInit {
       res => {
         debugger;
         let temp: any = res
-        if(this.roleid==3)
-        {
-          this.StaffAppraisalList = temp; 
-        
+        if (this.roleid == 3) {
+          this.StaffAppraisalList = temp;
+          this.dumpmanagerList = this.StaffAppraisalList
 
         }
-        else if(this.roleid==4)
-        {
+        else if (this.roleid == 4) {
           this.StaffAppraisalList = temp;
-          this.dumpmanagerList= this.StaffAppraisalList
+          this.dumpmanagerList = this.StaffAppraisalList
           //  this.StaffAppraisalList = this.dumpmanagerList.filter((x: { cioScores: null;approver1:any }) => x.cioScores != null && x.approver1==this.StaffID)
-           this.StaffAppraisalList = this.dumpmanagerList.filter((x: { approver1:any }) => x.approver1==this.StaffID)
+          this.StaffAppraisalList = this.dumpmanagerList.filter((x: { approver1: any }) => x.approver1 == this.StaffID)
 
-          }
+        }
       }
     )
   }
@@ -111,25 +109,32 @@ export class AppraisalReportComponent implements OnInit {
     XLSX.writeFile(wb, this.fileName);
   }
 
-  public GetFilteredRoleType(){
+  public GetFilteredRoleType() {
     this.PerformanceManagementService.GetConductappraisalStaffList().subscribe(data => {
       debugger
-      this.StaffAppraisalList = data.filter(x=>x.type==this.roleTypeid )
+      this.StaffAppraisalList = data.filter(x => x.type == this.roleTypeid)
     })
   }
 
 
-  public GetFilteredManager(){
+  public GetFilteredManager() {
     this.PerformanceManagementService.GetConductappraisalStaffList().subscribe(data => {
       debugger
-      this.StaffAppraisalList = data.filter(x=>x.managername==this.manager )
+      this.StaffAppraisalList = data.filter(x => x.managername == this.manager)
     })
   }
 
-
-
-
+  public FilterAttendence() {
+    debugger
+  
+    let searchCopy = this.search.toLowerCase();
+    this.StaffAppraisalList = this.dumpmanagerList.filter((x: { name: string }) =>x.name.toLowerCase().includes(searchCopy));
+    this.count = this.StaffAppraisalList.length;
+  }
 }
+
+
+
 
 
 

@@ -17,7 +17,7 @@
                 <p class="filter">Filter By</p>
             </div>
             <div class="col-lg-3">
-                <input type="search" class="form-control search" placeholder="Search for Name.." [(ngModel)]="search">
+                <input type="search" class="form-control search" placeholder="Search for Name.." [(ngModel)]="search"  (ngModelChange)="FilterAttendence()">
             </div>
             <div class="col-lg-3">
                 <select class="form-control" id="roleTypeid" name="roleTypeid" [(ngModel)]="roleTypeid"
@@ -70,7 +70,7 @@
                     </thead>
                     <tbody>
                         <tr
-                            *ngFor="let details of StaffAppraisalList| paginate: { itemsPerPage: count1, currentPage: p}|filter:search">
+                            *ngFor="let details of StaffAppraisalList| paginate: { itemsPerPage: count1, currentPage: p}">
                             <td>{{details.appraisalCycleName}}</td>
                             <td>{{details.name}}</td>
                             <td>{{details.role}}</td>
