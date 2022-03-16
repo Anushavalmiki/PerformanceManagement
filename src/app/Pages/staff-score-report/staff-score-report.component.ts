@@ -48,6 +48,7 @@ export class StaffScoreReportComponent implements OnInit {
   Stafflist: any
   StaffType: any;
   StaffTypeID: any;
+  AppraisalCycleID:any;
 
   StaffAppraisalList: any;
   FilteredStaffAppraisalList: any;
@@ -124,6 +125,7 @@ export class StaffScoreReportComponent implements OnInit {
         let temp: any = res
         this.StaffAppraisalList = temp;
         this.appraisalClose=this.StaffAppraisalList[0].appraisalClose
+        this.AppraisalCycleID =this.StaffAppraisalList[0].appraiselID
         this.FilteredStaffAppraisalList = this.StaffAppraisalList.filter((x: { cioScores: null; }) => x.cioScores != null)
         this.count = this.FilteredStaffAppraisalList.length;
         this.managerList = this.dumpmanagerList.filter((x: { manager: any; })=>x.manager==this.manager);
@@ -358,27 +360,34 @@ export class StaffScoreReportComponent implements OnInit {
   //   const csvExporter = new ExportToCsv(Export_to_excel_options);
   //   csvExporter.generateCsv(this.StaffAppraisalList);
   // }
-public CloseAppraisal(){
-  debugger
-  Swal.fire({
-    title: 'Are you sure?',
-    text: 'You Want to Close the Appraisal Cycle.',
-    icon: 'warning',
-    showCancelButton: true,
-    confirmButtonText: 'Yes, Close it!',
-    cancelButtonText: 'No, keep it'
-  }).then((result) => {
-    if (result.value == true) {
-      // this.PerformanceManagementService.DeleteGrivenceRequests(ID).subscribe(data => {
-      //   debugger
-      //   Swal.fire('Cancelled Successfully')
-      //   location.reload();
-      // })
-    }
-    Swal.fire('Appraisal Cycle Closed Successfully')
-  })
- 
-}
+  public CloseAppraisal(){
+  
+    debugger
+    Swal.fire({
+      title: 'Are you sure?',
+      text: 'You Want to Close the Appraisal Cycle.',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, Close it!',
+      cancelButtonText: 'No, keep it'
+    }).then((result) => {
+      if (result.value == true) {
+        if(this.appraisalClose==null || this.appraisalClose==0 ){
+          var obj={
+            'appraiselID':this.AppraisalCycleID
+          }
+          this.PerformanceManagementService.CloseAppraisalCycle(obj).subscribe(data => {
+            debugger
+            Swal.fire('Appraisal Cycle Closed Successfully!!')
+            location.reload();
+          }) 
+        }
+        else{
+          Swal.fire('Appraisal Cycle Closed Already!!')
+        }
+      }
+    })
+  }
 
 
 }

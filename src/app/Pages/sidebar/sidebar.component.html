@@ -147,4 +147,14 @@
             <span [ngClass]="active == 'AppraisalReport' ? 'Active1' : 'Active3'">Appraisal Report</span>
         </a>
 
+        <a class="togglebtn button" routerLink="/Pip" class="tablinks" (click)="highlight($event)"
+        (click)="pip()" *ngIf="roleid=='3'|| roleid=='4'">
+        <img src="assets/Images/64/Staff.png" style="width:13% ;margin-right: 15px;"
+            [ngClass]="active != 'PIP' ? 'Active1' : 'Active2'" />
+        <img [ngClass]="active == 'PIP' ? 'Active1' : 'Active2'" src="assets/Images/64 Blue/Staff.png"
+            style="width:13%; margin-right: 17px;">
+        &nbsp;
+        <span [ngClass]="active == 'PIP' ? 'Active1' : 'Active3'">PIP</span>
+    </a>
+
     </div>

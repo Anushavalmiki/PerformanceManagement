@@ -101,9 +101,10 @@
         </div>
     </div>
     <br>
-    <span *ngIf="appraisalPendingCount==0 && appraisalClose!='1'"><button class="btn btn-success" (click)="CloseAppraisal()">Complete Appraisal</button></span><br>
-    <span *ngIf="appraisalPendingCount==0 && appraisalClose=='1'" style="color: red;">Appraisal Cycle Closed</span><br><br>
-    
+    <span *ngIf="appraisalPendingCount==0 && appraisalClose!='1' && appraisalcount!=0"><button class="btn btn-success" (click)="CloseAppraisal()">Complete Appraisal</button></span><br>
+    <span *ngIf="appraisalPendingCount==0 && appraisalcount>0 && appraisalClose=='1'" style="color: red;">Appraisal Cycle is Closed</span><br><br>
+    <span *ngIf=" appraisalcount==0" style="color: red;">Appraisal Cycle Not Started</span><br><br>
+
     <div class="container-fluid" id="demo" class="collapse"  *ngIf="appraisalCycleName!=0">
         <div class="row">
             <div class="col-lg-12">
@@ -135,7 +136,9 @@
                             <td>{{details.managername}}</td>
                             <td>{{details.avgSelfScore}}</td>
                             <td>{{details.avgGroupHeadScores}}</td>
-                            <td>{{details.avgCIOScores}}</td>
+                            <td>{{details.avgCIOScores}}
+                                <p *ngIf="details.hrSubmittedDate==null" style="color: red;">Pending</p>
+                            </td>
                             <td>
                                 <p *ngIf="details.bellcurveScore==null && details.hrSubmittedDate!=null ">
                                 {{((details.avgGroupHeadScores+details.avgCIOScores)/2)|number:"1.0-0"}}
@@ -143,7 +146,7 @@
                                 <p *ngIf="details.hrSubmittedDate==null">NA</p>
                             </td>
                             <!-- <td>{{details.appraisalSubmitionDate|date}}</td>
-                            <td>{{details.cycleStartDate|date}}</td>
+                            <td>{{details.cycleStartDate|date}}</td>    
                             <td>{{details.cycleEndDate|date}}</td> -->
                             <td>
                                 <button class="btn btn-primary editable-table-button btn-xs"

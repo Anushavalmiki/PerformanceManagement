@@ -90,7 +90,12 @@ export class SidebarComponent implements OnInit {
 
   AppraisalReport(){
     this.active = 'AppraisalReport';
-    localStorage.setItem("clickname","Appraisal Repor")
+    localStorage.setItem("clickname","Appraisal Report")
+  }
+
+  pip(){
+    this.active = 'pip';
+    localStorage.setItem("clickname","PIP")
   }
 
   dashboard() {

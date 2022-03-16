@@ -73,6 +73,8 @@ export class PerformanceManagementService {
     return this.http.post<any[]>(APIURL, json);
   }
 
+
+
   public GetKeyResultArea() {
     return this.http.get<any[]>(
       this.baseURL + "/Master/GetKeyResultArea"
@@ -183,6 +185,13 @@ export class PerformanceManagementService {
     );
   }
 
+  
+  public GetConductappraisalStaffListforpip() {
+    return this.http.get<any[]>(
+      this.baseURL + "/Master/GetConductappraisalStaffListforpip"
+    );
+  }
+
   public InsertEmployeeKraMap(data: any) {
     debugger;
     this.url = this.baseURL + 'Master/InsertEmployeeKraMap';
@@ -217,6 +226,12 @@ export class PerformanceManagementService {
   public UpdateCIOStaffScores(data: any) {
     debugger;
     this.url = this.baseURL + 'Master/UpdateCIOStaffScores';
+    return this.http.post(this.url, data);
+  }
+
+  public UpdateReAppraisalHRrating(data: any) {
+    debugger;
+    this.url = this.baseURL + 'Master/UpdateReAppraisalHRrating';
     return this.http.post(this.url, data);
   }
 
@@ -323,5 +338,9 @@ export class PerformanceManagementService {
     return this.http.post<any[]>(APIURL, json);
   }
 
-
+  public InsertStaffExitFormality(data: any) {
+    debugger;
+    this.url = this.host + '/Announcement/InsertStaffExitFormality';
+    return this.http.post(this.url, data);
+  }
 }

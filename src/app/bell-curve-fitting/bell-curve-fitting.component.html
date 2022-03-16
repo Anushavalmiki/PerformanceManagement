@@ -77,10 +77,10 @@
                 </p>
              </div>
         </div>
-    </div>
+    </div><br>
    
     <span *ngIf="appraisalPendingCount==0 && appraisalClose!='1'"><button class="btn btn-success" (click)="CloseAppraisal()">Complete Appraisal</button></span><br>
-    <span *ngIf="appraisalPendingCount==0 && appraisalClose=='1'" style="color: red;">Appraisal Cycle Closed</span><br><br>
+    <span *ngIf="appraisalPendingCount==0 && appraisalClose=='1'" style="color: red;">Appraisal Cycle is Closed</span><br><br>
 
  
     <div class="container-fluid" id="demo" class="collapse"  *ngIf="appraisalCycleName!=0">
@@ -115,9 +115,16 @@
                             <td>{{details.managername}}</td>
                             <td>{{details.avgSelfScore}}</td>
                             <td>{{details.avgGroupHeadScores}}</td>
-                            <td>{{details.avgCIOScores}}</td>
+                            <td>{{details.avgCIOScores}}
+                                <p *ngIf="details.hrSubmittedDate==null" style="color: red;">Pending</p>
+                            </td>
                            
-                            <td>{{((details.avgGroupHeadScores+details.avgCIOScores)/2)|number:"1.0-0"}}</td>
+                            <td>
+                                <p *ngIf="details.bellcurveScore==null && details.hrSubmittedDate!=null ">
+                                    {{((details.avgGroupHeadScores+details.avgCIOScores)/2)|number:"1.0-0"}}
+                                    <p *ngIf="details.bellcurveScore!=null">{{details.bellcurveScore}}</p>
+                                    <p *ngIf="details.hrSubmittedDate==null">NA</p>
+                            </td>
 
                             <td >{{details.bellcurveScore}}
                                 <p *ngIf="details.bellcurveScore==null">NA</p>
