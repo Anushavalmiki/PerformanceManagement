@@ -67,6 +67,7 @@ export class StaffScoreReportComponent implements OnInit {
     this.StaffID = 0;
     this.GetMyDetails();
     this.Conductappraisalcounts();
+    this.ConductappraisalStaffList();
     this.manager = 0;
     this.dumpmanagerList=0;
     this.appraisalCycleName=0;
@@ -77,7 +78,7 @@ export class StaffScoreReportComponent implements OnInit {
     //   this.StaffTypelist = data;
     // })
 
-    this.ConductappraisalStaffList();
+ 
 
     this.PerformanceManagementService.GetAppraisalCycle().subscribe(data => {
       debugger
@@ -252,7 +253,7 @@ export class StaffScoreReportComponent implements OnInit {
     this.PerformanceManagementService.GetMyDetails().subscribe(
       data => {
         debugger
-        this.managerList1 = data.filter(x=>x.supervisor==null)     // 10422 HR is taken as manager for all managers 
+        this.managerList1 = data.filter(x=>x.supervisor==null && x.role=='Manager')     // 10422 HR is taken as manager for all managers 
          const key = 'manager';
          const key1 = 'month'
          this.uniquelist = [...new Map(this.managerList.map((item: { [x: string]: any; }) =>
@@ -378,7 +379,7 @@ export class StaffScoreReportComponent implements OnInit {
       cancelButtonText: 'No, keep it'
     }).then((result) => {
       if (result.value == true) {
-        if(this.appraisalClose==null || this.appraisalClose==0 ){
+        if(this.appraisalClose==0 ){
           var obj={
             'appraiselID':this.AppraisalCycleID
           }

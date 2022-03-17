@@ -257,6 +257,7 @@ export class PerformanceManagementService {
     this.url = this.baseURL + '/Master/ProjectAttachments';
     return this.http.post<any[]>(this.url, formdata);
   }
+
   public InsertNotification(data: any) {
     debugger;
     this.url = this.host + '/User/InsertNotification';
@@ -343,4 +344,14 @@ export class PerformanceManagementService {
     this.url = this.host + '/Announcement/InsertStaffExitFormality';
     return this.http.post(this.url, data);
   }
+
+
+  public UpdatePipEmployeeKraMap(data: any) {
+    debugger;
+    this.url = this.baseURL + 'Master/UpdatePipEmployeeKraMap';
+    return this.http.post(this.url, data);
+  }
+
+  
+ 
 }
