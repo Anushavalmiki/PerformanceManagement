@@ -76,7 +76,7 @@ export class BellCurveFittingComponent implements OnInit {
     this.manager = 0;
     this
     // this.StaffID = 0;
-    this.UserID = localStorage.getItem('staffid');
+    this.UserID = sessionStorage.getItem('EmaployedID');
     // this.PerformanceManagementService.GetStaffType(1).subscribe(data => {
     //   debugger
     //   this.StaffTypelist = data;
@@ -118,13 +118,14 @@ export class BellCurveFittingComponent implements OnInit {
     }
   }
 
-
+  StaffAppraisalList1:any;
   public ConductappraisalStaffList() {
     this.PerformanceManagementService.GetConductappraisalStaffList().subscribe(
       res => {
         debugger;
         let temp: any = res
         this.StaffAppraisalList = temp;
+      
         this.AppraisalCycleID =this.StaffAppraisalList[0].appraiselID
         this.appraisalClose=this.StaffAppraisalList[0].appraisalClose
         this.FilteredStaffAppraisalList = this.StaffAppraisalList.filter((x: { cioScores: null; }) => x.cioScores != null)
@@ -382,7 +383,7 @@ public CloseAppraisal(){
     cancelButtonText: 'No, keep it'
   }).then((result) => {
     if (result.value == true) {
-      if(this.appraisalClose==null || this.appraisalClose==0 ){
+      if(this.appraisalClose==null){
         var obj={
           'appraiselID':this.AppraisalCycleID
         }

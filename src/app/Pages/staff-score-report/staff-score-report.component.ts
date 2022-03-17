@@ -269,7 +269,7 @@ export class StaffScoreReportComponent implements OnInit {
       debugger
       this.FilteredStaffAppraisalList = data.filter(x=>x.managername==this.manager )
     })
-  }
+  } 
 
   public GetFilteredRoleType(){
     this.PerformanceManagementService.GetConductappraisalStaffList().subscribe(data => {

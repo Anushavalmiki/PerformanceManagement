@@ -31,7 +31,7 @@ export class ManagerratingdashComponent implements OnInit {
   EmployeeKradash: any
 
   ngOnInit(): void {
-    this.staffID = sessionStorage.getItem('staffid');
+    this.staffID = sessionStorage.getItem('EmaployedID');
 
     this.appraisalCycleName=0;
     this.Department = "";
@@ -111,7 +111,8 @@ export class ManagerratingdashComponent implements OnInit {
   public GetFilteredAppraisalCycle() {
     this.PerformanceManagementService.GetConductappraisalStaffList().subscribe(data => {
       debugger
-      this.EmployeeKradash = data.filter(x => x.appraisalCycleName == this.appraisalCycleName && x.approver1==this.staffID)
+      this.EmployeeKradash = data.filter(x => x.appraisalCycleName == this.appraisalCycleName && x.approver1==this.staffID && x.selfScores != null && x.employeeSubmittedDate!=null)
+      // && 
     })
   }
 
