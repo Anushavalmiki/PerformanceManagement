@@ -215,7 +215,7 @@ export class AddEmployeetoPipComponent implements OnInit {
       }
       else {
         var Entity = {
-          'ID':this.EmployeeId,
+        
           'StaffTypeID': 1,
           'StaffName': this.EmployeeId,
           'PipGoaltypeID': this.kratypeid,

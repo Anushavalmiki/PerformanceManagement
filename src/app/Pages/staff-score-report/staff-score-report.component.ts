@@ -260,6 +260,7 @@ export class StaffScoreReportComponent implements OnInit {
       debugger
       let temp: any = data.filter(x => x.appraisalCycleName ==this.appraisalCycleName );
       this.AppraisalSubmitionDate = temp[0].employeeSubmissionDate;
+
       this.appraisalCycleName=temp[0].appraisalCycleName
       this.sDate = temp[0].cycleStartDate;
       this.eDate = temp[0].cycleEndDate;
@@ -273,6 +274,8 @@ export class StaffScoreReportComponent implements OnInit {
       debugger
       this.FilteredStaffAppraisalList = data.filter(x => x.appraisalCycleName == this.appraisalCycleName )
 
+
+      
       this.appraisalcount = this.FilteredStaffAppraisalList.length;
       this.appraisalClose=this.FilteredStaffAppraisalList[0].appraisalClose
       var list = data.filter(x => x.employeeSubmittedDate != null && x.selfScores != null && x.appraisalCycleName == this.appraisalCycleName &&
