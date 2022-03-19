@@ -78,7 +78,7 @@
                                     data-toggle="modal" (click)="GetKPIIDetails(details)"
                                     data-target="#exampleModal1">View
                                     Details</button><br><br>
-                                    <p *ngIf="details.managerattachment==null||details.managerattachment==''">No Attachments</p>
+                                    <p *ngIf="(details.managerattachment==null||details.managerattachment=='') && details.managerupdate== '1'">No Attachments</p>
 
                                     <button *ngIf="details.managerupdate==1 && details.managerattachment!=null" type="button" class="btn btn-success"
                                     data-toggle="modal" (click)="GetKPIIDetails(details)"
@@ -231,7 +231,7 @@
             </div>
             <div class="modal-footer" *ngIf=" managerSubmittedDate==null">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" (click)="SaveDetails()" data-dismiss="modal">Update changes</button>
+                <button type="button" class="btn btn-primary" (click)="UpdateDetails()" data-dismiss="modal">Update changes</button>
             </div>
         </div>
     </div>
@@ -330,7 +330,7 @@
                     <div class="col-lg-8"></div>
                     <div class="col-lg-2">
                         <button class="form-control cancel" data-toggle="modal" data-target="#exampleModal5"
-                            data-dismiss="modal">Update</button>
+                            data-dismiss="modal" >Update</button>
                     </div>
                     <div class="col-lg-2">
                         <button class="form-control cancel" data-dismiss="modal">Cancel</button>

@@ -200,6 +200,7 @@ export class EmployeeKraMappingComponent implements OnInit {
     this.InsertNotification();
     Swal.fire('Goal Setting Done Successfully.');
     location.href = "#/EmployeeKraMappingdashboard";
+    location.reload();
 
   }
 

@@ -148,6 +148,7 @@ export class ManagerAppraisalComponent implements OnInit {
     else{
       debugger
       var entity = {
+        
         'SatffID': this.StaffID,
         'StaffType': this.StaffID,
         'Supervisor': this.id,
@@ -190,6 +191,37 @@ export class ManagerAppraisalComponent implements OnInit {
    
 
   }
+
+
+
+  public UpdateDetails() {
+    debugger
+    var entity = {
+      'SatffID': this.StaffID,
+      'StaffType': this.StaffID,
+      'Supervisor': this.id,
+      'ResultAreaID': this.ResultAreaID,
+      'PerformaceIndicatorID': this.kpiid,
+      'SelfScores': this.Score,
+      'SelfComments': this.SelfComments,
+       'Attachment': this.attchmentss
+    }
+    this.PerformanceManagementService.InsertStaffScoresByManager(entity).subscribe(data => {
+      debugger
+      Swal.fire("Updated Successfully");
+      this.attchmentss = "";
+      const element1 = document.getElementById('close');
+      this.files.length = 0;
+      if (element1 !== null) {
+
+        element1.click();
+
+      }
+      this.ngOnInit();
+
+    })
+  }
+
 
   public GetKPIIDetails(details: any) {
     debugger

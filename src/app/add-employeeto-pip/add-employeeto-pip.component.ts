@@ -179,6 +179,34 @@ export class AddEmployeetoPipComponent implements OnInit {
   Approver3: any;
   comments:any;
   lastdateofsubmission:any;
+
+  public keyresultArray: any = [];
+  public SaveDetails() {
+    debugger
+    if (this.EmployeeId == undefined || this.selectedItems2.length == 0 || this.selectedItems4.length == 0) {
+      Swal.fire("Please Enter Mandatory Fields")
+    }
+    else {
+      this.tablecount = 1;
+      for (let i = 0; i < this.selectedItems4.length; i++) {
+        var json = {
+          "kraid": this.selectedItems2[0].id,
+          "kpiid": this.selectedItems4[i].id,
+          "kraname": this.selectedItems2[0].kraName,
+          "kpiname": this.selectedItems4[i].kpiName,
+          'KraTypeID': this.kratypeid
+        };
+        debugger
+        this.keyresultArray.push(json)
+      }
+      this.selectedItems1.length = 0;
+
+      this.selectedItems2 = [];
+      this.selectedItems3.length = 0;
+    }
+  }
+
+
   public UpdatePipDetails() {
     debugger
     for (let i = 0; i < this.keyresultArray.length; i++) {
@@ -187,16 +215,18 @@ export class AddEmployeetoPipComponent implements OnInit {
       }
       else {
         var Entity = {
+          'ID':this.EmployeeId,
           'StaffTypeID': 1,
           'StaffName': this.EmployeeId,
-          'pipGoaltypeID': this.kratypeid,
+          'PipGoaltypeID': this.kratypeid,
           'PipComments':this.comments,
           'PipAttachment':this.Attachment,
           'PipEmpLastSubmissionDate':this.lastdateofsubmission,
-          'pipKraID': this.keyresultArray[i].kraid,
+          'PipKraID': this.keyresultArray[i].kraid,
           'PipKpiID': this.keyresultArray[i].kpiid,
       
         }
+        
         this.PerformanceManagementService.UpdatePipEmployeeKraMap(Entity).subscribe(
           data => {
 
@@ -238,31 +268,7 @@ export class AddEmployeetoPipComponent implements OnInit {
       }
     })
   }
-  public keyresultArray: any = [];
-  public SaveDetails() {
-    debugger
-    if (this.EmployeeId == undefined || this.selectedItems2.length == 0 || this.selectedItems4.length == 0) {
-      Swal.fire("Please Enter Mandatory Fields")
-    }
-    else {
-      this.tablecount = 1;
-      for (let i = 0; i < this.selectedItems4.length; i++) {
-        var json = {
-          "kraid": this.selectedItems2[0].id,
-          "kpiid": this.selectedItems4[i].id,
-          "kraname": this.selectedItems2[0].kraName,
-          "kpiname": this.selectedItems4[i].kpiName,
-          'KraTypeID': this.kratypeid
-        };
-        debugger
-        this.keyresultArray.push(json)
-      }
-      this.selectedItems1.length = 0;
 
-      this.selectedItems2 = [];
-      this.selectedItems3.length = 0;
-    }
-  }
 
 
   getkratypeid(event: any) {
