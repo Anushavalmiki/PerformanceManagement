@@ -142,6 +142,7 @@ export class ManagerAppraisalComponent implements OnInit {
   }
 
   public SaveDetails() {
+    debugger
     if(this.Score==undefined||this.Score==0||this.SelfComments==undefined||this.SelfComments==null){
       Swal.fire("Please Enter the Mandatory Fields");
     }
@@ -175,6 +176,7 @@ export class ManagerAppraisalComponent implements OnInit {
         // })
         this.Score = "";
         this.SelfComments = "";
+        this.attchmentss='';
         this.files.length = 0;
         const element1 = document.getElementById('close');
   
@@ -201,8 +203,10 @@ export class ManagerAppraisalComponent implements OnInit {
       this.SelfComments = temp[0].managercomments;
       // this.attachment=details.photo;
       this.managerattachment=details.mPhoto;
-
-      
+      this.id = temp[0].id;
+      this.kpiid = temp[0].kpiid;
+      this.ResultAreaID = temp[0].resultAreaID; 
+      this.attachment=details.managerattachment
     
     })
 
@@ -384,6 +388,9 @@ export class ManagerAppraisalComponent implements OnInit {
 
     })
   }
+
+
+
 
 
   

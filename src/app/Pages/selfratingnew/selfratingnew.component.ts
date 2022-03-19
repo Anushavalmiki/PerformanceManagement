@@ -65,6 +65,7 @@ export class SelfratingnewComponent implements OnInit {
           this.ManagerID = this.ResultAreaList[0].approver1
           this.StaffName = this.ResultAreaList[0].name
 
+          console.log("result",this.ResultAreaList);
 
 
           this.ResultAreaList.forEach((element: { empupdate: any; }) => {

@@ -81,9 +81,9 @@
                             </td>
                             <td [ngClass]="{'bggreen':details.hrupdate==1 }">
                                 <button class=" btn btn-primary action" data-toggle="modal" data-target="#exampleModal3"
-                                    (click)="getattachment(details)" *ngIf="details.managerattachment!=null">View
+                                    (click)="getattachment(details)" *ngIf="details.managerattachment!=null&&details.managerattachment!=''">View
                                     Attachments</button>
-                                <p *ngIf="details.managerattachment=='0'||details.managerattachment==null">No
+                                <p *ngIf="details.managerattachment=='0'||details.managerattachment==null||details.managerattachment==''">No
                                     Attachments</p>
                             </td>
                             <td [ngClass]="{'bg-warning':details.hrupdate==1 }" style="text-align: center;">
@@ -100,7 +100,7 @@
                                     data-toggle="modal" (click)="GetKPIIDetails(details)"
                                     data-target="#exampleModal1">View
                                     Details</button><br><br>
-                                    <p *ngIf="details.hrattachment==null||details.hrattachment=='' " >No Attachments</p>
+                                    <p *ngIf="details.hrupdate==1&&(details.hrattachment==null||details.hrattachment=='')" >No Attachments</p>
 
                                 <button class=" btn btn-primary action" data-toggle="modal" data-target="#exampleModal4"
                                     (click)="GetKPIIDetails(details)"

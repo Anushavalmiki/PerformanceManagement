@@ -196,6 +196,7 @@ export class HrratingnewComponent implements OnInit {
       this.SelfComments = temp[0].hrcomments;
       this.hrattachment = details.hPhoto;
       this.managerattachment = details.mPhoto;
+      this.attachment=details.hrattachment
 
     })
     this.photoid = details.id;

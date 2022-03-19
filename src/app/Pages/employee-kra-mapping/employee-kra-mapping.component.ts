@@ -60,6 +60,7 @@ export class EmployeeKraMappingComponent implements OnInit {
       this.PerformanceManagementService.GetDepartmentMaster().subscribe(data => {
         debugger
         this.Departmentlist = data.filter(x => x.id == this.Departmentid);
+         // .filter(x => x.id == this.Departmentid);
       });
     });
 
