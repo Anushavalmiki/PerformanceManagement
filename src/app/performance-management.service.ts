@@ -6,7 +6,9 @@ import { environment } from "../environments/environment";
 })
 export class PerformanceManagementService {
 
+  // public baseURL = "http://103.133.214.197/PerformanceManagement/";
   public baseURL = "http://103.133.214.197/PerformanceManagement/";
+
   public host = "https://digioffice.amazeone.co/digiofficeapi";
 
   url: any;
@@ -257,6 +259,7 @@ export class PerformanceManagementService {
     this.url = this.baseURL + '/Master/ProjectAttachments';
     return this.http.post<any[]>(this.url, formdata);
   }
+
   public InsertNotification(data: any) {
     debugger;
     this.url = this.host + '/User/InsertNotification';
@@ -343,4 +346,14 @@ export class PerformanceManagementService {
     this.url = this.host + '/Announcement/InsertStaffExitFormality';
     return this.http.post(this.url, data);
   }
+
+
+  public UpdatePipEmployeeKraMap(data: any) {
+    debugger;
+    this.url = this.baseURL + 'Master/UpdatePipEmployeeKraMap';
+    return this.http.post(this.url, data);
+  }
+
+  
+ 
 }

@@ -44,6 +44,7 @@ import { HRDashboardComponent } from './hrdashboard/hrdashboard.component';
 import { EmployeeTileDashboardComponent } from './employee-tile-dashboard/employee-tile-dashboard.component';
 import { LoaderComponent } from './loader/loader.component';
 import { PipComponent } from './pip/pip.component';
+import { AddEmployeetoPipComponent } from './add-employeeto-pip/add-employeeto-pip.component';
 
 @NgModule({
   declarations: [
@@ -81,7 +82,8 @@ import { PipComponent } from './pip/pip.component';
     HRDashboardComponent,
     EmployeeTileDashboardComponent,
     LoaderComponent,
-    PipComponent
+    PipComponent,
+    AddEmployeetoPipComponent
   ],
   imports: [
     BrowserModule,

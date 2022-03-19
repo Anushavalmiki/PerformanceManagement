@@ -39,6 +39,7 @@ export class PipComponent implements OnInit {
   Type:any
   lastworkingdate:any;
   Notes:any;
+  staffID:any;
 
   ngOnInit(): void {
     this.Type="Select Type"
@@ -53,20 +54,29 @@ export class PipComponent implements OnInit {
 
   }
 
+  public ViewScores(event: any) {
+    debugger;
+    this.staffID = event.id;
+    let StaffTypeID = event.type;
+
+    // this.router.navigate(['/StaffScoreFullDetails', StaffID, StaffID]);
+
+  }
+
   getEmployee(even: any) {
     this.employee = even.target.value;
-    this.PerformanceManagementService.GetConductappraisalStaffListforpip().subscribe(
-      res => {
-        debugger;
-        let temp: any = res
-          this.StaffAppraisalList = temp.filter((x: { id: any; })=>x.id==this.employee);;
-          this.role=this.StaffAppraisalList[0].role
-          this.department=this.StaffAppraisalList[0].departmentName
-          this.rate=this.StaffAppraisalList[0].finalrating
-          this.StaffAppraisalList = temp
+    // this.PerformanceManagementService.GetConductappraisalStaffListforpip().subscribe(
+    //   res => {
+    //     debugger;
+    //     let temp: any = res
+    //       this.StaffAppraisalList = temp.filter((x: { id: any; })=>x.id==this.employee);;
+    //       this.role=this.StaffAppraisalList[0].role
+    //       this.department=this.StaffAppraisalList[0].departmentName
+    //       this.rate=this.StaffAppraisalList[0].finalrating
+    //       this.StaffAppraisalList = temp
         
-      }
-    )
+    //   }
+    // )
   }
 
 
@@ -89,26 +99,25 @@ export class PipComponent implements OnInit {
   
   update() {
     debugger
-    var entity = {
-      'staffID': this.StaffID,
-      'cIOScores': this.Score
+    if(this.Score==undefined||this.Score==0){
+      Swal.fire("Please enter the Rate");
     }
-    this.PerformanceManagementService.UpdateReAppraisalHRrating(entity).subscribe(data => {
-      debugger
-      Swal.fire("Updated Successfully");
-      this.ngOnInit();
-    })
+    else{
+      var entity = {
+        'StaffID': this.staffID,
+        'cIOScores': this.Score
+      }
+      this.PerformanceManagementService.UpdateReAppraisalHRrating(entity).subscribe(data => {
+        debugger
+        Swal.fire("Updated Successfully");
+        this.ngOnInit();
+      })
+    }
+   
   }
 
 
-  public ViewScores(event: any) {
-    debugger;
-    this.StaffID = event.id;
-    let StaffTypeID = event.type;
-
-    // this.router.navigate(['/StaffScoreFullDetails', StaffID, StaffID]);
-
-  }
+ 
 
   public HighScore() {
     debugger
@@ -120,7 +129,7 @@ export class PipComponent implements OnInit {
  
   remove(){
     var eb = {
-      'StaffID': this.StaffID,
+      'StaffID': this.staffID,
       'Notes': this.Notes,
       'lastworkingdate': this.lastworkingdate,
       'type': this.Type
@@ -128,7 +137,7 @@ export class PipComponent implements OnInit {
     this.PerformanceManagementService.InsertStaffExitFormality(eb).subscribe(data => {
       debugger
       Swal.fire("Successfully Moved to Exit Formality!!");
-      this.StaffID="",
+      this.staffID="",
       this.Notes="",
       this.lastworkingdate="",
       this.Type=""

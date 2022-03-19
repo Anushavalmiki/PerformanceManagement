@@ -138,7 +138,7 @@ export class HrratingnewComponent implements OnInit {
   }
 
   public SaveDetails() {
-    if (this.Score == undefined || this.SelfComments == undefined) {
+    if (this.Score == undefined || this.SelfComments == undefined ||this.Score==0||this.SelfComments==null) {
       Swal.fire("Please Enter the Mandatory Fields");
     }
     else {

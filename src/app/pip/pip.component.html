@@ -4,9 +4,12 @@
             <br>
             <p class="headings">PIP </p>
         </div>
+
         <div class="col-lg-1">
             <br>
-            <!-- <p class="count">Count:{{StaffAppraisalList.length}}</p> -->
+            <button class="btn btn-primary editable-table-button btn-xs" data-toggle="modal" data-target="#exampleModal"
+                routerLink="/AddEmployeetoPip" *ngIf="roleid=='3'">Add New
+            </button>
         </div>
     </div>
 
@@ -73,7 +76,7 @@
     </div> <br>  -->
 
 <div class="container-fluid">
-    <div class="row">
+    <div class="row" *ngIf="roleid=='3'">
         <div class="col-lg-12">
             <table class="table" id="download">
                 <thead>
@@ -106,10 +109,10 @@
                         </td>
                         <td>
                             <button class="btn btn-primary editable-table-button btn-xs" data-toggle="modal"
-                                data-target="#exampleModal">Remove
+                                data-target="#exampleModal"(click)="ViewScores(details)">Terminate
                             </button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             <button class="btn btn-primary editable-table-button btn-xs" data-toggle="modal"
-                                data-target="#viewbellcurve" (click)="ViewScores(details)">Complete
+                                data-target="#viewbellcurve" (click)="ViewScores(details)">Retain
                             </button>
                         </td>
 
@@ -123,6 +126,47 @@
             </div>
         </div>
     </div>
+
+
+    <div class="row" *ngIf="roleid=='2'">
+        <div class="col-lg-12">
+            <table class="table" id="download" >
+                <thead>
+                    <tr >
+                        <th>Appraisal Cycle</th>
+                        <th>Goal Type</th>
+                        <th>Goal</th>
+                        <th>KPI</th>
+                        <th>Comments</th>
+                        <th>Attachment</th>
+                        <th>Last Submission Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr  *ngFor="let details of StaffAppraisalList">
+                        <td>{{details.appraisalCycleName}}</td>
+                        <td>{{details.pipKraID}}</td>
+                        <td>{{details.pipKpiID}}</td>
+                        <td>{{details.pipGoaltypeID}}</td>
+                        <td>{{details.pipComments}}</td>
+                        <td>{{details.pipAttachment}}</td>
+                        <td>{{details.pipEmpLastSubmissionDate}}</td>
+                    </tr>
+                   
+
+                </tbody>
+            </table>
+            <span *ngIf="StaffAppraisalList.length==0">No Data </span>
+            <div class="text-right">
+                <br>
+                <pagination-controls (pageChange)="p = $event" class="poppinns"></pagination-controls>
+            </div>
+        </div>
+    </div>
+
+
+
+
 
 
 </div>
@@ -174,7 +218,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" (click)="remove()"  data-dismiss="modal" >Remove</button>
+                <button type="button" class="btn btn-primary" (click)="remove()" data-dismiss="modal">Remove</button>
             </div>
         </div>
     </div>
@@ -191,7 +235,7 @@
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Reason for Removal</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Update Rating</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -216,12 +260,13 @@
                         </select>
                     </div>
                 </div><br>
-               
+
 
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="update()">Update Rate</button>
+                <button type="button" class="btn btn-primary"  (click)="update()" >Update
+                    Rate</button>
             </div>
         </div>
     </div>

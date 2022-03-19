@@ -3,11 +3,11 @@ import { PerformanceManagementService } from 'src/app/performance-management.ser
 import { ActivatedRoute } from '@angular/router';
 import Swal from 'sweetalert2';
 @Component({
-  selector: 'app-employee-kra-mapping',
-  templateUrl: './employee-kra-mapping.component.html',
-  styleUrls: ['./employee-kra-mapping.component.css']
+  selector: 'app-add-employeeto-pip',
+  templateUrl: './add-employeeto-pip.component.html',
+  styleUrls: ['./add-employeeto-pip.component.css']
 })
-export class EmployeeKraMappingComponent implements OnInit {
+export class AddEmployeetoPipComponent implements OnInit {
 
   constructor(private PerformanceManagementService: PerformanceManagementService, private ActivatedRoute: ActivatedRoute) { }
 
@@ -33,6 +33,7 @@ export class EmployeeKraMappingComponent implements OnInit {
   Departmentid: any;
   kratypeid: any;
   kratypelist: any;
+  Attachment:any;
 
   ngOnInit(): void {
     this.RoleID = "";
@@ -52,15 +53,26 @@ export class EmployeeKraMappingComponent implements OnInit {
       debugger
       this.RoleTypeList = data;
     });
+
+    this.PerformanceManagementService.GetConductappraisalStaffListforpip().subscribe(
+      res => {
+        debugger;
+        let temp: any = res.filter(x => x.id != sessionStorage.getItem('EmaployedID'));
+          this.dropdownList = temp
+    
+        
+        });
+
     this.PerformanceManagementService.GetMyDetails().subscribe(data => {
       debugger
-      this.dropdownList = data.filter(x => x.supervisor == sessionStorage.getItem('EmaployedID'));
+      // this.dropdownList = data.filter(x => x.id != sessionStorage.getItem('EmaployedID'));
       let temp: any = data.filter(x => x.id == sessionStorage.getItem('EmaployedID'));
       this.Departmentid = temp[0].department;
+
+
       this.PerformanceManagementService.GetDepartmentMaster().subscribe(data => {
         debugger
-        this.Departmentlist = data.filter(x => x.id == this.Departmentid);
-         // .filter(x => x.id == this.Departmentid);
+        this.Departmentlist = data
       });
     });
 
@@ -102,7 +114,7 @@ export class EmployeeKraMappingComponent implements OnInit {
 
     this.PerformanceManagementService.GetMyDetails().subscribe(data => {
       debugger
-      let temp: any = data.filter(x => x.id == this.EmployeeId);
+      let temp: any = data
       this.Approver1 = temp[0].supervisor;
       this.Approver2 = 10422;
     });
@@ -156,7 +168,7 @@ export class EmployeeKraMappingComponent implements OnInit {
   }
   public Cancel() {
     debugger
-    location.href = "#/EmployeeKraMappingdashboard";
+    location.href = "#/Pip";
   }
   Approver1: any;
   Approver2: any;
@@ -165,72 +177,9 @@ export class EmployeeKraMappingComponent implements OnInit {
   eDate: any;
   tablecount: any;
   Approver3: any;
+  comments:any;
+  lastdateofsubmission:any;
 
-  public InsertDetails() {
-    debugger
-    for (let i = 0; i < this.keyresultArray.length; i++) {
-      if (this.keyresultArray.length == 0) {
-        Swal.fire('Please Select Goals For Staff')
-      }
-      else {
-        var Entity = {
-          'StaffTypeID': 1,
-          'StaffName': this.EmployeeId,
-          'Approver1': this.Approver1,
-          'Approver2': this.Approver2,
-          'Approver3': this.Approver3,
-          'AppraisalSubmitionDate': this.AppraisalSubmitionDate,
-          'CycleStartDate': this.sDate,
-          'CycleEndDate': this.eDate,
-          'KraID': this.keyresultArray[i].kraid,
-          'kpiid': this.keyresultArray[i].kpiid,
-          'AppraiselID': this.appraisalid
-        }
-        this.PerformanceManagementService.InsertEmployeeKraMap(Entity).subscribe(
-          data => {
-
-            if (data != undefined) {
-
-            }
-
-          }, error => {
-          }
-        )
-      }
-    }
-    this.InsertNotification();
-    Swal.fire('Goal Setting Done Successfully.');
-    location.href = "#/EmployeeKraMappingdashboard";
-    location.reload();
-
-  }
-
-
-  public InsertNotification() {
-    debugger
-
-    var entity = {
-      'Date': new Date(),
-      'Event': 'Apprisal Request',
-      'FromUser': 'Admin',
-      'ToUser': sessionStorage.getItem('EmaployedID'),
-      'Message': 'Your Manager Assigned a New Goal Setting to you!!',
-      'Photo': 'Null',
-      'Building': 'Dynamics 1',
-      'UserID': this.EmployeeId,
-      'NotificationTypeID': 17,
-      'VendorID': 0
-
-
-    }
-    this.PerformanceManagementService.InsertNotification(entity).subscribe(data => {
-      if (data != 0) {
-
-
-      }
-
-    })
-  }
   public keyresultArray: any = [];
   public SaveDetails() {
     debugger
@@ -258,6 +207,70 @@ export class EmployeeKraMappingComponent implements OnInit {
   }
 
 
+  public UpdatePipDetails() {
+    debugger
+    for (let i = 0; i < this.keyresultArray.length; i++) {
+      if (this.keyresultArray.length == 0) {
+        Swal.fire('Please Select Goals For Staff')
+      }
+      else {
+        var Entity = {
+          'ID':this.EmployeeId,
+          'StaffTypeID': 1,
+          'StaffName': this.EmployeeId,
+          'PipGoaltypeID': this.kratypeid,
+          'PipComments':this.comments,
+          'PipAttachment':this.Attachment,
+          'PipEmpLastSubmissionDate':this.lastdateofsubmission,
+          'PipKraID': this.keyresultArray[i].kraid,
+          'PipKpiID': this.keyresultArray[i].kpiid,
+      
+        }
+        
+        this.PerformanceManagementService.UpdatePipEmployeeKraMap(Entity).subscribe(
+          data => {
+
+            if (data != undefined) {
+
+            }
+
+          }, error => {
+          }
+        )
+      }
+    }
+    this.InsertNotification();
+    Swal.fire('PIP Goal Assigned Succcessfully!!');
+    location.href = "#/Pip";
+
+  }
+
+
+  public InsertNotification() {
+    debugger
+
+    var entity = {
+      'Date': new Date(),
+      'Event': 'Apprisal Request',
+      'FromUser': 'Admin',
+      'ToUser': sessionStorage.getItem('EmaployedID'),
+      'Message': 'Your Manager Assigned a New Goal Setting to you!!',
+      'Photo': 'Null',
+      'Building': 'Dynamics 1',
+      'UserID': this.EmployeeId,
+      'NotificationTypeID': 17,
+      'VendorID': 0
+
+
+    }
+    this.PerformanceManagementService.InsertNotification(entity).subscribe(data => {
+      if (data != 0) {
+      }
+    })
+  }
+
+
+
   getkratypeid(event: any) {
     debugger
     this.kratypeid = event.target.value;
@@ -278,7 +291,29 @@ export class EmployeeKraMappingComponent implements OnInit {
     )
   }
 
+  files: File[] = [];
+  onSelect(event: { addedFiles: any; }) {
+    debugger
+    console.log(event);
+    this.files.push(event.addedFiles[0]);
+    this.uploadattachments();
+    console.log("content", this.files);
+  }
 
+
+  onRemove(event: any) {
+    debugger
+    console.log(event);
+    this.files.splice(this.files.indexOf(event), 1);
+  }
+  public uploadattachments() {
+    debugger
+    this.PerformanceManagementService.ProjectAttachments(this.files).subscribe(res => {
+      debugger
+      this.Attachment = res;
+      alert("ATTACHMENT UPLOADED");
+    })
+  }
 
 
 

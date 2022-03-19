@@ -34,6 +34,7 @@ import { HRDashboardComponent } from './hrdashboard/hrdashboard.component';
 import { EmployeeTileDashboardComponent } from './employee-tile-dashboard/employee-tile-dashboard.component';
 import { LoaderComponent } from './loader/loader.component';
 import { PipComponent } from './pip/pip.component';
+import { AddEmployeetoPipComponent } from './add-employeeto-pip/add-employeeto-pip.component';
 
 
 const routes: Routes = [
@@ -79,6 +80,7 @@ const routes: Routes = [
   {path:'EmployeeTileDashboard',component:EmployeeTileDashboardComponent},
   { path: 'Loader', component:LoaderComponent },
   { path: 'Pip', component:PipComponent },
+  { path: 'AddEmployeetoPip', component:AddEmployeetoPipComponent },
   
 ];
 
