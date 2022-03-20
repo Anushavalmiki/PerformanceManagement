@@ -179,7 +179,7 @@ export class AddEmployeetoPipComponent implements OnInit {
   Approver3: any;
   comments:any;
   lastdateofsubmission:any;
-
+  kratype:any;
   public keyresultArray: any = [];
   public SaveDetails() {
     debugger
@@ -194,7 +194,8 @@ export class AddEmployeetoPipComponent implements OnInit {
           "kpiid": this.selectedItems4[i].id,
           "kraname": this.selectedItems2[0].kraName,
           "kpiname": this.selectedItems4[i].kpiName,
-          'KraTypeID': this.kratypeid
+          'KraTypeID': this.kratypeid,
+          'KraType':this.kratype
         };
         debugger
         this.keyresultArray.push(json)
@@ -218,7 +219,7 @@ export class AddEmployeetoPipComponent implements OnInit {
         
           'StaffTypeID': 1,
           'StaffName': this.EmployeeId,
-          'PipGoaltypeID': this.kratypeid,
+          'PipGoaltypeID': this.kratype,
           'PipComments':this.comments,
           'PipAttachment':this.Attachment,
           'PipEmpLastSubmissionDate':this.lastdateofsubmission,
@@ -273,8 +274,10 @@ export class AddEmployeetoPipComponent implements OnInit {
 
   getkratypeid(event: any) {
     debugger
-    this.kratypeid = event.target.value;
-
+    // this.kratypeid = event.target.value;
+    let list = event.target.value.split(",");
+    this.kratypeid = list[1];
+    this.kratype=list[0];
     this.PerformanceManagementService.GetKeyResultArea().subscribe(data => {
       debugger
       this.dropdownList1 = data.filter(x => x.kraTypeID == this.kratypeid);

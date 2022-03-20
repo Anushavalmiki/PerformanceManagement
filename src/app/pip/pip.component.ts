@@ -85,7 +85,7 @@ export class PipComponent implements OnInit {
       res => {
         debugger;
         let temp: any = res
-          this.StaffAppraisalList = temp;
+          this.StaffAppraisalList = temp.filter((x: { hrSubmittedDate: null; })=>x.hrSubmittedDate!=null);
           const key = 'employee';
           const key1 = 'month'
           this.uniquelist = [...new Map(this.StaffAppraisalList.map((item: { [x: string]: any; }) =>
@@ -100,7 +100,7 @@ export class PipComponent implements OnInit {
   update() {
     debugger
     if(this.Score==undefined||this.Score==0){
-      Swal.fire("Please enter the Rate");
+      Swal.fire("Please enter the Rating");
     }
     else{
       var entity = {

@@ -350,7 +350,7 @@ export class PerformanceManagementService {
 
   public UpdatePipEmployeeKraMap(data: any) {
     debugger;
-    this.url = this.baseURL1 + 'Master/UpdatePipEmployeeKraMap';
+    this.url = this.baseURL + 'Master/UpdatePipEmployeeKraMap';
     return this.http.post(this.url, data);
   }
 

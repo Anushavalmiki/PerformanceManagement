@@ -65,7 +65,7 @@
                                 <button class=" btn btn-primary action" data-toggle="modal" data-target="#exampleModal2"
                                     (click)="getattachment(details)"  *ngIf="details.selfattachment!='0'&&details.selfattachment!=''">View Attachments</button>
                                     <p *ngIf="details.selfattachment=='0'||details.selfattachment==null||details.selfattachment==''">No Attachment</p>
-                            </td>
+                            </td>   
                             <td  [ngClass]="{'bg-warning':details.managerupdate==1 }" style="text-align: center;">
                                 {{details.managerrating}}
                                 <p *ngIf="details.managerupdate!=1">NA</p>

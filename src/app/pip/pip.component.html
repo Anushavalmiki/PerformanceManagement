@@ -145,12 +145,17 @@
                 <tbody>
                     <tr  *ngFor="let details of StaffAppraisalList">
                         <td>{{details.appraisalCycleName}}</td>
-                        <td>{{details.pipKraID}}</td>
-                        <td>{{details.pipKpiID}}</td>
-                        <td>{{details.pipGoaltypeID}}</td>
+                        <td>{{details.goalType}}</td>
+                        <td>{{details.pipKraName}}</td>
+                        <td>{{details.pipKpiName}}</td>
+                       
                         <td>{{details.pipComments}}</td>
-                        <td>{{details.pipAttachment}}</td>
-                        <td>{{details.pipEmpLastSubmissionDate}}</td>
+                        <td>
+                            <img src="{{details.PipAttachment}}" 
+                            style="width:50px;height: 50px;">
+                        </td>
+                      
+                        <td>{{details.pipEmpLastSubmissionDate|date}}</td>
                     </tr>
                    
 
@@ -266,7 +271,7 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 <button type="button" class="btn btn-primary"  (click)="update()" >Update
-                    Rate</button>
+                    Rating</button>
             </div>
         </div>
     </div>

@@ -56,6 +56,7 @@ export class StaffScoreReportComponent implements OnInit {
   appraislid:any;
   appraisalClose:any;
   ratingvalue: any;
+  AppraisalCycleID1:any;
   ngOnInit() {
     this.pending=0;
     this.GetRoleType();
@@ -260,7 +261,7 @@ export class StaffScoreReportComponent implements OnInit {
       debugger
       let temp: any = data.filter(x => x.appraisalCycleName ==this.appraisalCycleName );
       this.AppraisalSubmitionDate = temp[0].employeeSubmissionDate;
-
+      this.AppraisalCycleID1=temp[0].id
       this.appraisalCycleName=temp[0].appraisalCycleName
       this.sDate = temp[0].cycleStartDate;
       this.eDate = temp[0].cycleEndDate;
@@ -357,7 +358,7 @@ export class StaffScoreReportComponent implements OnInit {
       if (result.value == true) {
         if(this.appraisalClose==0 ){
           var obj={
-            'appraiselID':this.AppraisalCycleID
+            'appraiselID':this.AppraisalCycleID1
           }
           this.PerformanceManagementService.CloseAppraisalCycle(obj).subscribe(data => {
             debugger

@@ -100,11 +100,11 @@
                                     data-toggle="modal" (click)="GetKPIIDetails(details)"
                                     data-target="#exampleModal1">View
                                     Details</button><br><br>
-                                    <p *ngIf="details.hrupdate==1&&(details.hrattachment==null||details.hrattachment=='')" >No Attachments</p>
+                                    <p *ngIf="details.hrupdate==1 && (details.hrattachment==null||details.hrattachment=='')" >No Attachments</p>
 
                                 <button class=" btn btn-primary action" data-toggle="modal" data-target="#exampleModal4"
                                     (click)="GetKPIIDetails(details)"
-                                    *ngIf="details.hrattachment!=null&&details.hrattachment!='0'&&details.hrattachment!=''">View
+                                    *ngIf="details.hrattachment!=null&&details.hrattachment!='0'&&details.hrattachment!='' ">View
                                     Attachments</button>
                                 <!-- <p *ngIf="details.hrattachment==null and details.hrrrating!=null" >No Attachments</p> -->
                             </td>

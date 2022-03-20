@@ -76,7 +76,7 @@
                                     data-target="#exampleModal2" (click)="GetKPIIDetails(details)"
                                     *ngIf="details.selfattachment!=0 &&details.empupdate==1">View Attachments</button>
                                 <p
-                                    *ngIf="details.empupdate==1&&(details.selfattachment=='0'||details.selfattachment==null)">
+                                    *ngIf="details.empupdate==1&&(details.selfattachment=='0'||details.selfattachment==null||details.selfattachment=='')">
                                     No Attachments</p>
                                 <!-- <button *ngIf="details.empupdate==1" type="button" class="btn btn-success"
                                 data-toggle="modal" (click)="GetKPIIDetails(details)"
