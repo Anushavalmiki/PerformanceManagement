@@ -110,7 +110,7 @@
         </div>
     </div>
     <br>
-    <span *ngIf="appraisalPendingCount==0 &&  appraisalClose==0"><button class="btn btn-success" 
+    <span *ngIf="appraisalClose==0 && appraisalcount!=0"><button class="btn btn-success" 
         (click)="CloseAppraisal()">Complete Appraisal</button></span><br>
     <span *ngIf="appraisalPendingCount==0 && appraisalClose==1 && appraisalcount!=0" style="color: red;">Appraisal Cycle is
         Closed</span><br><br>
@@ -152,7 +152,7 @@
                                   <p *ngIf="details.avgGroupHeadScores==null" style="color: red;">Pending</p>
                             </td>
                             <td >
-                                <p *ngIf="details.hrSubmittedDate!=null">{{details.avgCIOScores}}</p>
+                                <p *ngIf="details.hrSubmittedDate!=null && details.avgCIOScores<=2" style="background-color: yellow;">{{details.avgCIOScores}}</p>
                                 <p *ngIf="details.avgCIOScores==null ||details.hrSubmittedDate==null" style="color: red;">Pending</p>
                             </td>
                             <td>
