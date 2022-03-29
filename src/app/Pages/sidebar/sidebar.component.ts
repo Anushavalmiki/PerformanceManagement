@@ -98,6 +98,16 @@ export class SidebarComponent implements OnInit {
     localStorage.setItem("clickname","PIP")
   }
 
+  help(){
+    this.active = 'help'
+    localStorage.setItem("clickname", "HELP")
+  }
+
+  SupportTickets(){
+    this.active = 'SupportTickets'
+    localStorage.setItem("clickname", "support tickets")
+  }
+
   dashboard() {
     this.active = 'dashboard';
     localStorage.setItem("clickname", "dashboard")

@@ -45,6 +45,9 @@ import { EmployeeTileDashboardComponent } from './employee-tile-dashboard/employ
 import { LoaderComponent } from './loader/loader.component';
 import { PipComponent } from './pip/pip.component';
 import { AddEmployeetoPipComponent } from './add-employeeto-pip/add-employeeto-pip.component';
+import { HelpComponent } from './help/help.component';
+import { SupportTicketsComponent } from './support-tickets/support-tickets.component';
+import { SupportTicketDashboardComponent } from './support-ticket-dashboard/support-ticket-dashboard.component';
 
 @NgModule({
   declarations: [
@@ -83,7 +86,10 @@ import { AddEmployeetoPipComponent } from './add-employeeto-pip/add-employeeto-p
     EmployeeTileDashboardComponent,
     LoaderComponent,
     PipComponent,
-    AddEmployeetoPipComponent
+    AddEmployeetoPipComponent,
+    HelpComponent,
+    SupportTicketsComponent,
+    SupportTicketDashboardComponent
   ],
   imports: [
     BrowserModule,

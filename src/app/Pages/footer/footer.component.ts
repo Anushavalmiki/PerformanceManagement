@@ -8,8 +8,9 @@ import { Component, OnInit } from '@angular/core';
 export class FooterComponent implements OnInit {
 
   constructor() { }
-
+temp:any;
   ngOnInit(): void {
+    this.temp = sessionStorage.getItem('temp')
   }
 
 }

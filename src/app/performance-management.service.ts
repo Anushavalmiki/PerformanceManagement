@@ -10,6 +10,7 @@ export class PerformanceManagementService {
   public baseURL = "http://103.133.214.197/PerformanceManagement/";
 
   public host = "https://digioffice.amazeone.co/digiofficeapi";
+  public host1="https://support.amazeone.co/SupportAPI/";
 
   url: any;
   constructor(private http: HttpClient) {
@@ -354,6 +355,50 @@ export class PerformanceManagementService {
     return this.http.post(this.url, data);
   }
 
-  
+  public InsertAttachment(data: any) {
+    debugger;
+    this.url = this.host1 + '/Master/InsertAttachment';
+    return this.http.post(this.url, data);
+  }
  
+  public InsertSupportTickets(data: any) {
+    debugger;
+    this.url = this.host1 + '/Master/InsertSupportTickets';
+    return this.http.post(this.url, data);
+  }
+
+  public AttachmentsUploadsss(files: any) {
+    debugger
+    let formdata: FormData = new FormData();
+    for (let i = 0; i < files.length; i++) {
+      formdata.append('file_upload', files[i], files[i].name);
+    }
+    
+    debugger
+    let APIURL = this.host1 + "Master/UploadImages/";
+    return this.http.post(APIURL, formdata);
+  }
+
+  public GetSupportTickets() {
+    return this.http.get<any[]>(
+      this.host1 + "/Master/GetSupportTickets"
+    );
+  }
+
+  public GetSupportAttachment() {
+
+    return this.http.get<any[]>(this.host1 + "/Master/GetSupportAttachment");
+  }
+
+  public DeleteSupportTickets(ID: any) {
+    return this.http.get<any[]>(
+      this.host1 + "/Master/DeleteSupportTickets?ID=" + ID);
+  }
+
+  public UpdateSupportTickets(data: any) {
+    debugger;
+    this.url = this.host1 + '/Master/UpdateSupportTickets';
+    return this.http.post(this.url, data);
+  }
+
 }

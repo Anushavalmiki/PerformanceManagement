@@ -35,6 +35,9 @@ import { EmployeeTileDashboardComponent } from './employee-tile-dashboard/employ
 import { LoaderComponent } from './loader/loader.component';
 import { PipComponent } from './pip/pip.component';
 import { AddEmployeetoPipComponent } from './add-employeeto-pip/add-employeeto-pip.component';
+import { HelpComponent } from './help/help.component';
+import { SupportTicketDashboardComponent } from './support-ticket-dashboard/support-ticket-dashboard.component';
+import { SupportTicketsComponent } from './support-tickets/support-tickets.component';
 
 
 const routes: Routes = [
@@ -81,6 +84,10 @@ const routes: Routes = [
   { path: 'Loader', component:LoaderComponent },
   { path: 'Pip', component:PipComponent },
   { path: 'AddEmployeetoPip', component:AddEmployeetoPipComponent },
+  {path:'Help',component:HelpComponent},
+  {path:'SupportTickets',component:SupportTicketsComponent},
+  {path:'SupportTickets/:id',component:SupportTicketsComponent},
+  {path:'SupportTicketDashboard',component:SupportTicketDashboardComponent}
   
 ];
 
