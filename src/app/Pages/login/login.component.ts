@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PerformanceManagementService } from 'src/app/performance-management.service';
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -13,9 +14,12 @@ export class LoginComponent implements OnInit {
   loginName: any;
   showpassword: any;
   result: any;
+  admin:any;
   constructor(private PerformanceManagementService: PerformanceManagementService) { }
 
   ngOnInit(): void {
+    this.admin="Admin"
+    this.showpassword=0;
   }
 
   public getroleid(event: any) {
@@ -37,35 +41,38 @@ export class LoginComponent implements OnInit {
   login() {
     debugger
     if (this.roleId == 1) {
-      if (this.userName == 'Admin' && this.passWord == 'welcome') {
+      let adminCopy = this.admin.toLowerCase();
+      if (this.userName.toLowerCase().includes(adminCopy)  && this.passWord == 'welcome') {
         sessionStorage.setItem("temp", '1');
         sessionStorage.setItem("roleid", this.roleId);
-        
-        sessionStorage.setItem("loginName", this.userName);
-        location.href = "#/MyAppraisal";
+
+        sessionStorage.setItem("loginName", this.admin);
+        location.href = "#/AppraisalCycle";
         location.reload();
       }
       else {
-        alert("Please Enter Valid Details");
+        Swal.fire("Incorrect Username or Password")
       }
     }
     else if (this.roleId == 2) {
       this.PerformanceManagementService.GetMyDetails().subscribe(async data => {
         console.log("data", data);
-        let temp: any = data.filter(x => (x.emailID == this.userName || x.phoneNo == this.userName) && x.password == this.passWord);
+        let userNameCopy = this.userName.toLowerCase();
+        let password = this.userName.toLowerCase();
+        let temp: any = data.filter(x => (x.emailID.toLowerCase().includes(userNameCopy)  || x.phoneNo == this.userName) && x.password == this.passWord );
         this.result = temp[0];
         // this.loader = true;
         if (this.result != undefined || this.result != null) {
           sessionStorage.setItem("temp", '1');
           sessionStorage.setItem("roleid", this.roleId);
-          sessionStorage.setItem("loginName", this.result.fullname);
+          sessionStorage.setItem("loginName", this.result.name);
           sessionStorage.setItem("EmaployedID", this.result.id);
           sessionStorage.setItem("Type", this.result.type);
           location.href = "#/MyAppraisal";
           location.reload();
         }
         else {
-          alert('Username or Password is invalid');
+          Swal.fire("Incorrect Username or Password")
           this.userName = "";
           this.passWord = "";
         }
@@ -75,21 +82,22 @@ export class LoginComponent implements OnInit {
     else if (this.roleId == '4') {
       this.PerformanceManagementService.GetMyDetails().subscribe(data => {
         console.log("data", data);
-        let temp: any = data.filter(x => (x.emailID == this.userName || x.phoneNo == this.userName) && x.password == this.passWord);
+        let userNameCopy = this.userName.toLowerCase();
+        let temp: any = data.filter(x => (x.emailID.toLowerCase().includes(userNameCopy)  || x.phoneNo == this.userName) && x.password == this.passWord && x.role=='Manager');
         this.result = temp[0];
         debugger;
         // this.loader = true;
         if (this.result != undefined || this.result != null) {
           sessionStorage.setItem("temp", '1');
           sessionStorage.setItem("roleid", this.roleId);
-          sessionStorage.setItem("loginName", this.result.fullname);
+          sessionStorage.setItem("loginName", this.result.name);
           sessionStorage.setItem("EmaployedID", this.result.id);
           sessionStorage.setItem("Type", this.result.type);
           location.href = "#/MyAppraisal";
           location.reload();
         }
         else {
-          alert('Username or Password is invalid');
+          Swal.fire("Incorrect Username or Password")
           this.userName = "";
           this.passWord = "";
         }
@@ -103,41 +111,31 @@ export class LoginComponent implements OnInit {
     else if (this.roleId == '3') {
       this.PerformanceManagementService.GetMyDetails().subscribe(data => {
         console.log("data", data);
-        let temp: any = data.filter(x => (x.emailID == this.userName || x.phoneNo == this.userName) && x.password == this.passWord);
+        let userNameCopy = this.userName.toLowerCase();
+        let temp: any = data.filter(x => (x.emailID.toLowerCase().includes(userNameCopy)  || x.phoneNo == this.userName) && x.password == this.passWord && x.role=='HR');
         this.result = temp[0];
         debugger;
         // this.loader = true;
         if (this.result != undefined || this.result != null) {
           sessionStorage.setItem("temp", '1');
           sessionStorage.setItem("roleid", this.roleId);
-          sessionStorage.setItem("loginName", this.result.fullname);
+          sessionStorage.setItem("loginName", this.result.name);
           sessionStorage.setItem("EmaployedID", this.result.id);
           sessionStorage.setItem("Type", this.result.type);
           location.href = "#/MyAppraisal";
           location.reload();
         }
         else {
-          alert('Username or Password is invalid');
+          Swal.fire("Incorrect Username or Password")
           this.userName = "";
           this.passWord = "";
         }
 
       })
-
     }
-
- 
-
-
-
-
-
-
   }
+}
 
-
-  }
- 
 
 
 

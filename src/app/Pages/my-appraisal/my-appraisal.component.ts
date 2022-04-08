@@ -20,15 +20,15 @@ export class MyAppraisalComponent implements OnInit {
   RoleType: any;
   Department: any;
   count: any;
-
-
-
+  search:any;
   EmployeeKradash: any
+  roleid:any; 
 
   ngOnInit(): void {
 
     this.Department = "";
     this.RoleType = "";
+    this.roleid = sessionStorage.getItem('roleid');
     this.PerformanceManagementService.GetMyDetails().subscribe(data => {
       debugger
       this.stafflist = data;
@@ -77,6 +77,7 @@ export class MyAppraisalComponent implements OnInit {
     this.PerformanceManagementService.GetEmployeeKraMap().subscribe(data => {
       debugger
       this.Staffkra = data.filter(x => x.staffName == details.staffid);
+      this.count = this.Staffkra.length;
     });
 
   }

@@ -69,3 +69,13 @@ dropdown-submenu {
   width: 50%;
   height: 85%;
 }
+
+.scroll{
+  overflow-y:auto;
+  height:650px;
+}
+
+.overflow{
+  overflow-y: scroll;
+  height:85vh;
+}

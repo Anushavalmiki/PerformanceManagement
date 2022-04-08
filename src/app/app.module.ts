@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { NgxDropzoneModule } from 'ngx-dropzone';
@@ -34,6 +34,20 @@ import { HrDashComponent } from './Pages/hr-dash/hr-dash.component';
 import { StaffScoreReportComponent } from './Pages/staff-score-report/staff-score-report.component';
 import { StaffScoreFullDetailsComponent } from './Pages/staff-score-full-details/staff-score-full-details.component';
 import { CKEditorModule } from 'ckeditor4-angular';
+import { SelfratingnewComponent } from './Pages/selfratingnew/selfratingnew.component';
+import { ManagerAppraisalComponent } from './manager-appraisal/manager-appraisal.component';
+import { HrratingnewComponent } from './Pages/hrratingnew/hrratingnew.component';
+import { BellCurveFittingComponent } from './bell-curve-fitting/bell-curve-fitting.component';
+import { AppraisalReportComponent } from './Pages/appraisal-report/appraisal-report.component';
+import { ManagerDashboardComponent } from './manager-dashboard/manager-dashboard.component';
+import { HRDashboardComponent } from './hrdashboard/hrdashboard.component';
+import { EmployeeTileDashboardComponent } from './employee-tile-dashboard/employee-tile-dashboard.component';
+import { LoaderComponent } from './loader/loader.component';
+import { PipComponent } from './pip/pip.component';
+import { AddEmployeetoPipComponent } from './add-employeeto-pip/add-employeeto-pip.component';
+import { HelpComponent } from './help/help.component';
+import { SupportTicketsComponent } from './support-tickets/support-tickets.component';
+import { SupportTicketDashboardComponent } from './support-ticket-dashboard/support-ticket-dashboard.component';
 
 @NgModule({
   declarations: [
@@ -61,7 +75,21 @@ import { CKEditorModule } from 'ckeditor4-angular';
     HrRatingComponent,
     HrDashComponent,
     StaffScoreReportComponent,
-    StaffScoreFullDetailsComponent
+    StaffScoreFullDetailsComponent,
+    SelfratingnewComponent,
+    ManagerAppraisalComponent,
+    HrratingnewComponent,
+    BellCurveFittingComponent,
+    AppraisalReportComponent,
+    ManagerDashboardComponent,
+    HRDashboardComponent,
+    EmployeeTileDashboardComponent,
+    LoaderComponent,
+    PipComponent,
+    AddEmployeetoPipComponent,
+    HelpComponent,
+    SupportTicketsComponent,
+    SupportTicketDashboardComponent
   ],
   imports: [
     BrowserModule,
@@ -73,6 +101,7 @@ import { CKEditorModule } from 'ckeditor4-angular';
     NgxPaginationModule,
     NgMultiSelectDropDownModule,
     CKEditorModule,
+    ReactiveFormsModule
     
   ],
   providers: [DatePipe ],

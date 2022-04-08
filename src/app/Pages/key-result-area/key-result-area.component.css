@@ -25,5 +25,12 @@ border-radius: 12px;
     color:white;
     border-radius: 5px;
     border:none;
-    width:50%;
+    width:100%;
 }
+.inputclass{
+    Font: 'Poppins';
+    background-color: transparent;
+    border-color: grey;
+    padding: 5px;
+  
+  }

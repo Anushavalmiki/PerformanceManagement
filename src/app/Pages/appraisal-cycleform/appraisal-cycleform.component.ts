@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PerformanceManagementService } from 'src/app/performance-management.service';
 import { ActivatedRoute } from '@angular/router';
 import Swal from 'sweetalert2';
+import { formatDate } from '@angular/common';
 
 @Component({
   selector: 'app-appraisal-cycleform',
@@ -23,10 +24,20 @@ export class AppraisalCycleformComponent implements OnInit {
   managerReviewDate:any;
   hrReviewDate:any;
   appraisalLastdate:any;
+  appraisalClosingLastDate:any;
+  todaydate:any;
 
 
   ngOnInit(): void {
+    const format = 'yyyy-MM-dd';
+
+    const myDate = new Date();
+    const locale = 'en-US';
+    this.todaydate = formatDate(myDate, format, locale);
+
+    
     this.GetFrequency();
+    this.frequencyid="";
     
 
     this.ActivatedRoute.params.subscribe(params => {
@@ -54,7 +65,7 @@ export class AppraisalCycleformComponent implements OnInit {
     this.empsubDate=this.appraisallist[0].employeeSubmissionDate;
     this.managerReviewDate=this.appraisallist[0].managerReviewLastDate;
     this.hrReviewDate=this.appraisallist[0].hrReviewLastDate;
-    this.appraisalLastdate=this.appraisallist[0].AppraisalClosingLastDate;
+    this.appraisalClosingLastDate=this.appraisallist[0].appraisalClosingLastDate;
     
       }
     ) 
@@ -62,6 +73,7 @@ export class AppraisalCycleformComponent implements OnInit {
 
   
   Save(){
+    debugger
    var json = {  
     "AppraisalCycleName":this.appraisal,
     "FrequencyType":this.frequencyid,
@@ -71,7 +83,7 @@ export class AppraisalCycleformComponent implements OnInit {
     "EmployeeSubmissionDate":this.empsubDate,
     "ManagerReviewLastDate":this.managerReviewDate,
     "HrReviewLastDate":this.hrReviewDate,
-    "AppraisalClosingLastDate":this.appraisalLastdate
+    "AppraisalClosingLastDate":this.appraisalClosingLastDate
     };
     this.PerformanceManagementService.InsertAppraisalCycle(json).subscribe(
       data => {
@@ -93,7 +105,7 @@ export class AppraisalCycleformComponent implements OnInit {
       "EmployeeSubmissionDate":this.empsubDate,
       "ManagerReviewLastDate":this.managerReviewDate,
       "HrReviewLastDate":this.hrReviewDate,
-      "AppraisalClosingLastDate":this.appraisalLastdate
+      "AppraisalClosingLastDate":this.appraisalClosingLastDate
         
       };
     

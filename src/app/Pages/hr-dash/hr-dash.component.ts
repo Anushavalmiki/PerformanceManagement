@@ -21,6 +21,12 @@ export class HrDashComponent implements OnInit {
   RoleType: any;
   Department: any;
   count: any;
+  search:any;
+  Apprisalcyclelist:any;
+  AppraisalSubmitionDate:any;
+  sDate:any;
+  eDate:any;
+  appraisalCycleName:any
 
 
 
@@ -30,11 +36,12 @@ export class HrDashComponent implements OnInit {
 
     this.Department = "";
     this.RoleType = "";
+    this.appraisalCycleName=0;
     this.PerformanceManagementService.GetMyDetails().subscribe(data => {
       debugger
       this.stafflist = data;
       this.stafflistCopy = this.stafflist
-      this.count = this.stafflist.length;
+    
     });
 
     this.PerformanceManagementService.GetDepartment().subscribe(data => {
@@ -44,8 +51,19 @@ export class HrDashComponent implements OnInit {
 
     this.PerformanceManagementService.GetConductappraisalStaffList().subscribe(data => {
       debugger
-      this.EmployeeKradash = data.filter(x => x.approver2 == sessionStorage.getItem('EmaployedID') && x.selfScores != null);
+      this.EmployeeKradash = data.filter(x => x.approver2 == sessionStorage.getItem('EmaployedID') && x.selfScores != null
+      && x.cycleStartDate !=null && x.cycleEndDate != null && x.appraisalSubmitionDate != null  && x.employeeSubmittedDate !=null && x.managerSubmittedDate!= null );
+      
+      this.count=this.EmployeeKradash.length;
+    
     });
+
+    this.PerformanceManagementService.GetAppraisalCycle().subscribe(data => {
+      debugger
+      this.Apprisalcyclelist = data;
+    });
+
+ 
   }
 
   public getRoleType(event: any) {
@@ -59,6 +77,7 @@ export class HrDashComponent implements OnInit {
       debugger
       this.stafflist = data.filter(x => x.roleType == this.RoleType);
       this.count = this.stafflist.length;
+
     });
 
   }
@@ -81,5 +100,27 @@ export class HrDashComponent implements OnInit {
     });
 
   }
+
+  public GetApprisalcycle(event: any) {
+    debugger
+    this.PerformanceManagementService.GetAppraisalCycle().subscribe(data => {
+      debugger
+      let temp: any = data.filter(x => x.id == event.target.value);
+      this.AppraisalSubmitionDate = temp[0].employeeSubmissionDate;
+      this.appraisalCycleName=temp[0].appraisalCycleName
+      this.sDate = temp[0].cycleStartDate;
+      this.eDate = temp[0].cycleEndDate;
+
+    });
+  }
+
+  public GetFilteredAppraisalCycle() {
+    this.PerformanceManagementService.GetConductappraisalStaffList().subscribe(data => {
+      debugger
+      this.EmployeeKradash = data.filter(x => x.appraisalCycleName == this.appraisalCycleName)
+    })
+  }
+
+
 
 }

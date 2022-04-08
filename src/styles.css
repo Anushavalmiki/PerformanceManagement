@@ -24,7 +24,7 @@
   font-weight: bold;
   cursor: pointer;
 }
-
+/* 
 th {
   background-color: #02CFFF;
   color: white;
@@ -48,9 +48,9 @@ tr:last-of-type td:first-of-type {
 tr:last-of-type td:last-of-type {
   border-bottom-right-radius: 10px;
 
-}
+} */
 
-table,
+/* table,
 tr,
 td {
   border: none !important;
@@ -60,9 +60,9 @@ td {
   font-size: 13px;
   color: #0C275A;
   /* height: 92%; */
-  text-align: left;
-}
-
+  
+/* } */ 
+/* 
 tr:nth-child(odd) {
 
   background-color: #FFFFFF !important
@@ -75,7 +75,7 @@ tr:nth-child(even) {
 
 table {
   width: 100%;
-}
+} */
 
 .actionbuttons {
   width: 60%;
@@ -95,6 +95,14 @@ table {
   background-color: #3247D5;
   border: none;
   width: 92%;
+}
+
+.card {
+  padding: 20px;
+  background: #ffffff;
+  box-shadow: 1px 1px 15px 3px rgba(0, 0, 0, 0.12);
+  border-radius: 12px;
+  width: 100%;
 }
 
 .cancel {
@@ -118,6 +126,7 @@ table {
   margin-top: 6px;
   padding: 5px;
   margin-bottom: 5px;
+  height:70%;
 }
 
 .headings {
@@ -130,18 +139,18 @@ table {
   line-height: 15px;
   letter-spacing: 0.5px;
   color: #3247D5;
+  font-family: "Poppins" !important;
 }
 
 .count {
   height: 15px;
-  left: 221px;
+
   top: 100px;
   font-style: normal;
   font-weight: bold;
-  font-size: 19px;
-  line-height: 15px;
-  letter-spacing: 0.5px;
+  font-size: 17px;
   color: #0C275A;
+  font-family: "Poppins" !important;
 }
 
 .filter {
@@ -189,7 +198,7 @@ table {
   margin-right: 10px;
 }
 
-.tableheader {
+/* .tableheader {
   width: 1199px;
   height: 50px;
   right: 20px;
@@ -209,4 +218,110 @@ table {
   font-size: 13px;
   line-height: 17px;
   color: #0C275A;
+} */
+
+
+
+
+table thead tr {
+  font-family: "Poppins" !important;
+  font-style: normal !important;
+  font-weight: bold !important;
+  font-size: 14px !important;
+  line-height: 17px !important;
+  /* identical to box height, or 121% */
+  color: #ffffff !important;
 }
+
+table thead tr td {
+  font-family: "Poppins" !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-size: 13px !important;
+  line-height: 17px !important;
+  /* identical to box height, or 131% */
+  color: #0c275a !important;
+}
+
+table thead th {
+  font-family: "Poppins" !important;
+  background: #02cfff !important;
+  font-weight: 700;
+  font-size: 14px;
+  font-style: normal;
+  line-height: 17px;
+}
+
+
+tr:nth-child(odd) {
+  background-color: #FFFFFF !important
+}
+
+tr:nth-child(even) {
+  background-color: #F2F2F2 !important
+}
+
+th:first-of-type {
+  border-top-left-radius: 10px;
+}
+
+th:last-of-type {
+  border-top-right-radius: 10px;
+}
+
+tr:last-of-type td:first-of-type {
+  border-bottom-left-radius: 10px;
+
+}
+
+tr:last-of-type td:last-of-type {
+  border-bottom-right-radius: 10px;
+}
+
+table,
+tr,
+td {
+  border: none !important;
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 13px;
+  line-height: 17px;
+  /* identical to box height, or 131% */
+
+
+  color: #0C275A;
+}
+
+
+th:first-of-type {
+  border-top-left-radius: 10px;
+}
+
+th:last-of-type {
+  border-top-right-radius: 10px;
+}
+
+tr:last-of-type td:first-of-type {
+  border-bottom-left-radius: 10px;
+
+}
+
+tr:last-of-type td:last-of-type {
+  border-bottom-right-radius: 10px;
+}
+body,p {
+  font-family: 'Poppins';
+}
+
+i {
+  color: #3247d5;
+
+}
+input,textarea{
+  font-size: 12px;
+}
+/* .container-fluid{
+  padding: 10px;
+} */
+

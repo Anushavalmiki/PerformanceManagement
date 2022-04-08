@@ -19,3 +19,9 @@
     border-radius: 5px;
     float:left;
 }
+
+.card{
+    background: #FFFFFF;
+    box-shadow: 1px 1px 15px 3px rgba(0, 0, 0, 0.12);
+    border-radius: 12px;
+    }

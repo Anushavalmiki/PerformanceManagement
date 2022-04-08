@@ -1,49 +1,49 @@
     
 <div class="container-fluid">
     <div class="row">
-        <div class="col-lg-10">
+        <div class="col-lg-11">
             <br>
             <p class="headings">Appraisal Cycle </p>
         </div>
-        <div class="col-lg-2">
+        <div class="col-lg-1">
             <br>
-            <p class="count">Count : {{count}}</p>
+            <p class="count">Count:{{count}}</p>
         </div>
     </div>
     <br>
    <div class="card">
-       <br>
+      
     <div class="row FilterClass ">
-        <div class="col-lg-2">
+        <div class="col-lg-1">
             <p class="filter">Filter By</p>
         </div>
-        <div class="col-lg-3">
+        <div class="col-lg-5">
                 <input type="search" class="form-control search" [(ngModel)]="search"  placeholder="Search for Name..">
         </div>
         <div class="col-lg-1"></div>
-    </div><br>
+    </div>
 </div> <br>
     <div class="row">
-        <div class="col-lg-10"></div>
-        <div class="col-lg-2">
-            <button class="form-control actionbuttons" routerLink="/AppraisalCycleform">Add</button>
+        <div class="col-lg-11"></div>
+        <div class="col-lg-1">
+            <button class="form-control Add" routerLink="/AppraisalCycleform">Add</button>
         </div>
     </div> <br>
-  <div class="container-fluid">
+  <div>
         <div class="row">
             <div class="col-lg-12">
-                    <table>
+                    <table class="table">
                     <thead>
                         <tr>
                             <th>Appraisal Cycle Name</th>
                             <th>Frequency Type</th>
                             <th>Cycle Start Date</th>
                             <th>Cycle End Date</th>
-                            <th>Goal Setting Date</th>
-                            <th>Employee Submission Date</th>
-                            <th>Manager Review LastDate</th>
-                            <th>Hr Review LastDate</th>
-                            <th>Appraisal Closing LastDate</th>
+                            <th>Goal Setting Last Date</th>
+                            <th>Employee Submission Last Date</th>
+                            <th>Manager Review Last Date</th>
+                            <th>HR Review Last Date</th>
+                            <th>Appraisal Closing Last Date</th>
                             <th>Actions</th>
                         </tr>
                     </thead>

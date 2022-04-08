@@ -1,68 +1,76 @@
 <div class="container-fluid">
+    <br>
     <div class="row">
-        <div class="col-lg-10">
-            <br>
-            <p class="headings">Key Result Area Dashboard</p>
+        <div class="col-lg-11">
+
+            <p class="headings">Goals Dashboard</p>
         </div>
-        <div class="col-lg-2">
-            <br>
-            <p class="count">Count: {{count}}</p>
+        <div class="col-lg-1">
+
+            <p class="count">Count:{{count}}</p>
         </div>
     </div>
     <br>
-   <div class="card">
-       <br>
-    <div class="row FilterClass ">
-        <div class="col-lg-2">
-            <p class="filter">Filter By</p>
-        </div>
-        <div class="col-lg-3">
-                <input type="search" class="form-control search" [(ngModel)]="search"  placeholder="Search for Name..">
-        </div>
-        <div class="col-lg-3">
-            <select class="form-control" id="roleTypeid" name="roleTypeid" [(ngModel)]="roleTypeid"
+    <div class="card">
+        <br>
+        <div class="row FilterClass ">
+            <div class="col-lg-1">
+                <p class="filter">Filter By</p>
+            </div>
+            <div class="col-lg-3">
+                <input type="search" class="form-control search" [(ngModel)]="search" placeholder="Search for Name..">
+            </div>
+            <div class="col-lg-3">
+                <select class="form-control"id="roleTypeid" name="roleTypeid" [(ngModel)]="roleTypeid"
+                (change)="getRoleID($event)">
+                    <option value="0">Select Role</option>
+                    <option *ngFor="let details of roleTypeList" value="{{details.id}}">{{details.short}}
+                    </option>
+                </select>
+                <!-- <select class="form-control" id="roleTypeid" name="roleTypeid" [(ngModel)]="roleTypeid"
                 (change)="getRoleID($event)" >
                 <option value="0">Select Role</option>
                 <option *ngFor="let details of roleTypeList" value="{{details.id}}">{{details.short}}
                 </option>
-            </select>
-        </div>
-    </div><br>
-</div> <br>
+            </select> -->
+            </div>
+        </div><br>
+    </div> <br>
     <div class="row">
-        <div class="col-lg-10"></div>
-        <div class="col-lg-2">
+        <div class="col-lg-11"></div>
+        <div class="col-lg-1">
             <button class="form-control edit1" routerLink="/KeyResultAresForm">Add</button>
         </div>
     </div> <br>
-  <div class="container-fluid">
+ 
         <div class="row">
             <div class="col-lg-12">
-                    <table>
+                <table class="table">
                     <thead>
                         <tr>
-                            <th>KRA Name</th>
-                            <th>KRA Type</th>
+                            <th>Goal Type</th>
+                            <th>Goal Name</th>                          
                             <th>Role</th>
                             <th>Description</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
-                    <tbody>    
+                    <tbody>
                         <tr *ngFor="let details of keyresultlist | filter:search">
-                            <td>{{details.kraName}}</td>
                             <td>{{details.kraTypeID}}</td>
+                            <td>{{details.kraName}}</td>                    
                             <td>{{details.short}}</td>
                             <td>{{details.description}}</td>
                             <td>
-                                <button class="form-control add" [routerLink]="['/KeyResultAresForm', details.id]">Edit</button>
-                                <button class="form-control add" (click)="delete(details.id)">Delete</button>
+                                <button class="form-control edit"
+                                    [routerLink]="['/KeyResultAresForm', details.id]">Edit</button>
+                                <button class="form-control edit" (click)="delete(details.id)">Delete</button>
                             </td>
                         </tr>
                     </tbody>
                 </table>
             </div>
         </div>
-    </div>
+  
 
 </div>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PerformanceManagementService } from 'src/app/performance-management.service';
 import { ActivatedRoute } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-key-performance-indicatorform',
@@ -28,6 +29,11 @@ export class KeyPerformanceIndicatorformComponent implements OnInit {
   performancelist:any;
   rating:any;
   performanceIndicatorId:any;
+  goaltypelist:any;
+  goaltypeid:any;
+  kraType:any
+  dumpgoallist:any;
+  kratypeid:any;
 
 
   ngOnInit(): void {
@@ -35,8 +41,9 @@ export class KeyPerformanceIndicatorformComponent implements OnInit {
     this.GetKPI();
     this.GetKeyResultArea();
     this.GetPerformanceIndicatorMaster();
+    this.GetKraMaster();
+    this.goaltypeid="";
     
-
     this.ActivatedRoute.params.subscribe(params => {
       this.id = params['id'];
       if (this.id != undefined && this.id != null) {
@@ -61,7 +68,9 @@ export class KeyPerformanceIndicatorformComponent implements OnInit {
         this.description=this.kpilist[0].description;
         this.kpiName=this.kpilist[0].kpiName;
         this.indicatorid=this.kpilist[0].performanceIndicatorId;
+          this.goaltypeid=this.kpilist[0].kraTypeID;
         console.log("Kpilist",this.kpilist);
+        this.GetKraMaster();
         this.GetKeyResultArea();
       }
     )
@@ -115,7 +124,7 @@ export class KeyPerformanceIndicatorformComponent implements OnInit {
       };
       this.PerformanceManagementService.InsertKPI(json).subscribe(
         data => {
-          alert("Successfully Submitted...!");
+          Swal.fire("Successfully Submitted...!");
           location.href="#/KeyPerformanceIndicator"
         })
   }
@@ -136,16 +145,37 @@ export class KeyPerformanceIndicatorformComponent implements OnInit {
         data => {
         debugger
         let indicatorlist = data;
-        alert("Updated Sucessfully");
+        Swal.fire("Updated Successfully");
         location.href="#/KeyPerformanceIndicator";
       })
   }
 
  cancel(){
-   location.href="/KeyPerformanceIndicator";
+   location.href="#/KeyPerformanceIndicator";
  }
 
 
+
+ getgoaltype(event:any){
+   this.goaltypeid=event.target.value;  
+
+   this.PerformanceManagementService.GetKeyResultArea().subscribe(
+     data=>{
+       this.kratypelist=data.filter(x => x.kraTypeID == this.goaltypeid);
+     }
+   )
+ }
+
+
+
+ public GetKraMaster(){
+  this.PerformanceManagementService.GetKraMaster().subscribe(
+    data=>{
+      this.goaltypelist=data;     
+    }
+  )
+ 
+}
 
 
 }

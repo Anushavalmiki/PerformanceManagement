@@ -20,21 +20,42 @@ export class EmployeeDashboardComponent implements OnInit {
   RoleType: any;
   Department: any;
   count:any;
+  search:any;
+  dumpstafflist:any;
+  roleid: any;
 
-
-
+  StaffID:any;
 
 
   ngOnInit(): void {
-
+    this.roleid = sessionStorage.getItem('roleid');
+    this.StaffID = sessionStorage.getItem('EmaployedID');
     this.Department = "";
     this.RoleType="";
     this.PerformanceManagementService.GetMyDetails().subscribe(data => {
       debugger
+      this.dumpstafflist=data;
       this.stafflist = data;
-      this.stafflistCopy = this.stafflist
+      this.stafflistCopy = this.stafflist;
+     
+      if(this.roleid!=3)
+      {
+        this.stafflist=this.dumpstafflist.filter((x: { supervisor:any})=>x.supervisor==this.StaffID);
+        console.log("stafflist",this.stafflist)
+      
+      }
+      else{
+        this.stafflist=this.dumpstafflist;
+        console.log("stafflist",this.stafflist)
+      
+      }
+
+   
       this.count = this.stafflist.length;
+   
     });
+
+    // this.filterByDepartment();
 
     this.PerformanceManagementService.GetDepartment().subscribe(data => {
       debugger
@@ -56,21 +77,32 @@ export class EmployeeDashboardComponent implements OnInit {
     debugger
     this.PerformanceManagementService.GetMyDetails().subscribe(data => {
       debugger
-      this.stafflist = data.filter(x=>x.roleType==this.RoleType);
+      // this.stafflist = data.filter(x=>x.roleType==this.RoleType);
+   
+      this.stafflist=this.dumpstafflist;
+      console.log("stafflist",this.stafflist)
       this.count = this.stafflist.length;
     });
  
   }
 
-  public filterByDepartment(){
-    debugger
-    this.PerformanceManagementService.GetMyDetails().subscribe(data => {
-      debugger
-      this.stafflist = data.filter(x=>x.department==this.Department);
-      this.count = this.stafflist.length;
-    });
+  // public filterByDepartment(){
+  //   debugger
+  //   this.PerformanceManagementService.GetMyDetails().subscribe(data => {
+  //     debugger
+  //     this.stafflist = data.filter(x=>x.department==this.Department);
+  //     this.count = this.stafflist.length;
+  //   });
  
+  // }
+
+  public Filterstaff() {
+    debugger
+    let searchCopy = this.term.toLowerCase();
+    this.stafflist = this.stafflistCopy.filter((x: { name: string ,supervisor:number}) =>x.name.toLowerCase().includes(searchCopy) && x.supervisor==this.StaffID);
+      this.count = this.stafflist.length;
   }
+
 
 
   }

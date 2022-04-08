@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
@@ -10,7 +10,7 @@ export class SidebarComponent implements OnInit {
   roleid: any;
   temp: any;
 
-  constructor() { }
+  constructor(public router: Router) { }
 
   ngOnInit(): void {
     this.temp = sessionStorage.getItem('temp');
@@ -30,37 +30,97 @@ export class SidebarComponent implements OnInit {
   }
 
   active: any;
+  CreateGoal() {
+    this.active = 'CreateGoal';
+    localStorage.setItem("clickname", "Create Goal")
+  }
+
   Performance() {
-    this.active = 'AppraisalCycle';
+    this.active = 'SetAppraisal';
     localStorage.setItem("clickname", "Performance Management")
   }
 
   kra() {
+    this.active = 'course';
     localStorage.setItem("clickname", "KRA")
   }
 
 
   Kpi() {
+    this.active = 'kpi';
     localStorage.setItem("clickname", "KPI")
   }
 
   Employee() {
+    this.active = 'EmployeeDashboard';
     localStorage.setItem("clickname", "Employee Dashboard")
   }
   Employeekramapping() {
+    this.active = 'Settings';
     localStorage.setItem("clickname", "Employee KRA Mapping")
   }
 
   Myappraisal() {
+    this.active = 'MyAppraisalDashboard';
+
     localStorage.setItem("clickname", "My Appraisal Dashboard")
   }
 
   Appraisal() {
+    this.active = 'AppraisalCycle';
     localStorage.setItem("clickname", "AppraisalCycle")
   }
 
   TeamAppraisal() {
+    this.active = 'TeamAppraisal';
     localStorage.setItem("clickname", "Team Appraisal")
   }
 
+  StaffScore() {
+    this.active = 'StaffScore';
+    localStorage.setItem("clickname", "Team Appraisal")
+  }
+
+
+
+  BellCurve(){
+    this.active = 'Bell';
+    localStorage.setItem("clickname", "Bell Curve Fitting")
+  }
+
+  AppraisalReport(){
+    this.active = 'AppraisalReport';
+    localStorage.setItem("clickname","Appraisal Report")
+  }
+
+  pip(){
+    this.active = 'pip';
+    localStorage.setItem("clickname","PIP")
+  }
+
+  help(){
+    this.active = 'help'
+    localStorage.setItem("clickname", "HELP")
+  }
+
+  SupportTickets(){
+    this.active = 'SupportTickets'
+    localStorage.setItem("clickname", "support tickets")
+  }
+
+  dashboard() {
+    this.active = 'dashboard';
+    localStorage.setItem("clickname", "dashboard")
+    if(this.roleid==2)
+    {
+      this.router.navigate(['/EmployeeTileDashboard']);
+    }
+    else if(this.roleid==3){
+      this.router.navigate(['/HRDashboard']);
+    }
+    else {
+      this.router.navigate(['/ManagerDashboard']);
+    }
+   
+  }
 }

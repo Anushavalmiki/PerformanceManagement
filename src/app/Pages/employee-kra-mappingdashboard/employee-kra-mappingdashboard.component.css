@@ -16,8 +16,33 @@
     color:white;
     border-radius: 5px;
     border:none;
+    width:100%;
+  }
+  .Add1{
+    background-color: #3247D5;
+    color:white;
+    border-radius: 5px;
+    border:none;
     width:50%;
+    margin-top:10px;
+  }
+  th{
+    width: 20px;
   }
   
+  .count{
+    float:right;
+  }
   
+  .button1{
+    letter-spacing: 0.5px;
+    background-color: #3247d5;
+    color: #ffffff;
+    border-radius: 5px;
+    border: none;
+    padding: 5px;
+    width: 105px;
+    float: left;
+    font-size: 15px;
+  }
   
