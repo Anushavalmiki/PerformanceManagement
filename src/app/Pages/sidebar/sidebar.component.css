@@ -43,6 +43,12 @@ color: #949393;
     font-size: 11px;
 }
 
+.Active4 {
+  display: inline-flex;
+ color: #3247D5;
+      font-size: 11px;
+  }
+
 
 .iconblue{
   font-size: 22px;
