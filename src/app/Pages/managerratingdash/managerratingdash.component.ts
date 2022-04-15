@@ -27,12 +27,12 @@ export class ManagerratingdashComponent implements OnInit {
   eDate:any;
   appraisalCycleName:any
   staffID:any;
-
+  roleid:any;
   EmployeeKradash: any
 
   ngOnInit(): void {
     this.staffID = sessionStorage.getItem('EmaployedID');
-
+    this.roleid = sessionStorage.getItem('roleid');
     this.appraisalCycleName=0;
     this.Department = "";
     this.RoleType = "";
