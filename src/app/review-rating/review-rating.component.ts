@@ -30,9 +30,11 @@ export class ReviewRatingComponent implements OnInit {
 
   EmployeeKradash: any
   Promotion: any;
+  level: any;
   ngOnInit(): void {
     this.staffID = sessionStorage.getItem('EmaployedID');
     this.Promotion = 0;
+    this.level = 0;
     this.appraisalCycleName = 0;
     this.Department = "";
     this.RoleType = "";
