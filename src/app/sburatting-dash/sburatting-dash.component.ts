@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { PerformanceManagementService } from 'src/app/performance-management.service';
-
+import Swal from 'sweetalert2';
 @Component({
-  selector: 'app-managerratingdash',
-  templateUrl: './managerratingdash.component.html',
-  styleUrls: ['./managerratingdash.component.css']
+  selector: 'app-sburatting-dash',
+  templateUrl: './sburatting-dash.component.html',
+  styleUrls: ['./sburatting-dash.component.css']
 })
-export class ManagerratingdashComponent implements OnInit {
+export class SBUrattingDashComponent implements OnInit {
 
   constructor(private PerformanceManagementService: PerformanceManagementService) { }
 
@@ -20,20 +20,21 @@ export class ManagerratingdashComponent implements OnInit {
   RoleType: any;
   Department: any;
   count: any;
-  search:any;
-  Apprisalcyclelist:any;
-  AppraisalSubmitionDate:any;
-  sDate:any;
-  eDate:any;
-  appraisalCycleName:any
-  staffID:any;
-  roleid:any;
+  search: any;
+  Apprisalcyclelist: any;
+  AppraisalSubmitionDate: any;
+  sDate: any;
+  eDate: any;
+  appraisalCycleName: any
+  staffID: any;
+  roleid: any;
   EmployeeKradash: any
 
   ngOnInit(): void {
     this.staffID = sessionStorage.getItem('EmaployedID');
     this.roleid = sessionStorage.getItem('roleid');
-    this.appraisalCycleName=0;
+    this.appraisalCycleName = 0;
+    this.name = 0;
     this.Department = "";
     this.RoleType = "";
     this.PerformanceManagementService.GetMyDetails().subscribe(data => {
@@ -50,16 +51,15 @@ export class ManagerratingdashComponent implements OnInit {
 
     this.PerformanceManagementService.GetConductappraisalStaffList().subscribe(data => {
       debugger
-      if(this.roleid==4){
-        this.EmployeeKradash = data.filter(x => x.approver1 == sessionStorage.getItem('EmaployedID') && x.selfScores != null && x.employeeSubmittedDate!=null);
+      if (this.roleid == 4) {
+        this.EmployeeKradash = data.filter(x => x.approver1 == sessionStorage.getItem('EmaployedID') && x.selfScores != null && x.employeeSubmittedDate != null);
         this.count = this.EmployeeKradash.length;
       }
-      else if(this.roleid==5)
-      {
-        this.EmployeeKradash = data.filter(x => x.approver3 == sessionStorage.getItem('EmaployedID') && x.selfScores != null && x.employeeSubmittedDate!=null);
+      else if (this.roleid == 5) {
+        this.EmployeeKradash = data.filter(x => x.approver3 == sessionStorage.getItem('EmaployedID') && x.selfScores != null && x.employeeSubmittedDate != null);
         this.count = this.EmployeeKradash.length;
       }
-   
+
     });
 
     this.PerformanceManagementService.GetAppraisalCycle().subscribe(data => {
@@ -109,7 +109,7 @@ export class ManagerratingdashComponent implements OnInit {
       debugger
       let temp: any = data.filter(x => x.id == event.target.value);
       this.AppraisalSubmitionDate = temp[0].employeeSubmissionDate;
-      this.appraisalCycleName=temp[0].appraisalCycleName
+      this.appraisalCycleName = temp[0].appraisalCycleName
       this.sDate = temp[0].cycleStartDate;
       this.eDate = temp[0].cycleEndDate;
 
@@ -119,12 +119,36 @@ export class ManagerratingdashComponent implements OnInit {
   public GetFilteredAppraisalCycle() {
     this.PerformanceManagementService.GetConductappraisalStaffList().subscribe(data => {
       debugger
-      this.EmployeeKradash = data.filter(x => x.appraisalCycleName == this.appraisalCycleName && x.approver1==this.staffID && x.selfScores != null && x.employeeSubmittedDate!=null)
+      this.EmployeeKradash = data.filter(x => x.appraisalCycleName == this.appraisalCycleName && x.approver1 == this.staffID && x.selfScores != null && x.employeeSubmittedDate != null)
       // && 
     })
   }
+  level: any
+  public getlevel(event: any) {
+    debugger
+    this.level = event;
+
+    this.PerformanceManagementService.GetMyDetails().subscribe(data => {
+      debugger
+      let temp: any = data.filter(x => x.id == event.id);
+      let levelid: any = temp[0].levelid;
+
+      this.PerformanceManagementService.GetMyDetails().subscribe(data => {
+        debugger
+        this.stafflist = data.filter(x => x.levelid <= levelid)
 
 
+      });
+
+    });
+
+  }
+
+
+  name:any
+  approve(){
+    Swal.fire('Successfully Approved')
+  }
 
 }
 

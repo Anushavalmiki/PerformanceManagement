@@ -120,7 +120,7 @@ export class LoginComponent implements OnInit {
           sessionStorage.setItem("loginName", this.result.name);
           sessionStorage.setItem("EmaployedID", this.result.id);
           sessionStorage.setItem("Type", this.result.type);
-          location.href = "#/MyAppraisal";
+          location.href = "#/ManagerDashboard";
           location.reload();
         }
         else {
