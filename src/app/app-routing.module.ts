@@ -40,6 +40,7 @@ import { SupportTicketDashboardComponent } from './support-ticket-dashboard/supp
 import { SupportTicketsComponent } from './support-tickets/support-tickets.component';
 import { ReviewRatingComponent } from './review-rating/review-rating.component';
 import { SBUrattingDashComponent } from './sburatting-dash/sburatting-dash.component';
+import { SbuAppraisalComponent } from './sbu-appraisal/sbu-appraisal.component';
 
 
 const routes: Routes = [
@@ -91,7 +92,8 @@ const routes: Routes = [
   {path:'SupportTickets/:id',component:SupportTicketsComponent},
   {path:'SupportTicketDashboard',component:SupportTicketDashboardComponent},
   {path:'ReviewRating',component:ReviewRatingComponent},
-  {path:'SBUrattingDash',component:SBUrattingDashComponent}
+  {path:'SBUrattingDash',component:SBUrattingDashComponent},
+  {path:'SbuAppraisal',component:SbuAppraisalComponent}
   
 ];
 

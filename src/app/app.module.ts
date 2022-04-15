@@ -50,6 +50,7 @@ import { SupportTicketsComponent } from './support-tickets/support-tickets.compo
 import { SupportTicketDashboardComponent } from './support-ticket-dashboard/support-ticket-dashboard.component';
 import { ReviewRatingComponent } from './review-rating/review-rating.component';
 import { SBUrattingDashComponent } from './sburatting-dash/sburatting-dash.component';
+import { SbuAppraisalComponent } from './sbu-appraisal/sbu-appraisal.component';
 
 @NgModule({
   declarations: [
@@ -93,7 +94,8 @@ import { SBUrattingDashComponent } from './sburatting-dash/sburatting-dash.compo
     SupportTicketsComponent,
     SupportTicketDashboardComponent,
     ReviewRatingComponent,
-    SBUrattingDashComponent
+    SBUrattingDashComponent,
+    SbuAppraisalComponent
   ],
   imports: [
     BrowserModule,
