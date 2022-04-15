@@ -10,7 +10,7 @@ export class PerformanceManagementService {
   // public baseURL = "http://103.133.214.197/PerformanceManagement/";
   public baseURL= "http://103.133.214.197/PerformanceDemoAPI/";
 
-  public host = "https://digioffice.amazeone.co/digiofficeapi";
+  public host = "https://digioffice.amazeone.co/DigiOfficeAsticomAPI";
   public host1="https://support.amazeone.co/SupportAPI/";
 
   url: any;

@@ -49,6 +49,7 @@ import { HelpComponent } from './help/help.component';
 import { SupportTicketsComponent } from './support-tickets/support-tickets.component';
 import { SupportTicketDashboardComponent } from './support-ticket-dashboard/support-ticket-dashboard.component';
 import { ReviewRatingComponent } from './review-rating/review-rating.component';
+import { SBUrattingDashComponent } from './sburatting-dash/sburatting-dash.component';
 
 @NgModule({
   declarations: [
@@ -91,7 +92,8 @@ import { ReviewRatingComponent } from './review-rating/review-rating.component';
     HelpComponent,
     SupportTicketsComponent,
     SupportTicketDashboardComponent,
-    ReviewRatingComponent
+    ReviewRatingComponent,
+    SBUrattingDashComponent
   ],
   imports: [
     BrowserModule,

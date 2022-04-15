@@ -28,7 +28,7 @@
                     </option>
                 </select>
             </div>
-            
+
             <div class="col-lg-1"></div>
         </div><br>
     </div> <br>
@@ -71,26 +71,18 @@
                         <td *ngIf="details.managerSubmittedDate==null">
                             <p>NA</p>
                         </td>
-                        <td  *ngIf="roleid==5">
-                            <button  class=" btn btn-primary editable-table-button btn-xs Add"
-                            data-toggle="modal" data-target="#myModal3">Successor</button>
+                        <td *ngIf="roleid==5">
+                            <button class=" btn btn-primary editable-table-button btn-xs Add" data-toggle="modal"
+                                data-target="#myModal3" (click)="getlevel(details)">Successor</button>
                         </td>
                         <td>
                             <button [routerLink]="['/ManagerAppraisal', details.id,details.appraiselID ]"
                                 class=" btn btn-primary editable-table-button btn-xs Add"
-                                *ngIf="details.managerSubmittedDate==null">Conduct Appraisal</button>
+                                *ngIf="details.sbuSubmitted==null && roleid==5">Conduct Appraisal</button>
 
                             <button [routerLink]="['/ManagerAppraisal', details.id,details.appraiselID ]"
                                 class=" btn btn-primary editable-table-button btn-xs btncolor"
-                                *ngIf="details.managerSubmittedDate!=null">View Appraisal</button>
-
-                            <!-- <button *ngIf="details.groupHeadScores!=null"
-                                    class=" btn btn-primary editable-table-button btn-xs btncolor">Completed</button> -->
-                            <!-- <button class="button btn-xs"
-                                    routerLink]="['/SelfRatingPage', details.id,details.id ]">Self
-                                    Apprisal</button>&nbsp; -->
-                            <!-- <button class="button btn-xs" data-toggle="modal" (click)="GetStaffKraDetails(details)"
-                                    data-target="#myModal">View</button>&nbsp; -->
+                                *ngIf="details.sbuSubmitted!=null && roleid==5">View Appraisal</button>
                         </td>
                     </tr>
                 </tbody>
@@ -110,62 +102,33 @@
         <!-- Modal content-->
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Successor</h5>
+                <h5 class="modal-title">Successor List</h5>
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
 
             </div>
             <div class="modal-body">
                 <div class="row">
                     <div class="col-lg-12">
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>Kra</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr *ngFor="let details of Staffkra">
-                                    <td>{{details.kraName}}</td>
-                                </tr>
-                            </tbody>
-                        </table>
+                        <select class="form-control" id="name" name="name"
+                        [(ngModel)]="name" >
+                        <option value="0">Select Successor</option>
+                        <option *ngFor="let details of stafflist" value="{{details.name}}">
+                            {{details.name}}
+                        </option>
+                    </select>
                     </div>
                 </div>
+            </div><br>
+            <div class="row">
+                <div class="col-lg-3"></div>
+                <div class="col-lg-6">
+                    <button class=" btn btn-primary" (click)="approve()" data-dismiss="modal">Approve Successor</button>
+                </div>
             </div>
+<br>
 
         </div>
     </div>
 </div>
 
 
-<div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog">
-        <!-- Modal content-->
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Assigned Kra</h5>
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-
-            </div>
-            <div class="modal-body">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>Kra</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr *ngFor="let details of Staffkra">
-                                    <td>{{details.kraName}}</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
-</div>
