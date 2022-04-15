@@ -106,6 +106,31 @@ export class LoginComponent implements OnInit {
 
     }
 
+    else if (this.roleId == 5) {
+      this.PerformanceManagementService.GetMyDetails().subscribe(async data => {
+        console.log("data", data);
+        let userNameCopy = this.userName.toLowerCase();
+        let password = this.userName.toLowerCase();
+        let temp: any = data.filter(x => (x.emailID.toLowerCase().includes(userNameCopy)  || x.phoneNo == this.userName) && x.password == this.passWord );
+        this.result = temp[0];
+        // this.loader = true;
+        if (this.result != undefined || this.result != null) {
+          sessionStorage.setItem("temp", '1');
+          sessionStorage.setItem("roleid", this.roleId);
+          sessionStorage.setItem("loginName", this.result.name);
+          sessionStorage.setItem("EmaployedID", this.result.id);
+          sessionStorage.setItem("Type", this.result.type);
+          location.href = "#/MyAppraisal";
+          location.reload();
+        }
+        else {
+          Swal.fire("Incorrect Username or Password")
+          this.userName = "";
+          this.passWord = "";
+        }
+      })
+    }
+
 
 
     else if (this.roleId == '3') {

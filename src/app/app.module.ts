@@ -48,6 +48,7 @@ import { AddEmployeetoPipComponent } from './add-employeeto-pip/add-employeeto-p
 import { HelpComponent } from './help/help.component';
 import { SupportTicketsComponent } from './support-tickets/support-tickets.component';
 import { SupportTicketDashboardComponent } from './support-ticket-dashboard/support-ticket-dashboard.component';
+import { ReviewRatingComponent } from './review-rating/review-rating.component';
 
 @NgModule({
   declarations: [
@@ -89,7 +90,8 @@ import { SupportTicketDashboardComponent } from './support-ticket-dashboard/supp
     AddEmployeetoPipComponent,
     HelpComponent,
     SupportTicketsComponent,
-    SupportTicketDashboardComponent
+    SupportTicketDashboardComponent,
+    ReviewRatingComponent
   ],
   imports: [
     BrowserModule,

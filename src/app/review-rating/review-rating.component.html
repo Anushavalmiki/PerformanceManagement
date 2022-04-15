@@ -1,0 +1,240 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-11">
+            <br>
+            <p class="headings">Review Rating </p>
+        </div>
+        <div class="col-lg-1">
+            <br>
+            <p class="count">Count:{{count}}</p>
+        </div>
+    </div>
+    <div class="card">
+        <br>
+        <div class="row FilterClass ">
+            <div class="col-lg-1">
+                <p class="filter">Filter By</p>
+            </div>
+            <div class="col-lg-3">
+                <input type="search" class="form-control search" placeholder="Search for Name.." [(ngModel)]="search">
+            </div>
+            <div class="col-lg-3">
+                <select class="form-control" id="appraisalCycleName" name="appraisalCycleName"
+                    [(ngModel)]="appraisalCycleName" (change)="GetApprisalcycle($event)"
+                    (change)="GetFilteredAppraisalCycle()">
+                    <option value="0">Select Appraisal Cycle</option>
+                    <option *ngFor="let item of Apprisalcyclelist" value="{{item.appraisalCycleName}}">
+                        {{item.appraisalCycleName}}
+                    </option>
+                </select>
+            </div>
+
+            <div class="col-lg-1"></div>
+        </div><br>
+    </div> <br>
+    <div class="row">
+        <div class="col-lg-11"></div>
+        <div class="col-lg-1">
+            <!-- <button class="form-control Add" routerLink="/EmployeeKraMapping">Add</button> -->
+        </div>
+    </div> <br>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Employee Name</th>
+                        <th>Department</th>
+                        <th>Manager</th>
+                        <th>DOJ</th>
+                        <th>Year in Company</th>
+                        <th>Last Year Rating</th>
+                        <th>Last Year Bonus Amount</th>
+                        <th>Action </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- <tr
+                        *ngFor="let details of EmployeeKradash |paginate: { itemsPerPage: count1, currentPage: p}|filter:search">
+                        <td>{{details.name}}</td>
+                        <td>{{details.departmentName}}</td>
+                        <td>{{details.supervisor}}</td>
+                        <td>{{details.joiningDate}}</td>
+                        <td>2</td>
+                        <td>NA</td>
+                        <td>NA</td>
+                        <td>
+                            <button class="button btn-xs" data-toggle="modal" (click)="GetStaffKraDetails(details)"
+                                data-target="#myModal">Approve</button>&nbsp;
+                        </td>
+                    </tr> -->
+                    <tr>
+                        <td>name</td>
+                        <td>dept</td>
+                        <td>manager</td>
+                        <td>doj</td>
+                        <td>2</td>
+                        <td>NA</td>
+                        <td>NA</td>
+                        <td>
+                            <button class="button btn-xs" data-toggle="modal"
+                                data-target="#myModal">Approve</button>&nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="text-right">
+                <br>
+                <pagination-controls (pageChange)="p = $event" class="poppinns"></pagination-controls>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content" style="width:700px">
+            <div class="modal-header">
+                <h5 class="modal-title Heading" id="exampleModalLabel">Review Rating</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="row">
+                            <div class="col-lg-6">Recommended Bonus Amount Percent</div>
+                            <div class="col-lg-6">
+                                <input class="form-control">
+                            </div>
+                        </div><br>
+                        <div class="row">
+                            <div class="col-lg-6">Recommended Salary Increase/Percent</div>
+                            <div class="col-lg-6">
+                                <input class="form-control">
+                            </div>
+                        </div><br>
+                        <div class="row">
+                            <div class="col-lg-6">Promotion</div>
+                            <div class="col-lg-6">
+                                <select class="form-control" id="Promotion" name="Promotion" [(ngModel)]="Promotion">
+                                    <option value="0">Select One</option>
+                                    <option value="Yes"> Yes</option>
+                                    <option value="No">No</option>
+                                </select>
+                            </div>
+                        </div><br>
+
+                        <div id="myModal2" *ngIf="Promotion=='Yes'">
+                            <div class="row">
+                                <div class="col-lg-6">Current Salary</div>
+                                <div class="col-lg-6">
+                                    <p>35000</p>
+                                </div>
+                            </div><br>
+                            <div class="row">
+                                <div class="col-lg-6">Current Level</div>
+                                <div class="col-lg-6">
+                                    <p>L4</p>
+                                </div>
+                            </div><br>
+                            <div class="row">
+                                <div class="col-lg-6">New Level</div>
+                                <div class="col-lg-6">
+                                    <input class="form-control">
+                                </div>
+                            </div><br>
+
+                            <div class="row">
+                                <div class="col-lg-6">New Position</div>
+                                <div class="col-lg-6">
+                                    <input class="form-control">
+                                </div>
+                            </div><br>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">Approve</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+        <div class="modal fade" id="myModal1" role="dialog">
+            <div class="modal-dialog">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Review Rating</h5>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="row">
+                                    <div class="col-lg-6">Recommended Bonus Percent</div>
+                                    <div class="col-lg-6">
+                                        <input class="form-control">
+                                    </div>
+                                </div><br>
+                                <div class="row">
+                                    <div class="col-lg-6">Recommended Salary Increase/Percent</div>
+                                    <div class="col-lg-6">
+                                        <input class="form-control">
+                                    </div>
+                                </div><br>
+                                <div class="row">
+                                    <div class="col-lg-6">Promotion</div>
+                                    <div class="col-lg-6">
+                                        <select class="form-control">
+                                            <option>Yes</option>
+                                            <option>No</option>
+                                        </select>
+                                    </div>
+                                </div><br>
+                                <div class="row">
+                                    <div class="col-lg-6">Current Salary</div>
+                                    <div class="col-lg-6">
+                                        <input class="form-control">
+                                    </div>
+                                </div><br>
+                                <div class="row">
+                                    <div class="col-lg-6">Current Level</div>
+                                    <div class="col-lg-6">
+                                        <input class="form-control">
+                                    </div>
+                                </div><br>
+                                <div class="row">
+                                    <div class="col-lg-6">New Level</div>
+                                    <div class="col-lg-6">
+                                        <input class="form-control">
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="row">
+                                    <div class="col-lg-6">New Position</div>
+                                    <div class="col-lg-6">
+                                        <input class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
