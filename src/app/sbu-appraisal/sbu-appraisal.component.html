@@ -91,6 +91,10 @@
                                 {{details.hrrrating}}
                                 <p *ngIf="details.hrupdate!=1">NA</p>
                             </td>
+                            <td [ngClass]="{'bg-warning':details.hrupdate==1 }" style="text-align: center;">
+                                {{details.hrrrating}}
+                                <p *ngIf="details.hrupdate!=1">NA</p>
+                            </td>
                             <td [ngClass]="{'bggreen':details.hrupdate==1 }">
 
                                 <button *ngIf="details.hrupdate!=1 &&details.managerupdate==1" type="button"
