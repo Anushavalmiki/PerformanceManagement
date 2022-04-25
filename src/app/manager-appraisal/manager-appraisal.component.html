@@ -208,7 +208,11 @@
                     </div>
                     <div class="col-lg-7">
                         <ckeditor id="SelfComments" name="SelfComments" [(ngModel)]="SelfComments"
-                         data="<p>Enter Answer Here !</p>" required></ckeditor>
+                         data="<p>Enter Answer Here !</p>" required disabled="managerSubmittedDate.form.invalid"></ckeditor>
+                         <!-- <script>
+                            CKEDITOR.replace('SelfComments');
+                            CKEDITOR.config.readOnly = true;
+                         </script> -->
                     </div>
                 </div>
                 <br>
