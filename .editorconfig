@@ -10,6 +10,8 @@ trim_trailing_whitespace = true
 
 [*.ts]
 quote_type = single
+config.readOnly = true;
+CKEDITOR.config.allowedContent = true
 
 [*.md]
 max_line_length = off
