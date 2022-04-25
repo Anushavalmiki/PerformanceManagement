@@ -44,7 +44,7 @@ export class EmployeeKraMappingComponent implements OnInit {
     this.selectedItems3.length=0;
 
     this.loginName = sessionStorage.getItem('loginName');
-    
+
 
 
     this.PerformanceManagementService.GetAppraisalCycle().subscribe(data => {
@@ -219,7 +219,7 @@ export class EmployeeKraMappingComponent implements OnInit {
       'Event': 'Apprisal Request',
       'FromUser': 'Admin',
       'ToUser': sessionStorage.getItem('EmaployedID'),
-      'Message': 'Dear '+ this.staffName +' Your Manager ' + this.loginName + ' has set your goal for Appraisal Cycle ',
+      'Message': 'Dear, '+  this.selectedItems +' Your Manager ' + this.loginName + ' has set your goal for Appraisal Cycle ',
       'Photo': 'Null',
       'Building': 'Dynamics 1',
       'UserID': this.EmployeeId,

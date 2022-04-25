@@ -11,15 +11,13 @@
     </div>
     <br>
     <div class="card">
-        <br>
+  
         <div class="row FilterClass ">
             <div class="col-lg-1">
                 <p class="filter">Filter By</p>
             </div>
-            <div class="col-lg-3">
-                <input type="search" class="form-control search" placeholder="Search for Name.." [(ngModel)]="search">
-            </div>
-            <div class="col-lg-3">
+          
+            <div class="col-lg-2">
                 <select class="form-control" id="appraisalCycleName" name="appraisalCycleName"
                     [(ngModel)]="appraisalCycleName" (change)="GetApprisalcycle($event)"
                     (change)="GetFilteredAppraisalCycle()">
@@ -29,8 +27,38 @@
                     </option>
                 </select>
             </div>
-            <div class="col-lg-1"></div>
-        </div><br>
+            <div class="col-lg-2">
+                <select class="form-control" id="Department" name="Department"
+                    [(ngModel)]="Department" (change)="GetDepatmentID($event)"
+                    (change)="filterByDepartment()">
+                    <option value="0">Select Department</option>
+                    <option *ngFor="let item of Departmentlist" value="{{item.departmentName}}">
+                        {{item.appraisalCycleName}}
+                    </option>
+                </select>
+            </div>
+     
+                <div class="col-lg-2">
+                    <select class="form-control" id="RoleType" name="RoleType" [(ngModel)]="RoleType"
+                        (change)='getRoleType($event)' (change)="FilterRoleType()">
+                        <option value="0">Select Position</option>
+                        <option *ngFor="let details of RoleTypeList" value="{{details.id}}">{{details.short}}
+                        </option>
+                    </select>
+                </div>
+    
+            <div class="col-lg-3">
+                <input type="search" class="form-control search" placeholder="Search for Name.." [(ngModel)]="search">
+            </div>
+            <div class="col-lg-2">
+                
+                <select class="form-control">
+                    <option>Select Status</option>
+                    <option>Open</option>
+                    <option>Submitted</option>
+                </select>
+            </div>
+        </div>
     </div> <br>
     <!-- <div class="row">
         <div class="col-lg-10"></div>
@@ -55,6 +83,7 @@
                             <th>Manager Submitted Date</th>
                             <th>SBU Submitted Date</th>
                             <th>Action </th>
+                            <th>Status</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -84,6 +113,10 @@
                                     Apprisal</button>&nbsp; -->
                                 <!-- <button class="button btn-xs" data-toggle="modal" (click)="GetStaffKraDetails(details)"
                                     data-target="#myModal">View</button>&nbsp; -->
+                            </td>
+                            <td>
+                                <p *ngIf="details.hrSubmittedDate==null">Open</p>
+                                <p *ngIf="details.hrSubmittedDate!=null">Submitted</p>
                             </td>
                         </tr>
                     </tbody>

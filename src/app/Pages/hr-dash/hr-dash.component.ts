@@ -81,6 +81,11 @@ export class HrDashComponent implements OnInit {
     });
 
   }
+  public GetDepatmentID(event: any) {
+    debugger
+    this.Department = event.target.value;
+  }
+
 
   public filterByDepartment() {
     debugger

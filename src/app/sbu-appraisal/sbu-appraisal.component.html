@@ -46,6 +46,7 @@
                             <!-- <th>HR Rating</th> -->
                             <th>SBU Rating</th>
                             <th>Action </th>
+                            <th>Status</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -116,6 +117,10 @@
                                     *ngIf="details.sbuAttachment!=null&&details.sbuAttachment!='0'&&details.sbuAttachment!='' ">View
                                     Attachments</button>
                                 <!-- <p *ngIf="details.hrattachment==null and details.hrrrating!=null" >No Attachments</p> -->
+                            </td>
+                            <td>
+                                <p *ngIf="details.sbuUpdate!=1 &&details.managerupdate==1">Open</p>
+                                <p *ngIf="details.sbuUpdate==1">Submitted</p>
                             </td>
                         </tr>
                     </tbody>

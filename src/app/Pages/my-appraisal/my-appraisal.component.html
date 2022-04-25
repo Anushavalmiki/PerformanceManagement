@@ -41,6 +41,7 @@
                            <th>Appraisal Cycle Type</th>
                             <th>Employee Submission Last Date </th>
                             <th>Action </th>
+                            <th>Status</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -67,6 +68,10 @@
                                     Apprisal</button>&nbsp; -->
                                 <!-- <button class="button btn-xs" data-toggle="modal" (click)="GetStaffKraDetails(details)"
                                     data-target="#myModal">View</button>&nbsp; -->
+                            </td>
+                            <td>
+                                <p  *ngIf="details.employeeSubmittedDate==null"  >Open</p>
+                                <p  *ngIf="details.employeeSubmittedDate!=null"  >Submitted</p>
                             </td>
                         </tr>
                     </tbody>
