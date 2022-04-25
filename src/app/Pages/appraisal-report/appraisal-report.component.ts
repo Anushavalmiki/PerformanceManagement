@@ -16,7 +16,6 @@ export class AppraisalReportComponent implements OnInit {
   manager: any;
   managerList: any;
   StaffAppraisalList: any;
-  FilteredStaffAppraisalList: any;
   search: any;
   dumpmanagerList: any;
   uniquelist: any;
@@ -26,10 +25,13 @@ export class AppraisalReportComponent implements OnInit {
   rolelist: any;
   rolelistCopy: any;
   p: any = 1;
+  departmentAppraisalList: any;
+  departmentid: any;
   count1: any = 10;
   ngOnInit(): void {
     this.StaffID = sessionStorage.getItem('EmaployedID')
     this.roleid = sessionStorage.getItem('roleid');
+    this.departmentid=0;
     this.GetRoleType();
     this.GetMyDetails();
     this.ConductappraisalStaffList();
@@ -57,6 +59,27 @@ export class AppraisalReportComponent implements OnInit {
 
   getManager(even: any) {
     this.manager = even.target.value;
+  }
+
+  getdepartmentID(even: any) {
+    this.departmentid = even.target.value;
+  }
+
+  public GetFilteredDepartment() {
+    this.PerformanceManagementService.GetConductappraisalStaffList().subscribe(data => {
+      debugger
+      this.StaffAppraisalList = data.filter(x => x.department == this.departmentid)
+    })
+  }
+
+  public GetDepartment() {
+    this.PerformanceManagementService.GetDepartmentMaster().subscribe(
+      data => {
+        this.departmentAppraisalList = data;
+        console.log("departmentName", this.departmentAppraisalList);
+        // this.roleTypeid = 0;
+      }
+    )
   }
 
   public GetMyDetails() {
