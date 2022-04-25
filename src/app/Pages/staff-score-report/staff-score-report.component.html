@@ -82,6 +82,7 @@
                <p>Total Employees to be Appraised:
                    <span>Employee Submitted:</span><br>
                    <span>Manager Submitted:</span><br>
+                   <span>SBU Submitted:</span><br>
                    <span>HR Submitted:</span><br>
                    <span>Total Appraisal Pending:</span>
                   
@@ -93,6 +94,9 @@
                     <span *ngIf=" appraisalcount==0">0</span><br>
 
                     <span *ngIf=" appraisalcount!=0">{{managerSubmittedCount}}</span>
+                    <span *ngIf=" appraisalcount==0">0</span><br>
+
+                    <span *ngIf=" appraisalcount!=0">{{sbuSubmittedCount}}</span>
                     <span *ngIf=" appraisalcount==0">0</span><br>
 
                     <span *ngIf=" appraisalcount!=0">{{hrSubmittedCount}}</span>
@@ -132,6 +136,7 @@
                             <th>Cycle End Date</th> -->
                             <th>Employee Rating </th>
                             <th>Manager Rating</th>
+                            <th>SBU Rating</th>
                             <th>HR Rating</th>
                             <th>Total Average</th>
                             <th>Action </th>
@@ -148,6 +153,7 @@
                             <td>{{details.avgSelfScore}}
                                 <p *ngIf="details.avgSelfScore==null" style="color: red;">Pending</p>
                             </td>
+                            <td>3</td>
                             <td >{{details.avgGroupHeadScores}}
                                   <p *ngIf="details.avgGroupHeadScores==null" style="color: red;">Pending</p>
                             </td>

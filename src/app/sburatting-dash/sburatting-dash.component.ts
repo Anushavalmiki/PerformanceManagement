@@ -56,7 +56,7 @@ export class SBUrattingDashComponent implements OnInit {
         this.count = this.EmployeeKradash.length;
       }
       else if (this.roleid == 5) {
-        this.EmployeeKradash = data.filter(x => x.approver3 == sessionStorage.getItem('EmaployedID') && x.selfScores != null && x.employeeSubmittedDate != null);
+        this.EmployeeKradash = data.filter(x => x.approver3 == sessionStorage.getItem('EmaployedID') && x.selfScores != null && x.employeeSubmittedDate != null && x.managerSubmittedDate!=null);
         this.count = this.EmployeeKradash.length;
       }
 

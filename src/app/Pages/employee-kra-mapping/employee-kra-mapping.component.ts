@@ -74,7 +74,7 @@ export class EmployeeKraMappingComponent implements OnInit {
       allowSearchFilter: true
     };
     this.dropdownSettings = {
-      singleSelection: true,
+      singleSelection: false,
       idField: 'id',
       textField: 'name',
       selectAllText: 'Select All',
@@ -105,7 +105,7 @@ export class EmployeeKraMappingComponent implements OnInit {
       let temp: any = data.filter(x => x.id == this.EmployeeId);
       this.Approver1 = temp[0].supervisor;
       this.Approver2 = 10422;
-      this.Approver3 = 10422;
+      this.Approver3 = 10477;
     });
 
   }
@@ -202,7 +202,7 @@ export class EmployeeKraMappingComponent implements OnInit {
     this.InsertNotification();
     Swal.fire('Goal Setting Done Successfully.');
     location.href = "#/EmployeeKraMappingdashboard";
-    location.reload();
+   location.reload();
 
   }
 

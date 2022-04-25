@@ -51,6 +51,7 @@ import { SupportTicketDashboardComponent } from './support-ticket-dashboard/supp
 import { ReviewRatingComponent } from './review-rating/review-rating.component';
 import { SBUrattingDashComponent } from './sburatting-dash/sburatting-dash.component';
 import { SbuAppraisalComponent } from './sbu-appraisal/sbu-appraisal.component';
+import { SalaryincrementletterDashComponent } from './salaryincrementletter-dash/salaryincrementletter-dash.component';
 
 @NgModule({
   declarations: [
@@ -95,7 +96,8 @@ import { SbuAppraisalComponent } from './sbu-appraisal/sbu-appraisal.component';
     SupportTicketDashboardComponent,
     ReviewRatingComponent,
     SBUrattingDashComponent,
-    SbuAppraisalComponent
+    SbuAppraisalComponent,
+    SalaryincrementletterDashComponent
   ],
   imports: [
     BrowserModule,

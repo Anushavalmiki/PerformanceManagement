@@ -70,6 +70,13 @@
                         </td>
                     </tr>
                     <tr>
+                        <td>SBU Appraisal Completed Date</td>
+                        <td >
+                            <p *ngIf="SbuSubmittedDate!=null">{{SbuSubmittedDate|date}}</p>
+                            <p *ngIf="SbuSubmittedDate==null">Pending</p>
+                        </td>
+                    </tr>
+                    <tr>
                         <td>HR Appraisal Completed Date</td>
                         <td>
                             <p  *ngIf="HrSubmittedDate!=null">{{HrSubmittedDate|date}}</p>
@@ -82,6 +89,7 @@
                         <td>
                             <p *ngIf="EmployeeSubmittedDate==null"  style="color: red;"> Employee Pending</p>
                             <p *ngIf="ManagerSubmittedDate==null"  style="color: red;"> Manager Pending</p>
+                            <p *ngIf="SbuSubmittedDate==null"  style="color: red;"> SBU Pending</p>
                             <p *ngIf="HrSubmittedDate==null" style="color: red;">HR Pending</p>
 
                             <p *ngIf="HrSubmittedDate!=null" style="color: green;">Completed</p>

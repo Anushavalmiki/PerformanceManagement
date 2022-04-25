@@ -29,6 +29,8 @@ export class EmployeeTileDashboardComponent implements OnInit {
   AppraisalSubmitionDate:any;
   appraisallist:any;
   GoalSettingDate:any;
+  SbuSubmittedDate:any;
+
   ngOnInit(): void {
 
     this.Department = "";
@@ -59,6 +61,7 @@ export class EmployeeTileDashboardComponent implements OnInit {
       this.ManagerSubmittedDate=this.ResultAreaList[0].managerSubmittedDate
       this.HrSubmittedDate=this.ResultAreaList[0].hrSubmittedDate
       this.EmployeeSubmittedDate=this.ResultAreaList[0].employeeSubmittedDate
+      this.SbuSubmittedDate=this.ResultAreaList[0].sbuSubmittedDate
 
       this.AppraisalSubmitionDate=this.ResultAreaList[0].appraisalSubmitionDate
 

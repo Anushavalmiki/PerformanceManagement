@@ -16,6 +16,7 @@ export class HRDashboardComponent implements OnInit {
   count: any;
   employeSubmissionDate: any;
   managerSubmittedCount: any;
+  sbuSubmittedCount: any;
   hrSubmittedCount: any;
   totalAppraisalCount: any;
   hrSubmittedlist: any;
@@ -39,6 +40,9 @@ export class HRDashboardComponent implements OnInit {
 
       var list1 = data.filter(x => x.managerSubmittedDate != null );
       this.managerSubmittedCount = list1.length;
+
+      var sbuSubmittedlist = data.filter(x => x.sbuSubmittedDate != null );
+      this.sbuSubmittedCount = sbuSubmittedlist.length;
 
       this.hrSubmittedlist = data.filter(x => x.hrSubmittedDate == null &&  x.cycleStartDate !=null && x.cycleEndDate != null && x.appraisalSubmitionDate != null  && x.employeeSubmittedDate !=null && x.managerSubmittedDate!= null );
       console.log("data",data)

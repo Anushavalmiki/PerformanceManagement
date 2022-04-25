@@ -187,6 +187,7 @@ export class HrratingnewComponent implements OnInit {
   }
 
   managerattachment: any;
+  sbuattachment:any;
   public GetKPIIDetails(details: any) {
     debugger
     this.PerformanceManagementService.GetEmployeeKraMap().subscribe(data => {
@@ -196,6 +197,7 @@ export class HrratingnewComponent implements OnInit {
       this.SelfComments = temp[0].hrcomments;
       this.hrattachment = details.hPhoto;
       this.managerattachment = details.mPhoto;
+      this.sbuattachment = details.sbuPhoto;
       this.attachment=details.hrattachment
 
     })
@@ -235,6 +237,11 @@ export class HrratingnewComponent implements OnInit {
   managercomments: any;
   public GEtmanagercomments(detials: any) {
     this.managercomments = detials.managercomments
+  }
+
+  sbucomments: any;
+  public GEtsbucomments(detials: any) {
+    this.sbucomments = detials.sbuComments
   }
 
 

@@ -47,6 +47,7 @@ export class BellCurveFittingComponent implements OnInit {
   eDate:any;
   appraisalCycleName:any
   pending:any;
+  sbuSubmittedCount:any
 
   employeSubmissionDate:any;
   managerSubmittedCount:any;
@@ -329,8 +330,11 @@ export class BellCurveFittingComponent implements OnInit {
   
       var list1 = data.filter(x => x.managerSubmittedDate != null && x.appraisalCycleName == this.appraisalCycleName);
       this.managerSubmittedCount = list1.length;
+
+      var sbuSubmittedlist = data.filter(x => x.sbuSubmittedDate != null && x.appraisalCycleName == this.appraisalCycleName);
+      this.sbuSubmittedCount = sbuSubmittedlist.length;
   
-      this.hrSubmittedlist = data.filter(x => x.hrSubmittedDate != null &&  x.cycleStartDate !=null && x.cycleEndDate != null && x.appraisalSubmitionDate != null  && x.employeeSubmittedDate !=null && x.managerSubmittedDate!= null && x.appraisalCycleName == this.appraisalCycleName );
+      this.hrSubmittedlist = data.filter(x => x.hrSubmittedDate != null &&  x.cycleStartDate !=null && x.cycleEndDate != null && x.appraisalSubmitionDate != null  && x.employeeSubmittedDate !=null && x.managerSubmittedDate!= null && x.sbuSubmittedDate!= null && x.appraisalCycleName == this.appraisalCycleName );
       console.log("data",data)
       console.log("hr", this.hrSubmittedlist)
       this.hrSubmittedCount = this.hrSubmittedlist.length;
@@ -356,8 +360,11 @@ export class BellCurveFittingComponent implements OnInit {
     
         var list1 = res.filter(x => x.managerSubmittedDate != null );
         this.managerSubmittedCount = list1.length;
+
+        var sbuSubmittedlist = res.filter(x => x.sbuSubmittedDate != null && x.appraisalCycleName == this.appraisalCycleName);
+        this.sbuSubmittedCount = sbuSubmittedlist.length;
     
-        this.hrSubmittedlist = res.filter(x => x.hrSubmittedDate != null &&  x.cycleStartDate !=null && x.cycleEndDate != null && x.appraisalSubmitionDate != null  && x.employeeSubmittedDate !=null && x.managerSubmittedDate!= null );
+        this.hrSubmittedlist = res.filter(x => x.hrSubmittedDate != null &&  x.cycleStartDate !=null && x.cycleEndDate != null && x.appraisalSubmitionDate != null  && x.employeeSubmittedDate !=null && x.managerSubmittedDate!= null && x.sbuSubmittedDate!= null );
         console.log("data",res)
         console.log("hr", this.hrSubmittedlist)
         this.hrSubmittedCount = this.hrSubmittedlist.length;

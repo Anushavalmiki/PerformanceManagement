@@ -6,11 +6,13 @@ import { environment } from "../environments/environment";
 })
 export class PerformanceManagementService {
 
-   public baseURL1 = "http://localhost:1807/";
+   public baseURL = "http://localhost:4199/";
   // public baseURL = "http://103.133.214.197/PerformanceManagement/";
-  public baseURL= "http://103.133.214.197/PerformanceDemoAPI/";
+ // public baseURL= "http://103.133.214.197/PerformanceDemoAPI/";
+ //public baseURL= "http://103.133.214.197/PerformanceDemoAPI/";
 
-  public host = "https://digioffice.amazeone.co/DigiOfficeAsticomAPI";
+  // public host = "https://digioffice.amazeone.co/DigiOfficeAsticomAPI";
+  public host = "https://digioffice.amazeone.co/DigiOfficeAPI"
   public host1="https://support.amazeone.co/SupportAPI/";
 
   url: any;
@@ -35,6 +37,12 @@ export class PerformanceManagementService {
   public SubmitHrAppraisal(data: any) {
     debugger;
     this.url = this.baseURL + 'Master/UpdateHrSubmitted';
+    return this.http.post(this.url, data);
+  }
+
+  public UpdateSbuSubmitted(data: any) {
+    debugger;
+    this.url = this.baseURL + 'Master/UpdateSbuSubmitted';
     return this.http.post(this.url, data);
   }
 
@@ -123,6 +131,12 @@ export class PerformanceManagementService {
   public GetMyDetails() {
     return this.http.get<any[]>(
       this.host + "/Announcement/GetMyDetails"
+    );
+  }
+
+  public GetMyDetailsForReiewRating() {
+    return this.http.get<any[]>(
+      this.host + "/Announcement/GetMyDetailsForReiewRating"
     );
   }
  
@@ -250,6 +264,12 @@ export class PerformanceManagementService {
   public InsertStaffScoresByManager(data: any) {
     debugger;
     this.url = this.baseURL + 'Master/InsertStaffScoresByManager';
+    return this.http.post(this.url, data);
+  }
+
+  public InsertStaffScoresBySBU(data: any) {
+    debugger;
+    this.url = this.baseURL + 'Master/InsertStaffScoresBySBU';
     return this.http.post(this.url, data);
   }
 
@@ -400,6 +420,18 @@ export class PerformanceManagementService {
     debugger;
     this.url = this.host1 + '/Master/UpdateSupportTickets';
     return this.http.post(this.url, data);
+  }
+
+  public UpdateStaffReviewRating(json: any) {
+    debugger
+    let APIURL = this.host + "Announcement/UpdateStaffReviewRating";
+    return this.http.post<any[]>(APIURL, json);
+  }
+
+  public UpdateSalaryIncrementByHR(json: any) {
+    debugger
+    let APIURL = this.host + "Announcement/UpdateSalaryIncrementByHR";
+    return this.http.post<any[]>(APIURL, json);
   }
 
 }

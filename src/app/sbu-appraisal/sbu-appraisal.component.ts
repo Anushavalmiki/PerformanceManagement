@@ -41,6 +41,7 @@ export class SbuAppraisalComponent implements OnInit {
   HrSubmittedDate: any;
   hrattachment: any;
   appraislid:any;
+  SbuSubmittedDate:any
   ngOnInit(): void {
     this.Score = 0;
     this.showbtn = false;
@@ -62,13 +63,13 @@ export class SbuAppraisalComponent implements OnInit {
           this.Name = this.ResultAreaList[0].name
           this.role = this.ResultAreaList[0].role
           this.departmentName = this.ResultAreaList[0].departmentName
-          this.HrSubmittedDate = this.ResultAreaList[0].hrSubmittedDate
+          this.SbuSubmittedDate = this.ResultAreaList[0].sbuSubmittedDate
           this.managerattachment = this.ResultAreaList[0].mPhoto
 
           console.log("resultarea",this.ResultAreaList)
 
-          this.ResultAreaList.forEach((element: { hrupdate: any; }) => {
-            if (element.hrupdate != 1) {
+          this.ResultAreaList.forEach((element: { sbuUpdate: any; }) => {
+            if (element.sbuUpdate != 1) {
               this.showbtn = false
             } else {
               this.showbtn = true
@@ -154,7 +155,7 @@ export class SbuAppraisalComponent implements OnInit {
         'SelfComments': this.SelfComments,
         'Attachment': this.attachment
       }
-      this.PerformanceManagementService.InsertStaffScoresByHR(entity).subscribe(data => {
+      this.PerformanceManagementService.InsertStaffScoresBySBU(entity).subscribe(data => {
         debugger
         Swal.fire("Saved Successfully");
         // var entity1 = {
@@ -188,16 +189,17 @@ export class SbuAppraisalComponent implements OnInit {
   }
 
   managerattachment: any;
+  sbuAttachment:any
   public GetKPIIDetails(details: any) {
     debugger
     this.PerformanceManagementService.GetEmployeeKraMap().subscribe(data => {
       debugger
       let temp: any = data.filter(x => x.id == details.id)
-      this.Score = temp[0].hrrrating;
-      this.SelfComments = temp[0].hrcomments;
-      this.hrattachment = details.hPhoto;
+      this.Score = temp[0].sbuRating;
+      this.SelfComments = temp[0].sbuComments;
+      this.sbuAttachment = details.sbuPhoto;
       this.managerattachment = details.mPhoto;
-      this.attachment=details.hrattachment
+      this.attachment=details.sbuAttachment
 
     })
     this.photoid = details.id;
@@ -252,7 +254,7 @@ export class SbuAppraisalComponent implements OnInit {
       'SelfComments': this.SelfComments,
       'Attachment': this.attachment
     }
-    this.PerformanceManagementService.InsertStaffScoresByHR(entity).subscribe(data => {
+    this.PerformanceManagementService.InsertStaffScoresBySBU(entity).subscribe(data => {
       debugger
       Swal.fire("Updated Successfully");
       this.attachment = "";
@@ -270,7 +272,7 @@ export class SbuAppraisalComponent implements OnInit {
 
 
 
-  public SubmitHrAppraisal() {
+  public UpdateSbuSubmitted() {
     debugger
     Swal.fire({
       title: 'Are you sure?',
@@ -285,7 +287,7 @@ export class SbuAppraisalComponent implements OnInit {
         var entity = {
           'StaffID': this.StaffID,
         }
-        this.PerformanceManagementService.SubmitHrAppraisal(entity).subscribe(data => {
+        this.PerformanceManagementService.UpdateSbuSubmitted(entity).subscribe(data => {
           debugger
           Swal.fire("Submitted Appraisal Successfully");
           this.ngOnInit();

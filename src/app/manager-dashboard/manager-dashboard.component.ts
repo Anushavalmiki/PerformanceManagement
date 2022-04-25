@@ -21,6 +21,8 @@ export class ManagerDashboardComponent implements OnInit {
   totalAppraisallist:any;
   dumpstafflist:any;
   employeCount:any;
+  sbuSubmittedlist:any;
+  sbuSubmittedCount:any;
   ngOnInit(): void {
 
     this.StaffID = sessionStorage.getItem('EmaployedID');
@@ -37,9 +39,14 @@ export class ManagerDashboardComponent implements OnInit {
       var list1 = data.filter(x => x.managerSubmittedDate != null && x.approver1 == this.StaffID);
       this.managerSubmittedCount = list1.length;
 
-      this.hrSubmittedlist = data.filter(x => x.hrSubmittedDate != null && x.approver1 == this.StaffID);
+      this.sbuSubmittedlist = data.filter(x => x.sbuSubmittedDate != null && x.approver1 == this.StaffID);
+      console.log("dsf",this.sbuSubmittedlist)
+      this.sbuSubmittedCount = this.sbuSubmittedlist.length;
+
+      this.hrSubmittedlist = data.filter(x => x.SubmittedDate != null && x.approver1 == this.StaffID);
       console.log("dsf",this.hrSubmittedlist)
       this.hrSubmittedCount = this.hrSubmittedlist.length;
+
       
       debugger
      this.totalAppraisallist = data.filter(x => x.hrSubmittedDate != null  && x.managerSubmittedDate != null && x.employeeSubmittedDate != null && x.approver1 == this.StaffID)

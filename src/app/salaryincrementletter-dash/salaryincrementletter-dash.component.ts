@@ -3,11 +3,12 @@ import { PerformanceManagementService } from 'src/app/performance-management.ser
 import Swal from 'sweetalert2';
 
 @Component({
-  selector: 'app-review-rating',
-  templateUrl: './review-rating.component.html',
-  styleUrls: ['./review-rating.component.css']
+  selector: 'app-salaryincrementletter-dash',
+  templateUrl: './salaryincrementletter-dash.component.html',
+  styleUrls: ['./salaryincrementletter-dash.component.css']
 })
-export class ReviewRatingComponent implements OnInit {
+export class SalaryincrementletterDashComponent implements OnInit {
+
 
   constructor(private PerformanceManagementService: PerformanceManagementService) { }
 
@@ -34,10 +35,7 @@ export class ReviewRatingComponent implements OnInit {
   level: any;
   role:any;
   roleid:any;
-  stafflist1:any;
-  currentlevel:any;
-  BaseSal:any;
-  newlevel:any;
+  stafflist1:any
   ngOnInit(): void {
     this.staffID = sessionStorage.getItem('EmaployedID');
     this.roleid = sessionStorage.getItem('roleid');
@@ -55,8 +53,8 @@ export class ReviewRatingComponent implements OnInit {
 
     this.PerformanceManagementService.GetMyDetailsForReiewRating().subscribe(data => {
       debugger
-      this.stafflist1 = data.filter(x=>x.salaryIncrement==null);
-      this.stafflistCopy = this.stafflist1
+      this.stafflist1 = data.filter(x=>x.salaryIncrement==1);
+      this.stafflistCopy = this.stafflist
 
     });
 
@@ -134,7 +132,7 @@ export class ReviewRatingComponent implements OnInit {
     this.PerformanceManagementService.GetConductappraisalStaffList().subscribe(data => {
       debugger
       this.EmployeeKradash = data.filter(x => x.appraisalCycleName == this.appraisalCycleName && x.approver1 == this.staffID && x.selfScores != null && x.employeeSubmittedDate != null)
-      // && 
+      // &&
     })
   }
 
@@ -148,13 +146,6 @@ export class ReviewRatingComponent implements OnInit {
   public getstaffid(event: any) {
     debugger
     this.staffid = event.id;
-
-    this.PerformanceManagementService.GetMyDetailsForReiewRating().subscribe(data => {
-      debugger
-      let temp: any = data.filter(x=>x.id==this.staffid)
-      this.currentlevel = temp[0].level;
-      this.BaseSal=temp[0].baseSal;
-    });
   }
 
 
@@ -173,10 +164,10 @@ export class ReviewRatingComponent implements OnInit {
           'SatffID': this.staffid,
           'RecommendedBonusAmountOrPercent': this.RecommendedBonusAmountOrPercent,
           'RecommendedSalaryIncreaseOrPercent': this.RecommendedSalaryIncreaseOrPercent,
-          'Level': this.newlevel,
-          'Type': this.role,
+          'Level': this.Level,
+          'Type': this.Type,
         }
-debugger
+
         this.PerformanceManagementService.UpdateStaffReviewRating(entity).subscribe(data => {
           debugger
           Swal.fire('Approved Successfully')
@@ -202,7 +193,7 @@ debugger
           'SatffID': this.staffid,
         }
 
-        this.PerformanceManagementService.UpdateSalaryIncrementByHR(entity).subscribe(data => {
+        this.PerformanceManagementService.UpdateStaffReviewRating(entity).subscribe(data => {
           debugger
           Swal.fire('Approved Successfully')
           location.reload();
@@ -212,7 +203,33 @@ debugger
   }
 
 
+  public sendmail() {
+    debugger
+    Swal.fire({
+      title: 'Are you sure?',
+      text: 'You Want to send mail.',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, Send it!',
+      cancelButtonText: 'No, keep it'
+    }).then((result) => {
+      if (result.value == true) {
+        // var entity = {
+        //   'SatffID': this.staffid,
+        // }
+
+        // this.PerformanceManagementService.UpdateStaffReviewRating(entity).subscribe(data => {
+        //   debugger
+        //   Swal.fire('Approved Successfully')
+        //   location.reload();
+        // })
+        Swal.fire('Mail Sent Successfully!!')
+      }
+    })
+  }
+
 
 
 }
+
 

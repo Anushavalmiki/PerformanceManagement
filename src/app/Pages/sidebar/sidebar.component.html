@@ -171,7 +171,7 @@
             <span [ngClass]="active == 'PIP' ? 'Active1' : 'Active3'">PIP</span>
         </a>
 
-        <a class="togglebtn button" *ngIf="roleid=='4'||roleid=='5'" routerLink="/ReviewRating" class="tablinks"
+        <a class="togglebtn button" *ngIf="roleid=='3'||roleid=='5'" routerLink="/ReviewRating" class="tablinks"
             (click)="highlight($event)" (click)="ReviewRating()">
             <img src="assets/Images/64/Staff.png" style="width:13% ;margin-right: 15px;"
                 [ngClass]="active != 'ReviewRating' ? 'Active1' : 'Active2'" />
@@ -183,7 +183,7 @@
 
        
 
-        <a class="togglebtn button" *ngIf="roleid=='3'" routerLink="/Managerratingdash" class="tablinks"
+        <a class="togglebtn button" *ngIf="roleid=='3'" routerLink="/SalaryincrementletterDash" class="tablinks"
             (click)="highlight($event)" (click)="salaryIncrement()">
             <img src="assets/Images/64/Staff.png" style="width:13% ;margin-right: 15px;"
                 [ngClass]="active != 'salaryIncrement' ? 'Active1' : 'Active2'" />
