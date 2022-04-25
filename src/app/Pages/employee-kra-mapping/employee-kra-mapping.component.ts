@@ -33,7 +33,9 @@ export class EmployeeKraMappingComponent implements OnInit {
   Departmentid: any;
   kratypeid: any;
   kratypelist: any;
+  loginName:any;
 
+  staffName:any;
   ngOnInit(): void {
     this.RoleID = "";
     this.departmentName = "";
@@ -41,7 +43,8 @@ export class EmployeeKraMappingComponent implements OnInit {
     this.kratypeid="";
     this.selectedItems3.length=0;
 
-
+    this.loginName = sessionStorage.getItem('loginName');
+    
 
 
     this.PerformanceManagementService.GetAppraisalCycle().subscribe(data => {
@@ -55,7 +58,9 @@ export class EmployeeKraMappingComponent implements OnInit {
     this.PerformanceManagementService.GetMyDetails().subscribe(data => {
       debugger
       this.dropdownList = data.filter(x => x.supervisor == sessionStorage.getItem('EmaployedID'));
+      this.staffName==  this.dropdownList[0].name;
       let temp: any = data.filter(x => x.id == sessionStorage.getItem('EmaployedID'));
+  
       this.Departmentid = temp[0].department;
       this.PerformanceManagementService.GetDepartmentMaster().subscribe(data => {
         debugger
@@ -203,7 +208,6 @@ export class EmployeeKraMappingComponent implements OnInit {
     Swal.fire('Goal Setting Done Successfully.');
     location.href = "#/EmployeeKraMappingdashboard";
    location.reload();
-
   }
 
 
@@ -215,21 +219,16 @@ export class EmployeeKraMappingComponent implements OnInit {
       'Event': 'Apprisal Request',
       'FromUser': 'Admin',
       'ToUser': sessionStorage.getItem('EmaployedID'),
-      'Message': 'Your Manager Assigned a New Goal Setting to you!!',
+      'Message': 'Dear '+ this.staffName +' Your Manager ' + this.loginName + ' has set your goal for Appraisal Cycle ',
       'Photo': 'Null',
       'Building': 'Dynamics 1',
       'UserID': this.EmployeeId,
       'NotificationTypeID': 17,
       'VendorID': 0
-
-
     }
     this.PerformanceManagementService.InsertNotification(entity).subscribe(data => {
       if (data != 0) {
-
-
       }
-
     })
   }
   public keyresultArray: any = [];
@@ -267,7 +266,6 @@ export class EmployeeKraMappingComponent implements OnInit {
       debugger
       this.dropdownList1 = data.filter(x => x.kraTypeID == this.kratypeid);
     });
-
   }
 
 
@@ -278,9 +276,4 @@ export class EmployeeKraMappingComponent implements OnInit {
       }
     )
   }
-
-
-
-
-
 }

@@ -6,10 +6,10 @@ import { environment } from "../environments/environment";
 })
 export class PerformanceManagementService {
 
-   public baseURL = "http://localhost:4199/";
-  // public baseURL = "http://103.133.214.197/PerformanceManagement/";
+   public baseURL1 = "http://localhost:4199/";
+   public baseURL = "http://103.133.214.197/PerformanceManagement/";
  // public baseURL= "http://103.133.214.197/PerformanceDemoAPI/";
- //public baseURL= "http://103.133.214.197/PerformanceDemoAPI/";
+
 
   // public host = "https://digioffice.amazeone.co/DigiOfficeAsticomAPI";
   public host = "https://digioffice.amazeone.co/DigiOfficeAPI"
