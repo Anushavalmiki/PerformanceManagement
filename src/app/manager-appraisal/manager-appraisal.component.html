@@ -47,7 +47,7 @@
                             <th>Action </th>
                         </tr>
                     </thead>
-                    <tbody>y
+                    <tbody>
                         <tr
                             *ngFor="let details of ResultAreaList |paginate: { itemsPerPage: count1, currentPage: p} index as i">
                             <td [ngClass]="{'bggreen':details.managerupdate==1 }">
@@ -191,7 +191,7 @@
                             Rating <span style="color: red;">*</span> </p>
                     </div>
                     <div class="col-lg-7">
-                        <select class="dropdown form-control" id="Score" name="Score" [(ngModel)]="Score" required>
+                        <select  disabled  class="dropdown form-control" id="Score" name="Score" [(ngModel)]="Score" required>
                             <option value="0">Select Rating</option>
                             <option *ngFor="let value of list" value="{{value.id}}">{{value.score}} - {{value.answers}}
                             </option>
@@ -208,7 +208,7 @@
                     </div>
                     <div class="col-lg-7">
                         <ckeditor id="SelfComments" name="SelfComments" [(ngModel)]="SelfComments"
-                            data="<p>Enter Answer Here !</p>" required></ckeditor>
+                         data="<p>Enter Answer Here !</p>" required></ckeditor>
                     </div>
                 </div>
                 <br>
