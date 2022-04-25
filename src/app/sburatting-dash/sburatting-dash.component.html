@@ -10,7 +10,6 @@
         </div>
     </div>
     <div class="card">
-        <br>
         <div class="row FilterClass ">
             <div class="col-lg-1">
                 <p class="filter">Filter By</p>
@@ -28,9 +27,17 @@
                     </option>
                 </select>
             </div>
+            <div class="col-lg-2">
+                
+                <select class="form-control">
+                    <option>Select Status</option>
+                    <option>Open</option>
+                    <option>Submitted</option>
+                </select>
+            </div>
 
             <div class="col-lg-1"></div>
-        </div><br>
+        </div>
     </div> <br>
     <div class="row">
         <div class="col-lg-11"></div>
@@ -54,6 +61,7 @@
                         <th>Manager Submitted Date </th>
                         <th *ngIf="roleid==5">Critical Talent</th>
                         <th>Action </th>
+                        <th>Status</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -83,6 +91,10 @@
                             <button [routerLink]="['/SbuAppraisal', details.id,details.appraiselID ]"
                                 class=" btn btn-primary editable-table-button btn-xs btncolor"
                                 *ngIf="details.sbuSubmittedDate!=null">View Appraisal</button>
+                        </td>
+                        <td>
+                            <p *ngIf="details.sbuSubmittedDate==null">Open</p>
+                            <p *ngIf="details.sbuSubmittedDate!=null">Submitted</p>
                         </td>
                     </tr>
                 </tbody>

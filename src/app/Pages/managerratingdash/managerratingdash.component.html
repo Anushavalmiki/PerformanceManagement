@@ -28,6 +28,14 @@
                     </option>
                 </select>
             </div>
+            <div class="col-lg-2">
+                
+                <select class="form-control">
+                    <option>Select Status</option>
+                    <option>Open</option>
+                    <option>Submitted</option>
+                </select>
+            </div>
             
             <div class="col-lg-1"></div>
         </div><br>
@@ -54,6 +62,7 @@
                         <th>Manager Submitted Date </th>
                         <th *ngIf="roleid==5">Critical Talent</th>
                         <th>Action </th>
+                        <th>Status</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -91,6 +100,10 @@
                                     Apprisal</button>&nbsp; -->
                             <!-- <button class="button btn-xs" data-toggle="modal" (click)="GetStaffKraDetails(details)"
                                     data-target="#myModal">View</button>&nbsp; -->
+                        </td>
+                        <td>
+                            <p  *ngIf="details.managerSubmittedDate==null">Open</p>
+                            <p   *ngIf="details.managerSubmittedDate!=null">Submitted</p>
                         </td>
                     </tr>
                 </tbody>
