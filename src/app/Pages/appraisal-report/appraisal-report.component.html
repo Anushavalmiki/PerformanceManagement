@@ -17,9 +17,15 @@
                 <p class="filter">Filter By</p>
             </div>
             <div class="col-lg-3">
-                <input type="search" class="form-control search" placeholder="Search for Name.." [(ngModel)]="search"  (ngModelChange)="FilterAttendence()">
+                <select class="form-control" id="departmentid" name="departmentid" [(ngModel)]="departmentid"
+                    (change)='getdepartmentID($event)' (change)="GetFilteredDepartment()">
+                    <option value="0">Select Department</option>
+                    <option *ngFor="let details of departmentAppraisalList" value="{{details.id}}">{{details.departmentName}}
+                    </option>
+                </select>
             </div>
-            <div class="col-lg-3">
+           
+            <div class="col-lg-2">
                 <select class="form-control" id="roleTypeid" name="roleTypeid" [(ngModel)]="roleTypeid"
                     (change)='getRoleID($event)' (change)="GetFilteredRoleType()">
                     <option value="0">Select Position</option>
@@ -27,7 +33,7 @@
                     </option>
                 </select>
             </div>
-            <div class="col-lg-3 ">
+            <div class="col-lg-2 ">
                 <select class="form-control" id="manager" name="manager" [(ngModel)]="manager" *ngIf="roleid==3"
                     (change)="getManager($event)" (change)="GetFilteredManager()">
                     <option value="0">Select Manager</option>
@@ -35,8 +41,12 @@
                     </option>
                 </select>
             </div>
-            <div class="col-lg-1"></div>
-        </div><br>
+            <div class="col-lg-2">
+                <input type="search" class="form-control search" placeholder="Search for Name.." [(ngModel)]="search"  (ngModelChange)="FilterAttendence()">
+            </div>
+            <!-- <div class="col-lg-1"></div>
+        </div>-->
+        <br> 
         <!-- <div class="row">
             <div class="col-lg-1">
                 <p class="filter">Filter By Manager</p>
