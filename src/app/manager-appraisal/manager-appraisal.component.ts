@@ -130,7 +130,8 @@ export class ManagerAppraisalComponent implements OnInit {
   Score: any;
   ResultAreaID: any;
   ManagerSubmittedDate:any;
-  managerattachment:any
+  managerattachment:any;
+  positionrecomendation:any;
     id: any;
   public GetKPIID(details: any) {
     this.id = details.id;
@@ -157,7 +158,8 @@ export class ManagerAppraisalComponent implements OnInit {
         'PerformaceIndicatorID': this.kpiid,
         'SelfScores': this.Score,
         'SelfComments': this.SelfComments,
-        'Attachment': this.attchmentss
+        'Attachment': this.attchmentss,
+        'ManagerPromotionRecommendaton':'this.positionrecomendation'
       }
       this.PerformanceManagementService.InsertStaffScoresByManager(entity).subscribe(data => {
         debugger

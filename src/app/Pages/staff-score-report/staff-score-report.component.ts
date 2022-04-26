@@ -86,8 +86,6 @@ export class StaffScoreReportComponent implements OnInit {
       debugger
       this.Apprisalcyclelist = data;
     });
-
-
   }
 
   public Getratingvalue(event: any) {
@@ -182,9 +180,6 @@ export class StaffScoreReportComponent implements OnInit {
 
   }
 
-
-
-
   getRoleID(even: any) {
     this.roleTypeid = even.target.value;
   }
@@ -195,6 +190,19 @@ export class StaffScoreReportComponent implements OnInit {
         this.roleTypeList = data;
         console.log("type", this.roleTypeList);
         this.roleTypeid = 0;
+      }
+    )
+  }
+  getdepartmentID(even: any) {
+    this.departmentid = even.target.value;
+  }
+
+  public GetDepartment() {
+    this.PerformanceManagementService.GetDepartmentMaster().subscribe(
+      data => {
+        this.departmentList = data;
+        console.log("departmentName", this.departmentList);
+        // this.roleTypeid = 0;
       }
     )
   }
@@ -220,32 +228,71 @@ export class StaffScoreReportComponent implements OnInit {
   }
 
   public GetFilteredManager(){
-    this.PerformanceManagementService.GetConductappraisalStaffList().subscribe(data => {
-      debugger
-      this.FilteredStaffAppraisalList = data.filter(x=>x.managername==this.manager )
-    })
+    if (this.ratingvalue == 0) {
+      this.PerformanceManagementService.GetConductappraisalStaffList().subscribe(
+        res => {
+          debugger;
+          let temp: any = res
+          this.StaffAppraisalList = temp;
+          this.FilteredStaffAppraisalList = this.StaffAppraisalList
+          this.FilteredStaffAppraisalList = res.filter((x: { managername: any; })=>x.managername==this.manager )
+          this.count = this.FilteredStaffAppraisalList.length;
+
+        }
+      )
+    } else {
+      this.PerformanceManagementService.GetConductappraisalStaffList().subscribe(
+        res => {
+          debugger;
+          let temp: any = res
+          this.StaffAppraisalList = temp;
+      
+          this.FilteredStaffAppraisalList = this.StaffAppraisalList.filter((x: { avgGroupHeadScores: any; avgCIOScores: any; managername:any;}) => ((x.avgGroupHeadScores + x.avgCIOScores) / 2) == this.ratingvalue && x.managername==this.manager)
+          this.count = this.FilteredStaffAppraisalList.length;
+     
+
+        }
+      )
+    }
   } 
 
   public GetFilteredRoleType(){
+    if (this.ratingvalue == 0) {
+      this.PerformanceManagementService.GetConductappraisalStaffList().subscribe(
+        res => {
+          debugger;
+          let temp: any = res
+          this.StaffAppraisalList = temp;
+          this.FilteredStaffAppraisalList = this.StaffAppraisalList
+          this.FilteredStaffAppraisalList = res.filter((x: { managername: any; type:any})=> x.type==this.roleTypeid )
+          this.count = this.FilteredStaffAppraisalList.length;
+
+        }
+      )
+    } else {
+      this.PerformanceManagementService.GetConductappraisalStaffList().subscribe(
+        res => {
+          debugger;
+          let temp: any = res
+          this.StaffAppraisalList = temp;
+      
+          this.FilteredStaffAppraisalList = this.StaffAppraisalList.filter((x: { avgGroupHeadScores: any; avgCIOScores: any; managername:any;type:any}) => ((x.avgGroupHeadScores + x.avgCIOScores) / 2) == this.ratingvalue && x.type==this.roleTypeid )
+          this.count = this.FilteredStaffAppraisalList.length;
+        }
+      )
+    }
+
+
+
+
+
     this.PerformanceManagementService.GetConductappraisalStaffList().subscribe(data => {
       debugger
       this.FilteredStaffAppraisalList = data.filter(x=>x.type==this.roleTypeid )
     })
   }
 
-  getdepartmentID(even: any) {
-    this.departmentid = even.target.value;
-  }
-
-  public GetDepartment() {
-    this.PerformanceManagementService.GetDepartmentMaster().subscribe(
-      data => {
-        this.departmentList = data;
-        console.log("departmentName", this.departmentList);
-        // this.roleTypeid = 0;
-      }
-    )
-  }
+ 
 
   public GetFilteredDepartment() {
     this.PerformanceManagementService.GetConductappraisalStaffList().subscribe(data => {

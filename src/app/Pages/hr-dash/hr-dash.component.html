@@ -11,12 +11,12 @@
     </div>
     <br>
     <div class="card">
-  
+
         <div class="row FilterClass ">
             <div class="col-lg-1">
                 <p class="filter">Filter By</p>
             </div>
-          
+
             <div class="col-lg-2">
                 <select class="form-control" id="appraisalCycleName" name="appraisalCycleName"
                     [(ngModel)]="appraisalCycleName" (change)="GetApprisalcycle($event)"
@@ -28,34 +28,32 @@
                 </select>
             </div>
             <div class="col-lg-2">
-                <select class="form-control" id="Department" name="Department"
-                    [(ngModel)]="Department" (change)="GetDepatmentID($event)"
-                    (change)="filterByDepartment()">
+                <select class="form-control" id="departmentid" name="departmentid" [(ngModel)]="departmentid"
+                    (change)='getdepartmentID($event)' >
                     <option value="0">Select Department</option>
-                    <option *ngFor="let item of Departmentlist" value="{{item.departmentName}}">
-                        {{item.appraisalCycleName}}
+                    <option *ngFor="let details of departmentList" value="{{details.id}}">{{details.departmentName}}
                     </option>
                 </select>
             </div>
-     
-                <div class="col-lg-2">
-                    <select class="form-control" id="RoleType" name="RoleType" [(ngModel)]="RoleType"
-                        (change)='getRoleType($event)' (change)="FilterRoleType()">
-                        <option value="0">Select Position</option>
-                        <option *ngFor="let details of RoleTypeList" value="{{details.id}}">{{details.short}}
-                        </option>
-                    </select>
-                </div>
-    
+
+            <div class="col-lg-2">
+                <select class="form-control" id="roleTypeid" name="roleTypeid" [(ngModel)]="roleTypeid"
+                    (change)="getRoleID($event)" (change)="GetFilteredRoleType()">
+                    <option value="0">Select Position</option>
+                    <option *ngFor="let details of roleTypeList" value="{{details.id}}">{{details.short}}
+                    </option>
+                </select>
+            </div>
+
             <div class="col-lg-3">
                 <input type="search" class="form-control search" placeholder="Search for Name.." [(ngModel)]="search">
             </div>
             <div class="col-lg-2">
-                
-                <select class="form-control">
-                    <option>Select Status</option>
-                    <option>Open</option>
-                    <option>Submitted</option>
+
+                <select class="form-control" id="status" name="status" [(ngModel)]="status">
+                    <option value="0">Select Status</option>
+                    <option  value="Open">Open</option>
+                    <option  value="Submitted">Submitted</option>
                 </select>
             </div>
         </div>
@@ -75,20 +73,21 @@
                             <th>Employee Name</th>
                             <th>Department</th>
                             <th>Position</th>
-                            <th>Appraisal Cycle</th> 
+                            <th>Appraisal Cycle</th>
                             <th>Appraisal Start Date</th>
                             <th>Appraisal End Date</th>
                             <th>Last Submission Date</th>
                             <th>Employee Submitted Date</th>
                             <th>Manager Submitted Date</th>
                             <th>SBU Submitted Date</th>
+                            <th>Manager Promotion Recommendation</th>
                             <th>Action </th>
                             <th>Status</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr
-                            *ngFor="let details of EmployeeKradash |paginate: { itemsPerPage: count1, currentPage: p}|filter:search">
+                            *ngFor="let details of EmployeeKradash |paginate: { itemsPerPage: count1, currentPage: p}|filter:search|filter:status">
                             <td>{{details.name}}</td>
                             <td>{{details.departmentName}}</td>
                             <td>{{details.role}}</td>
@@ -99,12 +98,19 @@
                             <td>{{details.employeeSubmittedDate|date}}</td>
                             <td>{{details.managerSubmittedDate|date}}</td>
                             <td>{{details.sbuSubmittedDate|date}}</td>
+                            <td >
+                                <p *ngIf="details.managerPromotionRecommendaton==1">Yes</p>
+                                <p *ngIf="details.managerPromotionRecommendaton==0">No</p>
+                            </td>
                             <td>
-                                <button [routerLink]="['/hrratingnew', details.id,details.appraiselID ] "*ngIf="details.hrSubmittedDate==null"
+                                <button [routerLink]="['/hrratingnew', details.id,details.appraiselID ] "
+                                    *ngIf="details.hrSubmittedDate==null"
                                     class=" btn btn-primary editable-table-button btn-xs">Conduct Appraisal</button>
 
-                                <button [routerLink]="['/hrratingnew', details.id,details.appraiselID] "*ngIf="details.hrSubmittedDate!=null"
-                                    class=" btn btn-primary editable-table-button btn-xs btncolor">View Appraisal</button>
+                                <button [routerLink]="['/hrratingnew', details.id,details.appraiselID] "
+                                    *ngIf="details.hrSubmittedDate!=null"
+                                    class=" btn btn-primary editable-table-button btn-xs btncolor">View
+                                    Appraisal</button>
 
                                 <!-- <button *ngIf="details.cioComments!=null"
                                     class=" btn btn-primary editable-table-button btn-xs">Completed</button> -->

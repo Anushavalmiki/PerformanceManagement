@@ -59,6 +59,7 @@
                         <th>Last Submission Date </th>
                         <th>Employee Submitted Date</th>
                         <th>Manager Submitted Date </th>
+                        <th>Manager Promotion Recommendation</th>
                         <th *ngIf="roleid==5">Critical Talent</th>
                         <th>Action </th>
                         <th>Status</th>
@@ -78,6 +79,10 @@
                         </td>
                         <td *ngIf="details.managerSubmittedDate==null">
                             <p>NA</p>
+                        </td>
+                        <td >
+                            <p *ngIf="details.managerPromotionRecommendaton==1">Yes</p>
+                            <p *ngIf="details.managerPromotionRecommendaton==0">No</p>
                         </td>
                         <td *ngIf="roleid==5">
                             <button class=" btn btn-primary editable-table-button btn-xs Add" data-toggle="modal"

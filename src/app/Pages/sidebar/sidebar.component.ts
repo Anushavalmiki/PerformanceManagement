@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { PerformanceManagementService } from 'src/app/performance-management.service';
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
@@ -9,12 +10,37 @@ export class SidebarComponent implements OnInit {
 
   roleid: any;
   temp: any;
+  list:any;
+  StaffID:any
 
-  constructor(public router: Router) { }
+  constructor(public router: Router, private PerformanceManagementService: PerformanceManagementService) { }
 
   ngOnInit(): void {
     this.temp = sessionStorage.getItem('temp');
     this.roleid = sessionStorage.getItem('roleid');
+    this.StaffID = sessionStorage.getItem('EmaployedID');
+
+    this.ConductappraisalStaffList();
+
+    
+
+  }
+  StaffAppraisalList:any
+  uniquelist:any
+  public ConductappraisalStaffList() {
+    this.PerformanceManagementService.GetConductappraisalStaffListforpip().subscribe(
+      res => {
+        debugger;
+        let temp: any = res
+          this.StaffAppraisalList = temp.filter((x: { hrSubmittedDate: null; staffid:string})=>x.hrSubmittedDate!=null && x.staffid==this.StaffID);
+          this.list=   this.StaffAppraisalList.length
+          const key = 'employee';
+          const key1 = 'month'
+          this.uniquelist = [...new Map(this.StaffAppraisalList.map((item: { [x: string]: any; }) =>
+  
+            [(item[key]), item])).values()]
+      }
+    )
   }
 
   public highlight(evt: any) {
@@ -105,8 +131,11 @@ export class SidebarComponent implements OnInit {
   }
 
   pip(){
-    this.active = 'pip';
-    localStorage.setItem("clickname","PIP")
+    if( this.StaffAppraisalList.length!=0){
+      this.active = 'pip';
+      localStorage.setItem("clickname","PIP")
+    }
+  
   }
 
   help(){
