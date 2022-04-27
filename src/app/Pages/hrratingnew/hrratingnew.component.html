@@ -84,7 +84,7 @@
                             </td>
                             <td [ngClass]="{'bggreen':details.hrupdate==1 }">
                                 <button class=" btn btn-primary action" data-toggle="modal" data-target="#exampleModal3"
-                                    (click)="getattachment(details)" *ngIf="details.managerattachment!=null&&details.managerattachment!=''">View
+                                    (click)="getattachment(details)" *ngIf="details.managerattachment!=null&&details.managerattachment!='0'&&details.managerattachment!=''">View
                                     Attachments</button>
                                 <p *ngIf="details.managerattachment=='0'||details.managerattachment==null||details.managerattachment==''">No
                                     Attachments</p>
@@ -100,7 +100,7 @@
                             </td>
                             <td [ngClass]="{'bggreen':details.hrupdate==1 }">
                                 <button class=" btn btn-primary action" data-toggle="modal" data-target="#exampleModal36"
-                                    (click)="getattachment(details)" *ngIf="details.sbuAttachment!=null && details.sbuAttachment!=''">View
+                                    (click)="getattachment(details)" *ngIf="details.sbuAttachment!=null&&details.sbuAttachment!='0' && details.sbuAttachment!=''">View
                                     Attachments</button>
                                 <p *ngIf="details.sbuAttachment=='0'||details.sbuAttachment==null||details.sbuAttachment==''">No
                                     Attachments</p>

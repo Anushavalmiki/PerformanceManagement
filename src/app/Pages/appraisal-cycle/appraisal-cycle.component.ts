@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PerformanceManagementService } from 'src/app/performance-management.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-appraisal-cycle',
@@ -28,13 +29,26 @@ export class AppraisalCycleComponent implements OnInit {
       })
   }
 
-  delete(id:any){
-    this.PerformanceManagementService.DeleteAppraisalCycle(id).subscribe(
-      data=>{
-        alert("Deleted Sucessfully");
-        this.GetAppraisalCycle();
+  public delete(ID: any) {
+    debugger
+    Swal.fire({
+      title: 'Are you sure?',
+      text: 'You Want to delete it.',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, Delete it!',
+      cancelButtonText: 'No, keep it'
+    }).then((result) => {
+      if (result.value == true) {
+        this.PerformanceManagementService.DeleteAppraisalCycle(ID).subscribe(
+          data=>{
+          debugger
+          Swal.fire('Deleted Successfully')
+          this.GetAppraisalCycle();
+          // location.reload();
+        })
       }
-    )
+    })
   }
 
 

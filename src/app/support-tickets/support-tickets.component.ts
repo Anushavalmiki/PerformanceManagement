@@ -85,6 +85,12 @@ export class SupportTicketsComponent implements OnInit {
 
   save() {
     debugger
+    if(this.date==undefined||this.time==0||this.typeofissue==undefined||this.prority==null||this.screenShot==
+      undefined||this.comments==undefined||this.staffID==undefined){
+      Swal.fire("Please Enter the Mandatory Fields");
+    }
+    else{
+    debugger
     var entity = {
       "Date": this.date,
       "Time": this.time,
@@ -97,6 +103,7 @@ export class SupportTicketsComponent implements OnInit {
       "ApplicationName": 'Performance Management',
       "StaffID":this.staffID
     }
+    
     this.PerformanceManagementService.InsertSupportTickets(entity).subscribe(
       data => {
         this.ticketid = data;
@@ -113,6 +120,8 @@ export class SupportTicketsComponent implements OnInit {
       }
     )
   }
+  }
+
   ticketid: any
   public uploadmultipleimages() {
       debugger
