@@ -159,7 +159,7 @@ export class ManagerAppraisalComponent implements OnInit {
         'SelfScores': this.Score,
         'SelfComments': this.SelfComments,
         'Attachment': this.attchmentss,
-        'ManagerPromotionRecommendaton':'this.positionrecomendation'
+        'ManagerPromotionRecommendaton':this.positionrecomendation
       }
       this.PerformanceManagementService.InsertStaffScoresByManager(entity).subscribe(data => {
         debugger
@@ -180,6 +180,7 @@ export class ManagerAppraisalComponent implements OnInit {
         this.Score = "";
         this.SelfComments = "";
         this.attchmentss='';
+        this.positionrecomendation='';
         this.files.length = 0;
         const element1 = document.getElementById('close');
   

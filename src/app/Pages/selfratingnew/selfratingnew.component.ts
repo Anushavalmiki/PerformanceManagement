@@ -240,7 +240,7 @@ export class SelfratingnewComponent implements OnInit {
         this.PerformanceManagementService.SubmitEmployeeAppraisal(entity).subscribe(data => {
           debugger
           this.InsertNotification();
-          Swal.fire("Submitted Appraisal Successfully");
+          Swal.fire("Appraisal Submitted Successfully");
           this.ngOnInit();
         })
       }

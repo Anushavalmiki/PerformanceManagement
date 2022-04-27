@@ -14,7 +14,9 @@ export class SupportTicketDashboardComponent implements OnInit {
   ticketlist:any;
   search:any;
   count:any;
+  staffID:any;
   ngOnInit(): void {
+    this.staffID = sessionStorage.getItem('EmaployedID');
     this.GetSupportTickets();
   }
 
@@ -24,7 +26,7 @@ export class SupportTicketDashboardComponent implements OnInit {
     debugger
     this.PerformanceManagementService.GetSupportTickets().subscribe(
       data=>{
-        this.ticketlist=data.filter(x=>x.applicationName=='Performance Management');
+        this.ticketlist=data.filter(x=>x.applicationName=='Performance Management' && x.staffID==this.staffID );
         this.count=this.ticketlist.length;
       }
     )

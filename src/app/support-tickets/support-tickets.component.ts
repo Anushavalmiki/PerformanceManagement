@@ -22,8 +22,10 @@ export class SupportTicketsComponent implements OnInit {
   companyname: any;
   applicationName: any;
   id:any;
+  staffID:any;
   ticketlist: any;
   ngOnInit(): void {
+    this.staffID = sessionStorage.getItem('EmaployedID');
     this.typeofissue="0";
     this.prority="0"
 
@@ -92,7 +94,8 @@ export class SupportTicketsComponent implements OnInit {
       "Comment": this.comments,
       "Status": 'Raised',
       "Companyname": 'Amazeinc.in',
-      "ApplicationName": 'Performance Management'
+      "ApplicationName": 'Performance Management',
+      "StaffID":this.staffID
     }
     this.PerformanceManagementService.InsertSupportTickets(entity).subscribe(
       data => {
@@ -138,7 +141,8 @@ export class SupportTicketsComponent implements OnInit {
       "Comment": this.comments,
       "Status": 'Open',
       "Companyname": 'Amazeinc.in',
-      "ApplicationName": 'Performance Management'
+      "ApplicationName": 'Performance Management',
+      "StaffID":this.staffID
     }
     this.PerformanceManagementService.UpdateSupportTickets(entity).subscribe(
       data => {

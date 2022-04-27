@@ -125,6 +125,32 @@ export class HrDashComponent implements OnInit {
     });
   }
 
+
+  public statuschange(event:any){
+    if(event.target.value == 'Open'){
+      debugger
+      this.PerformanceManagementService.GetConductappraisalStaffList().subscribe(data => {
+      
+        this.EmployeeKradash = data.filter(x => x.approver2 == sessionStorage.getItem('EmaployedID') && x.selfScores != null
+          && x.cycleStartDate != null && x.cycleEndDate != null && x.appraisalSubmitionDate != null && x.employeeSubmittedDate != null && x.managerSubmittedDate != null && x.sbuSubmittedDate != null && x.hrSubmittedDate==null);
+        this.count = this.EmployeeKradash.length;
+  
+      });
+    }
+    else {
+      debugger
+      this.PerformanceManagementService.GetConductappraisalStaffList().subscribe(data => {
+      
+        this.EmployeeKradash = data.filter(x => x.approver2 == sessionStorage.getItem('EmaployedID')  && x.selfScores != null
+          && x.cycleStartDate != null && x.cycleEndDate != null && x.appraisalSubmitionDate != null && x.employeeSubmittedDate != null && x.managerSubmittedDate != null && x.sbuSubmittedDate != null );
+        this.count = this.EmployeeKradash.length;
+  
+      });
+    }
+ 
+    
+  }
+
   public GetFilteredAppraisalCycle() {
     this.PerformanceManagementService.GetConductappraisalStaffList().subscribe(data => {
       debugger

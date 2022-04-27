@@ -316,7 +316,7 @@ export class ManagerratingComponent implements OnInit {
       this.PerformanceManagementService.UpdateGroupHeadStaffScores(entity).subscribe(data => {
         debugger
         if (data != undefined && this.q == this.appraisalList.length) {
-          Swal.fire("Appraisal Saved Successfully");
+          Swal.fire("Appraisal Submitted Successfully");
 
 
         }

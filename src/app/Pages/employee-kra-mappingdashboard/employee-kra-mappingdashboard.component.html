@@ -52,8 +52,8 @@
                         <th>Goal Type</th>
                         <th>Employee Name</th>
                         <th>Position</th>
-                        <th>Department</th>
-                        <th>Goal Setting Date </th>
+                        <th *ngIf="roleid==3">Department</th>
+                        <th>Goal Setting Date Last</th>
                         <th>Employee Submission Last Date</th>
                         <!-- <th>Submission Date </th> -->
                        
@@ -74,7 +74,7 @@
                         <td>{{details.goalType}}</td>
                         <td>{{details.name}}</td>
                         <td>{{details.role}}</td>
-                        <td>{{details.departmentName}}</td>
+                        <td *ngIf="roleid==3">{{details.departmentName}}</td>
                         <td>{{details.goalSettingDate}}</td>
                         <td>{{details.employeeSubmissionLastDate}}</td>
                      

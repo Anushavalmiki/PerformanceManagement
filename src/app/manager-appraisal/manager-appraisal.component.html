@@ -13,9 +13,10 @@
 
     <div class="row">
         <div class="col-lg-10">
-            <p>Employee Name:  <b>{{Name}}</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <span>Department:  <b>{{departmentName}}</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                Position:  <b>{{role}}</b></span>
+            <p>Employee Name: <b>{{Name}}</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <span>Department:
+                    <b>{{departmentName}}</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    Position: <b>{{role}}</b></span>
         </div>
         <div class="col-lg-2">
             <!-- <button type="button" class="btn btn-primary"  *ngIf="showbtn && !showbtn1" (click)="SubmitManagerAppraisal()">Submit Appraisal</button>
@@ -23,11 +24,12 @@
             <button type="button" *ngIf="!showbtn" class="btn btn-primary" disabled>Submit
                 Appraisal</button> -->
 
-                <button type="button" *ngIf="showbtn && managerSubmittedDate==null" class="btn btn-primary" (click)="SubmitManagerAppraisal()">Submit
-                    Appraisal</button>
-                    <p  *ngIf="showbtn && managerSubmittedDate!=null" style="color:green">Appraisal Submitted!!</p>
-                <button type="button" *ngIf="!showbtn" class="btn btn-primary" disabled>Submit
-                    Appraisal</button>
+            <button type="button" *ngIf="showbtn && managerSubmittedDate==null" class="btn btn-primary"
+                (click)="SubmitManagerAppraisal()">Submit
+                Appraisal</button>
+            <p *ngIf="showbtn && managerSubmittedDate!=null" style="color:green">Appraisal Submitted!!</p>
+            <button type="button" *ngIf="!showbtn" class="btn btn-primary" disabled>Submit
+                Appraisal</button>
         </div>
     </div>
     <br>
@@ -54,7 +56,8 @@
                                 {{i+1}}</td>
                             <td [ngClass]="{'bggreen':details.managerupdate==1 }">{{details.kraName}}</td>
                             <td [ngClass]="{'bggreen':details.managerupdate==1 }">{{details.kpiName}}</td>
-                            <td [ngClass]="{'bg-warning':details.managerupdate==1 }" style="text-align: center;">{{details.emprating}}</td>
+                            <td [ngClass]="{'bg-warning':details.managerupdate==1 }" style="text-align: center;">
+                                {{details.emprating}}</td>
 
                             <td [ngClass]="{'bggreen':details.managerupdate==1 }">
                                 <button type="button" class="btn btn-success" data-toggle="modal"
@@ -63,10 +66,14 @@
                             </td>
                             <td [ngClass]="{'bggreen':details.managerupdate==1 }">
                                 <button class=" btn btn-primary action" data-toggle="modal" data-target="#exampleModal2"
-                                    (click)="getattachment(details)"  *ngIf="details.selfattachment!='0'&&details.selfattachment!=''">View Attachments</button>
-                                    <p *ngIf="details.selfattachment=='0'||details.selfattachment==null||details.selfattachment==''">No Attachment</p>
-                            </td>   
-                            <td  [ngClass]="{'bg-warning':details.managerupdate==1 }" style="text-align: center;">
+                                    (click)="getattachment(details)"
+                                    *ngIf="details.selfattachment!='0'&&details.selfattachment!=''">View
+                                    Attachments</button>
+                                <p
+                                    *ngIf="details.selfattachment=='0'||details.selfattachment==null||details.selfattachment==''">
+                                    No Attachment</p>
+                            </td>
+                            <td [ngClass]="{'bg-warning':details.managerupdate==1 }" style="text-align: center;">
                                 {{details.managerrating}}
                                 <p *ngIf="details.managerupdate!=1">NA</p>
                             </td>
@@ -78,12 +85,16 @@
                                     data-toggle="modal" (click)="GetKPIIDetails(details)"
                                     data-target="#exampleModal1">View
                                     Details</button><br><br>
-                                    <p *ngIf="details.managerupdate==1 &&(details.managerattachment==null||details.managerattachment=='')">No Attachments</p>
+                                <p
+                                    *ngIf="details.managerupdate==1 &&(details.managerattachment==null||details.managerattachment=='')">
+                                    No Attachments</p>
 
-                                    <button *ngIf="details.managerupdate==1 && details.managerattachment!=null&&details.managerattachment!=''" type="button" class="btn btn-success"
-                                    data-toggle="modal" (click)="GetKPIIDetails(details)"
-                                    data-target="#exampleModal4">View Attachments</button>
-                                    <!-- <p *ngIf="details.managerupdate== '1' && details.managerattachment!=null">No Attachments</p> -->
+                                <button
+                                    *ngIf="details.managerupdate==1 && details.managerattachment!=null&&details.managerattachment!=''"
+                                    type="button" class="btn btn-success" data-toggle="modal"
+                                    (click)="GetKPIIDetails(details)" data-target="#exampleModal4">View
+                                    Attachments</button>
+                                <!-- <p *ngIf="details.managerupdate== '1' && details.managerattachment!=null">No Attachments</p> -->
                             </td>
                         </tr>
                     </tbody>
@@ -113,69 +124,71 @@
             </div>
             <div class="modal-body">
                 <form #managerrateform="ngForm">
-                <div class="row">
-                    <div class="col-lg-1">
+                    <div class="row">
+                        <div class="col-lg-1">
+                        </div>
+                        <div class="col-lg-3">
+                            <p style="padding:5px">
+                                Rating<span style="color: red;">*</span> </p>
+                        </div>
+                        <div class="col-lg-7">
+                            <select class="dropdown form-control" id="Score" name="Score" [(ngModel)]="Score" required>
+                                <option value="">Select Rating</option>
+                                <option *ngFor="let value of list" value="{{value.id}}">{{value.score}} -
+                                    {{value.answers}}
+                                </option>
+                            </select>
+                        </div>
                     </div>
-                    <div class="col-lg-3">
-                        <p style="padding:5px">
-                            Rating<span style="color: red;">*</span> </p>
+                    <br>
+                    <div class="row">
+                        <div class="col-lg-1"></div>
+                        <div class="col-lg-3">
+                            <p style="padding:5px">
+                                Comments<span style="color: red;">*</span> </p>
+                        </div>
+                        <div class="col-lg-7 ">
+                            <ckeditor id="SelfComments" name="SelfComments" [(ngModel)]="SelfComments" required
+                                data="<p>Enter Answer Here !</p>"></ckeditor>
+                        </div>
                     </div>
-                    <div class="col-lg-7">
-                        <select class="dropdown form-control" id="Score" name="Score" [(ngModel)]="Score" required>
-                            <option value="">Select Rating</option>
-                            <option *ngFor="let value of list" value="{{value.id}}">{{value.score}} - {{value.answers}}
-                            </option>
-                        </select>
+                    <br>
+                    <div class="row">
+                        <div class="col-lg-1">
+                        </div>
+                        <div class="col-lg-3">
+                            <p style="padding:5px">
+                                Promotion Recommendation<span style="color: red;">*</span> </p>
+                        </div>
+                        <div class="col-lg-7">
+                       <input type="checkbox" value="true" id="positionrecomendation" name="positionrecomendation" [(ngModel)]="positionrecomendation">
+                        </div>
                     </div>
-                </div>
-                <br>
-                <div class="row">
-                    <div class="col-lg-1">
+                    <br>
+                    <div class="row">
+                        <div class="col-lg-1">
+                        </div>
+                        <div class="col-lg-3">
+                            <p style="padding:5px">
+                                Attachment </p>
+                        </div>
+                        <div class="col-lg-7">
+                            <ngx-dropzone (change)="onSelect($event)" style="width:100% ;height: auto;">
+                                <ngx-dropzone-label>Drag or Click to Upload</ngx-dropzone-label>
+                                <ngx-dropzone-preview *ngFor="let f of files" [removable]="true"
+                                    (removed)="onRemove(f)">
+                                    <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label>
+                                </ngx-dropzone-preview>
+                            </ngx-dropzone>
+                        </div>
                     </div>
-                    <div class="col-lg-3">
-                        <p style="padding:5px">
-                            Comments<span style="color: red;">*</span> </p>
-                    </div>
-                    <div class="col-lg-7 scroll">
-                        <ckeditor id="SelfComments" name="SelfComments" [(ngModel)]="SelfComments"
-                         required    data="<p>Enter Answer Here !</p>"></ckeditor>
-                    </div>
-                </div>
-                <br>
-                <div class="row">
-                    <div class="col-lg-1">
-                    </div>
-                    <div class="col-lg-3">
-                        <p style="padding:5px">
-                            Promotion Recommendation<span style="color: red;">*</span> </p>
-                    </div>
-                    <div class="col-lg-1 scroll">
-                     <input type="checkbox" class="form-control">
-                    </div>
-                </div>
-                <br>
-                <div class="row">
-                    <div class="col-lg-1">
-                    </div>
-                    <div class="col-lg-3">
-                        <p style="padding:5px">
-                            Attachment </p>
-                    </div>
-                    <div class="col-lg-7">
-                        <ngx-dropzone (change)="onSelect($event)" style="width:100% ;height: auto;">
-                            <ngx-dropzone-label>Drag or Click to Upload</ngx-dropzone-label>
-                            <ngx-dropzone-preview *ngFor="let f of files" [removable]="true" (removed)="onRemove(f)">
-                                <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label>
-                            </ngx-dropzone-preview>
-                        </ngx-dropzone>
-                    </div>
-                </div>
-                <br>
-            </form>
+                    <br>
+                </form>
             </div>
             <div class="modal-footer">
                 <button type="button" id="close" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" (click)="SaveDetails()" [disabled]="managerrateform.form.invalid" >Save changes</button>
+                <button type="button" class="btn btn-primary" (click)="SaveDetails()"
+                    [disabled]="managerrateform.form.invalid">Save</button>
             </div>
         </div>
     </div>
@@ -202,7 +215,8 @@
                             Rating <span style="color: red;">*</span> </p>
                     </div>
                     <div class="col-lg-7">
-                        <select  disabled  class="dropdown form-control" id="Score" name="Score" [(ngModel)]="Score" required>
+                        <select disabled class="dropdown form-control" id="Score" name="Score" [(ngModel)]="Score"
+                            required>
                             <option value="0">Select Rating</option>
                             <option *ngFor="let value of list" value="{{value.id}}">{{value.score}} - {{value.answers}}
                             </option>
@@ -219,8 +233,9 @@
                     </div>
                     <div class="col-lg-7">
                         <ckeditor id="SelfComments" name="SelfComments" [(ngModel)]="SelfComments"
-                         data="<p>Enter Answer Here !</p>" required disabled="managerSubmittedDate.form.invalid"></ckeditor>
-                         <!-- <script>
+                            data="<p>Enter Answer Here !</p>" required disabled="managerSubmittedDate.form.invalid">
+                        </ckeditor>
+                        <!-- <script>
                             CKEDITOR.replace('SelfComments');
                             CKEDITOR.config.readOnly = true;
                          </script> -->
@@ -243,16 +258,7 @@
                 <div class="row">
                     <div class="col-lg-1">
                     </div>
-                    <div class="col-lg-3">
-                        <p style="padding:5px">
-                            
-                            Promotion Recommendation<span style="color: red;">*</span> </p>
-                    </div>
-                    <div class="col-lg-1 scroll">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="true" id="positionrecomendation" name="positionrecomendation" [(ngModel)]="positionrecomendation">
-                          </div>
-                    </div>
+
                 </div>
                 <br>
 
@@ -261,7 +267,8 @@
             </div>
             <div class="modal-footer" *ngIf=" managerSubmittedDate==null">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" (click)="UpdateDetails()" data-dismiss="modal">Update changes</button>
+                <button type="button" class="btn btn-primary" (click)="UpdateDetails()" data-dismiss="modal">Update
+                    changes</button>
             </div>
         </div>
     </div>
@@ -360,7 +367,7 @@
                     <div class="col-lg-8"></div>
                     <div class="col-lg-2">
                         <button class="form-control cancel" data-toggle="modal" data-target="#exampleModal5"
-                            data-dismiss="modal" >Update</button>
+                            data-dismiss="modal">Update</button>
                     </div>
                     <div class="col-lg-2">
                         <button class="form-control cancel" data-dismiss="modal">Cancel</button>
@@ -403,7 +410,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" (click)="update()" data-dismiss="modal" >Update
+                <button type="button" class="btn btn-primary" (click)="update()" data-dismiss="modal">Update
                     Changes</button>
             </div>
         </div>

@@ -34,7 +34,8 @@
             <div class="col-lg-12">
                     <table class="table">
                     <thead>
-                        <tr>
+                        <tr *ngIf="(appraisallist | filter: search).length > 0; else noResults"
+                            >
                             <th>Appraisal Cycle Name</th>
                             <th>Frequency Type</th>
                             <th>Cycle Start Date</th>
@@ -42,6 +43,7 @@
                             <th>Goal Setting Last Date</th>
                             <th>Employee Submission Last Date</th>
                             <th>Manager Review Last Date</th>
+                            <th>SBU Review Last Date</th>
                             <th>HR Review Last Date</th>
                             <th>Appraisal Closing Last Date</th>
                             <th>Actions</th>
@@ -56,6 +58,7 @@
                             <td>{{details.goalSettingDate}}</td>
                             <td>{{details.employeeSubmissionDate}}</td>
                             <td>{{details.managerReviewLastDate}}</td>
+                            <td>{{details.sbuReviewLastDate}}</td>
                             <td>{{details.hrReviewLastDate}}</td>
                             <td>{{details.appraisalClosingLastDate}}</td>
                             <td>
@@ -66,6 +69,13 @@
                         </tr>
                     </tbody>
                 </table>
+                <span *ngIf="appraisallist.length==0">No data Found</span>
+                <ng-template #noResults>
+                    <div class="card">
+                        <p class="NoResultShow"> No results found </p>
+                    </div>
+                </ng-template>
+
             </div>
         </div>
     </div>

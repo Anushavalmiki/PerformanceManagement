@@ -39,17 +39,17 @@
                 </div>
 
                 <div class="col-lg-3">
-                    <input class="form-control" type="Date" [(ngModel)]="startdate" name="startdate" min="{{todaydate}}"  required >
+                    <input class="form-control" type="Date" [(ngModel)]="startdate" name="startdate" min="{{todaydate}}" (change)="startingdatealert($event)" required >
                 </div>
                 <div class="col-lg-3">
-                    <input class="form-control" type="Date" [(ngModel)]="enddate" name="enddate" min="{{startdate}}" required>
+                    <input class="form-control" type="Date" [(ngModel)]="enddate" name="enddate" min="{{startdate}}" required (change)="endingdatealert($event)">
                 </div>
             </div>
             <br>
 
             <div class="row column">
                 <div class="col-lg-3">
-                    <p>Goal Setting Date <span style="color:red">*</span> </p>
+                    <p>Goal Setting Last Date <span style="color:red">*</span> </p>
                 </div>
                 <div class="col-lg-3">
                     <p>Employee Submission Last Date <span style="color:red">*</span> </p>
@@ -58,28 +58,32 @@
                     <p>Manager Review Last Date <span style="color:red">*</span></p>
                 </div>
                 <div class="col-lg-3">
-                    <p>HR Review Last Date <span style="color:red">*</span></p>
+                    <p>SBU Review Last Date <span style="color:red">*</span></p>
                 </div>
             </div>
             <div class="row">
+              
                 <div class="col-lg-3">
-                    <input class="form-control" type="Date" [(ngModel)]="goalDate" name="goalDate" required>
+                    <input class="form-control" type="Date" [(ngModel)]="goalDate" name="goalDate" required min="{{todaydate}}" (change)="goalsettinglastdatealert($event)">
                 </div>
 
                 <div class="col-lg-3">
-                    <input class="form-control" type="Date" [(ngModel)]="empsubDate" name="empsubDate" required>
+                    <input class="form-control" type="Date" [(ngModel)]="empsubDate" name="empsubDate" required min="{{todaydate}}" (change)="employeereviewdatealert($event)">
                 </div>
 
                 <div class="col-lg-3">
-                    <input class="form-control" type="Date" [(ngModel)]="managerReviewDate" name="managerReviewDate"
-                        required>
+                    <input class="form-control" type="Date" [(ngModel)]="managerReviewDate" name="managerReviewDate "(change)="managerreviewalert($event)"
+                        required min="{{todaydate}}">
                 </div>
                 <div class="col-lg-3">
-                    <input class="form-control" type="Date" [(ngModel)]="hrReviewDate" name="hrReviewDate" required>
+                    <input class="form-control" type="Date" [(ngModel)]="sbuReviewDate" name="sbuReviewDate" required min="{{todaydate}}" (change)="sbudatealert($event)">
                 </div>
             </div>
             <br>
             <div class="row column">
+                <div class="col-lg-3">
+                    <p>HR Review Last Date <span style="color:red">*</span></p>
+                </div>
                 <div class="col-lg-3">
                     <p>Appraisal Closing Last Date <span style="color:red">*</span> </p>
                 </div>
@@ -87,8 +91,11 @@
 
             <div class="row">
                 <div class="col-lg-3">
+                    <input class="form-control" type="Date" [(ngModel)]="hrReviewDate" name="hrReviewDate" required min="{{todaydate}}" (change)="hrreviewdatealert($event)">
+                </div>
+                <div class="col-lg-3">
                     <input class="form-control" type="Date" required [(ngModel)]="appraisalClosingLastDate"
-                        name="appraisalClosingLastDate">
+                        name="appraisalClosingLastDate" min="{{todaydate}}" (change)="closingdatealert($event)">
                 </div>
             </div>
             <div class="row">

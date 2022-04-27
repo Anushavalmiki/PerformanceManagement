@@ -43,14 +43,15 @@ export class EmployeeKraMappingdashboardComponent implements OnInit {
   dropdownList1:any;
   GoalTypelist:any;
   kpilist:any;
+  roleid:any;
 kpitypelist:any;
 
   ngOnInit(): void {
     this.kraid="";
     this.StaffID = sessionStorage.getItem('EmaployedID');
+    this.roleid = sessionStorage.getItem('roleid');
     this.GetKPI();
-    this.StaffID = sessionStorage.getItem('EmaployedID')
-    this.kraid="";
+ 
     this.GetKeyResultArea();
     this.kratypeid="";
     this.Department = "";

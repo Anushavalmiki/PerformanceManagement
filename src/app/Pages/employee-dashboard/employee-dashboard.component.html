@@ -43,7 +43,7 @@
                             <th>Employee Name</th>
                             <th>Email ID</th>
                             <th>Phone Number</th>
-                            <th>Department</th>
+                            <th *ngIf="roleid==3">Department</th>
                             <!-- <th>Position</th>-->
                             <!-- <th>Manager Name</th> -->
                         </tr>
@@ -53,7 +53,7 @@
                             <td>{{details.name}}</td>
                             <td>{{details.emailID}}</td>
                             <td>{{details.phoneNo}}</td>
-                            <td>{{details.department_name}}</td>
+                            <td *ngIf="roleid==3">{{details.department_name}}</td>
                             <!-- <td>{{details.role}}</td> -->
                             <!-- <td>{{details.manager}}</td> -->
                         </tr>
@@ -61,7 +61,7 @@
                 </table>
 
                 <ng-template #noResults>
-                    <p class="NoResultShow"> No results found for "{{term}}" </p>
+                    <p class="NoResultShow"> No results found </p>
                 </ng-template>
             </div>
             <ng-template #noResults>

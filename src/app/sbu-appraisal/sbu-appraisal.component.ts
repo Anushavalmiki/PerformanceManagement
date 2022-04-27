@@ -153,7 +153,7 @@ export class SbuAppraisalComponent implements OnInit {
         'PerformaceIndicatorID': this.kpiid,
         'SelfScores': this.Score,
         'SelfComments': this.SelfComments,
-        'Attachment': this.attachment
+        'Attachment': this.attchmentss
       }
       this.PerformanceManagementService.InsertStaffScoresBySBU(entity).subscribe(data => {
         debugger
@@ -208,6 +208,7 @@ export class SbuAppraisalComponent implements OnInit {
 
   files: File[] = [];
   attachmentsurl: any = []
+  attchmentss:any;
   onSelect(event: any) {
     console.log(event);
     this.attachmentsurl.length = 0
@@ -216,10 +217,10 @@ export class SbuAppraisalComponent implements OnInit {
     this.PerformanceManagementService.ProjectAttachments(this.files).subscribe(res => {
       debugger
       if (res != undefined) {
-        this.attachment = res;
+        this.attchmentss=res;
         // this.loader = false;
         alert('Attachment uploaded')
-        this.attachmentsurl.push(res);
+        // this.attachmentsurl.push(res);
 
 
       }
@@ -289,7 +290,7 @@ export class SbuAppraisalComponent implements OnInit {
         }
         this.PerformanceManagementService.UpdateSbuSubmitted(entity).subscribe(data => {
           debugger
-          Swal.fire("Submitted Appraisal Successfully");
+          Swal.fire("Appraisal Submitted Successfully");
           this.ngOnInit();
         })
       }

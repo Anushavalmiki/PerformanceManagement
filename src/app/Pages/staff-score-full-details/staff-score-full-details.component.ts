@@ -191,6 +191,11 @@ export class StaffScoreFullDetailsComponent implements OnInit {
     this.managercomments=Scores.groupHeadComments;
   }
 
+  divisionComments:any;
+  sbu(Scores:any){
+    this.divisionComments=Scores.divisionComments;
+  }
+
   hrcomments(Scores:any){
     this.hrcomment=Scores.cioComments;
   }

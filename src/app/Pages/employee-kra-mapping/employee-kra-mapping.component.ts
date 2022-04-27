@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PerformanceManagementService } from 'src/app/performance-management.service';
 import { ActivatedRoute } from '@angular/router';
 import Swal from 'sweetalert2';
+import { formatDate } from '@angular/common';
 @Component({
   selector: 'app-employee-kra-mapping',
   templateUrl: './employee-kra-mapping.component.html',
@@ -34,9 +35,15 @@ export class EmployeeKraMappingComponent implements OnInit {
   kratypeid: any;
   kratypelist: any;
   loginName:any;
-
+  todaydate:any;
   staffName:any;
   ngOnInit(): void {
+    const format = 'yyyy-MM-dd';
+    const myDate = new Date();
+    const locale = 'en-US';
+    var curr = new Date;
+    this.todaydate = formatDate(myDate, format, locale);
+
     this.RoleID = "";
     this.departmentName = "";
     this.Apprisalcycle = "";
@@ -46,10 +53,15 @@ export class EmployeeKraMappingComponent implements OnInit {
     this.loginName = sessionStorage.getItem('loginName');
 
 
-
     this.PerformanceManagementService.GetAppraisalCycle().subscribe(data => {
       debugger
       this.Apprisalcyclelist = data.filter(x => x.appraisalClose == 0);
+      let temp: any = data.filter(x =>x.appraisalClose == 0);
+      this.AppraisalSubmitionDate = temp[0].employeeSubmissionDate;
+      this.sDate = temp[0].cycleStartDate;
+      this.eDate = temp[0].cycleEndDate;
+      this.goalSettingDate = temp[0].goalSettingDate;
+
     });
     this.PerformanceManagementService.GetRoleType().subscribe(data => {
       debugger
@@ -139,6 +151,7 @@ export class EmployeeKraMappingComponent implements OnInit {
   }
   Apprisalcycle: any;
   appraisalid: any;
+  goalSettingDate:any;
 
   public GetApprisalcycle(event: any) {
     debugger
@@ -148,6 +161,7 @@ export class EmployeeKraMappingComponent implements OnInit {
       this.AppraisalSubmitionDate = temp[0].employeeSubmissionDate;
       this.sDate = temp[0].cycleStartDate;
       this.eDate = temp[0].cycleEndDate;
+      this.goalSettingDate = temp[0].goalSettingDate;
       this.appraisalid = event.target.value;
     });
   }
@@ -174,40 +188,46 @@ export class EmployeeKraMappingComponent implements OnInit {
 
   public InsertDetails() {
     debugger
-    for (let i = 0; i < this.keyresultArray.length; i++) {
-      if (this.keyresultArray.length == 0) {
-        Swal.fire('Please Select Goals For Staff')
-      }
-      else {
-        var Entity = {
-          'StaffTypeID': 1,
-          'StaffName': this.EmployeeId,
-          'Approver1': this.Approver1,
-          'Approver2': this.Approver2,
-          'Approver3': this.Approver3,
-          'AppraisalSubmitionDate': this.AppraisalSubmitionDate,
-          'CycleStartDate': this.sDate,
-          'CycleEndDate': this.eDate,
-          'KraID': this.keyresultArray[i].kraid,
-          'kpiid': this.keyresultArray[i].kpiid,
-          'AppraiselID': this.appraisalid
+    if( this.goalSettingDate< this.todaydate ){
+      Swal.fire('Sorry, You cannot set the goal since last date is over')
+    }
+    else{
+      for (let i = 0; i < this.keyresultArray.length; i++) {
+        if (this.keyresultArray.length == 0) {
+          Swal.fire('Please Select Goals For Staff')
         }
-        this.PerformanceManagementService.InsertEmployeeKraMap(Entity).subscribe(
-          data => {
-
-            if (data != undefined) {
-
-            }
-
-          }, error => {
+        else {
+          var Entity = {
+            'StaffTypeID': 1,
+            'StaffName': this.EmployeeId,
+            'Approver1': this.Approver1,
+            'Approver2': this.Approver2,
+            'Approver3': this.Approver3,
+            'AppraisalSubmitionDate': this.AppraisalSubmitionDate,
+            'CycleStartDate': this.sDate,
+            'CycleEndDate': this.eDate,
+            'KraID': this.keyresultArray[i].kraid,
+            'kpiid': this.keyresultArray[i].kpiid,
+            'AppraiselID': this.appraisalid
           }
-        )
+          this.PerformanceManagementService.InsertEmployeeKraMap(Entity).subscribe(
+            data => {
+  
+              if (data != undefined) {
+  
+              }
+  
+            }, error => {
+            }
+          )
+        }
       }
     }
+   
     this.InsertNotification();
     Swal.fire('Goal Setting Done Successfully.');
     location.href = "#/EmployeeKraMappingdashboard";
-   location.reload();
+ 
   }
 
 
@@ -219,7 +239,7 @@ export class EmployeeKraMappingComponent implements OnInit {
       'Event': 'Apprisal Request',
       'FromUser': 'Admin',
       'ToUser': sessionStorage.getItem('EmaployedID'),
-      'Message': 'Dear, '+  this.selectedItems +' Your Manager ' + this.loginName + ' has set your goal for Appraisal Cycle ',
+      'Message': 'Dear,  Your Manager ' + this.loginName + ' has set your goal for Appraisal Cycle ',
       'Photo': 'Null',
       'Building': 'Dynamics 1',
       'UserID': this.EmployeeId,
