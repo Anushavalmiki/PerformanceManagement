@@ -68,7 +68,7 @@
             <div class="col-lg-12">
                 <table class="table" id="download">
                     <thead>
-                        <tr>
+                        <tr *ngIf="(StaffAppraisalList | filter: search).length > 0; else noResults">
                             <th>Appraisal Cycle</th>
                             <th>Employee Name</th>
                             <th>Position</th>
@@ -104,7 +104,12 @@
                         </tr>
                     </tbody>
                 </table>
-                <span *ngIf="StaffAppraisalList.length==0">No Data </span>
+                <!-- <span *ngIf="StaffAppraisalList.length==0">No Data </span> -->
+                <ng-template #noResults>
+                    <div class="card">
+                        <p class="NoResultShow"> No results found </p>
+                    </div>
+                </ng-template>
                 <div class="text-right">
                     <br>
                     <pagination-controls (pageChange)="p = $event" class="poppinns"></pagination-controls>

@@ -125,7 +125,7 @@
             <div class="col-lg-12">
                 <table class="table">
                     <thead>
-                        <tr>
+                        <tr *ngIf="(FilteredStaffAppraisalList | filter: search).length > 0; else noResults">
                             <th>Appraisal Cycle</th>
                             <th>Department</th>
                             <th>Position</th>
@@ -181,7 +181,12 @@
                         </tr>
                     </tbody>
                 </table>
-                <span *ngIf="FilteredStaffAppraisalList.length==0">No data</span>
+                <ng-template #noResults>
+                    <div class="card">
+                        <p class="NoResultShow"> No results found </p>
+                    </div>
+                </ng-template>
+                <!-- <span *ngIf="FilteredStaffAppraisalList.length==0">No data</span> -->
 
                 <div class="text-right">
                     <br>

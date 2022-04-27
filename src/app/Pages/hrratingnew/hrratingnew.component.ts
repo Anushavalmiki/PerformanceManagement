@@ -217,9 +217,9 @@ export class HrratingnewComponent implements OnInit {
       if (res != undefined) {
         this.attachment = res;
         // this.loader = false;
-        alert('Attachment uploaded')
+        // alert('Attachment uploaded')
         // this.attachmentsurl.push(res);
-
+        Swal.fire("Attachment uploaded Successfully");
 
       }
       debugger
