@@ -93,6 +93,11 @@ export class PerformanceManagementService {
     );
   }
 
+  // public GetKeyResultAreaByStaffID() {
+  //   return this.http.get<any[]>(
+  //     this.baseURL + "/Master/GetKeyResultAreaByStaffID?ID=" + ID
+  //   );
+  // }
 
 
   public InsertKeyResultArea(data: any) {
@@ -105,6 +110,12 @@ export class PerformanceManagementService {
   public GetKraMaster() {
     return this.http.get<any[]>(
       this.baseURL + "/Master/GetKraMaster"
+    );
+  }
+
+  public GetKraMasterByID(ID:any) {
+    return this.http.get<any[]>(
+      this.baseURL + "/Master/GetKeyResultAreaByStaffID=" + ID
     );
   }
 

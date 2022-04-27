@@ -82,7 +82,7 @@ kpitypelist:any;
       this.Apprisalcyclelist = data.filter(x=>x.appraisalClose!=1);
     });
 
-    this.PerformanceManagementService.GetKraMaster().subscribe(data => {
+    this.PerformanceManagementService.GetKraMasterByID(this.StaffID).subscribe(data => {
       debugger
       this.GoalTypelist = data;
     });
