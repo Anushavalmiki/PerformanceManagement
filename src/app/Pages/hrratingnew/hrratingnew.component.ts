@@ -63,7 +63,7 @@ export class HrratingnewComponent implements OnInit {
           this.departmentName = this.ResultAreaList[0].departmentName
           this.HrSubmittedDate = this.ResultAreaList[0].hrSubmittedDate
           this.managerattachment = this.ResultAreaList[0].mPhoto
-
+          this.sbuAttachment = this.ResultAreaList[0].sbuPhoto
           console.log("resultarea",this.ResultAreaList)
 
           this.ResultAreaList.forEach((element: { hrupdate: any; }) => {
@@ -301,12 +301,18 @@ export class HrratingnewComponent implements OnInit {
   }
   photoid: any;
   show: any;
+  selfattachment: any;
+  sbuAttachment: any;
   getattachment(details: any) {
 
 
     debugger
     this.attachment = details.photo;
     this.managerattachment = details.mPhoto;
+    // this.selfattachment = details.photo;
+    this.sbuAttachment= details.sbuPhoto;
+    this.hrattachment = details.hPhoto;
+
 
 
   }
