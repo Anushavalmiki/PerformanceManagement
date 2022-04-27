@@ -157,7 +157,7 @@ export class AppraisalCycleformComponent implements OnInit {
         this.empsubDate = this.appraisallist[0].employeeSubmissionDate;
         this.managerReviewDate = this.appraisallist[0].managerReviewLastDate;
         this.hrReviewDate = this.appraisallist[0].hrReviewLastDate;
-        this.sbuReviewDate = this.appraisallist[0].sbuReviewDate;
+        this.sbuReviewDate = this.appraisallist[0].sbuReviewLastDate;
         this.appraisalClosingLastDate = this.appraisallist[0].appraisalClosingLastDate;
 
       }

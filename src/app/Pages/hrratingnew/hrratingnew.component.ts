@@ -218,7 +218,7 @@ export class HrratingnewComponent implements OnInit {
         this.attachment = res;
         // this.loader = false;
         alert('Attachment uploaded')
-        this.attachmentsurl.push(res);
+        // this.attachmentsurl.push(res);
 
 
       }
