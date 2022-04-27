@@ -222,9 +222,9 @@ export class SbuAppraisalComponent implements OnInit {
       if (res != undefined) {
         this.attchmentss = res;
         // this.loader = false;
-        alert('Attachment uploaded')
+        // alert('Attachment uploaded')
         // this.attachmentsurl.push(res);
-
+        Swal.fire("Attachment uploaded Successfully");
 
       }
       debugger

@@ -207,9 +207,9 @@ export class SelfratingnewComponent implements OnInit {
         // this.attachmentsurl.push(res);
         this.attachmentNew = res;
         this.loader = false;
-        alert('Attachment uploaded')
+        // alert('Attachment uploaded')
         //  this.files.length = 0;
-
+        Swal.fire("Attachment uploaded Successfully");
       }
       debugger;
     })
