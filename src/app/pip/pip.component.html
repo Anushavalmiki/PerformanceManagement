@@ -105,7 +105,11 @@
                             <p *ngIf="details.hrSubmittedDate==null">NA</p>
                         </td> -->
                         <td>
-                            {{details.finalrating}}
+                            <p *ngIf="details.bellcurveScore==null && details.avgCIOScores!=null && details.hrSubmittedDate!=null">
+                                {{((details.avgGroupHeadScores+details.avgCIOScores)/2)|number:"1.0-0"}}
+                                <p *ngIf="details.bellcurveScore!=null">{{details.bellcurveScore}}</p>
+                                <p *ngIf="details.avgCIOScores==null || details.hrSubmittedDate==null">NA</p>
+                            <!-- {{details.finalrating}} -->
                         </td>
                         <td>
                             <button class="btn btn-primary editable-table-button btn-xs" data-toggle="modal"
