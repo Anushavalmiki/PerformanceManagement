@@ -40,7 +40,7 @@
             <div class="col-lg-12">
                     <table class="table">
                     <thead>
-                        <tr>
+                        <tr *ngIf="(indicatorlist | filter: search).length > 0; else noResults">
                             <th>Goal Type</th>
                             <th>Goal Name</th>
                             <th>KPI Name</th>
@@ -61,6 +61,12 @@
                         </tr>
                     </tbody>
                 </table>
+                <!-- <span *ngIf="indicatorlist.length==0">No data Found</span> -->
+                <ng-template #noResults>
+                    <div class="card">
+                        <p class="NoResultShow"> No results found </p>
+                    </div>
+                </ng-template>
             </div>
         </div>
     
