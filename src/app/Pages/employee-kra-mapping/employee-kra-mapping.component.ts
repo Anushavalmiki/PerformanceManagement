@@ -34,9 +34,9 @@ export class EmployeeKraMappingComponent implements OnInit {
   Departmentid: any;
   kratypeid: any;
   kratypelist: any;
-  loginName:any;
-  todaydate:any;
-  staffName:any;
+  loginName: any;
+  todaydate: any;
+  staffName: any;
   ngOnInit(): void {
     const format = 'yyyy-MM-dd';
     const myDate = new Date();
@@ -47,8 +47,8 @@ export class EmployeeKraMappingComponent implements OnInit {
     this.RoleID = "";
     this.departmentName = "";
     this.Apprisalcycle = "";
-    this.kratypeid="";
-    this.selectedItems3.length=0;
+    this.kratypeid = "";
+    this.selectedItems3.length = 0;
 
     this.loginName = sessionStorage.getItem('loginName');
 
@@ -56,7 +56,7 @@ export class EmployeeKraMappingComponent implements OnInit {
     this.PerformanceManagementService.GetAppraisalCycle().subscribe(data => {
       debugger
       this.Apprisalcyclelist = data.filter(x => x.appraisalClose == 0);
-      let temp: any = data.filter(x =>x.appraisalClose == 0);
+      let temp: any = data.filter(x => x.appraisalClose == 0);
       this.AppraisalSubmitionDate = temp[0].employeeSubmissionDate;
       this.sDate = temp[0].cycleStartDate;
       this.eDate = temp[0].cycleEndDate;
@@ -70,14 +70,14 @@ export class EmployeeKraMappingComponent implements OnInit {
     this.PerformanceManagementService.GetMyDetails().subscribe(data => {
       debugger
       this.dropdownList = data.filter(x => x.supervisor == sessionStorage.getItem('EmaployedID'));
-      this.staffName==  this.dropdownList[0].name;
+      this.staffName == this.dropdownList[0].name;
       let temp: any = data.filter(x => x.id == sessionStorage.getItem('EmaployedID'));
-  
+
       this.Departmentid = temp[0].department;
       this.PerformanceManagementService.GetDepartmentMaster().subscribe(data => {
         debugger
         this.Departmentlist = data.filter(x => x.id == this.Departmentid);
-         // .filter(x => x.id == this.Departmentid);
+        // .filter(x => x.id == this.Departmentid);
       });
     });
 
@@ -112,18 +112,18 @@ export class EmployeeKraMappingComponent implements OnInit {
     this.GetEmployeeKraMap()
   }
   EmployeeId: any;
+  selectedstaff: any = [];
+  selectedstaffapprover1: any = [];
   onItemSelect(item: any) {
     debugger
     console.log(item);
-    this.EmployeeId = item.id;
 
-    this.PerformanceManagementService.GetMyDetails().subscribe(data => {
-      debugger
-      let temp: any = data.filter(x => x.id == this.EmployeeId);
-      this.Approver1 = temp[0].supervisor;
-      this.Approver2 = 10422;
-      this.Approver3 = 10477;
-    });
+    this.selectedstaff.push(item.id)
+    //this.EmployeeId = item.id;
+
+
+
+
 
   }
   onItemSelect2(item1: any) {
@@ -151,7 +151,7 @@ export class EmployeeKraMappingComponent implements OnInit {
   }
   Apprisalcycle: any;
   appraisalid: any;
-  goalSettingDate:any;
+  goalSettingDate: any;
 
   public GetApprisalcycle(event: any) {
     debugger
@@ -188,10 +188,15 @@ export class EmployeeKraMappingComponent implements OnInit {
 
   public InsertDetails() {
     debugger
-    if( this.goalSettingDate< this.todaydate ){
-      Swal.fire('Sorry, You cannot set the goal since last date is over')
-    }
-    else{
+    // if( this.goalSettingDate< this.todaydate ){
+    //   Swal.fire('Sorry, You cannot set the goal since last date is over')
+    // }
+    // else{
+
+    
+
+    for (let j = 0; j < this.selectedstaff.length; j++) {
+      debugger
       for (let i = 0; i < this.keyresultArray.length; i++) {
         if (this.keyresultArray.length == 0) {
           Swal.fire('Please Select Goals For Staff')
@@ -199,8 +204,8 @@ export class EmployeeKraMappingComponent implements OnInit {
         else {
           var Entity = {
             'StaffTypeID': 1,
-            'StaffName': this.EmployeeId,
-            'Approver1': this.Approver1,
+            'StaffName': this.selectedstaff[j],
+            'Approver1': this.selectedstaffapprover1[j],
             'Approver2': this.Approver2,
             'Approver3': this.Approver3,
             'AppraisalSubmitionDate': this.AppraisalSubmitionDate,
@@ -212,22 +217,25 @@ export class EmployeeKraMappingComponent implements OnInit {
           }
           this.PerformanceManagementService.InsertEmployeeKraMap(Entity).subscribe(
             data => {
-  
+
               if (data != undefined) {
-  
+
               }
-  
+
             }, error => {
             }
           )
         }
+        // }
       }
+
+      this.InsertNotification();
+      Swal.fire('Goal Setting Done Successfully.');
+      location.href = "#/EmployeeKraMappingdashboard";
     }
-   
-    this.InsertNotification();
-    Swal.fire('Goal Setting Done Successfully.');
-    location.href = "#/EmployeeKraMappingdashboard";
- 
+
+
+
   }
 
 
@@ -254,7 +262,7 @@ export class EmployeeKraMappingComponent implements OnInit {
   public keyresultArray: any = [];
   public SaveDetails() {
     debugger
-    if (this.EmployeeId == undefined || this.selectedItems2.length == 0 || this.selectedItems4.length == 0) {
+    if (this.selectedstaff.length == 0 || this.selectedItems2.length == 0 || this.selectedItems4.length == 0) {
       Swal.fire("Please Enter Mandatory Fields")
     }
     else {
@@ -281,6 +289,19 @@ export class EmployeeKraMappingComponent implements OnInit {
   getkratypeid(event: any) {
     debugger
     this.kratypeid = event.target.value;
+    for (let i = 0; i <= this.selectedstaff.length; i++) {
+      this.PerformanceManagementService.GetMyDetails().subscribe(data => {
+        debugger
+        let temp: any = data.filter(x => x.id == this.selectedstaff[i]);
+        this.selectedstaffapprover1.push(temp[0].supervisor);
+        //this.Approver1 = temp[0].supervisor;
+
+        this.Approver2 = 10422;
+        this.Approver3 = 10477;
+
+
+      });
+    }
 
     this.PerformanceManagementService.GetKeyResultArea().subscribe(data => {
       debugger

@@ -11,7 +11,7 @@ import Swal from 'sweetalert2';
 })
 export class SbuAppraisalComponent implements OnInit {
 
-  
+
   constructor(private PerformanceManagementService: PerformanceManagementService, private router: Router, private route: ActivatedRoute, private datepipe: DatePipe) { }
 
   stafflist: any;
@@ -40,8 +40,8 @@ export class SbuAppraisalComponent implements OnInit {
   departmentName: any;
   HrSubmittedDate: any;
   hrattachment: any;
-  appraislid:any;
-  SbuSubmittedDate:any
+  appraislid: any;
+  SbuSubmittedDate: any
   ngOnInit(): void {
     this.Score = 0;
     this.showbtn = false;
@@ -58,7 +58,7 @@ export class SbuAppraisalComponent implements OnInit {
 
         this.PerformanceManagementService.GetKRAByStaffID(this.StaffID).subscribe(data => {
           debugger
-          this.ResultAreaList = data.filter((x: { managerSubmittedDate: any; employeeSubmittedDate: any;appraiselID: any; }) => x.managerSubmittedDate != null && x.employeeSubmittedDate != null  && x.appraiselID == this.appraislid);
+          this.ResultAreaList = data.filter((x: { managerSubmittedDate: any; employeeSubmittedDate: any; appraiselID: any; }) => x.managerSubmittedDate != null && x.employeeSubmittedDate != null && x.appraiselID == this.appraislid);
 
           this.Name = this.ResultAreaList[0].name
           this.role = this.ResultAreaList[0].role
@@ -66,7 +66,7 @@ export class SbuAppraisalComponent implements OnInit {
           this.SbuSubmittedDate = this.ResultAreaList[0].sbuSubmittedDate
           this.managerattachment = this.ResultAreaList[0].mPhoto
 
-          console.log("resultarea",this.ResultAreaList)
+          console.log("resultarea", this.ResultAreaList)
 
           this.ResultAreaList.forEach((element: { sbuUpdate: any; }) => {
             if (element.sbuUpdate != 1) {
@@ -140,7 +140,7 @@ export class SbuAppraisalComponent implements OnInit {
   }
 
   public SaveDetails() {
-    if (this.Score == undefined || this.SelfComments == undefined ||this.Score==0||this.SelfComments==null) {
+    if (this.Score == undefined || this.SelfComments == undefined || this.Score == 0 || this.SelfComments == null) {
       Swal.fire("Please Enter the Mandatory Fields");
     }
     else {
@@ -174,6 +174,9 @@ export class SbuAppraisalComponent implements OnInit {
         this.Score = 0;
         this.SelfComments = '';
         this.attachment = '';
+        this.attchmentss = '';
+      
+
         const element1 = document.getElementById('close');
         this.files.length = 0;
         if (element1 !== null) {
@@ -189,7 +192,7 @@ export class SbuAppraisalComponent implements OnInit {
   }
 
   managerattachment: any;
-  sbuAttachment:any
+  sbuAttachment: any
   public GetKPIIDetails(details: any) {
     debugger
     this.PerformanceManagementService.GetEmployeeKraMap().subscribe(data => {
@@ -199,7 +202,7 @@ export class SbuAppraisalComponent implements OnInit {
       this.SelfComments = temp[0].sbuComments;
       this.sbuAttachment = details.sbuPhoto;
       this.managerattachment = details.mPhoto;
-      this.attachment=details.sbuAttachment
+      this.attachment = details.sbuAttachment
 
     })
     this.photoid = details.id;
@@ -208,7 +211,7 @@ export class SbuAppraisalComponent implements OnInit {
 
   files: File[] = [];
   attachmentsurl: any = []
-  attchmentss:any;
+  attchmentss: any;
   onSelect(event: any) {
     console.log(event);
     this.attachmentsurl.length = 0
@@ -217,7 +220,7 @@ export class SbuAppraisalComponent implements OnInit {
     this.PerformanceManagementService.ProjectAttachments(this.files).subscribe(res => {
       debugger
       if (res != undefined) {
-        this.attchmentss=res;
+        this.attchmentss = res;
         // this.loader = false;
         alert('Attachment uploaded')
         // this.attachmentsurl.push(res);
@@ -325,7 +328,7 @@ export class SbuAppraisalComponent implements OnInit {
 
       this.PerformanceManagementService.GetKRAByStaffID(this.StaffID).subscribe(data => {
         debugger
-        this.ResultAreaList = data.filter((x: { managerSubmittedDate: any; employeeSubmittedDate: any;appraiselID: any; }) => x.managerSubmittedDate != null && x.employeeSubmittedDate != null  && x.appraiselID == this.appraislid);
+        this.ResultAreaList = data.filter((x: { managerSubmittedDate: any; employeeSubmittedDate: any; appraiselID: any; }) => x.managerSubmittedDate != null && x.employeeSubmittedDate != null && x.appraiselID == this.appraislid);
 
 
         console.log("Result area", this.ResultAreaList);
