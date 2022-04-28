@@ -158,7 +158,7 @@
                                   <p *ngIf="details.avgGroupHeadScores==null" style="color: red;">Pending</p>
                             </td>
                             <td >
-                                <p *ngIf="details.hrSubmittedDate!=null && details.avgCIOScores<=2" style="background-color: yellow;">{{details.avgCIOScores}}</p>
+                                <p *ngIf="details.hrSubmittedDate!=null && details.avgCIOScores">{{details.avgCIOScores}}</p>
                                 <p *ngIf="details.avgCIOScores==null ||details.hrSubmittedDate==null" style="color: red;">Pending</p>
                             </td>
                             <td>

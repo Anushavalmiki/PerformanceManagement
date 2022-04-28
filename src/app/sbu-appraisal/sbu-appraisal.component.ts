@@ -175,7 +175,7 @@ export class SbuAppraisalComponent implements OnInit {
         this.SelfComments = '';
         this.attachment = '';
         this.attchmentss = '';
-      
+
 
         const element1 = document.getElementById('close');
         this.files.length = 0;
@@ -215,6 +215,7 @@ export class SbuAppraisalComponent implements OnInit {
   onSelect(event: any) {
     console.log(event);
     this.attachmentsurl.length = 0
+    this.attchmentss = 0
     debugger
     this.files.push(...event.addedFiles);
     this.PerformanceManagementService.ProjectAttachments(this.files).subscribe(res => {
@@ -244,7 +245,9 @@ export class SbuAppraisalComponent implements OnInit {
     this.managercomments = detials.managercomments
   }
 
-
+  clear() {
+    this.files.length = 0;
+  }
 
   public UpdateDetails() {
     debugger
@@ -256,12 +259,13 @@ export class SbuAppraisalComponent implements OnInit {
       'PerformaceIndicatorID': this.kpiid,
       'SelfScores': this.Score,
       'SelfComments': this.SelfComments,
-      'Attachment': this.attachment
+      'Attachment': this.attchmentss
     }
     this.PerformanceManagementService.InsertStaffScoresBySBU(entity).subscribe(data => {
       debugger
       Swal.fire("Updated Successfully");
-      this.attachment = "";
+      this.attchmentss = "";
+      this.attchmentss = 0;
       const element1 = document.getElementById('close');
       this.files.length = 0;
       if (element1 !== null) {
@@ -302,13 +306,9 @@ export class SbuAppraisalComponent implements OnInit {
   photoid: any;
   show: any;
   getattachment(details: any) {
-
-
     debugger
     this.attachment = details.photo;
     this.managerattachment = details.mPhoto;
-
-
   }
 
 
