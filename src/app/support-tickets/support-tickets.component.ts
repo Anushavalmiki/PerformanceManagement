@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PerformanceManagementService } from 'src/app/performance-management.service';
 import Swal from 'sweetalert2';
 import { ActivatedRoute } from '@angular/router';
+import { formatDate } from '@angular/common';
 
 @Component({
   selector: 'app-support-tickets',
@@ -11,7 +12,7 @@ import { ActivatedRoute } from '@angular/router';
 export class SupportTicketsComponent implements OnInit {
 
   constructor(public PerformanceManagementService:PerformanceManagementService,public ActivatedRoute: ActivatedRoute) { }
-
+  todaydate:any
   date: any;
   time: any;
   typeofissue: any;
@@ -28,6 +29,11 @@ export class SupportTicketsComponent implements OnInit {
     this.staffID = sessionStorage.getItem('EmaployedID');
     this.typeofissue="0";
     this.prority="0"
+    const format = 'yyyy-MM-dd';
+
+    const myDate = new Date();
+    const locale = 'en-US';
+    this.todaydate = formatDate(myDate, format, locale);
 
     this.ActivatedRoute.params.subscribe(params => {
       debugger

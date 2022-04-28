@@ -1,3 +1,4 @@
+import { ThisReceiver } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { PerformanceManagementService } from 'src/app/performance-management.service';
 
@@ -37,10 +38,11 @@ export class EmployeeDashboardComponent implements OnInit {
       this.dumpstafflist=data;
       this.stafflist = data;
       this.stafflistCopy = this.stafflist;
+      this.Department= this.stafflistCopy
      
       if(this.roleid!=3)
       {
-        this.stafflist=this.dumpstafflist.filter((x: { supervisor:any})=>x.supervisor==this.StaffID);
+        this.stafflist=this.dumpstafflist.filter((x: { supervisor:any,department_name:any})=>x.supervisor==this.StaffID );
         console.log("stafflist",this.stafflist)
       
       }
