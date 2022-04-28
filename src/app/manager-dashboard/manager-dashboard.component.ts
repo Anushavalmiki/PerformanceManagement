@@ -44,7 +44,7 @@ export class ManagerDashboardComponent implements OnInit {
       this.sbuSubmittedCount = this.sbuSubmittedlist.length;
 
       this.hrSubmittedlist = data.filter(x => x.SubmittedDate != null && x.approver1 == this.StaffID);
-      console.log("dsf",this.hrSubmittedlist)
+      console.log("dsfh",this.hrSubmittedlist)
       this.hrSubmittedCount = this.hrSubmittedlist.length;
 
       

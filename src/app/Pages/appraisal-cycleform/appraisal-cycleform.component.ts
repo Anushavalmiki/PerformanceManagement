@@ -63,7 +63,7 @@ export class AppraisalCycleformComponent implements OnInit {
 
   public endingdatealert(even: any) {
     this.endingdate= even.target.value;
-    if(this.endingdate < this.startingdate ){
+    if(this.endingdate < this.startingdate || this.enddate < this.startdate){
       Swal.fire("Cycle End date should be greater than Cycle Start date")
     }
   }
