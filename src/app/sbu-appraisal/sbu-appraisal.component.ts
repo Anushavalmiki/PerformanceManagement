@@ -228,7 +228,6 @@ export class SbuAppraisalComponent implements OnInit {
         Swal.fire("Attachment uploaded Successfully");
 
       }
-      debugger
     })
 
   }
@@ -317,14 +316,15 @@ export class SbuAppraisalComponent implements OnInit {
     var entity = {
       'ID': this.photoid,
       // 'Attachment': this.attachmentsurl[0]
-      'Attachment': this.attachment
+      'Attachment': this.attchmentss
 
     }
-    this.PerformanceManagementService.UpdateHrSelfAttachment(entity).subscribe(data => {
+    this.PerformanceManagementService.UpdateSbuSelfAttachment(entity).subscribe(data => {
       debugger
       Swal.fire("Updated Successfully");
       this.attachment = 0;
       this.attachment = "";
+      this.attchmentss="";
 
       this.PerformanceManagementService.GetKRAByStaffID(this.StaffID).subscribe(data => {
         debugger

@@ -332,6 +332,12 @@ export class PerformanceManagementService {
     return this.http.post(this.url, data);
   }
 
+  public UpdateSbuSelfAttachment(data: any) {
+    debugger;
+    this.url = this.baseURL + 'Master/UpdateSbuSelfAttachment';
+    return this.http.post(this.url, data);
+  }
+
    
   public UpdateManagerSelfAttachment(data: any) {
     debugger;
