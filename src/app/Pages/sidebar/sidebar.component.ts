@@ -131,10 +131,10 @@ export class SidebarComponent implements OnInit {
   }
 
   pip(){
-    if( this.StaffAppraisalList.length!=0){
+    // if( this.StaffAppraisalList.length!=0){}
       this.active = 'pip';
       localStorage.setItem("clickname","PIP")
-    }
+    
   
   }
 

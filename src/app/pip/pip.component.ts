@@ -105,7 +105,7 @@ export class PipComponent implements OnInit {
     else{
       var entity = {
         'StaffID': this.staffID,
-        'cIOScores': this.Score
+        'CIOScores': this.Score
       }
       this.PerformanceManagementService.UpdateReAppraisalHRrating(entity).subscribe(data => {
         debugger
