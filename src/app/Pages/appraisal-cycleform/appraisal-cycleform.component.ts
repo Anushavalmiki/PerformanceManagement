@@ -167,23 +167,32 @@ export class AppraisalCycleformComponent implements OnInit {
 
   Save() {
     debugger
-    var json = {
-      "AppraisalCycleName": this.appraisal,
-      "FrequencyType": this.frequencyid,
-      "CycleStartDate": this.startdate,
-      "CycleEndDate": this.enddate,
-      "GoalSettingDate": this.goalDate,
-      "EmployeeSubmissionDate": this.empsubDate,
-      "ManagerReviewLastDate": this.managerReviewDate,
-      "HrReviewLastDate": this.hrReviewDate,
-      "SbuReviewLastDate": this.sbuReviewDate,
-      "AppraisalClosingLastDate": this.appraisalClosingLastDate
-    };
-    this.PerformanceManagementService.InsertAppraisalCycle(json).subscribe(
-      data => {
-        Swal.fire("Successfully Submitted...!");
-        location.href = "#/AppraisalCycle"
-      })
+    if(this.appraisal==null || this.appraisal==undefined||this.frequencyid==null||this.frequencyid==undefined
+      || this.startdate==null||this.startdate==undefined||this.enddate==null||this.enddate==undefined||
+      this.goalDate==null||this.goalDate==undefined||this.empsubDate==null||undefined||this.managerReviewDate==null||this.managerReviewDate==undefined
+      ||this.hrReviewDate==null||this.hrReviewDate==undefined||this.sbuReviewDate==null||this.sbuReviewDate==undefined||this.appraisalClosingLastDate==null||this.appraisalClosingLastDate==undefined){
+        Swal.fire("Please fill all fields!");
+    }
+    else{
+      var json = {
+        "AppraisalCycleName": this.appraisal,
+        "FrequencyType": this.frequencyid,
+        "CycleStartDate": this.startdate,
+        "CycleEndDate": this.enddate,
+        "GoalSettingDate": this.goalDate,
+        "EmployeeSubmissionDate": this.empsubDate,
+        "ManagerReviewLastDate": this.managerReviewDate,
+        "HrReviewLastDate": this.hrReviewDate,
+        "SbuReviewLastDate": this.sbuReviewDate,
+        "AppraisalClosingLastDate": this.appraisalClosingLastDate
+      };
+      this.PerformanceManagementService.InsertAppraisalCycle(json).subscribe(
+        data => {
+          Swal.fire("Successfully Submitted...!");
+          location.href = "#/AppraisalCycle"
+        })
+    }
+  
   }
 
 

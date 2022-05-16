@@ -6,7 +6,7 @@
         </div>
     </div>
     <div class="card">
-        <form #appraisalform="ngForm">
+        <!-- <form #appraisalform="ngForm"> -->
             <br>
             <div class="row column">
                 <div class="col-lg-3">
@@ -39,10 +39,10 @@
                 </div>
 
                 <div class="col-lg-3">
-                    <input class="form-control" type="Date" [(ngModel)]="startdate" name="startdate" min="{{todaydate}}" (change)="startingdatealert($event)" required >
+                    <input class="form-control" type="date" [(ngModel)]="startdate" name="startdate" min="{{todaydate}}" (change)="startingdatealert($event)"  >
                 </div>
                 <div class="col-lg-3">
-                    <input class="form-control" type="Date" [(ngModel)]="enddate" name="enddate" min="{{startdate}}" required (change)="endingdatealert($event)">
+                    <input class="form-control" type="date" [(ngModel)]="enddate" name="enddate" min="{{startdate}}"  (change)="endingdatealert($event)">
                 </div>
             </div>
             <br>
@@ -64,19 +64,19 @@
             <div class="row">
               
                 <div class="col-lg-3">
-                    <input class="form-control" type="Date" [(ngModel)]="goalDate" name="goalDate" required min="{{todaydate}}" (change)="goalsettinglastdatealert($event)">
+                    <input class="form-control" type="Date" [(ngModel)]="goalDate" name="goalDate"  min="{{todaydate}}" (change)="goalsettinglastdatealert($event)">
                 </div>
 
                 <div class="col-lg-3">
-                    <input class="form-control" type="Date" [(ngModel)]="empsubDate" name="empsubDate" required min="{{todaydate}}" (change)="employeereviewdatealert($event)">
+                    <input class="form-control" type="Date" [(ngModel)]="empsubDate" name="empsubDate"  min="{{todaydate}}" (change)="employeereviewdatealert($event)">
                 </div>
 
                 <div class="col-lg-3">
                     <input class="form-control" type="Date" [(ngModel)]="managerReviewDate" name="managerReviewDate "(change)="managerreviewalert($event)"
-                        required min="{{todaydate}}">
+                         min="{{todaydate}}">
                 </div>
                 <div class="col-lg-3">
-                    <input class="form-control" type="Date" [(ngModel)]="sbuReviewDate" name="sbuReviewDate" required min="{{todaydate}}" (change)="sbudatealert($event)">
+                    <input class="form-control" type="Date" [(ngModel)]="sbuReviewDate" name="sbuReviewDate"  min="{{todaydate}}" (change)="sbudatealert($event)">
                 </div>
             </div>
             <br>
@@ -91,24 +91,25 @@
 
             <div class="row">
                 <div class="col-lg-3">
-                    <input class="form-control" type="Date" [(ngModel)]="hrReviewDate" name="hrReviewDate" required min="{{todaydate}}" (change)="hrreviewdatealert($event)">
+                    <input class="form-control" type="Date" [(ngModel)]="hrReviewDate" name="hrReviewDate"  min="{{todaydate}}" (change)="hrreviewdatealert($event)">
                 </div>
                 <div class="col-lg-3">
-                    <input class="form-control" type="Date" required [(ngModel)]="appraisalClosingLastDate"
+                    <input class="form-control" type="Date"  [(ngModel)]="appraisalClosingLastDate"
                         name="appraisalClosingLastDate" min="{{todaydate}}" (change)="closingdatealert($event)">
                 </div>
             </div>
             <div class="row">
                 <div class="col-lg-9"></div>
                 <div class="col-lg-1">
-                    <button class="form-control cancel" *ngIf="id==undefined" [disabled]="appraisalform.form.invalid"
+                    <button class="form-control cancel" *ngIf="id==undefined" 
                         (click)="Save()">Save</button>
+                        <!-- [disabled]="appraisalform.form.invalid" -->
                     <button class="form-control cancel" *ngIf="id!= undefined" (click)="Update()">Update</button>
                 </div>
                 <div class="col-lg-1">
                     <button class="form-control cancel" (click)="Cancel()">Cancel</button>
                 </div>
             </div>
-        </form>
+        <!-- </form> -->
     </div>
 </div>

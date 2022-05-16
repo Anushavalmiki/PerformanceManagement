@@ -130,9 +130,9 @@ export class SidebarComponent implements OnInit {
     localStorage.setItem("clickname","Appraisal Report")
   }
 
-  pip(){
+  app(){
     // if( this.StaffAppraisalList.length!=0){}
-      this.active = 'pip';
+      this.active = 'app';
       localStorage.setItem("clickname","PIP")
     
   
