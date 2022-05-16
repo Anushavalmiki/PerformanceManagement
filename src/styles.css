@@ -5,8 +5,11 @@
 @import '~ng-wizard/themes/ng_wizard_theme_dots.min.css'; */
 
 
-
+body{
+  font-family: "Poppins" !important;
+}
 .button {
+  font-family: "Poppins" !important;
   text-transform: uppercase;
   font-weight: initial;
   font-family: 'Poppins';

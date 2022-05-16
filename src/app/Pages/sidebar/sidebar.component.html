@@ -179,13 +179,13 @@
 
         
         <a class="togglebtn button" *ngIf="roleid=='3'||roleid=='2'" routerLink="/Pip" class="tablinks"
-            (click)="highlight($event)" (click)="pip()">
+            (click)="highlight($event)" (click)="app()">
             <img src="assets/Images/64/Staff.png" style="width:13% ;margin-right: 15px;"
-                [ngClass]="active != 'PIP' ? 'Active1' : 'Active2'" />
-            <img [ngClass]="active == 'PIP' ? 'Active1' : 'Active2'" src="assets/Images/64 Blue/Staff.png"
+                [ngClass]="active != 'app' ? 'Active1' : 'Active2'" />
+            <img [ngClass]="active == 'app' ? 'Active1' : 'Active2'" src="assets/Images/64 Blue/Staff.png"
                 style="width:13%; margin-right: 17px;">
             &nbsp;
-            <span [ngClass]="active == 'PIP' ? 'Active1' : 'Active3'">PIP</span>
+            <span [ngClass]="active == 'app' ? 'Active1' : 'Active3'">PIP</span>
         </a>
 
         <a class="togglebtn button" *ngIf="roleid=='3'||roleid=='5'" routerLink="/ReviewRating" class="tablinks"
