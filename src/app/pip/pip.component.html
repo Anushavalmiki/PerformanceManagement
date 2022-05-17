@@ -1,14 +1,14 @@
 <div class="container-fluid">
     <div class="row">
-        <div class="col-lg-11">
+        <div class="col-lg-10">
             <br>
             <p class="headings">PIP </p>
         </div>
 
-        <div class="col-lg-1">
+        <div class="col-lg-2">
             <br>
             <button class="btn btn-primary editable-table-button btn-xs" data-toggle="modal" data-target="#exampleModal"
-                routerLink="/AddEmployeetoPip" *ngIf="roleid=='3'">Add New
+                routerLink="/AddEmployeetoPip" *ngIf="roleid=='3'">Add PIP Action
             </button>
         </div>
     </div>
@@ -140,35 +140,40 @@
             <table class="table" id="download" >
                 <thead>
                     <tr >
-                        <th>Appraisal Cycle</th>
-                        <th>Goal Type</th>
-                        <th>Goal</th>
-                        <th>KPI</th>
-                        <th>Comments</th>
+                        <!-- <th>Department</th>
+                        <th>Employee</th> -->
+                        <th>PIP Action Items</th>
                         <th>Attachment</th>
+                        <th>Exit Criteria</th>
+                        <!-- <th>Training</th> -->
+                        <!-- <th>Comments</th> -->
+                     
                         <th>Last Submission Date</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr  *ngFor="let details of StaffAppraisalList">
-                        <td>{{details.appraisalCycleName}}</td>
-                        <td>{{details.goalType}}</td>
-                        <td>{{details.pipKraName}}</td>
-                        <td>{{details.pipKpiName}}</td>
-                       
-                        <td>{{details.pipComments}}</td>
-                        <td>
-                            <img src="{{details.PipAttachment}}" 
+                    <tr  *ngFor="let details of StaffPIPActionItemList">
+                        <td>{{details.pipActionItem}}</td>
+                        <td><img src="{{details.actionAttachment}}" 
                             style="width:50px;height: 50px;">
                         </td>
+                        <td>{{details.exitCriteria}}</td>
+                        <!-- <td>{{details.trainingID}}</td> -->
+                       
+                        <td>{{details.lastDateOfSubmission|date}}</td>
+                      <td>
+                          <button class="button" data-toggle="modal" data-target="#commentModel">submit</button>
+                          
+                        </td>
                       
-                        <td>{{details.pipEmpLastSubmissionDate|date}}</td>
+                    
                     </tr>
                    
 
                 </tbody>
             </table>
-            <span *ngIf="StaffAppraisalList.length==0">No Data </span>
+            <span *ngIf="StaffPIPActionItemList.length==0">No Data </span>
             <div class="text-right">
                 <br>
                 <pagination-controls (pageChange)="p = $event" class="poppinns"></pagination-controls>
@@ -283,3 +288,36 @@
         </div>
     </div>
 </div>
+
+
+
+<div  class="modal fade" id="commentModel" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Employee Comments</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+     
+         
+        </div>
+        <div class="modal-body">
+            <p>Comments</p>
+          <textarea class="form-control" rows="5"></textarea>
+          <br>
+          <p>Attachment</p>
+          <ngx-dropzone (change)="onSelect($event)" style="height: 60px;">
+            <ngx-dropzone-label>Drop it here!</ngx-dropzone-label>
+            <ngx-dropzone-preview *ngFor="let f of files" [removable]="true" (removed)="onRemove(f)">
+                <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label>
+            </ngx-dropzone-preview>
+        </ngx-dropzone>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="updatePIPComments()">Save</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>

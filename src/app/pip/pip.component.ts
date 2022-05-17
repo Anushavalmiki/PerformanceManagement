@@ -40,6 +40,8 @@ export class PipComponent implements OnInit {
   lastworkingdate:any;
   Notes:any;
   staffID:any;
+  StaffPIPActionItemList:any;
+  Attachment:any;
 
   ngOnInit(): void {
     this.Type="Select Type"
@@ -48,6 +50,7 @@ export class PipComponent implements OnInit {
     this.roleid = sessionStorage.getItem('roleid');
     // this.GetMyDetails();
     this.ConductappraisalStaffList();
+    this.GetPiPActionItemsForStaff();
     this.HighScore();
     this.employee = 0;
     this.dumpmanagerList = 0;
@@ -91,6 +94,17 @@ export class PipComponent implements OnInit {
           this.uniquelist = [...new Map(this.StaffAppraisalList.map((item: { [x: string]: any; }) =>
   
             [(item[key]), item])).values()]
+      }
+    )
+  }
+
+  public GetPiPActionItemsForStaff() {
+    this.PerformanceManagementService.GetPiPActionItemsForStaff().subscribe(
+      res => {
+        debugger;
+        let temp: any = res.filter(x=>x.staffID==this.StaffID)
+          this.StaffPIPActionItemList = temp
+      
       }
     )
   }
@@ -144,6 +158,36 @@ export class PipComponent implements OnInit {
       this.ngOnInit();
     })
   }
+
+
+  
+  files: File[] = [];
+  onSelect(event: { addedFiles: any; }) {
+    debugger
+    console.log(event);
+    this.files.push(event.addedFiles[0]);
+    this.uploadattachments();
+    console.log("content", this.files);
+  }
+
+
+  onRemove(event: any) {
+    debugger
+    console.log(event);
+    this.files.splice(this.files.indexOf(event), 1);
+  }
+  public uploadattachments() {
+    debugger
+    this.PerformanceManagementService.ProjectAttachments(this.files).subscribe(res => {
+      debugger
+      this.Attachment = res;
+      alert("ATTACHMENT UPLOADED");
+    })
+  }
+
+public updatePIPComments(){
+  Swal.fire("Submitted Sucssessfully");
+}
 }
 
 

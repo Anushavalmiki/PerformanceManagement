@@ -11,7 +11,7 @@ export class AddEmployeetoPipComponent implements OnInit {
 
   constructor(private PerformanceManagementService: PerformanceManagementService, private ActivatedRoute: ActivatedRoute) { }
 
-
+  department: any;
   Departmentlist: any;
   RoleTypeList: any;
   RoleID: any;
@@ -22,33 +22,51 @@ export class AddEmployeetoPipComponent implements OnInit {
   selectedItems1: any = [];
   selectedItems2: any = [];
   selectedItems4: any = [];
-
+  PIPAction: any;
   dropdownSettings1: any = {};
+  exitcriteria: any;
 
-  dropdownList2: any = [];
-  selectedItems3: any = [];
   departmentName: any;
   dropdownSettings2: any = {};
   Apprisalcyclelist: any;
   Departmentid: any;
   kratypeid: any;
   kratypelist: any;
-  Attachment:any;
+  Attachment: any;
+  coursedetails: any;
+  trainingID: any;
+
+  Approver1: any;
+  Approver2: any;
+  AppraisalSubmitionDate: any;
+  sDate: any;
+  eDate: any;
+  tablecount: any;
+  Approver3: any;
+  comments: any;
+  lastdateofsubmission: any;
+  kratype: any;
+
 
   ngOnInit(): void {
     this.RoleID = "";
     this.departmentName = "";
     this.Apprisalcycle = "";
-    this.kratypeid="";
-    this.selectedItems3.length=0;
 
 
 
+
+
+    this.PerformanceManagementService.GetCourse().subscribe(data => {
+      debugger
+      this.coursedetails = data;
+    });
 
     this.PerformanceManagementService.GetAppraisalCycle().subscribe(data => {
       debugger
       this.Apprisalcyclelist = data.filter(x => x.appraisalClose == 0);
     });
+
     this.PerformanceManagementService.GetRoleType().subscribe(data => {
       debugger
       this.RoleTypeList = data;
@@ -58,10 +76,9 @@ export class AddEmployeetoPipComponent implements OnInit {
       res => {
         debugger;
         let temp: any = res.filter(x => x.id != sessionStorage.getItem('EmaployedID'));
-          this.dropdownList = temp
-    
-        
-        });
+        this.dropdownList = temp
+      });
+
 
     this.PerformanceManagementService.GetMyDetails().subscribe(data => {
       debugger
@@ -77,14 +94,6 @@ export class AddEmployeetoPipComponent implements OnInit {
     });
 
 
-    this.dropdownSettings2 = {
-      singleSelection: false,
-      idField: 'id',
-      textField: 'kpiName',
-      selectAllText: 'Select All',
-      unSelectAllText: 'UnSelect All',
-      allowSearchFilter: true
-    };
     this.dropdownSettings = {
       singleSelection: true,
       idField: 'id',
@@ -95,17 +104,11 @@ export class AddEmployeetoPipComponent implements OnInit {
       allowSearchFilter: true,
 
     };
-    this.dropdownSettings1 = {
-      singleSelection: true,
-      idField: 'id',
-      textField: 'kraName',
-      selectAllText: 'Select All',
-      unSelectAllText: 'UnSelect All',
-      allowSearchFilter: true
-    };
-
-    this.GetEmployeeKraMap()
   }
+
+
+
+
   EmployeeId: any;
   onItemSelect(item: any) {
     debugger
@@ -120,23 +123,7 @@ export class AddEmployeetoPipComponent implements OnInit {
     });
 
   }
-  onItemSelect2(item1: any) {
-    debugger
-    this.selectedItems4.push(item1);
-    console.log("selecteditems", this.selectedItems3)
 
-
-  }
-  onItemSelect1(item: any) {
-    debugger;
-    this.selectedItems2.push(item);
-    this.PerformanceManagementService.GetKPI().subscribe(data => {
-      debugger
-      this.dropdownList2 = data.filter(x => x.kraID == item.id);
-
-
-    });
-  }
   onItemDeSelect1(item: any) {
     debugger;
     var index = this.selectedItems2.findIndex((x: { id: any; }) => x.id == item.id)
@@ -170,40 +157,31 @@ export class AddEmployeetoPipComponent implements OnInit {
     debugger
     location.href = "#/Pip";
   }
-  Approver1: any;
-  Approver2: any;
-  AppraisalSubmitionDate: any;
-  sDate: any;
-  eDate: any;
-  tablecount: any;
-  Approver3: any;
-  comments:any;
-  lastdateofsubmission:any;
-  kratype:any;
+
+
+
   public keyresultArray: any = [];
   public SaveDetails() {
     debugger
-    if (this.EmployeeId == undefined || this.selectedItems2.length == 0 || this.selectedItems4.length == 0) {
+    if (this.EmployeeId == undefined|| this.PIPAction==undefined ) {
       Swal.fire("Please Enter Mandatory Fields")
     }
     else {
       this.tablecount = 1;
-      for (let i = 0; i < this.selectedItems4.length; i++) {
-        var json = {
-          "kraid": this.selectedItems2[0].id,
-          "kpiid": this.selectedItems4[i].id,
-          "kraname": this.selectedItems2[0].kraName,
-          "kpiname": this.selectedItems4[i].kpiName,
-          'KraTypeID': this.kratypeid,
-          'KraType':this.kratype
-        };
-        debugger
-        this.keyresultArray.push(json)
-      }
+      var json = {
+        "StaffID": this.EmployeeId ,
+        "PIPActionItem": this.PIPAction,
+        "Attachment":  this.Attachment,
+        "ExitCriteria": this.exitcriteria,
+        'TrainingID': this.trainingID,
+        'LastDateOfSubmission': this.lastdateofsubmission
+      };
+      debugger
+      this.keyresultArray.push(json)
       this.selectedItems1.length = 0;
 
       this.selectedItems2 = [];
-      this.selectedItems3.length = 0;
+
     }
   }
 
@@ -216,19 +194,17 @@ export class AddEmployeetoPipComponent implements OnInit {
       }
       else {
         var Entity = {
-        
-          'StaffTypeID': 1,
-          'StaffName': this.EmployeeId,
-          'PipGoaltypeID': this.kratype,
-          'PipComments':this.comments,
-          'PipAttachment':this.Attachment,
-          'PipEmpLastSubmissionDate':this.lastdateofsubmission,
-          'PipKraID': this.keyresultArray[i].kraid,
-          'PipKpiID': this.keyresultArray[i].kpiid,
-      
+
+          "StaffID":  this.keyresultArray[i].StaffID ,
+        "PIPActionItem":  this.keyresultArray[i].PIPActionItem,
+        "Attachment":  this.keyresultArray[i].Attachment,
+        "ExitCriteria": this.keyresultArray[i].ExitCriteria,
+        'TrainingID':  this.keyresultArray[i].TrainingID,
+        'LastDateOfSubmission':  this.keyresultArray[i].LastDateOfSubmission
+   
         }
-        
-        this.PerformanceManagementService.UpdatePipEmployeeKraMap(Entity).subscribe(
+
+        this.PerformanceManagementService.InsertPiPActionItemsForStaff(Entity).subscribe(
           data => {
 
             if (data != undefined) {
@@ -241,7 +217,7 @@ export class AddEmployeetoPipComponent implements OnInit {
       }
     }
     this.InsertNotification();
-    Swal.fire('PIP Goal Assigned Succcessfully!!');
+    Swal.fire('PIP Action Items Addedd Succcessfully!!');
     location.href = "#/Pip";
 
   }
@@ -255,7 +231,7 @@ export class AddEmployeetoPipComponent implements OnInit {
       'Event': 'Apprisal Request',
       'FromUser': 'Admin',
       'ToUser': sessionStorage.getItem('EmaployedID'),
-      'Message': 'Your Manager Assigned a New Goal Setting to you!!',
+      'Message': 'You are Added to PIP List!!',
       'Photo': 'Null',
       'Building': 'Dynamics 1',
       'UserID': this.EmployeeId,
@@ -272,27 +248,9 @@ export class AddEmployeetoPipComponent implements OnInit {
 
 
 
-  getkratypeid(event: any) {
-    debugger
-    // this.kratypeid = event.target.value;
-    let list = event.target.value.split(",");
-    this.kratypeid = list[1];
-    this.kratype=list[0];
-    this.PerformanceManagementService.GetKeyResultArea().subscribe(data => {
-      debugger
-      this.dropdownList1 = data.filter(x => x.kraTypeID == this.kratypeid);
-    });
-
-  }
 
 
-  public GetEmployeeKraMap() {
-    this.PerformanceManagementService.GetKraMaster().subscribe(
-      data => {
-        this.kratypelist = data;
-      }
-    )
-  }
+
 
   files: File[] = [];
   onSelect(event: { addedFiles: any; }) {

@@ -178,7 +178,16 @@
         </a> -->
 
         
-        <a class="togglebtn button" *ngIf="roleid=='3'||roleid=='2'" routerLink="/Pip" class="tablinks"
+        <a class="togglebtn button" *ngIf="(roleid=='2')&& StaffPIPActionItemList.length!=0" routerLink="/Pip" class="tablinks"
+            (click)="highlight($event)" (click)="app()">
+            <img src="assets/Images/64/Staff.png" style="width:13% ;margin-right: 15px;"
+                [ngClass]="active != 'app' ? 'Active1' : 'Active2'" />
+            <img [ngClass]="active == 'app' ? 'Active1' : 'Active2'" src="assets/Images/64 Blue/Staff.png"
+                style="width:13%; margin-right: 17px;">
+            &nbsp;
+            <span [ngClass]="active == 'app' ? 'Active1' : 'Active3'">PIP</span>
+        </a>
+        <a class="togglebtn button" *ngIf="(roleid=='3')" routerLink="/Pip" class="tablinks"
             (click)="highlight($event)" (click)="app()">
             <img src="assets/Images/64/Staff.png" style="width:13% ;margin-right: 15px;"
                 [ngClass]="active != 'app' ? 'Active1' : 'Active2'" />

@@ -141,13 +141,21 @@
                             <td>{{details.avgSelfScore}}
                                 <p *ngIf="details.avgSelfScore==null" style="color: red;">Pending</p>
                             </td>
-                            <td>3</td>
-                            <td>{{details.avgGroupHeadScores}}
-                                <p *ngIf="details.avgGroupHeadScores==null" style="color: red;">Pending</p>
+
+                            <td>
+                                <p  *ngIf="details.managerSubmittedDate!=null">{{details.avgGroupHeadScores}}</p>
+                            
+                                <p *ngIf="details.avgGroupHeadScores==null || details.managerSubmittedDate==null" style="color: red;">Pending</p>
                             </td>
-                            <td >
-                                <p *ngIf="details.hrSubmittedDate!=null">{{details.avgCIOScores}}</p>
-                                <p *ngIf="details.avgCIOScores==null ||details.hrSubmittedDate==null" style="color: red;">Pending</p>
+                            <td>
+                                <p  *ngIf="details.sbuSubmittedDate!=null">{{details.avgDivisionScores}}</p>
+                             
+                                <p *ngIf="details.avgDivisionScores==null || details.sbuSubmittedDate==null" style="color: red;">Pending</p>
+                            </td>
+                            <td>
+                                <p *ngIf="details.hrSubmittedDate!=null ">{{details.avgCIOScores}}</p>
+                                <p *ngIf="details.avgCIOScores==null ||details.hrSubmittedDate==null"
+                                    style="color: red;">Pending</p>
                             </td>
                             <td>
                                 <p *ngIf="details.bellcurveScore==null && details.avgCIOScores!=null && details.hrSubmittedDate!=null">

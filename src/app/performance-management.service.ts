@@ -14,12 +14,18 @@ export class PerformanceManagementService {
   // public host = "https://digioffice.amazeone.co/DigiOfficeAsticomAPI";
   public host = "https://digioffice.amazeone.co/DigiOfficeAPI"
   public host1="https://support.amazeone.co/SupportAPI/";
+  public hoet2 = "http://103.133.214.197/LearningandDevelopment/";
 
   url: any;
   constructor(private http: HttpClient) {
     // console.log("environment", environment.hostUrl);
   }
 
+  public GetCourse() {
+    debugger;
+    return this.http.get<any[]>(
+      this.hoet2 + '/Master/GetCourse');
+  }
 
   public InsertAppraisalCycle(data: any) {
     debugger;
@@ -450,5 +456,17 @@ export class PerformanceManagementService {
     let APIURL = this.host + "Announcement/UpdateSalaryIncrementByHR";
     return this.http.post<any[]>(APIURL, json);
   }
+
+
+public GetPiPActionItemsForStaff() {
+
+  return this.http.get<any[]>(this.baseURL + "/Master/GetPiPActionItemsForStaff");
+}
+
+public InsertPiPActionItemsForStaff(data: any) {
+  debugger;
+  this.url = this.baseURL + '/Master/InsertPiPActionItemsForStaff';
+  return this.http.post(this.url, data);
+}
 
 }

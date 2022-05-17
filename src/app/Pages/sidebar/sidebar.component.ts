@@ -12,6 +12,7 @@ export class SidebarComponent implements OnInit {
   temp: any;
   list:any;
   StaffID:any
+  StaffPIPActionItemList:any;
 
   constructor(public router: Router, private PerformanceManagementService: PerformanceManagementService) { }
 
@@ -20,25 +21,19 @@ export class SidebarComponent implements OnInit {
     this.roleid = sessionStorage.getItem('roleid');
     this.StaffID = sessionStorage.getItem('EmaployedID');
 
-    this.ConductappraisalStaffList();
+    this.GetPiPActionItemsForStaff();
 
     
 
   }
-  StaffAppraisalList:any
-  uniquelist:any
-  public ConductappraisalStaffList() {
-    this.PerformanceManagementService.GetConductappraisalStaffListforpip().subscribe(
+  public GetPiPActionItemsForStaff() {
+    debugger
+    this.PerformanceManagementService.GetPiPActionItemsForStaff().subscribe(
       res => {
         debugger;
-        let temp: any = res
-          this.StaffAppraisalList = temp.filter((x: { hrSubmittedDate: null; staffid:string})=>x.hrSubmittedDate!=null && x.staffid==this.StaffID);
-          this.list=   this.StaffAppraisalList.length
-          const key = 'employee';
-          const key1 = 'month'
-          this.uniquelist = [...new Map(this.StaffAppraisalList.map((item: { [x: string]: any; }) =>
-  
-            [(item[key]), item])).values()]
+        let temp: any = res.filter(x=>x.staffID==this.StaffID)
+          this.StaffPIPActionItemList = temp
+      
       }
     )
   }
@@ -131,9 +126,17 @@ export class SidebarComponent implements OnInit {
   }
 
   app(){
-    // if( this.StaffAppraisalList.length!=0){}
+    if(this.roleid==2){
+      if( this.StaffPIPActionItemList.length!=0){
+        this.active = 'app';
+        localStorage.setItem("clickname","PIP")
+       }
+    }
+    if(this.roleid==3){
       this.active = 'app';
       localStorage.setItem("clickname","PIP")
+    }
+     
     
   
   }
