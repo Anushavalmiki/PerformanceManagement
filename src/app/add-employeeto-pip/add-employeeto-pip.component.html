@@ -2,7 +2,7 @@
     <br>
     <div class="row">
         <div class="col-lg-4">
-            <p class="headings">Staff PIP Action Item Details</p>
+            <p class="headings">PIP Staff Details</p>
         </div>
     </div>
     <br>
@@ -14,12 +14,12 @@
                     <input type="text" placeholder="Department" class="form-control" id="department" name="department" [(ngModel)]="department">
                 </div> -->
 
-                <div class="col-lg-2">
+                <!-- <div class="col-lg-2">
                     <p>Staff <span style="color:red">*</span></p>
                     <ng-multiselect-dropdown [placeholder]="'Select Staff'" [settings]="dropdownSettings"
                         [data]="dropdownList" [(ngModel)]="selectedItems" (onSelect)="onItemSelect($event)">
                     </ng-multiselect-dropdown>
-                </div>
+                </div> -->
                
                 <div class="col-lg-4">
                     <p>PIP Action Items<span style="color:red">*</span></p>
@@ -55,14 +55,11 @@
 
                 </div>
                 <div class="col-lg-3">
-                    <p>Last Date of Submission <span style="color:red">*</span></p>
-                    <input type="date" class="form-control" 
+                    <p>PIP Period<span style="color:red">*</span></p>
+                    <input type="text" class="form-control" placeholder="PIP Period"
                       id="lastdateofsubmission"    name="lastdateofsubmission" [(ngModel)]="lastdateofsubmission">
 
                 </div>
-
-
-
             </div>
             <br>
             <div class="row">
@@ -85,7 +82,7 @@
                             <tr>
                                 <th>PIP Action Items</th>
                                 <th>Exit Criteria</th>
-                                <th>Last Submission date</th>
+                                <th>PIP Period</th>
                             </tr>
                             <tr *ngFor="let details of keyresultArray">
                                 <td>{{details.PIPActionItem}}</td>

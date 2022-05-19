@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { PerformanceManagementService } from 'src/app/performance-management.service';
 import Swal from 'sweetalert2';
-
 @Component({
-  selector: 'app-pip',
-  templateUrl: './pip.component.html',
-  styleUrls: ['./pip.component.css']
+  selector: 'app-pipreport',
+  templateUrl: './pipreport.component.html',
+  styleUrls: ['./pipreport.component.css']
 })
-export class PipComponent implements OnInit {
+export class PIPReportComponent implements OnInit {
 
+  
   constructor(private PerformanceManagementService: PerformanceManagementService) { }
   count: any;
   roleTypeList: any;
@@ -45,7 +45,7 @@ export class PipComponent implements OnInit {
   empComments:any;
   submitted:any;
 
-
+  viewMode = 'tab1';
   ngOnInit(): void {
     this.Type="Select Type"
     this.Score="0"
@@ -89,7 +89,7 @@ export class PipComponent implements OnInit {
   public getpipActionID(details:any){
 this.pipActionID=details.id
   }
-  StaffPIPActionItemList1:any;
+
 
   public ConductappraisalStaffList() {
     this.PerformanceManagementService.GetConductappraisalStaffListforpip().subscribe(
@@ -120,7 +120,6 @@ this.pipActionID=details.id
         debugger;
         let temp: any = res.filter(x=>x.staffID==this.StaffID)
           this.StaffPIPActionItemList = temp
-          this.StaffPIPActionItemList1 = res
       }
     )
   }
@@ -213,12 +212,12 @@ public UpdatePipEmployeeKraMap(){
   else{
     var entity = {
       'StaffName': this.StaffID,
-      // 'StaffTypeID':1,
+      'StaffTypeID':1,
       'PIPActionID':this.pipActionID,
       'PipComments': this.empComments,
       'PipAttachment':this.Attachment
     }
-    this.PerformanceManagementService.UpdatePipEmployeeComments(entity).subscribe(data => {
+    this.PerformanceManagementService.UpdatePipEmployeeKraMap(entity).subscribe(data => {
       debugger
       Swal.fire("Submitted Sucssessfully");
     })
@@ -228,9 +227,6 @@ public UpdatePipEmployeeKraMap(){
 
 }
 }
-
-
-
 
 
 

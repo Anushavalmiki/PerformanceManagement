@@ -46,14 +46,18 @@ export class AddEmployeetoPipComponent implements OnInit {
   comments: any;
   lastdateofsubmission: any;
   kratype: any;
-
+  staffid: any;
 
   ngOnInit(): void {
     this.RoleID = "";
     this.departmentName = "";
     this.Apprisalcycle = "";
 
+    this.ActivatedRoute.params.subscribe(params => {
+      this.staffid = params['staffid']
+    })
 
+    this.trainingID = "";
 
 
 
@@ -163,22 +167,29 @@ export class AddEmployeetoPipComponent implements OnInit {
   public keyresultArray: any = [];
   public SaveDetails() {
     debugger
-    if (this.EmployeeId == undefined|| this.PIPAction==undefined ) {
+    if (this.PIPAction == undefined) {
       Swal.fire("Please Enter Mandatory Fields")
     }
     else {
       this.tablecount = 1;
       var json = {
-        "StaffID": this.EmployeeId ,
+        "StaffID": this.staffid,
         "PIPActionItem": this.PIPAction,
-        "Attachment":  this.Attachment,
+        "Attachment": this.Attachment,
         "ExitCriteria": this.exitcriteria,
         'TrainingID': this.trainingID,
-        'LastDateOfSubmission': this.lastdateofsubmission
+        'LastDateOfSubmission': this.lastdateofsubmission,
+        // 'Status': 'PIP Assigned'
       };
       debugger
       this.keyresultArray.push(json)
-      this.selectedItems1.length = 0;
+      this.selectedItems.length = 0;
+      this.PIPAction = null;
+      this.Attachment = 0;
+      this.exitcriteria = null;
+      this.lastdateofsubmission = 0;
+      this.trainingID = 0;
+
 
       this.selectedItems2 = [];
 
@@ -190,18 +201,19 @@ export class AddEmployeetoPipComponent implements OnInit {
     debugger
     for (let i = 0; i < this.keyresultArray.length; i++) {
       if (this.keyresultArray.length == 0) {
-        Swal.fire('Please Select Goals For Staff')
+        Swal.fire('Please Select Actions For Staff')
       }
       else {
         var Entity = {
 
-          "StaffID":  this.keyresultArray[i].StaffID ,
-        "PIPActionItem":  this.keyresultArray[i].PIPActionItem,
-        "Attachment":  this.keyresultArray[i].Attachment,
-        "ExitCriteria": this.keyresultArray[i].ExitCriteria,
-        'TrainingID':  this.keyresultArray[i].TrainingID,
-        'LastDateOfSubmission':  this.keyresultArray[i].LastDateOfSubmission
-   
+          "StaffID": this.keyresultArray[i].StaffID,
+          "PIPActionItem": this.keyresultArray[i].PIPActionItem,
+          "Attachment": this.keyresultArray[i].Attachment,
+          "ExitCriteria": this.keyresultArray[i].ExitCriteria,
+          'TrainingID': this.keyresultArray[i].TrainingID,
+          'LastDateOfSubmission': this.keyresultArray[i].LastDateOfSubmission,
+          // 'Status': this.keyresultArray[i].Status,
+
         }
 
         this.PerformanceManagementService.InsertPiPActionItemsForStaff(Entity).subscribe(
@@ -217,7 +229,7 @@ export class AddEmployeetoPipComponent implements OnInit {
       }
     }
     this.InsertNotification();
-    Swal.fire('PIP Action Items Addedd Succcessfully!!');
+    Swal.fire('PIP Action Items Addedd Successfully!!');
     location.href = "#/Pip";
 
   }
@@ -275,7 +287,4 @@ export class AddEmployeetoPipComponent implements OnInit {
       alert("ATTACHMENT UPLOADED");
     })
   }
-
-
-
 }

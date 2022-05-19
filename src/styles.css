@@ -328,3 +328,11 @@ input,textarea{
   padding: 10px;
 } */
 
+.show3res {
+  font-size: 12px!important;
+  font-weight: bold!important;
+  letter-spacing: 0.5!important;
+  color: #3247d5!important;
+  text-transform: uppercase!important;
+  padding: 10px 25px 15px!important;
+}

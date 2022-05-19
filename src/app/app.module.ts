@@ -52,6 +52,7 @@ import { ReviewRatingComponent } from './review-rating/review-rating.component';
 import { SBUrattingDashComponent } from './sburatting-dash/sburatting-dash.component';
 import { SbuAppraisalComponent } from './sbu-appraisal/sbu-appraisal.component';
 import { SalaryincrementletterDashComponent } from './salaryincrementletter-dash/salaryincrementletter-dash.component';
+import { PIPReportComponent } from './pipreport/pipreport.component';
 
 @NgModule({
   declarations: [
@@ -97,7 +98,8 @@ import { SalaryincrementletterDashComponent } from './salaryincrementletter-dash
     ReviewRatingComponent,
     SBUrattingDashComponent,
     SbuAppraisalComponent,
-    SalaryincrementletterDashComponent
+    SalaryincrementletterDashComponent,
+    PIPReportComponent
   ],
   imports: [
     BrowserModule,

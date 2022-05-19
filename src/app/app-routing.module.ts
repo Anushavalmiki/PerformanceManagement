@@ -42,6 +42,7 @@ import { ReviewRatingComponent } from './review-rating/review-rating.component';
 import { SBUrattingDashComponent } from './sburatting-dash/sburatting-dash.component';
 import { SbuAppraisalComponent } from './sbu-appraisal/sbu-appraisal.component';
 import { SalaryincrementletterDashComponent } from './salaryincrementletter-dash/salaryincrementletter-dash.component';
+import { PIPReportComponent } from './pipreport/pipreport.component';
 
 
 const routes: Routes = [
@@ -88,6 +89,7 @@ const routes: Routes = [
   { path: 'Loader', component:LoaderComponent },
   { path: 'Pip', component:PipComponent },
   { path: 'AddEmployeetoPip', component:AddEmployeetoPipComponent },
+  { path: 'AddEmployeetoPip/:staffid', component:AddEmployeetoPipComponent },
   {path:'Help',component:HelpComponent},
   {path:'SupportTickets',component:SupportTicketsComponent},
   {path:'SupportTickets/:id',component:SupportTicketsComponent},
@@ -96,6 +98,7 @@ const routes: Routes = [
   {path:'SBUrattingDash',component:SBUrattingDashComponent},
   {path:'SbuAppraisal/:id/:StaffID',component:SbuAppraisalComponent},
   {path:'SalaryincrementletterDash',component:SalaryincrementletterDashComponent},
+  {path:'PIPReport',component:PIPReportComponent},
   
 ];
 

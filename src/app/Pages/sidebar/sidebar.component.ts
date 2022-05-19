@@ -127,19 +127,33 @@ export class SidebarComponent implements OnInit {
 
   app(){
     if(this.roleid==2){
-      if( this.StaffPIPActionItemList.length!=0){
+      if(this.StaffPIPActionItemList.length!=0){
         this.active = 'app';
         localStorage.setItem("clickname","PIP")
        }
     }
-    if(this.roleid==3){
+    if(this.roleid==4||this.roleid==3){
       this.active = 'app';
       localStorage.setItem("clickname","PIP")
     }
-     
-    
-  
   }
+
+  appreport(){
+    if(this.roleid==2){
+      if(this.StaffPIPActionItemList.length!=0){
+        this.active = 'appreport';
+        localStorage.setItem("clickname","PIP Report")
+       }
+    }
+    if(this.roleid==4||this.roleid==3){
+      this.active = 'appreport';
+      localStorage.setItem("clickname","PIP Report")
+    }
+  }
+
+  
+
+
 
   help(){
     this.active = 'help'

@@ -206,6 +206,13 @@ export class StaffScoreReportComponent implements OnInit {
       }
     )
   }
+  public GetFilteredDepartment() {
+    this.PerformanceManagementService.GetConductappraisalStaffList().subscribe(data => {
+      debugger
+      this.FilteredStaffAppraisalList = data.filter(x => x.department == this.departmentid)
+    })
+  }
+
 
   getManager(even: any) {
     this.manager = even.target.value;
@@ -294,12 +301,6 @@ export class StaffScoreReportComponent implements OnInit {
 
  
 
-  public GetFilteredDepartment() {
-    this.PerformanceManagementService.GetConductappraisalStaffList().subscribe(data => {
-      debugger
-      this.FilteredStaffAppraisalList = data.filter(x => x.department == this.departmentid)
-    })
-  }
 
 
   public GetApprisalcycle(event: any) {

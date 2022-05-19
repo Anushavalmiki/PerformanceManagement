@@ -32,6 +32,7 @@ export class AppraisalReportComponent implements OnInit {
     this.StaffID = sessionStorage.getItem('EmaployedID')
     this.roleid = sessionStorage.getItem('roleid');
     this.departmentid=0;
+    this. GetDepartment() ;
     this.GetRoleType();
     this.GetMyDetails();
     this.ConductappraisalStaffList();
@@ -60,6 +61,8 @@ export class AppraisalReportComponent implements OnInit {
   getManager(even: any) {
     this.manager = even.target.value;
   }
+
+  
 
   getdepartmentID(even: any) {
     this.departmentid = even.target.value;

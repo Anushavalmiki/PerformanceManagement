@@ -395,7 +395,7 @@ export class PerformanceManagementService {
 
   public UpdatePipEmployeeKraMap(data: any) {
     debugger;
-    this.url = this.baseURL + 'Master/UpdatePipEmployeeKraMap';
+    this.url = this.baseURL + '/Master/UpdatePipEmployeeKraMap';
     return this.http.post(this.url, data);
   }
 
@@ -467,6 +467,13 @@ public InsertPiPActionItemsForStaff(data: any) {
   debugger;
   this.url = this.baseURL + '/Master/InsertPiPActionItemsForStaff';
   return this.http.post(this.url, data);
+}
+
+
+public UpdatePipEmployeeComments(json: any) {
+  debugger
+  let APIURL = this.baseURL + "Master/UpdatePipEmployeeComments";
+  return this.http.post<any[]>(APIURL, json);
 }
 
 }
