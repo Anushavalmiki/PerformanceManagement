@@ -114,13 +114,18 @@ this.pipActionID=details.id
     )
   }
 
+  PipComments:any;
+  PipAttachment:any;
   public GetPiPActionItemsForStaff() {
     this.PerformanceManagementService.GetPiPActionItemsForStaff().subscribe(
       res => {
         debugger;
         let temp: any = res.filter(x=>x.staffID==this.StaffID)
           this.StaffPIPActionItemList = temp
+       
           this.StaffPIPActionItemList1 = res
+             this.PipComments=this.StaffPIPActionItemList1[0].pipComments
+          this.PipAttachment=this.StaffPIPActionItemList1[0].attachment
       }
     )
   }

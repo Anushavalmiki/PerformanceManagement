@@ -113,16 +113,32 @@ this.pipActionID=details.id
       }
     )
   }
-
+  RemovedFromPIPList:any;
   public GetPiPActionItemsForStaff() {
     this.PerformanceManagementService.GetPiPActionItemsForStaff().subscribe(
       res => {
         debugger;
+        this.RemovedFromPIPList= res.filter(x=>x.removeFromPIP==1)
         let temp: any = res.filter(x=>x.staffID==this.StaffID)
           this.StaffPIPActionItemList = temp
+        
       }
     )
   }
+
+  RelivedfromOrgPIPList:any;
+  public GetStaffExitFormality() {
+    this.PerformanceManagementService.GetStaffExitFormality().subscribe(
+      res => {
+        debugger;
+        // let temp: any = res.filter(x=>x.staffID==this.StaffID)
+          this.RelivedfromOrgPIPList= res.filter(x=>x.pipReleivedFromOrg==1)
+      }
+    )
+  }
+
+
+
 
 
   
@@ -163,9 +179,11 @@ public show(){
       'StaffID': this.staffID,
       'Notes': this.Notes,
       'lastworkingdate': this.lastworkingdate,
-      'type': this.Type
+      'type': this.Type,
+      'PIPReleivedFromOrg':1
+      
     }
-    this.PerformanceManagementService.InsertStaffExitFormality(eb).subscribe(data => {
+    this.PerformanceManagementService.InsertStaffExitFormalityPIP(eb).subscribe(data => {
       debugger
       Swal.fire("Successfully Moved to Exit Formality!!");
       this.staffID="",

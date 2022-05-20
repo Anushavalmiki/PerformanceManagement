@@ -119,26 +119,32 @@
                             <p *ngIf="details.pipStatus==null" style="color: red">Pending</p>
                         </td>
                         <td>
-                            <p *ngIf="details.employeePIPSubmittedDate!=null"> {{details.employeePIPSubmittedDate|date}}<br>
-                           
+                            <p *ngIf="details.employeePIPSubmittedDate!=null">
+                                {{details.employeePIPSubmittedDate|date}}<br>
+
                             </p>
                             <p *ngIf="details.employeePIPSubmittedDate==null" style="color: red">Pending</p>
                         </td>
-                        <td *ngIf="roleid=='4'" >
-                            <button class=" btn-primary editable-table-button btn-xs" style="margin: 5px;"  [routerLink]="['/AddEmployeetoPip',details.staffid]" >Add to PIP
+                        <td *ngIf="roleid=='4'">
+                            <button class=" btn-primary editable-table-button btn-xs" style="margin: 5px;"
+                                [routerLink]="['/AddEmployeetoPip',details.staffid]">Add to PIP
                             </button>
-                            <button class=" btn-primary editable-table-button btn-xs" style="margin: 5px;" data-toggle="modal"
-                                data-target="#exampleModal" (click)="ViewScores(details)">Relieve from Organisation
+                            <button class=" btn-primary editable-table-button btn-xs" style="margin: 5px;"
+                                data-toggle="modal" data-target="#exampleModal" (click)="ViewScores(details)">Relieve
+                                from Organisation
                             </button>
-                            <button class=" btn-primary editable-table-button btn-xs" style="margin: 5px;" data-toggle="modal"
-                                data-target="#viewbellcurve" (click)="ViewScores(details)">Remove from PIP
+                            <button class=" btn-primary editable-table-button btn-xs" style="margin: 5px;"
+                                data-toggle="modal" data-target="#viewbellcurve" (click)="ViewScores(details)">Remove
+                                from PIP
                             </button>
-                            <button class=" btn-primary editable-table-button btn-xs" style="margin: 5px;" data-toggle="modal"*ngIf="details.employeePIPSubmittedDate!=null"
-                            data-target="#viewempcomments" (click)="ViewScores(details)">View Employee Comments
-                        </button>
-                        <button class=" btn-primary editable-table-button btn-xs" style="margin: 5px;" data-toggle="modal" *ngIf="details.employeePIPSubmittedDate!=null"
-                            data-target="#exampleModal2" (click)="ViewScores(details)">View PIP Details
-                        </button>
+                            <button class=" btn-primary editable-table-button btn-xs" style="margin: 5px;"
+                                data-toggle="modal" *ngIf="details.employeePIPSubmittedDate!=null"
+                                data-target="#viewempcomments" (click)="ViewScores(details)">View Employee Comments
+                            </button>
+                            <button class=" btn-primary editable-table-button btn-xs" style="margin: 5px;"
+                                data-toggle="modal" *ngIf="details.employeePIPSubmittedDate!=null"
+                                data-target="#exampleModal2" (click)="ViewScores(details)">View PIP Details
+                            </button>
                         </td>
 
                     </tr>
@@ -186,14 +192,11 @@
                         <td>{{details.lastDateOfSubmission}}</td>
                         <td>
                             <button *ngIf="details.pipComments==null" class="button" data-toggle="modal"
-                                (click)="getpipActionID(details)" data-target="#commentModel">Update PIP Activity</button>
+                                (click)="getpipActionID(details)" data-target="#commentModel">Update PIP
+                                Activity</button>
                             <p *ngIf="details.pipComments!=null">Submitted</p>
                         </td>
-
-
                     </tr>
-
-
                 </tbody>
             </table>
             <span *ngIf="StaffPIPActionItemList.length==0">No Data </span>
@@ -316,8 +319,6 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-
-
             </div>
             <div class="modal-body">
                 <p>Comments</p>
@@ -360,10 +361,9 @@
                     <div class="col-lg-3">
                         <p style="padding:5px">
                             Comments <span style="color: red;">*</span> </p>
-
                     </div>
                     <div class="col-lg-7">
-                      <textarea rows="6" class="form-control">{{StaffAppraisalList.pipComments}}</textarea>
+                        <textarea rows="6" class="form-control">{{PipComments}}</textarea>
                     </div>
                 </div><br>
                 <div class="row">
@@ -374,11 +374,9 @@
                             Attachment<span style="color: red;">*</span> </p>
                     </div>
                     <div class="col-lg-7">
-                      <img src="assets/Images/64 Blue/leaves.png">
+                        <img src="{{PipAttachment}}" style="width: 100%; height:auto">
                     </div>
                 </div><br>
-
-
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -398,21 +396,35 @@
                 </button>
             </div>
             <div class="modal-body scroll">
-
-                <div class="row">
+                <div>
+                    <table class="table">
+                        <tr >
+                            <th>PIP Action Item</th>
+                            <th>Exit Criteria</th>
+                            <th>PIP Period</th>
+                            <th>Training</th>
+                           
+                        </tr>
+                        <tr *ngFor="let details of StaffPIPActionItemList1">
+                            <td>{{details.pipActionItem}}</td>
+                            <td>{{details.exitCriteria}}</td>
+                            <td>{{details.lastDateOfSubmission}}</td>
+                            <td>{{details.trainingname}}</td>
+                        </tr>
+                    </table>
+                </div>
+                <!-- <div class="row">
                     <div class="col-lg-1">
                     </div>
                     <div class="col-lg-3">
                         <p style="padding:5px">
                             PIP Action Items <span style="color: red;">*</span> </p>
-
                     </div>
                     <div class="col-lg-7">
-                    
-                      <p>{{StaffPIPActionItemList1.pipActionItem}}</p>
+                        <p>{{StaffPIPActionItemList1.pipActionItem}}</p>
                     </div>
-                </div><br>
-                <div class="row">
+                </div><br> -->
+                <!-- <div class="row">
                     <div class="col-lg-1">
                     </div>
                     <div class="col-lg-3">
@@ -420,7 +432,7 @@
                             Exit Criteria<span style="color: red;">*</span> </p>
                     </div>
                     <div class="col-lg-7">
-                      <p>{{StaffPIPActionItemList1.exitCriteria}}</p>
+                        <p>{{StaffPIPActionItemList1.exitCriteria}}</p>
                     </div>
                 </div><br>
 
@@ -432,7 +444,7 @@
                             PIP Period<span style="color: red;">*</span> </p>
                     </div>
                     <div class="col-lg-7">
-                      <p>{{StaffPIPActionItemList1.lastDateOfSubmission}}</p>
+                        <p>{{StaffPIPActionItemList1.lastDateOfSubmission}}</p>
                     </div>
                 </div><br>
                 <div class="row">
@@ -443,10 +455,9 @@
                             PIP Attachment<span style="color: red;">*</span> </p>
                     </div>
                     <div class="col-lg-7">
-                      <img src="{{StaffPIPActionItemList1.pipAttachment}}">
+                        <img src="{{StaffPIPActionItemList1.pipAttachment}}">
                     </div>
-                </div><br>
-
+                </div><br> -->
 
             </div>
             <div class="modal-footer">

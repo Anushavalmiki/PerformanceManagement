@@ -386,6 +386,12 @@ export class PerformanceManagementService {
     return this.http.post<any[]>(APIURL, json);
   }
 
+  public InsertStaffExitFormalityPIP(data: any) {
+    debugger;
+    this.url = this.host + '/Announcement/InsertStaffExitFormalityPIP';
+    return this.http.post(this.url, data);
+  }
+
   public InsertStaffExitFormality(data: any) {
     debugger;
     this.url = this.host + '/Announcement/InsertStaffExitFormality';
@@ -475,5 +481,18 @@ public UpdatePipEmployeeComments(json: any) {
   let APIURL = this.baseURL + "Master/UpdatePipEmployeeComments";
   return this.http.post<any[]>(APIURL, json);
 }
+
+public GetStaffExitFormality() {
+  return this.http.get<any[]>(
+    this.host + "/Announcement/GetStaffExitFormality"
+  );
+}
+
+
+
+
+
+
+
 
 }

@@ -169,7 +169,7 @@
                     <div class="row">
                         <div class="col-md-10">
                             <br>
-                            <p class="show3res">SHOWING <span>{{StaffPIPActionItemList.length}}</span> RESULTS</p>
+                            <p class="show3res">SHOWING <span>{{RemovedFromPIPList.length}}</span> RESULTS</p>
                         </div>
                         <!-- <div class="col-md-2">
                             <button class="form-control requestbtn" routerLink="/ApplyOT">Apply</button>
@@ -191,7 +191,7 @@
                             </thead>
                             <tbody>
                                 <tr
-                                    *ngFor="let details of StaffAppraisalList| paginate: { itemsPerPage: count1, currentPage: p}|filter:search">
+                                    *ngFor="let details of RemovedFromPIPList| paginate: { itemsPerPage: count1, currentPage: p}|filter:search">
                                     <td>{{details.appraisalCycleName}}</td>
                                     <td>{{details.name}}</td>
                                     <td>{{details.role}}</td>
@@ -243,7 +243,7 @@
                 <div *ngSwitchCase="'tab3'" id="tab3">
                     <div class="row">
                         <div class="col-md-10">
-                            <p class="show3res">SHOWING <span>{{StaffPIPActionItemList.length}}</span> RESULTS</p>
+                            <p class="show3res">SHOWING <span>{{RelivedfromOrgPIPList.length}}</span> RESULTS</p>
                         </div>
                         <!-- <div class="col-md-2">
                             <button class="form-control requestbtn" routerLink="/ApplyOT">Apply</button>
@@ -265,14 +265,13 @@
                             </thead>
                             <tbody>
                                 <tr
-                                    *ngFor="let details of StaffAppraisalList| paginate: { itemsPerPage: count1, currentPage: p}|filter:search">
-                                    <td>{{details.appraisalCycleName}}</td>
+                                    *ngFor="let details of RelivedfromOrgPIPList| paginate: { itemsPerPage: count1, currentPage: p}|filter:search">
                                     <td>{{details.name}}</td>
-                                    <td>{{details.role}}</td>
-                                    <td>{{details.departmentName}}</td>
-                                    <td *ngIf="roleid==3">{{details.managername}}</td>
+                                    <td>{{details.emprole}}</td>
+                                    <td>{{details.department_name}}</td>
+                                    <td *ngIf="roleid==3">{{details.manager}}</td>
             
-                                    <td>
+                                    <!-- <td>
                                         <p
                                             *ngIf="details.bellcurveScore==null && details.avgCIOScores!=null && details.hrSubmittedDate!=null">
                                             {{((details.avgGroupHeadScores+details.avgCIOScores)/2)|number:"1.0-0"}}
@@ -281,8 +280,8 @@
             
                                         <p *ngIf="details.avgCIOScores==null || details.hrSubmittedDate==null">NA</p>
             
-                                        <!-- {{details.finalrating}} -->
-                                    </td>
+                                       
+                                    </td> -->
                                     <!-- <td>
                                         <p *ngIf="details.pipComments!=null"> {{details.pipComments}}<br>
                                        <img src="{{details.pipAttachment}}"> 
@@ -401,6 +400,7 @@
                             <option value="1">Retirement</option>
                             <option value="2">Resignation </option>
                             <option value="3">Terminated </option>
+                            <option value="4">From PIP</option>
                         </select>
                     </div>
                 </div><br>
