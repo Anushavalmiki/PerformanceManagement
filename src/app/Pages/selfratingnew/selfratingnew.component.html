@@ -54,10 +54,10 @@
                                 {{details.emprating}}
                                 <p *ngIf="details.empupdate!=1">NA</p>
                             </td>
-
+                            <!-- [disabled]="details.appraiasalcheck==0" -->
                             <td [ngClass]="{'bggreen':details.empupdate==1 }">
                                 <button *ngIf="details.empupdate!=1" type="button" class="btn btn-primary"
-                                    [disabled]="details.appraiasalcheck==0" data-toggle="modal"
+                                     data-toggle="modal"
                                     (click)="GetKPIID(details)" data-target="#exampleModal">Rate</button>
 
 
